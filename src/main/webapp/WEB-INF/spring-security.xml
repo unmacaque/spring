@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+  <global-method-security secured-annotations="enabled">
+  </global-method-security>
+
+  <http auto-config="true">
+    <intercept-url pattern="/login" />
+    <intercept-url pattern="/admin" access="ROLE_ADMIN" />
+    <!-- <form-login login-page="/auth/login.jsp" authentication-failure-url="/auth/login.jsp?login_error=1" 
+      /> <logout logout-success-url="/auth/login.jsp" /> -->
+  </http>
+
+  <authentication-manager>
+    <authentication-provider>
+      <password-encoder hash="sha-256" />
+      <user-service>
+        <user name="admin"
+          password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+          authorities="ROLE_ADMIN" />
+        <user name="user"
+          password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb"
+          authorities="ROLE_USER" />
+      </user-service>
+    </authentication-provider>
+  </authentication-manager>
+
+</beans:beans>
