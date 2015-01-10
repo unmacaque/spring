@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -16,7 +17,12 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView admin() {
+	public ModelAndView admin(ModelMap model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+
+		model.addAttribute("username", username);
+
 		return new ModelAndView("admin");
 	}
 
@@ -31,7 +37,18 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		return "redirect:hello";
+	public ModelAndView login(@RequestParam(required = false) String error) {
+		ModelAndView model = new ModelAndView("login");
+
+		if (error != null) {
+			model.addObject("error", "Invalid username and password");
+		}
+
+		return model;
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout() {
+		return new ModelAndView("logout");
 	}
 }

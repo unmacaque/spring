@@ -12,10 +12,9 @@
   <http auto-config="true" use-expressions="true">
     <intercept-url pattern="/hello" access="hasRole('ROLE_USER')" />
     <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
-    <!--
-    <form-login login-page="/auth/login.jsp" authentication-failure-url="/auth/login.jsp?login_error=1" />
-    <logout logout-success-url="/auth/login.jsp" />
-    -->
+    <form-login login-page="/login"
+      authentication-failure-url="/login?error" default-target-url="/hello" />
+    <logout logout-success-url="/logout" />
   </http>
 
   <authentication-manager>
