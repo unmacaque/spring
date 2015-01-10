@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.springsecurity;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,12 @@ public class HelloController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(required = false) String error) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			return new ModelAndView("forward:/hello");
+		}
+
 		ModelAndView model = new ModelAndView("login");
 
 		if (error != null) {
