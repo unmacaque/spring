@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springsecurity;
+package com.gmail.unmacaque.springmvc;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

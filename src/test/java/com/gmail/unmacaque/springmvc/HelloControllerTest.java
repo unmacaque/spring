@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springsecurity;
+package com.gmail.unmacaque.springmvc;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;

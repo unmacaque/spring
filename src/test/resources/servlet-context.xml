@@ -12,6 +12,6 @@
 
   <mvc:annotation-driven />
 
-  <context:component-scan base-package="com.gmail.unmacaque.springsecurity" />
+  <context:component-scan base-package="com.gmail.unmacaque.springmvc" />
 
 </beans>
