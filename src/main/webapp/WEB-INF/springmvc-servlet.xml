@@ -34,6 +34,12 @@
     <property name="password" value="" />
   </bean>
 
+  <bean
+    class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+    id="messageSource">
+    <property name="basenames" value="classpath:messages" />
+  </bean>
+
   <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
     <property name="caches">
       <set>
