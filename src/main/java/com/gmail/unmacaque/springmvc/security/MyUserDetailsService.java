@@ -18,6 +18,11 @@ public class MyUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		User user = myUserBean.getUserByName(username);
+		
+		if (user == null) {
+			throw new UsernameNotFoundException(username);
+		}
+		
 		List<GrantedAuthority> authorities = null;
 		
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
