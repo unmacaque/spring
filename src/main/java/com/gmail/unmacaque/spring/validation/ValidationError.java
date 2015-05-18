@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.validation;
+package com.gmail.unmacaque.spring.validation;
 
 public class ValidationError {
 	private final String field;

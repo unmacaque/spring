@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.security.model;
+package com.gmail.unmacaque.spring.security.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

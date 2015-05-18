@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.security;
+package com.gmail.unmacaque.spring.security;
 
 import java.util.List;
 

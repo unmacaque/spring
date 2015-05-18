@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.cache;
+package com.gmail.unmacaque.spring.cache;
 
 import java.io.IOException;
 import java.util.List;

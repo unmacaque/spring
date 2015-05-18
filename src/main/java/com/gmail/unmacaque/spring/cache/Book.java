@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.cache;
+package com.gmail.unmacaque.spring.cache;
 
 public class Book {
 	private String id;

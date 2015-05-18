@@ -12,6 +12,6 @@
 
   <mvc:annotation-driven />
 
-  <context:component-scan base-package="com.gmail.unmacaque.springmvc" />
+  <context:component-scan base-package="com.gmail.unmacaque.spring" />
 
 </beans>

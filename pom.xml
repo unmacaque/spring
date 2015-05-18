@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gmail.unmacaque</groupId>
-  <artifactId>springmvc</artifactId>
+  <artifactId>spring</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>springmvc Example Webapp</name>
+  <name>spring Example Webapp</name>
   <url>http://maven.apache.org</url>
   <packaging>war</packaging>
 
@@ -133,7 +133,7 @@
   </dependencies>
 
   <build>
-    <finalName>springmvc</finalName>
+    <finalName>spring</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.springmvc.rest;
+package com.gmail.unmacaque.spring.rest;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
