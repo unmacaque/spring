@@ -3,8 +3,8 @@ package com.gmail.unmacaque.springmvc.cache;
 import java.io.IOException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.Resource;
@@ -15,7 +15,7 @@ import com.thoughtworks.xstream.XStream;
 @Component("library")
 public class Library {
 
-	private static final Logger logger = LoggerFactory.getLogger(Library.class);
+	private static final Logger logger = LogManager.getLogger();
 
 	@Value("classpath:books.xml")
 	private Resource resource;

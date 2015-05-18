@@ -12,6 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.1.2.RELEASE</spring.version>
     <spring-security.version>3.2.5.RELEASE</spring-security.version>
+    <log4j.version>2.3</log4j.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
     <hsqldb.version>2.3.2</hsqldb.version>
     <hibernate.version>4.3.9.Final</hibernate.version>
@@ -62,19 +63,14 @@
       <artifactId>spring-jdbc</artifactId>
     </dependency>
     <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.2</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
     </dependency>
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.0.13</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
