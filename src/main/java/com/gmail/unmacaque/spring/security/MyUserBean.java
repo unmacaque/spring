@@ -7,9 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.gmail.unmacaque.spring.security.model.MyUser;
 
 @Component
 public class MyUserBean {
@@ -21,10 +22,10 @@ public class MyUserBean {
 
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public User getUserByName(String username) {
+	public MyUser getUserByName(String username) {
 		logger.debug("looking for user {}", username);
 
-		List<User> users = new ArrayList<User>();
+		List<MyUser> users = new ArrayList<MyUser>();
 
 		users = sessionFactory.getCurrentSession()
 				.createQuery("from MyUser where username=:username")
@@ -33,6 +34,7 @@ public class MyUserBean {
 		logger.debug("{} users found", users.size());
 
 		if (users.size() > 0) {
+			logger.debug(users.get(0).getAuthorities());
 			return users.get(0);
 		}
 
