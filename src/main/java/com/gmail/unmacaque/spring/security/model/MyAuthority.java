@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.security.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -15,6 +16,7 @@ public class MyAuthority {
 	private String authority;
 
 	@ManyToOne(targetEntity = MyUser.class)
+	@JoinColumn(name = "USERNAME")
 	public MyUser getUsername() {
 		return username;
 	}

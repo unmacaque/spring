@@ -49,8 +49,6 @@
     <property name="password" value="" />
   </bean>
 
-  <bean id="myUserDetailsService" class="com.gmail.unmacaque.spring.security.MyUserDetailsService"/>
-
   <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     <property name="basenames" value="classpath:messages" />
   </bean>

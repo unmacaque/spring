@@ -9,7 +9,6 @@
 	<configs>
 		<config>java:com.gmail.unmacaque.spring.cache.Library</config>
 		<config>java:com.gmail.unmacaque.spring.rest.CorsFilterBean</config>
-		<config>java:com.gmail.unmacaque.spring.security.MyUserBean</config>
 		<config>src/main/webapp/WEB-INF/spring-servlet.xml</config>
 	</configs>
 	<autoconfigs>
