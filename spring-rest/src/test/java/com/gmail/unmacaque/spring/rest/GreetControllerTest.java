@@ -38,7 +38,7 @@ public class GreetControllerTest {
 
 	@Test
 	public void testGreet() throws Exception {
-		mockMvc.perform(get("/rest/greet"))
+		mockMvc.perform(get("/"))
 		.andExpect(status().isOk())
 		.andExpect(header().string("Access-Control-Allow-Origin", "*"))
 		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
