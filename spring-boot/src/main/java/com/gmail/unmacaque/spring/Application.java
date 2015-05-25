@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.boot;
+package com.gmail.unmacaque.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
