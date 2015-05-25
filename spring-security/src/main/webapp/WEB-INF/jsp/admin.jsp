@@ -10,7 +10,7 @@
 Enjoy your administrative privileges.
 </sec:authorize>
 
-<p><a href="<c:url value="j_spring_security_logout" />">Logout</a></p>
+<p><a href="<c:url value="logout" />">Logout</a></p>
 
 </body>
 </html>

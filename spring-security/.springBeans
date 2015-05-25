@@ -7,10 +7,9 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/webapp/WEB-INF/spring-security.xml</config>
-		<config>src/main/webapp/WEB-INF/spring-security-servlet.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>java:com.gmail.unmacaque.spring.Application</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

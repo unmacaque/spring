@@ -38,7 +38,8 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(@RequestParam(required = false) String error, ModelMap modelMap) {
+	public String login(@RequestParam(required = false) String error,
+			@RequestParam(required = false) String logout, ModelMap modelMap) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -49,11 +50,10 @@ public class HelloController {
 			modelMap.addAttribute("error", "Invalid username and password");
 		}
 
-		return "login";
-	}
+		if (logout != null) {
+			modelMap.addAttribute("logout", "You have successfully logged out");
+		}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout() {
-		return "logout";
+		return "login";
 	}
 }
