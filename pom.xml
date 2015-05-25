@@ -8,16 +8,10 @@
   <url>http://maven.apache.org</url>
   <packaging>pom</packaging>
 
-  <modules>
-    <module>spring-cache</module>
-    <module>spring-form-validation</module>
-    <module>spring-rest</module>
-    <module>spring-security</module>
-  </modules>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.1.2.RELEASE</spring.version>
+    <spring-boot.version>1.2.3.RELEASE</spring-boot.version>
     <spring-security.version>3.2.5.RELEASE</spring-security.version>
     <log4j.version>2.3</log4j.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
@@ -27,6 +21,13 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-framework-bom</artifactId>
@@ -58,6 +59,11 @@
         <groupId>jstl</groupId>
         <artifactId>jstl</artifactId>
         <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
@@ -112,11 +118,6 @@
         <version>1.4.7</version>
       </dependency>
       <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.5.2</version>
-      </dependency>
-      <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
         <version>${spring.version}</version>
@@ -136,6 +137,13 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.2</version>
@@ -149,6 +157,12 @@
           <groupId>org.eclipse.jetty</groupId>
           <artifactId>jetty-maven-plugin</artifactId>
           <version>9.3.0.M1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
