@@ -133,7 +133,6 @@
   </dependencyManagement>
 
   <build>
-    <finalName>spring</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
