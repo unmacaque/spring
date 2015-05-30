@@ -13,11 +13,13 @@
       <th>Author</th>
       <th>Description</th>
     </tr>
-    <tr th:each="book : ${books}">
-      <td th:text="${book.title}"></td>
-      <td th:text="${book.author}"></td>
-      <td th:text="${book.description}"></td>
-    </tr>
+    <th:block th:each="book,iter : ${books}">
+      <tr th:class="${iter.odd} ? 'odd'">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.description}"></td>
+      </tr>
+    </th:block>
   </table>
 </body>
 </html>
