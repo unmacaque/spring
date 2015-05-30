@@ -41,9 +41,4 @@ public class FormData {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
-	@Override
-	public String toString() {
-		return "shortName=" + shortName + ",shortInteger=" + shortInteger + ",comment=" + comment;
-	}
 }

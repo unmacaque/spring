@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Hello</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Validation Example</h1>
+
+  <th:block th:if="${formData != null}" th:object="${formData}">
+    <p><strong>The server has received your submission:</strong></p>
+    <p><strong>Short Name = <span th:text="*{shortName}"></span></strong></p>
+    <p><strong>Short Integer = <span th:text="*{shortInteger}"></span></strong></p>
+    <p><strong>Comment = <span th:text="*{comment}"></span></strong></p>
+  </th:block>
+
+  <p>Enter all fields and click on submit.</p>
+
+  <form action="/" th:formaction="@{/}" th:object="${data}" method="post">
+    <table>
+      <tr>
+        <td><label for="shortName">Short name</label></td>
+        <td><input name="shortName" th:field="*{shortName}" /></td>
+        <td th:if="${#fields.hasErrors('shortName')}" th:errors="*{shortName}" th:class="error"></td>
+      </tr>
+      <tr>
+        <td><label for="shortInteger">Short Integer</label></td>
+        <td><input name="shortInteger" th:field="*{shortInteger}" /></td>
+        <td th:if="${#fields.hasErrors('shortInteger')}" th:errors="*{shortInteger}" th:class="error"></td>
+      </tr>
+      <tr>
+        <td><label for="comment">Comment</label></td>
+        <td><textarea name="comment" th:field="*{comment}"></textarea></td>
+        <td th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" th:class="error"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" /></td>
+      </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>

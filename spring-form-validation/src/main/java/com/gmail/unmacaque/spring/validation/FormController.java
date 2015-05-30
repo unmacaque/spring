@@ -10,16 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping(value = "/")
 public class FormController {
 	
 	@ModelAttribute("data")
 	public FormData getFormData() {
 		return new FormData();
-	}
-	
-	@RequestMapping(value = "/")
-	public String index() {
-		return "form";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
