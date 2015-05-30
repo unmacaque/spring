@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Hello</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+  <h1 th:text="${#messages.msg('hello.title', username)}"></h1>
+
+  <p th:text="${#messages.msg('hello.greeting')}"></p>
+
+  <th:block th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+    <a href="/admin" th:href="@{/admin}"><span th:text="${#messages.msg('hello.admin')}"></span></a>
+  </th:block>
+
+  <p>
+    <a href="/logout" th:href="@{/logout}"><span th:text="${#messages.msg('hello.logout')}"></span></a>
+  </p>
+
+</body>
+</html>

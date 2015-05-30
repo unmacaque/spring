@@ -1,0 +1,29 @@
+body {
+	background-color: #f1f1f1;
+}
+
+h1 {
+	color: #6db33f;
+}
+
+fieldset label {
+	display: inline-block;
+	width: 6em;
+}
+
+a {
+	color: #68a640;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.failed {
+	color: red;
+}
+
+.success {
+	color: green;
+}

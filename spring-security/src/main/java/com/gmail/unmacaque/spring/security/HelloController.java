@@ -46,13 +46,8 @@ public class HelloController {
 			return "forward:/hello";
 		}
 
-		if (error != null) {
-			modelMap.addAttribute("error", "Invalid username and password");
-		}
-
-		if (logout != null) {
-			modelMap.addAttribute("logout", "You have successfully logged out");
-		}
+		modelMap.addAttribute("error", error != null);
+		modelMap.addAttribute("logout", logout != null);
 
 		return "login";
 	}

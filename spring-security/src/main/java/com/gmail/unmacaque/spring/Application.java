@@ -16,6 +16,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
@@ -52,6 +54,13 @@ public class Application extends SpringBootServletInitializer {
 		sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 		sessionFactory.setPackagesToScan("com.gmail.unmacaque.spring.security.model");
 		return sessionFactory;
+	}
+
+	@Bean
+	public TemplateEngine templateEngine() {
+		TemplateEngine templateEngine = new TemplateEngine();
+		templateEngine.addDialect(new SpringSecurityDialect());
+		return templateEngine;
 	}
 
 	@Bean
