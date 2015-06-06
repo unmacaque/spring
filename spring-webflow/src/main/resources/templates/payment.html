@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Enter Order Details</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Choose Payment Type</h1>
+
+  <p>Enter details about your order and click next.</p>
+
+  <form action="/order" th:action="@{/order}" method="post">
+
+  <fieldset>
+    <div>
+      <label for="username"></label>
+      <input type="text" name="username" />
+    </div>
+
+    <div>
+      <label for="password"></label>
+      <input type="text" name="password" />
+    </div>
+
+    <div>
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <input name="submit" type="submit" />
+    </div>
+  </fieldset>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+  <view-state id="enterAddress" view="address">
+    <transition on="submit" to="reviewBooking" />
+  </view-state>
+
+  <view-state id="choosePayment" view="payment">
+    <transition on="submit" to="reviewBooking" />
+  </view-state>
+
+  <view-state id="confirmOrder" view="confirm">
+    <transition on="confirm" to="orderPlaced" />
+    <transition on="reviseAddress" to="enterAddress" />
+    <transition on="revisePayment" to="choosePayment" />
+    <transition on="cancel" to="orderCancelled" />
+  </view-state>
+
+  <end-state id="orderPlaced" view="final">
+    <output name="orderId" value="order.id" />
+  </end-state>
+
+  <end-state id="orderCancelled" />
+</flow>
