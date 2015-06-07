@@ -6,6 +6,12 @@ h1 {
 	color: #6db33f
 }
 
+fieldset label {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+}
+
 a {
 	color: #68a640;
 	text-decoration: none;
