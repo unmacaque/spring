@@ -30,12 +30,12 @@
       <label th:text="${#messages.msg('login.password')}" for="password"></label>
       <input type="password" name="password" />
     </div>
-
-    <div>
-      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-      <input name="submit" type="submit" />
-    </div>
   </fieldset>
+
+  <div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input name="submit" type="submit" />
+  </div>
 
   </form>
 
