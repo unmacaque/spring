@@ -6,6 +6,12 @@ h1 {
 	color: #6db33f
 }
 
+fieldset label {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+}
+
 .error {
 	color: red;
 }
