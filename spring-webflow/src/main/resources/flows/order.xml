@@ -3,16 +3,20 @@
   xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-  <view-state id="enterAddress" view="address">
-    <transition on="submit" to="reviewBooking" />
+  <on-start>
+    <evaluate expression="orderService.newAddress()" result="flowScope.address" />
+  </on-start>
+
+  <view-state id="enterAddress" model="address" view="address">
+    <transition on="submit" to="choosePayment" />
   </view-state>
 
   <view-state id="choosePayment" view="payment">
-    <transition on="submit" to="reviewBooking" />
+    <transition on="submit" to="confirmOrder" />
   </view-state>
 
-  <view-state id="confirmOrder" view="confirm">
-    <transition on="confirm" to="orderPlaced" />
+  <view-state id="confirmOrder" view="review">
+    <transition on="submit" to="orderPlaced" />
     <transition on="reviseAddress" to="enterAddress" />
     <transition on="revisePayment" to="choosePayment" />
     <transition on="cancel" to="orderCancelled" />

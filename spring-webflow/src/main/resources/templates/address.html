@@ -11,39 +11,44 @@
 
   <p>Enter the address where your order should be delivered to.</p>
 
-  <form action="/order" th:action="@{/order}" method="post">
+  <form action="#" th:action="${flowExecutionUrl}" th:object="${address}" method="post">
 
   <fieldset>
     <div>
-      <label for="firstname">First Name</label>
-      <input type="text" name="firstname" />
+      <label for="firstName">First Name</label>
+      <input type="text" th:field="*{firstName}" />
+      <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:class="error"></span>
     </div>
 
     <div>
       <label for="lastname">Last Name</label>
-      <input type="text" name="lastname" />
+      <input type="text" th:field="*{lastName}" />
+      <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="error"></span>
     </div>
 
     <div>
       <label for="street">Street</label>
-      <input type="text" name="street" />
+      <input type="text" th:field="*{street}" />
+      <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" th:class="error"></span>
     </div>
 
     <div>
       <label for="postal">Postal</label>
-      <input type="text" name="postal" />
+      <input type="text" th:field="*{postal}" />
+      <span th:if="${#fields.hasErrors('postal')}" th:errors="*{postal}" th:class="error"></span>
     </div>
 
     <div>
       <label for="city">City</label>
-      <input type="text" name="city" />
-    </div>
-
-    <div>
-      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-      <input name="submit" type="submit" />
+      <input type="text" th:field="*{city}" />
+      <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" th:class="error"></span>
     </div>
   </fieldset>
+
+  <div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" name="_eventId_submit" />
+  </div>
 
   </form>
 

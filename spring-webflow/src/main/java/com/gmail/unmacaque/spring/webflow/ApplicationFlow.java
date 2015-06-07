@@ -17,6 +17,9 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 import org.springframework.webflow.security.SecurityFlowExecutionListener;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
+import com.gmail.unmacaque.spring.webflow.order.OrderService;
+import com.gmail.unmacaque.spring.webflow.order.OrderServiceImpl;
+
 @Configuration
 public class ApplicationFlow extends AbstractFlowConfiguration {
 
@@ -68,8 +71,12 @@ public class ApplicationFlow extends AbstractFlowConfiguration {
 	}
 
 	@Bean
+	public OrderService orderService() {
+		return new OrderServiceImpl();
+	}
+
+	@Bean
 	public LocalValidatorFactoryBean validator() {
 		return new LocalValidatorFactoryBean();
 	}
-
 }

@@ -1,6 +1,11 @@
 package com.gmail.unmacaque.spring.webflow.order;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
+
+	private static final long serialVersionUID = 6804215891179770302L;
+
 	private final int id;
 	private final int itemId;
 	private final int amount;

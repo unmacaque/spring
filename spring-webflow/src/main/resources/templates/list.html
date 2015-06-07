@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Order List</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Order List</h1>
+
+  <p>Showing <strong th:text="${#lists.size(orders)}"></strong> orders.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.itemId}"></td>
+        <td th:text="${order.amount}"></td>
+        <td th:text="${order.address.lastName}"></td>
+        <td th:text="${order.address.firstName}"></td>
+        <td th:text="${order.payment.type}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

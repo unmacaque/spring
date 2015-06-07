@@ -11,6 +11,10 @@ public class OrderServiceImpl implements OrderService {
 
 	private final List<Order> orders = new ArrayList<>();
 
+	public OrderServiceImpl() {
+		orders.add(new Order(1, 123, 4, new Address("Frank", "Peterson", "Mainstreet", "12345", "Fakecity"), new Payment(PaymentType.PAY_PAL)));
+	}
+
 	@Override
 	public Order getOrder(int id) {
 		for (Order order : orders) {
@@ -32,4 +36,8 @@ public class OrderServiceImpl implements OrderService {
 		orders.add(order);
 	}
 
+	@Override
+	public Address newAddress() {
+		return new Address();
+	}
 }
