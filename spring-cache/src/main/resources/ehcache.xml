@@ -1,0 +1,6 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+  <cache name="books" maxEntriesLocalHeap="1" timeToLiveSeconds="1800" />
+
+</ehcache>
