@@ -6,28 +6,28 @@
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
-  <h1 th:text="${#messages.msg('login.title')}"></h1>
+  <h1 th:text="#{login.title}"></h1>
 
   <th:block th:if="${error}">
-    <span th:text="${#messages.msg('login.error')}" class="failed"></span>
+    <span th:text="#{login.error}" class="failed"></span>
   </th:block>
 
   <th:block th:if="${logout}">
-    <span th:text="${#messages.msg('login.success')}" class="success"></span>
+    <span th:text="#{login.success}" class="success"></span>
   </th:block>
 
-  <p th:text="${#messages.msg('login.text')}"></p>
+  <p th:text="#{login.text}"></p>
 
   <form action="/login" th:action="@{/login}" method="post">
 
   <fieldset>
     <div>
-      <label th:text="${#messages.msg('login.username')}" for="username"></label>
+      <label th:text="#{login.username}" for="username"></label>
       <input type="text" name="username" />
     </div>
 
     <div>
-      <label th:text="${#messages.msg('login.password')}" for="password"></label>
+      <label th:text="#{login.password}" for="password"></label>
       <input type="password" name="password" />
     </div>
   </fieldset>

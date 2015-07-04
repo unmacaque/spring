@@ -6,12 +6,12 @@
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
-  <h1 th:text="${#messages.msg('admin.title', username)}"></h1>
+  <h1 th:text="#{admin.title(username)}"></h1>
 
-  <span th:text="${#messages.msg('admin.greeting')}"></span>
+  <span th:text="#{admin.greeting}"></span>
 
   <p>
-    <a href="/logout" th:href="@{/logout}"><span th:text="${#messages.msg('admin.logout')}"></span></a>
+    <a href="/logout" th:href="@{/logout}"><span th:text="#{admin.logout}"></span></a>
   </p>
 
 </body>
