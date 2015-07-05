@@ -1,24 +1,35 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/webflow
-                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+                      http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
   <on-start>
-    <evaluate expression="orderService.newAddress()" result="flowScope.address" />
+    <evaluate expression="orderFactory.newAddress()" result="flowScope.address"
+      result-type="com.gmail.unmacaque.spring.webflow.order.Address" />
+    <evaluate
+      expression="T(com.gmail.unmacaque.spring.webflow.order.PaymentType).CREDIT_CARD"
+      result="flowScope.payment" result-type="com.gmail.unmacaque.spring.webflow.order.Payment" />
   </on-start>
 
-  <view-state id="enterAddress" model="address" view="address">
-    <transition on="submit" to="choosePayment" />
+  <view-state id="setAddress" model="address" view="address">
+    <transition on="submit" to="setPayment" />
+    <transition on="cancel" to="orderCancelled" bind="false" />
   </view-state>
 
-  <view-state id="choosePayment" view="payment">
-    <transition on="submit" to="confirmOrder" />
+  <view-state id="setPayment" model="payment" view="payment">
+    <transition on="submit" to="confirmOrder">
+      <evaluate expression="orderFactory.newOrder(flowScope.address, payment)"
+        result="flowScope.order" result-type="com.gmail.unmacaque.spring.webflow.order.Order" />
+    </transition>
+    <transition on="cancel" to="orderCancelled" bind="false" />
   </view-state>
 
-  <view-state id="confirmOrder" view="review">
-    <transition on="submit" to="orderPlaced" />
-    <transition on="reviseAddress" to="enterAddress" />
-    <transition on="revisePayment" to="choosePayment" />
+  <view-state id="confirmOrder" model="flowScope.order" view="review">
+    <transition on="submit" to="orderPlaced">
+      <evaluate expression="orderService.placeOrder(flowScope.order)" />
+    </transition>
+    <transition on="reviseAddress" to="setAddress" />
+    <transition on="revisePayment" to="setPayment" />
     <transition on="cancel" to="orderCancelled" />
   </view-state>
 
@@ -26,5 +37,5 @@
     <output name="orderId" value="order.id" />
   </end-state>
 
-  <end-state id="orderCancelled" />
+  <end-state id="orderCancelled" view="index" />
 </flow>

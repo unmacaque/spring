@@ -9,7 +9,7 @@
 
   <h1>Order List</h1>
 
-  <p>Showing <strong th:text="${#lists.size(orders)}"></strong> orders.</p>
+  <p>Showing <strong th:text="${#maps.size(orders)}"></strong> orders.</p>
 
   <table>
     <thead>
@@ -20,16 +20,18 @@
         <th>Last Name</th>
         <th>First Name</th>
         <th>Payment</th>
+        <th>State</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="order : ${orders}">
-        <td th:text="${order.id}"></td>
-        <td th:text="${order.itemId}"></td>
-        <td th:text="${order.amount}"></td>
-        <td th:text="${order.address.lastName}"></td>
-        <td th:text="${order.address.firstName}"></td>
-        <td th:text="${order.payment.type}"></td>
+        <td th:text="${order.key}"></td>
+        <td th:text="${order.value.itemId}"></td>
+        <td th:text="${order.value.amount}"></td>
+        <td th:text="${order.value.address.lastName}"></td>
+        <td th:text="${order.value.address.firstName}"></td>
+        <td th:text="${order.value.payment.type}"></td>
+        <td th:text="${order.value.state}"></td>
       </tr>
     </tbody>
   </table>

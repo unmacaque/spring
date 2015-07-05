@@ -12,6 +12,12 @@ fieldset label {
 	width: 8em;
 }
 
+fieldset strong:first-child {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+}
+
 a {
 	color: #68a640;
 	text-decoration: none;

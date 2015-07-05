@@ -2,32 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
-<title>Enter Order Details</title>
+<title>Review Order</title>
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
 
-  <h1>Enter Order Details</h1>
+  <h1>Review Order</h1>
 
-  <p>Enter details about your order and click next.</p>
+  <p>Please review your order.</p>
 
-  <form action="#" th:action="${flowExecutionUrl}" method="post">
+  <form action="#" th:action="${flowExecutionUrl}" th:object="${order}" method="post">
 
   <fieldset>
     <div>
-      <label for="${lastName}">Last Name</label>
-      <span th:text="${address.lastName}"></span>
+      <strong>First Name</strong>
+      <span th:text="*{address.firstName}"></span>
     </div>
 
     <div>
-      <label for="${firstName}">First Name</label>
-      <span th:text="${address.firstName}"></span>
+      <strong>Last Name</strong>
+      <span th:text="*{address.lastName}"></span>
+    </div>
+
+    <div>
+      <strong>Street</strong>
+      <span th:text="*{address.street}"></span>
+    </div>
+
+    <div>
+      <strong>Postal</strong>
+      <span th:text="*{address.postal}"></span>
+    </div>
+
+    <div>
+      <strong>City</strong>
+      <span th:text="*{address.city}"></span>
+    </div>
+
+    <div>
+      <strong>Payment Type</strong>
+      <span th:text="#{__*{payment.type.value}__}"></span>
     </div>
   </fieldset>
 
   <div>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-    <input type="submit" name="_eventId_submit" />
+    <input type="submit" name="_eventId_cancel" th:value="#{order.transition.cancel}" />
+    <input type="submit" name="_eventId_reviseAddress" th:value="#{order.transition.reviseAddress}" />
+    <input type="submit" name="_eventId_revisePayment" th:value="#{order.transition.revisePayment}" />
+    <input type="submit" name="_eventId_submit" th:value="#{order.transition.placeOrder}" />
   </div>
 
   </form>

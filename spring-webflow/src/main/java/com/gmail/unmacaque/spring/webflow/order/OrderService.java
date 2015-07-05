@@ -1,10 +1,10 @@
 package com.gmail.unmacaque.spring.webflow.order;
 
-import java.util.List;
+import java.util.Map;
 
 public interface OrderService {
-	Order getOrder(int id);
-	List<Order> getOrders();
+	Order cancelOrder(long id) throws NoSuchOrderException;
+	Order getOrder(long id) throws NoSuchOrderException;
+	Map<Long, Order> getOrders();
 	void placeOrder(Order order);
-	Address newAddress();
 }

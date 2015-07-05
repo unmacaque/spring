@@ -2,33 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
-<title>Enter Order Details</title>
+<title>Choose Payment Type</title>
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
 
   <h1>Choose Payment Type</h1>
 
-  <p>Enter details about your order and click next.</p>
+  <p>Please select your preffered payment type and click next.</p>
 
-  <form action="#" th:action="${flowExecutionUrl}" method="post">
+  <form action="#" th:action="${flowExecutionUrl}" th:object="${payment}" method="post">
 
   <fieldset>
     <div>
-      <label for="username"></label>
-      <input type="text" name="username" />
-    </div>
-
-    <div>
-      <label for="password"></label>
-      <input type="text" name="password" />
-    </div>
-
-    <div>
-      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-    <input type="submit" name="_eventId_submit" />
+      <label for="type">Payment Type</label>
+      <select th:field="*{type}">
+        <option th:each="type : ${T(com.gmail.unmacaque.spring.webflow.order.PaymentType).values()}" th:value="${type}"
+          th:text="#{__${type.value}__}"></option>
+      </select>
+      <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" th:class="error"></span>
     </div>
   </fieldset>
+
+  <div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" name="_eventId_cancel" th:value="#{order.transition.cancel}" />
+    <input type="submit" name="_eventId_submit" />
+  </div>
 
   </form>
 

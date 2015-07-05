@@ -6,18 +6,19 @@ public class Order implements Serializable {
 
 	private static final long serialVersionUID = 6804215891179770302L;
 
-	private final int id;
+	private long id;
 	private final int itemId;
 	private final int amount;
 	private final Address address;
 	private final Payment payment;
+	private final OrderState state;
 
-	public Order(int id, int itemId, int amount, Address address, Payment payment) {
-		this.id = id;
+	public Order(int itemId, int amount, Address address, Payment payment, OrderState state) {
 		this.itemId = itemId;
 		this.amount = amount;
 		this.address = address;
 		this.payment = payment;
+		this.state = state;
 	}
 
 	public Address getAddress() {
@@ -28,7 +29,7 @@ public class Order implements Serializable {
 		return amount;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -38,5 +39,13 @@ public class Order implements Serializable {
 
 	public Payment getPayment() {
 		return payment;
+	}
+
+	public OrderState getState() {
+		return state;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

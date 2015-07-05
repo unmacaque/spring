@@ -1,43 +1,44 @@
 package com.gmail.unmacaque.spring.webflow.order;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("orderService")
 public class OrderServiceImpl implements OrderService {
 
-	private final List<Order> orders = new ArrayList<>();
+	private final Map<Long, Order> orders = new HashMap<>();
 
-	public OrderServiceImpl() {
-		orders.add(new Order(1, 123, 4, new Address("Frank", "Peterson", "Mainstreet", "12345", "Fakecity"), new Payment(PaymentType.PAY_PAL)));
-	}
+	private int lastId = 1;
 
 	@Override
-	public Order getOrder(int id) {
-		for (Order order : orders) {
-			if (order.getId() == id) {
-				return order;
-			}
+	public Order cancelOrder(long id) throws NoSuchOrderException {
+		if (orders.containsKey(id)) {
+			return orders.remove(id);
 		}
 		
-		return null;
+		throw new NoSuchOrderException();
 	}
 
 	@Override
-	public List<Order> getOrders() {
-		return Collections.unmodifiableList(orders);
+	public Order getOrder(long id) throws NoSuchOrderException {
+		if (orders.containsKey(id)) {
+			return orders.get(id);
+		}
+		
+		throw new NoSuchOrderException();
+	}
+
+	@Override
+	public Map<Long, Order> getOrders() {
+		return Collections.unmodifiableMap(orders);
 	}
 
 	@Override
 	public void placeOrder(Order order) {
-		orders.add(order);
-	}
-
-	@Override
-	public Address newAddress() {
-		return new Address();
+		order.setId(lastId++);
+		orders.put(order.getId(), order);
 	}
 }
