@@ -21,13 +21,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order cancelOrder(long orderId) throws NoSuchOrderException {
-		Order order = orderRepository.removeOrder(orderId);
-
-		if (order != null) {
-			return order;
-		}
-
-		throw new NoSuchOrderException();
+		Order order = getOrder(orderId);
+		orderRepository.removeOrder(order);
+		return order;
 	}
 
 	@Override

@@ -22,11 +22,8 @@ public class InMemoryOrderRepository implements OrderRepository {
 	}
 
 	@Override
-	public Order removeOrder(long orderId) {
-		if (orderMap.containsKey(orderId)) {
-			return orderMap.remove(orderId);
-		}
-		return null;
+	public void removeOrder(Order order) {
+		orderMap.remove(order);
 	}
 
 	@Override

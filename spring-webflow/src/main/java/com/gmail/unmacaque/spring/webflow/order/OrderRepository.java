@@ -6,6 +6,6 @@ public interface OrderRepository {
 	Order getOrder(long orderId);
 	Collection<Order> getOrders();
 	void insertOrder(Order order);
-	Order removeOrder(long orderId);
+	void removeOrder(Order order);
 	void updateOrder(Order order);
 }
