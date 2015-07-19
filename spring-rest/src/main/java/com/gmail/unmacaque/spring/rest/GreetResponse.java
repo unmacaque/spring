@@ -1,10 +1,12 @@
 package com.gmail.unmacaque.spring.rest;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 
 public class GreetResponse {
+
+	private LocalDateTime date = LocalDateTime.now();
+	private String response;
+
 	public GreetResponse() {
 		this("anonymous");
 	}
@@ -13,8 +15,7 @@ public class GreetResponse {
 		this.response = response;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 	
@@ -22,7 +23,7 @@ public class GreetResponse {
 		return response;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
@@ -34,7 +35,4 @@ public class GreetResponse {
 	public String toString() {
 		return this.response;
 	}
-	
-	private Date date = new Date();
-	private String response;
 }
