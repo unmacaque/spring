@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Thymeleaf</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Thymeleaf</h1>
+
+  <ul>
+    <th:block th:each="mapping : ${mappings}">
+      <li><a th:href="@{${mapping}}" th:text="${mapping}"></a></li>
+    </th:block>
+  </ul>
+
+</body>
+</html>
