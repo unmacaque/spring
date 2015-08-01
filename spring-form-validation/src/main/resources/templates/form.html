@@ -23,19 +23,19 @@
   <fieldset>
     <div>
       <label for="shortName">Short Name</label>
-      <input type="text" th:field="*{shortName}" />
+      <input type="text" th:field="*{shortName}" th:errorclass="fielderror" />
       <span th:if="${#fields.hasErrors('shortName')}" th:errors="*{shortName}" th:class="error"></span>
     </div>
 
     <div>
       <label for="shortInteger">Short Name</label>
-      <input type="text" th:field="*{shortInteger}" />
+      <input type="text" th:field="*{shortInteger}" th:errorclass="fielderror"/>
       <span th:if="${#fields.hasErrors('shortInteger')}" th:errors="*{shortInteger}" th:class="error"></span>
     </div>
 
     <div>
       <label for="comment">Comment</label>
-      <textarea name="comment" th:field="*{comment}"></textarea>
+      <textarea name="comment" th:field="*{comment}" th:errorclass="fielderror"></textarea>
       <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" th:class="error"></span>
     </div>
   </fieldset>

@@ -15,3 +15,7 @@ fieldset label {
 .error {
 	color: red;
 }
+
+.fielderror {
+	background-color: red;
+}
