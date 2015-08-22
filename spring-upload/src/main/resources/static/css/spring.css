@@ -1,0 +1,16 @@
+body {
+	background-color: #f1f1f1;
+}
+
+h1 {
+	color: #6db33f
+}
+
+a {
+	color: #68a640;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

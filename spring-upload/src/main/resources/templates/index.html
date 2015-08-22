@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Upload</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Upload</h1>
+
+  <th:block th:if="${filename}">
+    <p><strong>Successfully uploaded <a th:href="@{/download(filename=${filename})}" th:text="${filename}"></a></strong>
+    <span>
+      (<span th:text="${filesize}"></span> bytes, <span th:text="${filetype}"></span>)
+    </span>
+    </p>
+  </th:block>
+
+  <th:block th:if="${error}">
+    <p><strong>An error occured trying to upload: <span th:text="${error}"></span></strong></p>
+  </th:block>
+
+  <form action="/" th:action="@{/}" method="post" enctype="multipart/form-data">
+
+  <fieldset>
+    <div>
+      <label for="shortName">File</label> <input type="file" name="aFile" />
+    </div>
+  </fieldset>
+
+  <div>
+    <input type="submit" />
+  </div>
+
+  </form>
+
+</body>
+</html>
