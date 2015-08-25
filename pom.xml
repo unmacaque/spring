@@ -14,7 +14,6 @@
     <spring-boot.version>1.2.5.RELEASE</spring-boot.version>
     <spring-security.version>3.2.5.RELEASE</spring-security.version>
     <spring-webflow.version>2.4.0.RELEASE</spring-webflow.version>
-    <log4j.version>2.3</log4j.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
     <hsqldb.version>2.3.2</hsqldb.version>
     <hibernate.version>4.3.9.Final</hibernate.version>
@@ -61,21 +60,6 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-api</artifactId>
-        <version>${log4j.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-core</artifactId>
-        <version>${log4j.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-slf4j-impl</artifactId>
-        <version>${log4j.version}</version>
       </dependency>
       <dependency>
         <groupId>javax.servlet</groupId>
