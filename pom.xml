@@ -18,6 +18,7 @@
     <hsqldb.version>2.3.2</hsqldb.version>
     <hibernate.version>4.3.9.Final</hibernate.version>
     <wiremock.version>1.56</wiremock.version>
+    <togglz.version>2.2.0.Final</togglz.version>
   </properties>
 
   <dependencyManagement>
@@ -102,6 +103,31 @@
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
         <version>1.4.7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-servlet</artifactId>
+        <version>${togglz.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-spring-web</artifactId>
+        <version>${togglz.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-spring-security</artifactId>
+        <version>${togglz.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-console</artifactId>
+        <version>${togglz.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.heneke.thymeleaf</groupId>
+        <artifactId>thymeleaf-extras-togglz</artifactId>
+        <version>1.0.1.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
