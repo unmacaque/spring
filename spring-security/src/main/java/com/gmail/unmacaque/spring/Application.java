@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
