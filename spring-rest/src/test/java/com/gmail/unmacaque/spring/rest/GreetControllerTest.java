@@ -17,8 +17,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.gmail.unmacaque.spring.rest.CorsFilterBean;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration("classpath:servlet-context.xml")
@@ -42,5 +40,14 @@ public class GreetControllerTest {
 		.andExpect(status().isOk())
 		.andExpect(header().string("Access-Control-Allow-Origin", "*"))
 		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+	}
+
+	@Test
+	public void testGreet_withPathVariable() throws Exception {
+		mockMvc.perform(get("/hello"))
+		.andExpect(status().isOk())
+		.andExpect(header().string("Access-Control-Allow-Origin", "*"))
+		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(content().json("{'response':'hello'}"));
 	}
 }
