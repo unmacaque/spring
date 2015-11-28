@@ -12,7 +12,6 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
@@ -46,7 +45,6 @@ public class Application extends SpringBootServletInitializer {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
-		sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 		sessionFactory.setPackagesToScan("com.gmail.unmacaque.spring.security.model");
 		return sessionFactory;
 	}
