@@ -4,7 +4,7 @@ import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-import org.hsqldb.jdbc.JDBCDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,18 +21,13 @@ import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
+
+	@Autowired
+	private DataSource dataSource;
+
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Application.class);
-	}
-
-	@Bean
-	public DataSource dataSource() {
-		JDBCDataSource dataSource = new JDBCDataSource();
-		dataSource.setUrl("jdbc:hsqldb:mem:spring");
-		dataSource.setUser("");
-		dataSource.setPassword("");
-		return dataSource;
 	}
 
 	@Bean
@@ -50,7 +45,7 @@ public class Application extends SpringBootServletInitializer {
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 		sessionFactory.setPackagesToScan("com.gmail.unmacaque.spring.security.model");
 		return sessionFactory;
