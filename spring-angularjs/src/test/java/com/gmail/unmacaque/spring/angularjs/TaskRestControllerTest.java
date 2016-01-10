@@ -19,7 +19,7 @@ import com.gmail.unmacaque.spring.Application;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
 @WebIntegrationTest
-public class NoteRestControllerTest {
+public class TaskRestControllerTest {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -33,7 +33,7 @@ public class NoteRestControllerTest {
 
 	@Test
 	public void testGetNotes() throws Exception {
-		mockMvc.perform(get("/notes"))
+		mockMvc.perform(get("/tasks"))
 		.andExpect(status().isOk());
 	}
 

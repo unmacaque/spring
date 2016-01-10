@@ -20,13 +20,13 @@ public class TaskRestController {
 		return ResponseEntity.ok(taskRepository.getTask());
 	}
 
-	@RequestMapping(value = "/{noteId}", method = RequestMethod.GET)
-	public ResponseEntity<?> getTask(@PathVariable int noteId) {
-		Task note = taskRepository.getNote(noteId);
-		if (note == null) {
+	@RequestMapping(value = "/{taskId}", method = RequestMethod.GET)
+	public ResponseEntity<?> getTask(@PathVariable int taskId) {
+		Task task = taskRepository.getTask(taskId);
+		if (task == null) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(note);
+		return ResponseEntity.ok(task);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

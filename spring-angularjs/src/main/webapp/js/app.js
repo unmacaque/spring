@@ -1,6 +1,6 @@
-var noteApp = angular.module('taskApp', [ 'ngRoute', 'taskControllers' ]);
+var taskApp = angular.module('taskApp', [ 'ngRoute', 'taskControllers' ]);
 
-noteApp.config([ '$routeProvider', function($routeProvider) {
+taskApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/tasks', {
 		templateUrl : 'partials/task-list.html',
 		controller : 'TaskListController'

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class InMemoryTaskRepository implements TaskRepository {
 
-	private final Map<Integer, Task> noteMap = new HashMap<>();
+	private final Map<Integer, Task> taskMap = new HashMap<>();
 	private int lastId = 1;
 
 	public InMemoryTaskRepository() {
@@ -20,32 +20,32 @@ public class InMemoryTaskRepository implements TaskRepository {
 	}
 
 	@Override
-	public int addTask(Task note) {
-		noteMap.put(lastId, note);
+	public int addTask(Task task) {
+		taskMap.put(lastId, task);
 		lastId++;
 		return lastId;
 	}
 
 	@Override
-	public Task getNote(int noteId) {
-		return noteMap.get(noteId);
+	public Task getTask(int taskId) {
+		return taskMap.get(taskId);
 	}
 
 	@Override
 	public Collection<Task> getTask() {
-		return noteMap.values();
+		return taskMap.values();
 	}
 
 	@Override
-	public Task updateTask(int noteId, Task note) {
-		if (!noteMap.containsKey(noteId) || noteId != note.getId()) {
+	public Task updateTask(int taskId, Task task) {
+		if (!taskMap.containsKey(taskId) || taskId != task.getId()) {
 			throw new IllegalArgumentException();
 		}
-		return noteMap.put(noteId, note);
+		return taskMap.put(taskId, task);
 	}
 
 	@Override
-	public Task deleteTask(int noteId) {
-		return noteMap.remove(noteId);
+	public Task deleteTask(int taskId) {
+		return taskMap.remove(taskId);
 	}
 }

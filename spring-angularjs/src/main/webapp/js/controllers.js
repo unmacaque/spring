@@ -1,12 +1,12 @@
-var noteControllers = angular.module('taskControllers', []);
+var taskControllers = angular.module('taskControllers', []);
 
-noteControllers.controller('TaskListController', ['$scope', '$http', function($scope, $http) {
+taskControllers.controller('TaskListController', ['$scope', '$http', function($scope, $http) {
 	$http.get('/tasks').success(function(data) {
 		$scope.tasks = data;
 	});
 }]);
 
-noteControllers.controller('TaskViewController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+taskControllers.controller('TaskViewController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$http.get('/tasks/' + $routeParams.taskId).success(function(data) {
 		$scope.task = data;
 	});
