@@ -2,8 +2,21 @@ body {
 	background-color: #f1f1f1;
 }
 
-h1 {
+h1,h2,h3,h4,h5 {
 	color: #6db33f
+}
+
+fieldset label {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+	vertical-align: top;
+}
+
+fieldset strong:first-child {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
 }
 
 a {

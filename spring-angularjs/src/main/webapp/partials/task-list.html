@@ -1,0 +1,16 @@
+<div ng-controller="TaskListController">
+  <h3>Task List</h3>
+
+  <fieldset>
+    <div>
+      <label for="filter">Filter</label>
+      <input ng-model="query" name="title" />
+    </div>
+  </fieldset>
+
+  <ul>
+    <li ng-repeat="task in tasks | filter : query | orderBy : id">
+      <span><a href="#/tasks/{{task.id}}">{{task.title}}</a></span>
+    </li>
+  </ul>
+</div>
