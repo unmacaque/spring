@@ -14,9 +14,12 @@ public class InMemoryTaskRepository implements TaskRepository {
 	private int lastId = 1;
 
 	public InMemoryTaskRepository() {
-		addTask(new Task(lastId, "make breakfast", LocalDateTime.now(), "", false));
+		addTask(new Task(lastId, "make breakfast", LocalDateTime.now(), "", true));
+		addTask(new Task(lastId, "go shopping", LocalDateTime.now(), "", true));
 		addTask(new Task(lastId, "take out trash", LocalDateTime.now(), "", false));
 		addTask(new Task(lastId, "do laundry", LocalDateTime.now(), "", false));
+		addTask(new Task(lastId, "write letter", LocalDateTime.now(), "", false));
+		addTask(new Task(lastId, "do sports", LocalDateTime.now(), "", false));
 	}
 
 	@Override

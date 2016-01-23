@@ -1,4 +1,4 @@
-var taskApp = angular.module('taskApp', [ 'ngRoute', 'taskControllers' ]);
+var taskApp = angular.module('taskApp', [ 'ngRoute', 'taskControllers', 'taskFilters', 'taskServices' ]);
 
 taskApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/tasks', {

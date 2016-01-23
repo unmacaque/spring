@@ -1,7 +1,8 @@
 <div ng-controller="TaskViewController" ng-model="task">
   <h3>{{task.title}}</h3>
 
-  <p>Last edited: {{task.date}}</p>
+  <p>Status: {{task.done | taskDoneFilter}}</p>
+  <p>Last edited: {{task.date | date}}</p>
   <p>{{task.text}}</p>
 
   <a href="/">back to task list</a>

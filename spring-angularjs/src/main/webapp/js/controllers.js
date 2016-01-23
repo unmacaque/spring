@@ -1,13 +1,9 @@
 var taskControllers = angular.module('taskControllers', []);
 
-taskControllers.controller('TaskListController', ['$scope', '$http', function($scope, $http) {
-	$http.get('/tasks').success(function(data) {
-		$scope.tasks = data;
-	});
+taskControllers.controller('TaskListController', ['$scope', 'Tasks', function($scope, Tasks) {
+	$scope.tasks = Tasks.query();
 }]);
 
-taskControllers.controller('TaskViewController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-	$http.get('/tasks/' + $routeParams.taskId).success(function(data) {
-		$scope.task = data;
-	});
+taskControllers.controller('TaskViewController', ['$scope', '$routeParams', 'Tasks', function($scope, $routeParams, Tasks) {
+	$scope.task = Tasks.get({ id : $routeParams.taskId });
 }]);

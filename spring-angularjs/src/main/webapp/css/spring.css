@@ -27,3 +27,7 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+.task-done {
+	text-decoration: line-through;
+}
