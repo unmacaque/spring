@@ -1,8 +1,20 @@
 package com.gmail.unmacaque.spring.angularjs;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Task {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TASKS")
+public class Task implements Serializable {
+
+	private static final long serialVersionUID = -2513462600168725588L;
 
 	private int id;
 	private String title;
@@ -21,22 +33,28 @@ public class Task {
 		this.done = done;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
 
+	@Column(name = "TITLE")
 	public String getTitle() {
 		return title;
 	}
 
+	@Column(name = "DATE")
 	public LocalDateTime getDate() {
 		return date;
 	}
 
+	@Column(name = "TEXT")
 	public String getText() {
 		return text;
 	}
 
+	@Column(name = "DONE")
 	public boolean getDone() {
 		return done;
 	}

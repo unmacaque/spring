@@ -22,7 +22,7 @@ public class TaskRestController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<Task> getTasks() {
-		return taskRepository.getTask();
+		return taskRepository.getTasks();
 	}
 
 	@RequestMapping(value = "/{taskId}", method = RequestMethod.GET)
@@ -42,16 +42,21 @@ public class TaskRestController {
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public Task updateTask(@PathVariable int taskId, @RequestBody Task task) {
-		Task returnedTask = taskRepository.updateTask(taskId, task);
-		if (returnedTask == null) {
+		if (task == null) {
 			throw new IllegalArgumentException();
 		}
-		return returnedTask;
+		taskRepository.updateTask(task);
+		return task;
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public Task deleteTask(@PathVariable int taskId) {
-		return taskRepository.deleteTask(taskId);
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteTask(@PathVariable int taskId) {
+		Task task = taskRepository.getTask(taskId);
+		if (task == null) {
+			throw new ResourceNotFoundException();
+		}
+		taskRepository.deleteTask(task);
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)

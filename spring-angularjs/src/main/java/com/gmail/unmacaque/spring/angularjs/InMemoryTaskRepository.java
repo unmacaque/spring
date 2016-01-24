@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring.angularjs;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,21 +12,11 @@ public class InMemoryTaskRepository implements TaskRepository {
 	private final Map<Integer, Task> taskMap = new HashMap<>();
 	private int lastId = 1;
 
-	public InMemoryTaskRepository() {
-		addTask(new Task(lastId, "make breakfast", LocalDateTime.now(), "", true));
-		addTask(new Task(lastId, "go shopping", LocalDateTime.now(), "", true));
-		addTask(new Task(lastId, "take out trash", LocalDateTime.now(), "", false));
-		addTask(new Task(lastId, "do laundry", LocalDateTime.now(), "", false));
-		addTask(new Task(lastId, "write letter", LocalDateTime.now(), "", false));
-		addTask(new Task(lastId, "do sports", LocalDateTime.now(), "", false));
-	}
-
 	@Override
-	public int addTask(Task task) {
+	public void addTask(Task task) {
 		task.setId(lastId);
 		taskMap.put(lastId, task);
 		lastId++;
-		return lastId;
 	}
 
 	@Override
@@ -36,20 +25,25 @@ public class InMemoryTaskRepository implements TaskRepository {
 	}
 
 	@Override
-	public Collection<Task> getTask() {
+	public Collection<Task> getTasks() {
 		return taskMap.values();
 	}
 
 	@Override
-	public Task updateTask(int taskId, Task task) {
-		if (!taskMap.containsKey(taskId) || taskId != task.getId()) {
+	public void updateTask(Task task) {
+		int taskId = task.getId();
+		if (!taskMap.containsKey(taskId)) {
 			throw new IllegalArgumentException();
 		}
-		return taskMap.put(taskId, task);
+		taskMap.put(taskId, task);
 	}
 
 	@Override
-	public Task deleteTask(int taskId) {
-		return taskMap.remove(taskId);
+	public void deleteTask(Task task) {
+		int taskId = task.getId();
+		if (!taskMap.containsKey(taskId)) {
+			throw new IllegalArgumentException();
+		}
+		taskMap.remove(taskId);
 	}
 }
