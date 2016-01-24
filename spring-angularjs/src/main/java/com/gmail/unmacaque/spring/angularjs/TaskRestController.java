@@ -1,11 +1,16 @@
 package com.gmail.unmacaque.spring.angularjs;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,37 +21,41 @@ public class TaskRestController {
 	private TaskRepository taskRepository;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> getTasks() {
-		return ResponseEntity.ok(taskRepository.getTask());
+	public Collection<Task> getTasks() {
+		return taskRepository.getTask();
 	}
 
 	@RequestMapping(value = "/{taskId}", method = RequestMethod.GET)
-	public ResponseEntity<?> getTask(@PathVariable int taskId) {
+	public Task getTask(@PathVariable int taskId) {
 		Task task = taskRepository.getTask(taskId);
 		if (task == null) {
-			return ResponseEntity.notFound().build();
+			throw new ResourceNotFoundException();
 		}
-		return ResponseEntity.ok(task);
+		return task;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> addTask(@RequestBody String title, @RequestBody Task task) {
-		int taskId = taskRepository.addTask(task);
-		return ResponseEntity.ok(taskId);
+	@ResponseStatus(HttpStatus.CREATED)
+	public void addTask(@RequestBody Task task) {
+		taskRepository.addTask(task);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public ResponseEntity<?> updateTask(@PathVariable int taskId, @RequestBody Task task) {
+	public Task updateTask(@PathVariable int taskId, @RequestBody Task task) {
 		Task returnedTask = taskRepository.updateTask(taskId, task);
 		if (returnedTask == null) {
-			return ResponseEntity.badRequest().build();
+			throw new IllegalArgumentException();
 		}
-		return ResponseEntity.ok(returnedTask);
+		return returnedTask;
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteTask(@PathVariable int taskId) {
-		Task task = taskRepository.deleteTask(taskId);
-		return ResponseEntity.ok(task);
+	public Task deleteTask(@PathVariable int taskId) {
+		return taskRepository.deleteTask(taskId);
+	}
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public void handleResourceNotFoundException() {
 	}
 }

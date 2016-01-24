@@ -24,6 +24,7 @@ public class InMemoryTaskRepository implements TaskRepository {
 
 	@Override
 	public int addTask(Task task) {
+		task.setId(lastId);
 		taskMap.put(lastId, task);
 		lastId++;
 		return lastId;

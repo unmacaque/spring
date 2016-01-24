@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 
 public class Task {
 
-	private final int id;
-	private final String title;
-	private final LocalDateTime date;
-	private final String text;
+	private int id;
+	private String title;
+	private LocalDateTime date;
+	private String text;
 	private boolean done;
+
+	public Task() {
+	}
 
 	public Task(int id, String title, LocalDateTime date, String text, boolean done) {
 		this.id = id;
@@ -36,5 +39,25 @@ public class Task {
 
 	public boolean getDone() {
 		return done;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 }

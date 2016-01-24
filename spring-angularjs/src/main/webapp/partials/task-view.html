@@ -2,8 +2,8 @@
   <h3>{{task.title}}</h3>
 
   <p>Status: {{task.done | taskDoneFilter}}</p>
-  <p>Last edited: {{task.date | date}}</p>
+  <p>Due Date: {{task.date | date}}</p>
   <p>{{task.text}}</p>
 
-  <a href="/">back to task list</a>
+  <p><a href="/">back to task list</a></p>
 </div>
