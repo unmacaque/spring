@@ -20,7 +20,7 @@
 
   <ul>
     <li ng-repeat="task in tasks | taskListFilter:state | filter:query | orderBy:id">
-      <span><a href="#/tasks/{{task.id}}" ng-class="{'task-done': task.done}">{{task.title}}</a></span>
+      <task></task>
     </li>
   </ul>
 </div>
