@@ -40,7 +40,7 @@ public class TaskRestController {
 		taskRepository.addTask(task);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/{taskId}", method = RequestMethod.PUT)
 	public Task updateTask(@PathVariable int taskId, @RequestBody Task task) {
 		if (task == null) {
 			throw new IllegalArgumentException();
@@ -49,7 +49,7 @@ public class TaskRestController {
 		return task;
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{taskId}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteTask(@PathVariable int taskId) {
 		Task task = taskRepository.getTask(taskId);

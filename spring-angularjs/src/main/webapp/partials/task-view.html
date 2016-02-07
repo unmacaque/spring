@@ -5,5 +5,7 @@
   <p>Due Date: {{task.date | date : 'medium'}}</p>
   <p>{{task.text}}</p>
 
+  <p><button ng-click="toggleDone()">Mark as {{task.done ? 'not Done' : 'Done'}}</button></p>
+
   <p><a href="/">back to task list</a></p>
 </div>
