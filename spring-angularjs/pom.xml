@@ -15,7 +15,7 @@
 
   <properties>
     <jquery.version>2.2.0</jquery.version>
-    <angular.version>1.4.8</angular.version>
+    <angular.version>1.5.0</angular.version>
   </properties>
 
   <dependencies>
