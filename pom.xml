@@ -15,7 +15,6 @@
     <spring-webflow.version>2.4.0.RELEASE</spring-webflow.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
     <hsqldb.version>2.3.2</hsqldb.version>
-    <hibernate.version>5.0.7.Final</hibernate.version>
     <wiremock.version>1.56</wiremock.version>
     <togglz.version>2.2.0.Final</togglz.version>
   </properties>
@@ -85,28 +84,6 @@
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
         <version>${hsqldb.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>${hibernate.version}</version>
-        <exclusions>
-          <exclusion>
-            <artifactId>jboss-logging</artifactId>
-            <groupId>org.jboss.logging</groupId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-java8</artifactId>
-        <version>${hibernate.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-entitymanager</artifactId>
-        <version>${hibernate.version}</version>
         <scope>runtime</scope>
       </dependency>
       <dependency>
