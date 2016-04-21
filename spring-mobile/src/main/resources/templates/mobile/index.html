@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spring Mobile</title>
-<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
-<script th:src="@{/js/mobile.js}" src="../../js/mobile.js"></script>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../../css/spring.css" />
+<script th:src="@{/js/mobile.js}" src="../../../js/mobile.js"></script>
 </head>
 <body>
 
@@ -16,17 +17,17 @@
   </ul>
 
   <p th:unless="${sitePreferenceSet}">
-    Spring Mobile has deemed that the <strong>normal</strong> version of this page is optimized for your current device.
+    Spring Mobile has deemed that the <strong>mobile</strong> version of this page is optimized for your current device.
   </p>
 
   <p th:if="${sitePreferenceSet}">
-    You have previously selected the <strong>normal</strong> version as the preferred view.
+    You have previously selected the <strong>mobile</strong> version as the preferred view.
     <a href="#" onclick="deleteSitePreference();">Click here to delete site preference.</a>
   </p>
 
   <p>
-    <strong>Normal Version</strong> |
-    <a href="/?site_preference=mobile">Mobile Version</a> |
+    <a href="/?site_preference=normal">Regular Version</a> |
+    <strong>Mobile Version</strong> |
     <a href="/?site_preference=tablet">Tablet Version</a>
   </p>
 

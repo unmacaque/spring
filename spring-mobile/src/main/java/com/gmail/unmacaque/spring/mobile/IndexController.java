@@ -1,14 +1,20 @@
 package com.gmail.unmacaque.spring.mobile;
 
 import org.springframework.mobile.device.Device;
+import org.springframework.mobile.device.site.SitePreference;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
 public class IndexController {
+	private static final String SPRING_MOBILE_SITE_PREFERENCE_COOKIE = "org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE";
+
 	@ModelAttribute("device")
 	public String device(Device device) {
 		if (device.isMobile()) {
@@ -17,7 +23,7 @@ public class IndexController {
 		if (device.isTablet()) {
 			return "Tablet";
 		}
-		return "Regular";
+		return "Generic device";
 	}
 
 	@ModelAttribute("platform")
@@ -28,8 +34,20 @@ public class IndexController {
 		case IOS:
 			return "iOS";
 		default:
-			return "Generic";
+			return "Unspecified vendor";
 		}
+	}
+
+	@ModelAttribute("sitePreference")
+	public SitePreference isSitePreference(SitePreference sitePreference) {
+		return sitePreference;
+	}
+
+	@ModelAttribute("sitePreferenceSet")
+	public boolean isSitePreferenceSet(
+			@RequestParam(value = "site_preference", required = false) String sitePreferenceParam,
+			@CookieValue(value = SPRING_MOBILE_SITE_PREFERENCE_COOKIE, defaultValue = "") String sitePreferenceCookie) {
+		return !StringUtils.isEmpty(sitePreferenceParam) || !StringUtils.isEmpty(sitePreferenceCookie);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
