@@ -16,9 +16,7 @@ public class ApplicationHandler implements ApplicationRunner {
 		System.out.println(myProperty);
 		System.out.println(args.getNonOptionArgs());
 
-		for (String optionName : args.getOptionNames()) {
-			System.out.println(optionName + "=" + args.getOptionValues(optionName));
-		}
+		args.getOptionNames().forEach((option) -> System.out.println(option + "=" + args.getOptionValues(option)));
 	}
 
 }
