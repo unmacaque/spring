@@ -13,6 +13,7 @@ Run `mvn package` to produce a war file which is both deployable as well as exec
 - [**spring-boot**](http://projects.spring.io/spring-boot/) - a trivial command-line application created with Spring Boot
 - **spring-cache** - caching frequently used service calls utilizing EhCache as the cache implementation
 - [**spring-cloud-eureka**](https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka) - create and orchestrate microservices using Spring Cloud and Netflix' Eureka
+- [**spring-data-rest**](https://spring.io/guides/gs/accessing-data-rest/) - expose CRUD operations on a JPA data store through REST
 - [**spring-form-validation**](https://spring.io/guides/gs/validating-form-input/) - simple validation of HTML form-backing beans using Hibernate annotations
 - [**spring-gradle**](https://spring.io/guides/gs/gradle/) - building a Spring Boot project using the Gradle build management tool
 - [**spring-hateoas**](http://projects.spring.io/spring-hateoas/) - extend a RESTful web service with hypermedia capabilities
