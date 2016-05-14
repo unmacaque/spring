@@ -4,11 +4,9 @@ import java.util.Arrays;
 
 import javax.sql.DataSource;
 
-import org.hsqldb.jdbc.JDBCDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
@@ -31,14 +29,8 @@ public class ApplicationFlow extends AbstractFlowConfiguration {
 	@Autowired
 	private ThymeleafViewResolver viewResolver;
 
-	@Bean
-	public DataSource dataSource() {
-		JDBCDataSource dataSource = new JDBCDataSource();
-		dataSource.setUrl("jdbc:hsqldb:mem:spring");
-		dataSource.setUser("");
-		dataSource.setPassword("");
-		return dataSource;
-	}
+	@Autowired
+	private DataSource dataSource;
 
 	@Bean
 	public FlowExecutor flowExecutor() {
@@ -92,8 +84,7 @@ public class ApplicationFlow extends AbstractFlowConfiguration {
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
+		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setPackagesToScan("com.gmail.unmacaque.spring.webflow.order");
 		return sessionFactory;
 	}
