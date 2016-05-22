@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -15,6 +16,12 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 	private DataSource dataSource;
 
 	@Bean
+	public TaskRepository inMemoryTaskRepository() {
+		return new InMemoryTaskRepository();
+	}
+
+	@Bean
+	@Primary
 	public TaskRepository taskRepository() {
 		return new HsqlTaskRepository(sessionFactory().getObject());
 	}
