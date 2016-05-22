@@ -47,7 +47,7 @@ public class ShopController {
 		return resources;
 	}
 
-	@RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{itemId}", method = RequestMethod.GET)
 	public Resource<Item> getItem(@PathVariable int itemId) {
 		Item item = shop.findItemById(itemId);
 
@@ -61,7 +61,8 @@ public class ShopController {
 		return resource;
 	}
 
-	@RequestMapping(value = "/item/{itemId}/order", method = RequestMethod.POST)
+	@RequestMapping(value = "/{itemId}/order", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
 	public Resource<Item> orderItem(@PathVariable int itemId) {
 		Item item = shop.findItemById(itemId);
 
@@ -82,7 +83,7 @@ public class ShopController {
 	}
 
 	@ExceptionHandler
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public void handleNoSuchElementException() {
 	}
 }
