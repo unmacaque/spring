@@ -1,0 +1,15 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  thymeleaf:
+    cache: false
+security:
+  user:
+    name: admin
+    password: togglz
+    role: ADMIN,USER
+  basic:
+    path: /togglz/*
+  filter-order: 2

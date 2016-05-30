@@ -1,0 +1,7 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  thymeleaf:
+    cache: false
