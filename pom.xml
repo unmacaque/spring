@@ -15,6 +15,7 @@
     <spring-webflow.version>2.4.0.RELEASE</spring-webflow.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
     <hsqldb.version>2.3.2</hsqldb.version>
+    <neo4j.version>2.0.2</neo4j.version>
     <wiremock.version>1.56</wiremock.version>
     <togglz.version>2.2.0.Final</togglz.version>
   </properties>
