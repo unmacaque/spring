@@ -1,0 +1,15 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:spring
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    properties:
+      hibernate:
+        cache:
+          provider_class: org.hibernate.cache.NoCacheProvider
+    show-sql: true

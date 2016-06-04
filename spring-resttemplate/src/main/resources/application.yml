@@ -1,0 +1,4 @@
+server:
+  context-parameters:
+    WireMockFileSourceRoot:
+    verboseLoggingEnabled: false

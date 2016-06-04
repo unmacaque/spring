@@ -11,13 +11,18 @@ public class ElectronicsShop implements Shop {
 	private List<Item> items = new ArrayList<>();
 
 	public ElectronicsShop() {
-		items.add(new Item("CPU", "The core of any computer", new BigDecimal(129.99)));
-		items.add(new Item("RAM", "The core of any computer", new BigDecimal(59.99)));
+		items.add(Item.create("CPU", "The core of any computer", BigDecimal.valueOf(129.99)));
+		items.add(Item.create("RAM", "The core of any computer", BigDecimal.valueOf(59.99)));
 	}
 
 	@Override
 	public List<Item> getItems() {
 		return items;
+	}
+
+	@Override
+	public boolean addItem(Item item) {
+		return items.add(item);
 	}
 
 	@Override
