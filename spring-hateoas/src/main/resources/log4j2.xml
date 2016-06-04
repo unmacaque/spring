@@ -3,7 +3,7 @@
 <Configuration status="WARN">
   <Appenders>
     <Console name="Console" target="SYSTEM_ERR">
-      <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n" />
+      <PatternLayout pattern="%d{ISO8601} [%t] %highlight{%-5level} %logger{36} - %msg%n" />
     </Console>
   </Appenders>
 
