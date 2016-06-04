@@ -11,7 +11,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.3.0.RC1</spring.version>
-    <spring-boot.version>1.4.0.M2</spring-boot.version>
+    <spring-boot.version>1.4.0.M3</spring-boot.version>
     <spring-webflow.version>2.4.0.RELEASE</spring-webflow.version>
     <javax-servlet.version>3.1.0</javax-servlet.version>
     <hsqldb.version>2.3.2</hsqldb.version>
