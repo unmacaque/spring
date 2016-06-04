@@ -1,10 +1,13 @@
 package com.gmail.unmacaque.spring.neo4j;
 
+import java.util.Collection;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @NodeEntity
 public class Person {
@@ -16,27 +19,19 @@ public class Person {
 	private int age;
 	private String gender;
 
-	@Relationship(type = "PURCHASES", direction = Relationship.UNDIRECTED)
-	private Set<Product> purchases;
+	@JsonManagedReference
+	@Relationship(type = "PURCHASED")
+	private Collection<Purchase> purchases;
 
-	@Relationship(type = "RECOMMENDATIONS", direction = Relationship.UNDIRECTED)
-	private Set<Product> recommendations;
+	@JsonManagedReference
+	@Relationship(type = "RATED")
+	private Collection<ProductRating> ratings;
 
-	@Relationship(type = "ACQUAINTANCE", direction = Relationship.UNDIRECTED)
-	private Set<Person> acquaintances;
-
-	/**
-	 * Neo4j requires a no-args constructor
-	 */
-	public Person() {
-	}
+	@Relationship(type = "KNOWS", direction = Relationship.UNDIRECTED)
+	private Collection<Person> acquaintances;
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -63,23 +58,23 @@ public class Person {
 		this.gender = gender;
 	}
 
-	public Set<Product> getPurchases() {
+	public Collection<Purchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(Set<Product> purchases) {
+	public void setPurchases(Collection<Purchase> purchases) {
 		this.purchases = purchases;
 	}
 
-	public Set<Product> getRecommendations() {
-		return recommendations;
+	public Collection<ProductRating> getRatings() {
+		return ratings;
 	}
 
-	public void setRecommendations(Set<Product> recommendations) {
-		this.recommendations = recommendations;
+	public void setRatings(Collection<ProductRating> ratings) {
+		this.ratings = ratings;
 	}
 
-	public Set<Person> getAcquaintances() {
+	public Collection<Person> getAcquaintances() {
 		return acquaintances;
 	}
 
