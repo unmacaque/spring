@@ -20,9 +20,9 @@ public class Application extends SpringBootServletInitializer {
 	@Bean
 	public net.sf.ehcache.CacheManager ehCacheManager() {
 		CacheConfiguration cacheConfiguration = new CacheConfiguration();
-		cacheConfiguration.setName("myCacheName");
-		cacheConfiguration.setMemoryStoreEvictionPolicy("LRU");
-		cacheConfiguration.setMaxEntriesLocalHeap(1000);
+		cacheConfiguration.setName("books");
+		cacheConfiguration.setMaxEntriesLocalHeap(1);
+		cacheConfiguration.setTimeToLiveSeconds(1800);
 
 		net.sf.ehcache.config.Configuration config = new net.sf.ehcache.config.Configuration();
 		config.addCache(cacheConfiguration);
