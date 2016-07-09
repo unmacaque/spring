@@ -6,12 +6,12 @@ Run `mvn package` to produce a war file which is both deployable as well as exec
 
 # Projects
 
-- [**spring-actuator**](https://spring.io/guides/gs/actuator-service/) - adds production grade services (e.g. health monitoring) to a Spring application
 - [**spring-android**](http://projects.spring.io/spring-android/) - call REST services in Android applications using Spring RestTemplate
 - [**spring-angularjs**](https://spring.io/guides/gs/consuming-rest-angularjs/) - a Spring MVC backed application with an AngularJS based frontend
-- **spring-aop** - demonstrates Aspect-Oriented Programming
+- [**spring-aop**](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html) - demonstrates Aspect-Oriented Programming
 - [**spring-boot**](http://projects.spring.io/spring-boot/) - a trivial command-line application created with Spring Boot
 - [**spring-boot-actuator**](https://spring.io/guides/gs/actuator-service/) - adds production grade services (e.g. health monitoring) to a Spring application
+- [**spring-boot-docker**](https://spring.io/guides/gs/spring-boot-docker/) - containerize a Spring Boot application in a Docker container
 - **spring-cache** - caching frequently used service calls utilizing EhCache as the cache implementation
 - [**spring-cloud-eureka**](https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka) - create and orchestrate microservices using Spring Cloud and Netflix' Eureka
 - [**spring-data-neo4j**](https://spring.io/guides/gs/accessing-data-neo4j/) - shows how to work with a Neo4j data store in Spring
