@@ -13,6 +13,10 @@
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+    <togglz.version>2.3.0.RC2</togglz.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -34,19 +38,18 @@
     </dependency>
     <dependency>
       <groupId>org.togglz</groupId>
-      <artifactId>togglz-servlet</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.togglz</groupId>
-      <artifactId>togglz-spring-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.togglz</groupId>
-      <artifactId>togglz-spring-security</artifactId>
+      <artifactId>togglz-spring-boot-starter</artifactId>
+      <version>${togglz.version}</version>
     </dependency>
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-console</artifactId>
+      <version>${togglz.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.togglz</groupId>
+      <artifactId>togglz-spring-security</artifactId>
+      <version>${togglz.version}</version>
     </dependency>
     <dependency>
       <groupId>com.github.heneke.thymeleaf</groupId>

@@ -11,5 +11,9 @@ security:
     password: togglz
     role: ADMIN,USER
   basic:
-    path: /togglz/*
+    path: /togglz-console/*
   filter-order: 2
+togglz:
+  console:
+    feature-admin-authority: ROLE_ADMIN
+  feature-enums: com.gmail.unmacaque.spring.togglz.Features
