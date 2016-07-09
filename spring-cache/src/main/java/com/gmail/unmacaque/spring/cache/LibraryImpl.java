@@ -3,8 +3,8 @@ package com.gmail.unmacaque.spring.cache;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
@@ -14,14 +14,11 @@ import com.thoughtworks.xstream.XStream;
 @Repository("library")
 public class LibraryImpl implements Library {
 
-	private static final Logger logger = LogManager.getLogger();
+	private static final Logger logger = LoggerFactory.getLogger(LibraryImpl.class);
 
 	@Value("classpath:books.xml")
 	private Resource resource;
 
-	/* (non-Javadoc)
-	 * @see com.gmail.unmacaque.spring.cache.Library#getBooks()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Book> getBooks() throws IOException {

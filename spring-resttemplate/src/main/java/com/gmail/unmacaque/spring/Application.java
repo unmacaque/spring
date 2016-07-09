@@ -2,8 +2,8 @@ package com.gmail.unmacaque.spring;
 
 import java.util.EventListener;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +20,7 @@ import com.gmail.unmacaque.spring.resttemplate.Bundle;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	private static final Logger logger = LogManager.getRootLogger();
+	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public Jetty6HandlerDispatchingServlet wireMockServlet() {
 		return new Jetty6HandlerDispatchingServlet();
@@ -28,7 +28,7 @@ public class Application implements CommandLineRunner {
 
 	@Bean
 	public ServletListenerRegistrationBean<EventListener> servletListenerRegistrationBean() {
-		return new ServletListenerRegistrationBean<EventListener>(new WireMockWebContextListener());
+		return new ServletListenerRegistrationBean<>(new WireMockWebContextListener());
 	}
 
 	@Bean
@@ -47,6 +47,6 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		RestTemplate restTemplate = new RestTemplate();
 		Bundle bundle = restTemplate.getForObject("http://localhost:8080/", Bundle.class);
-		logger.info(bundle);
+		logger.info(bundle.getContent());
 	}
 }
