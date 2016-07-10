@@ -13,7 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import com.github.tomakehurst.wiremock.jetty6.Jetty6HandlerDispatchingServlet;
+import com.github.tomakehurst.wiremock.servlet.WireMockHandlerDispatchingServlet;
 import com.github.tomakehurst.wiremock.servlet.WireMockWebContextListener;
 import com.gmail.unmacaque.spring.resttemplate.Bundle;
 
@@ -22,8 +22,8 @@ public class Application implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public Jetty6HandlerDispatchingServlet wireMockServlet() {
-		return new Jetty6HandlerDispatchingServlet();
+	public WireMockHandlerDispatchingServlet wireMockServlet() {
+		return new WireMockHandlerDispatchingServlet();
 	}
 
 	@Bean
