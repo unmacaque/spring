@@ -1,8 +1,7 @@
-server:
-  error:
-    whitelabel:
-      enabled: false
 spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   datasource:
     url: jdbc:hsqldb:mem:spring
   jpa:

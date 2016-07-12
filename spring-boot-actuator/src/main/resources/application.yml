@@ -1,6 +1,6 @@
-server:
-  error:
-    whitelabel:
-      enabled: false
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
 application:
   welcome: This page does nothing but you should totally check out the <a href="/actuator">actuator</a>.
