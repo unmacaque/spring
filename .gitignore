@@ -1,2 +1,9 @@
-/.project
-/.settings/
+bin
+build
+target
+.classpath
+.gradle
+.project
+.settings
+.springBeans
+.tern-project
