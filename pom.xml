@@ -25,7 +25,7 @@
     <module>spring-boot-actuator</module>
     <module>spring-boot-docker</module>
     <module>spring-cache</module>
-    <module>spring-cloud-eureka/</module>
+    <module>spring-cloud-eureka</module>
     <module>spring-data-neo4j</module>
     <module>spring-data-rest</module>
     <module>spring-form-validation</module>
