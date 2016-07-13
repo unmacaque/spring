@@ -18,6 +18,28 @@
     <wiremock.version>2.1.6</wiremock.version>
   </properties>
 
+  <modules>
+    <module>spring-angularjs</module>
+    <module>spring-aop</module>
+    <module>spring-boot</module>
+    <module>spring-boot-actuator</module>
+    <module>spring-boot-docker</module>
+    <module>spring-cache</module>
+    <module>spring-cloud-eureka/</module>
+    <module>spring-data-neo4j</module>
+    <module>spring-data-rest</module>
+    <module>spring-form-validation</module>
+    <module>spring-hateoas</module>
+    <module>spring-mobile</module>
+    <module>spring-rest</module>
+    <module>spring-resttemplate</module>
+    <module>spring-security</module>
+    <module>spring-thymeleaf</module>
+    <module>spring-togglz</module>
+    <module>spring-upload</module>
+    <module>spring-webflow</module>
+  </modules>
+
   <repositories>
     <repository>
       <id>spring-snapshots</id>
