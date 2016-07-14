@@ -25,6 +25,6 @@ public class GreetResponse {
 
 	@Override
 	public String toString() {
-		return this.response;
+		return response;
 	}
 }
