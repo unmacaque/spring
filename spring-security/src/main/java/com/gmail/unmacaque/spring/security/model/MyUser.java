@@ -16,9 +16,9 @@ public class MyUser {
 	private Set<MyAuthority> authorities;
 
 	private boolean isEnabled;
-	
+
 	private String password;
-	
+
 	private String username;
 
 	@OneToMany(fetch = FetchType.EAGER, targetEntity = MyAuthority.class)

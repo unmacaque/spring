@@ -16,7 +16,7 @@ public class MyAuthority {
 	private long authorityId;
 
 	private MyUser username;
-	
+
 	private String authority;
 
 	@ManyToOne(targetEntity = MyUser.class)
@@ -43,7 +43,7 @@ public class MyAuthority {
 	public long getAuthorityId() {
 		return authorityId;
 	}
-	
+
 	public void setAuthorityId(long authorityId) {
 		this.authorityId = authorityId;
 	}
