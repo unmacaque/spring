@@ -1,14 +1,15 @@
 package com.gmail.unmacaque.spring.angularjs;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Test;
@@ -16,15 +17,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class TaskRestControllerTest {
 
 	@Configuration
@@ -42,7 +46,7 @@ public class TaskRestControllerTest {
 	private TaskRepository taskRepositoryMock;
 
 	@Autowired
-	private MockMvc mockMvc;
+	private TestRestTemplate restTemplate;
 
 	@After
 	public void cleanup() {
@@ -53,8 +57,10 @@ public class TaskRestControllerTest {
 	public void testGetTasks() throws Exception {
 		when(taskRepositoryMock.getTasks()).thenReturn(Collections.singleton(new Task()));
 
-		mockMvc.perform(get("/tasks"))
-		.andExpect(status().isOk());
+		ResponseEntity<List<Task>> exchange = restTemplate.exchange("/tasks", HttpMethod.GET, null, new ParameterizedTypeReference<List<Task>>() {} );
+
+		assertThat(exchange.getBody()).hasSize(1);
+		assertThat(exchange.getStatusCode().value()).isEqualTo(200);
 
 		verify(taskRepositoryMock).getTasks();
 	}
@@ -63,14 +69,16 @@ public class TaskRestControllerTest {
 	public void testGetTask() throws Exception {
 		when(taskRepositoryMock.getTask(123)).thenReturn(new Task(123, "aTitle", LocalDateTime.now(), "aText", false));
 
-		mockMvc.perform(get("/tasks/123"))
-		.andExpect(status().isOk());
+		ResponseEntity<Task> forEntity = restTemplate.getForEntity("/tasks/123", Task.class);
+
+		assertThat(forEntity.getStatusCode().value()).isEqualTo(200);
 	}
 
 	@Test
 	public void testGetTask_noTasks_returns404() throws Exception {
-		mockMvc.perform(get("/tasks/123"))
-		.andExpect(status().isNotFound());
+		ResponseEntity<Task> forEntity = restTemplate.getForEntity("/tasks/123", Task.class);
+
+		assertThat(forEntity.getStatusCode().value()).isEqualTo(404);
 	}
 
 }
