@@ -10,7 +10,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>4.3.1.RELEASE</spring.version>
     <spring-boot.version>1.4.0.RC1</spring-boot.version>
     <hsqldb.version>2.3.4</hsqldb.version>
     <wiremock.version>2.1.7</wiremock.version>
@@ -71,18 +70,6 @@
         <version>${spring-boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-framework-bom</artifactId>
-        <version>${spring.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.webflow</groupId>
-        <artifactId>spring-webflow</artifactId>
-        <version>${spring-webflow.version}</version>
       </dependency>
       <dependency>
         <groupId>org.hsqldb</groupId>
