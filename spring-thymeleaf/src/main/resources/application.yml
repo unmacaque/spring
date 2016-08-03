@@ -3,4 +3,5 @@ spring:
     exclude:
       - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   thymeleaf:
+    mode: HTML
     cache: false
