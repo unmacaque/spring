@@ -1,67 +1,93 @@
 package com.gmail.unmacaque.spring.data;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
+import java.math.BigDecimal;
+import java.net.URI;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ItemRestTest {
 
 	@Autowired
-	private WebApplicationContext webApplicationContext;
-
-	private MockMvc mockMvc;
-
-	@Before
-	public void setup() {
-		mockMvc = webAppContextSetup(webApplicationContext).build();
-	}
+	private TestRestTemplate restTemplate;
 
 	@Test
 	public void testGetItems() throws Exception {
-		mockMvc.perform(get("/items"))
-		.andExpect(status().isOk());
+		ResponseEntity<Resources<Resource<Item>>> exchange = restTemplate.exchange(
+				"/items",
+				HttpMethod.GET,
+				null,
+				new ParameterizedTypeReference<Resources<Resource<Item>>>() {});
+
+		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.OK));
+		assertThat(exchange.getBody().getContent(), hasSize(2));
 	}
 
 	@Test
 	public void testGetItem() throws Exception {
-		mockMvc.perform(get("/items/1"))
-		.andExpect(status().isOk());
+		ResponseEntity<Resource<Item>> exchange = restTemplate.exchange(
+				"/items/1",
+				HttpMethod.GET,
+				null,
+				new ParameterizedTypeReference<Resource<Item>>() {});
+
+		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.OK));
+		assertThat(exchange.getBody().getContent(), hasProperty("title", equalTo("CPU")));
 	}
 
 	@Test
 	public void testPostItem() throws Exception {
-		mockMvc.perform(post("/items")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content("{\"title\":\"foo\",\"description\":\"bar\",\"stock\":1,\"price\":1.99}"))
-		.andExpect(status().isCreated());
+		Item item = new Item("foo", "bar", BigDecimal.valueOf(1.99), 1);
+
+		ResponseEntity<Void> exchange = restTemplate.postForEntity(
+				"/items",
+				item,
+				Void.class);
+
+		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.CREATED));
 	}
 
 	@Test
 	public void testPutItem() throws Exception {
-		mockMvc.perform(put("/items/1")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content("{\"title\":\"foo\",\"description\":\"bar\",\"stock\":1,\"price\":1.99}"))
-		.andExpect(status().isNoContent());
+		Item item = new Item("foo", "bar", BigDecimal.valueOf(1.99), 1);
+
+		ResponseEntity<Void> exchange = restTemplate.exchange(
+				"/items/2",
+				HttpMethod.PUT,
+				RequestEntity.put(URI.create("/")).body(item),
+				Void.class);
+
+		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.OK));
 	}
 
 	@Test
 	public void testDeleteItem() throws Exception {
-		mockMvc.perform(delete("/items/1"))
-		.andExpect(status().isNoContent());
+		ResponseEntity<Void> exchange = restTemplate.exchange(
+				"/items/1",
+				HttpMethod.DELETE,
+				null,
+				Void.class);
+
+		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.NO_CONTENT));
 	}
 }
