@@ -40,13 +40,13 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Map<Long, Order> getOrders() {
 		Map<Long, Order> orderMap = new TreeMap<>();
-		
+
 		Collection<Order> orders = orderRepository.getOrders();
-		
+
 		for (Order order : orders) {
 			orderMap.put(order.getId(), order);
 		}
-		
+
 		return orderMap;
 	}
 

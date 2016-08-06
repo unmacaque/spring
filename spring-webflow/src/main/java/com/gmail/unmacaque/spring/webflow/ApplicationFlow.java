@@ -58,14 +58,17 @@ public class ApplicationFlow extends AbstractFlowConfiguration {
 	public FlowDefinitionRegistry flowRegistry() {
 		return getFlowDefinitionRegistryBuilder(flowBuilderServices())
 				.setBasePath("classpath:flows")
-				.addFlowLocationPattern("/*.xml").build();
+				.addFlowLocationPattern("/*.xml")
+				.build();
 	}
 
 	@Bean
 	public FlowBuilderServices flowBuilderServices() {
 		return getFlowBuilderServicesBuilder()
 				.setViewFactoryCreator(mvcViewFactoryCreator())
-				.setValidator(validator()).setDevelopmentMode(true).build();
+				.setValidator(validator())
+				.setDevelopmentMode(true)
+				.build();
 	}
 
 	@Bean

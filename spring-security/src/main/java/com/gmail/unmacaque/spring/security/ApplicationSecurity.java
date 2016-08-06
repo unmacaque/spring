@@ -22,6 +22,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// @formatter:off
 		http
 			.authorizeRequests()
 				.antMatchers("/hello").hasRole("USER")
@@ -35,15 +36,18 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/login?logout");
+		// @formatter:on
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// @formatter:off
 		auth
 			.jdbcAuthentication()
 				.dataSource(dataSource)
 					.usersByUsernameQuery("select username, password, enabled from USERS where username = ?")
 					.authoritiesByUsernameQuery("select username, authority from USERS u, AUTHORITIES a where u.username = a.username AND u.username = ?")
 				.passwordEncoder(new ShaPasswordEncoder(256));
+		// @formatter:on
 	}
 }

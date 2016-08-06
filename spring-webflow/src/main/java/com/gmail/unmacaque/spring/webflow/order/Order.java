@@ -22,8 +22,7 @@ public class Order implements Serializable {
 	private Payment payment;
 	private OrderState state;
 
-	public Order() {
-	}
+	public Order() {}
 
 	public Order(int itemId, int amount, Address address, Payment payment, OrderState state) {
 		this.itemId = itemId;

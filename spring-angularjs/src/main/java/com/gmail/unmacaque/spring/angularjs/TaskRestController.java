@@ -61,6 +61,5 @@ public class TaskRestController {
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public void handleResourceNotFoundException() {
-	}
+	public void handleResourceNotFoundException() {}
 }

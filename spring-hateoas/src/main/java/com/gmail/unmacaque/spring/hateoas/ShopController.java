@@ -84,6 +84,5 @@ public class ShopController {
 
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public void handleNoSuchElementException() {
-	}
+	public void handleNoSuchElementException() {}
 }

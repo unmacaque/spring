@@ -57,7 +57,8 @@ public class TaskRestControllerTest {
 	public void testGetTasks() throws Exception {
 		when(taskRepositoryMock.getTasks()).thenReturn(Collections.singleton(new Task()));
 
-		ResponseEntity<List<Task>> exchange = restTemplate.exchange("/tasks", HttpMethod.GET, null, new ParameterizedTypeReference<List<Task>>() {} );
+		ResponseEntity<List<Task>> exchange = restTemplate.exchange("/tasks", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Task>>() {});
 
 		assertThat(exchange.getBody()).hasSize(1);
 		assertThat(exchange.getStatusCode().value()).isEqualTo(200);

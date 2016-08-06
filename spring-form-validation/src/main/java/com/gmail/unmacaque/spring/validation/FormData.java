@@ -10,11 +10,11 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 public class FormData {
 	@Length(min = 3, max = 5)
 	private String shortName;
-	
+
 	@Min(10)
 	@Max(10000)
 	private String shortInteger;
-	
+
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	private String comment;
 

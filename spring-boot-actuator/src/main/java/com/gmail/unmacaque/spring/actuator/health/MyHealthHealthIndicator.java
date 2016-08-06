@@ -16,10 +16,10 @@ public class MyHealthHealthIndicator implements HealthIndicator {
 
 		if (good) {
 			builder.up()
-			.withDetail(MESSAGE_KEY, "Everything is A-OK!");
+					.withDetail(MESSAGE_KEY, "Everything is A-OK!");
 		} else {
 			builder.down()
-			.withDetail(MESSAGE_KEY, "Oh noes! Something has gone wrong.");
+					.withDetail(MESSAGE_KEY, "Oh noes! Something has gone wrong.");
 		}
 
 		return builder.build();

@@ -34,7 +34,7 @@ public class UploadController {
 		FileAttribute<?> fileAttribute = PosixFilePermissions.asFileAttribute(permissionSet);
 		tempDirectory = Files.createTempDirectory("upload", fileAttribute);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String getUpload() {
 		return "index";

@@ -22,8 +22,7 @@ public class Task implements Serializable {
 	private String text;
 	private boolean done;
 
-	public Task() {
-	}
+	public Task() {}
 
 	public Task(int id, String title, LocalDateTime date, String text, boolean done) {
 		this.id = id;

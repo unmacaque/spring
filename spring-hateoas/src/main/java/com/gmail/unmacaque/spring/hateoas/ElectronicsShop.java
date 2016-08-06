@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ElectronicsShop implements Shop {
-	private List<Item> items = new ArrayList<>();
+	private final List<Item> items = new ArrayList<>();
 
 	public ElectronicsShop() {
 		items.add(Item.create("CPU", "The core of any computer", BigDecimal.valueOf(129.99)));
