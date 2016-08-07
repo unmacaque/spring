@@ -11,7 +11,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hsqldb.version>2.3.4</hsqldb.version>
+    <jsoup.version>1.9.2</jsoup.version>
     <wiremock.version>2.1.7</wiremock.version>
+    <xstream.version>1.4.9</xstream.version>
   </properties>
 
   <parent>
@@ -53,17 +55,12 @@
       <dependency>
         <groupId>org.jsoup</groupId>
         <artifactId>jsoup</artifactId>
-        <version>1.9.2</version>
+        <version>${jsoup.version}</version>
       </dependency>
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.9</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.heneke.thymeleaf</groupId>
-        <artifactId>thymeleaf-extras-togglz</artifactId>
-        <version>1.0.1.RELEASE</version>
+        <version>${xstream.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -77,12 +74,6 @@
         <artifactId>wiremock</artifactId>
         <version>${wiremock.version}</version>
         <scope>runtime, test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.skyscreamer</groupId>
-        <artifactId>jsonassert</artifactId>
-        <version>1.3.0</version>
-        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
