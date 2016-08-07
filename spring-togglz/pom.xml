@@ -14,7 +14,7 @@
   </parent>
 
   <properties>
-    <togglz.version>2.3.0.RC2</togglz.version>
+    <togglz.version>2.3.0.Final</togglz.version>
   </properties>
 
   <dependencies>
