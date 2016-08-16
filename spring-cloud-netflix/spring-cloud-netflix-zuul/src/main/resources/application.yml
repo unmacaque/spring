@@ -1,0 +1,8 @@
+server:
+  port: 8800
+spring:
+  application:
+    name: zuul-proxy
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
