@@ -19,23 +19,12 @@
     <module>spring-cloud-netflix-zuul</module>
   </modules>
 
-  <repositories>
-    <repository>
-      <id>spring-releases</id>
-      <name>Spring Releases</name>
-      <url>http://repo.spring.io/libs-release-local</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Brixton.SR4</version>
+        <artifactId>spring-cloud-netflix</artifactId>
+        <version>1.1.2.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
