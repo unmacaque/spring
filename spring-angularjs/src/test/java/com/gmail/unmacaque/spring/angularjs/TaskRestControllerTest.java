@@ -1,7 +1,6 @@
 package com.gmail.unmacaque.spring.angularjs;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -15,13 +14,9 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -31,18 +26,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class TaskRestControllerTest {
 
-	@Configuration
-	@ComponentScan
-	@EnableAutoConfiguration
-	static class Config {
-		@Bean
-		public TaskRepository taskRepository() {
-			return mock(TaskRepository.class);
-		}
-	}
-
-	@Autowired
-	@Qualifier("taskRepository")
+	@MockBean(name = "taskRepository")
 	private TaskRepository taskRepositoryMock;
 
 	@Autowired
