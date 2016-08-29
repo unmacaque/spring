@@ -27,11 +27,9 @@ public class ElectronicsShop implements Shop {
 
 	@Override
 	public Item findItemById(int itemId) {
-		for (Item item : items) {
-			if (item.getItemId() == itemId) {
-				return item;
-			}
-		}
-		return null;
+		return items.stream()
+				.filter(item -> item.getItemId() == itemId)
+				.findFirst()
+				.orElse(null);
 	}
 }
