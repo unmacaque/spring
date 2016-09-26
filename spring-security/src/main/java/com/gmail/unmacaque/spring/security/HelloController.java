@@ -5,19 +5,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping
 public class HelloController {
-	@RequestMapping
+	@GetMapping
 	public String index() {
 		return "index";
 	}
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	@GetMapping(value = "/admin")
 	public String admin(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -27,7 +25,7 @@ public class HelloController {
 		return "admin";
 	}
 
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@GetMapping(value = "/hello")
 	public String hello(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -37,7 +35,7 @@ public class HelloController {
 		return "hello";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping(value = "/login")
 	public String login(@RequestParam(required = false) String error,
 			@RequestParam(required = false) String logout, ModelMap modelMap) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

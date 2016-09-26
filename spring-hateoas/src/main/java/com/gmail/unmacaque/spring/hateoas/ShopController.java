@@ -12,9 +12,10 @@ import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +34,7 @@ public class ShopController {
 		this.entityLinks = entityLinks;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public Resources<Resource<Item>> getAllItems() {
 		List<Resource<Item>> itemResources = new ArrayList<>();
 
@@ -47,7 +48,7 @@ public class ShopController {
 		return resources;
 	}
 
-	@RequestMapping(value = "/{itemId}", method = RequestMethod.GET)
+	@GetMapping(value = "/{itemId}")
 	public Resource<Item> getItem(@PathVariable int itemId) {
 		Item item = shop.findItemById(itemId);
 
@@ -61,7 +62,7 @@ public class ShopController {
 		return resource;
 	}
 
-	@RequestMapping(value = "/{itemId}/order", method = RequestMethod.POST)
+	@PostMapping(value = "/{itemId}/order")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Resource<Item> orderItem(@PathVariable int itemId) {
 		Item item = shop.findItemById(itemId);

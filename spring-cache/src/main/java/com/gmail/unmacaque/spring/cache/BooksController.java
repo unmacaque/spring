@@ -8,12 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/")
 public class BooksController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BooksController.class);
@@ -22,7 +20,7 @@ public class BooksController {
 	private Library library;
 
 	@ModelAttribute("books")
-	public List<Book> getBooks() {
+	public List<Book> books() {
 		try {
 			return library.getBooks();
 		} catch (IOException e) {
@@ -32,7 +30,7 @@ public class BooksController {
 		return Collections.emptyList();
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String listBooks() {
 		return "books";
 	}

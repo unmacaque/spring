@@ -5,12 +5,11 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping(value = "/")
 public class FormController {
 
 	@ModelAttribute("data")
@@ -18,12 +17,12 @@ public class FormController {
 		return new FormData();
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String formGet() {
 		return "form";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public String formPost(@Valid @ModelAttribute("data") FormData data, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "form";

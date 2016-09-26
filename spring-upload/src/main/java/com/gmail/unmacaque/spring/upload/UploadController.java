@@ -17,14 +17,13 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping(value = "/")
 public class UploadController {
 
 	private final Path tempDirectory;
@@ -35,12 +34,12 @@ public class UploadController {
 		tempDirectory = Files.createTempDirectory("upload", fileAttribute);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getUpload() {
 		return "index";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public String postUpload(@RequestParam("aFile") MultipartFile file, ModelMap modelMap) {
 		if (file.isEmpty()) {
 			modelMap.addAttribute("error", "File is empty");
@@ -61,7 +60,7 @@ public class UploadController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/download", method = RequestMethod.GET, produces = { MediaType.APPLICATION_OCTET_STREAM_VALUE })
+	@GetMapping(value = "/download", produces = { MediaType.APPLICATION_OCTET_STREAM_VALUE })
 	@ResponseBody
 	public FileSystemResource download(@RequestParam("filename") String filename, HttpServletResponse response) {
 		response.setHeader("Content-Disposition", "attachment;filename=" + filename);
