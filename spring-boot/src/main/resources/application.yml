@@ -1,2 +1,6 @@
 application:
   my-property: Hello World
+  my-list:
+    - Apples
+    - Bananas
+    - Oranges

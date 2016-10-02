@@ -14,8 +14,9 @@ public class ApplicationHandler implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println(applicationProperties.getMyProperty());
-		System.out.println(args.getNonOptionArgs());
+		applicationProperties.getMyList().forEach(System.out::println);
 
+		args.getNonOptionArgs().forEach(System.out::println);
 		args.getOptionNames().forEach((option) -> System.out.println(option + "=" + args.getOptionValues(option)));
 	}
 
