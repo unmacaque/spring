@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ORDERS")
@@ -18,19 +19,15 @@ public class Order implements Serializable {
 	private long id;
 	private int itemId;
 	private int amount;
+
+	@NotNull
 	private Address address;
+
+	@NotNull
 	private Payment payment;
+
+	@NotNull
 	private OrderState state;
-
-	public Order() {}
-
-	public Order(int itemId, int amount, Address address, Payment payment, OrderState state) {
-		this.itemId = itemId;
-		this.amount = amount;
-		this.address = address;
-		this.payment = payment;
-		this.state = state;
-	}
 
 	@Column(name = "ADDRESS")
 	public Address getAddress() {

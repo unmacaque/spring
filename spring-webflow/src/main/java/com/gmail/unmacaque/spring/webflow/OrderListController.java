@@ -12,7 +12,7 @@ import com.gmail.unmacaque.spring.webflow.order.Order;
 import com.gmail.unmacaque.spring.webflow.order.OrderService;
 
 @Controller
-@RequestMapping(value = "/list")
+@RequestMapping("/list")
 public class OrderListController {
 
 	private static final String ORDERS_MODEL = "orders";

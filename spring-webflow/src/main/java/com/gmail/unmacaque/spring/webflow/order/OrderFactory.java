@@ -5,10 +5,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderFactory {
 	public Address newAddress() {
-		return new Address("", "", "", "", "");
+		Address address = new Address();
+		return address;
 	}
 
 	public Order newOrder(Address address, Payment payment) {
-		return new Order(12345, 1, address, payment, OrderState.NEW);
+		Order order = new Order();
+		order.setItemId(12345);
+		order.setAmount(1);
+		order.setAddress(address);
+		order.setPayment(payment);
+		order.setState(OrderState.NEW);
+		return order;
 	}
 }

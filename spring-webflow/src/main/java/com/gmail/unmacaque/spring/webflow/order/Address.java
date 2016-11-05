@@ -27,14 +27,6 @@ public class Address implements Serializable {
 	@NotBlank
 	private String city;
 
-	public Address(String firstName, String lastName, String street, String postal, String city) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.street = street;
-		this.postal = postal;
-		this.city = city;
-	}
-
 	@Column(name = "FIRST_NAME")
 	public String getFirstName() {
 		return firstName;

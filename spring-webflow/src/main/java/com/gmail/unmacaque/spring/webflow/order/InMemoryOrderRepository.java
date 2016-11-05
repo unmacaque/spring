@@ -13,7 +13,7 @@ public class InMemoryOrderRepository implements OrderRepository {
 
 	@Override
 	public Order getOrder(long orderId) {
-		return orderMap.get(orderMap);
+		return orderMap.get(orderId);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class InMemoryOrderRepository implements OrderRepository {
 
 	@Override
 	public void removeOrder(Order order) {
-		orderMap.remove(order);
+		orderMap.remove(order.getId());
 	}
 
 	@Override
