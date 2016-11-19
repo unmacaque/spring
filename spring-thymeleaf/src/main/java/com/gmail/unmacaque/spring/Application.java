@@ -4,15 +4,13 @@ import java.util.Collections;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 
 import com.gmail.unmacaque.spring.thymeleaf.format.LocalDateTimeFormatter;
 
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {
+public class Application {
 
 	@Bean
 	public FormattingConversionServiceFactoryBean conversionService() {
@@ -24,11 +22,6 @@ public class Application extends SpringBootServletInitializer {
 	@Bean
 	public LocalDateTimeFormatter localDateTimeFormatter() {
 		return new LocalDateTimeFormatter();
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Application.class);
 	}
 
 	public static void main(String[] args) {

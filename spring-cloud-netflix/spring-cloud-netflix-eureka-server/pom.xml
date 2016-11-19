@@ -4,7 +4,7 @@
   <artifactId>spring-cloud-netflix-eureka-server</artifactId>
   <name>Spring Cloud Netflix Eureka Server</name>
   <url>http://spring.io</url>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <parent>
     <groupId>com.gmail.unmacaque</groupId>
