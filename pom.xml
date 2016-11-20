@@ -5,7 +5,7 @@
   <artifactId>spring</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Spring Framework Example Projects</name>
-  <url>http://spring.io</url>
+  <url>https://bitbucket.org/unmacaque/spring</url>
   <packaging>pom</packaging>
 
   <properties>

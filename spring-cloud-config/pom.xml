@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-cloud-config</artifactId>
   <name>Spring Cloud Config</name>
-  <url>http://spring.io</url>
+  <url>https://bitbucket.org/unmacaque/spring</url>
   <packaging>pom</packaging>
 
   <parent>
