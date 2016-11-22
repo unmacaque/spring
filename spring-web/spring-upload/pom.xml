@@ -1,23 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>spring-mobile</artifactId>
-  <name>Spring Mobile</name>
+  <artifactId>spring-upload</artifactId>
+  <name>Spring Upload</name>
   <url>https://bitbucket.org/unmacaque/spring</url>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>com.gmail.unmacaque</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>spring-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
 
   <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-mobile</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
