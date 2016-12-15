@@ -7,9 +7,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/")
 public class IndexController {
 	private static final String SPRING_MOBILE_SITE_PREFERENCE_COOKIE = "org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE";
 

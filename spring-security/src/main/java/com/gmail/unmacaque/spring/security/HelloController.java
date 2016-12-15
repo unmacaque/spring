@@ -15,7 +15,7 @@ public class HelloController {
 		return "index";
 	}
 
-	@GetMapping(value = "/admin")
+	@GetMapping("/admin")
 	public String admin(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -25,7 +25,7 @@ public class HelloController {
 		return "admin";
 	}
 
-	@GetMapping(value = "/hello")
+	@GetMapping("/hello")
 	public String hello(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -35,7 +35,7 @@ public class HelloController {
 		return "hello";
 	}
 
-	@GetMapping(value = "/login")
+	@GetMapping("/login")
 	public String login(@RequestParam(required = false) String error,
 			@RequestParam(required = false) String logout, ModelMap modelMap) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
