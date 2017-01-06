@@ -3,7 +3,10 @@ spring:
     exclude:
       - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   datasource:
-    url: jdbc:hsqldb:mem:spring
+    url: jdbc:h2:mem:spring
+  h2:
+    console:
+      enabled: true
   jpa:
     hibernate.ddl-auto: create
     generate-ddl: true
