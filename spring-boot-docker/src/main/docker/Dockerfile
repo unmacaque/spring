@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:slim
+FROM openjdk:alpine
 VOLUME /tmp
 ADD /maven/spring-boot-docker.jar app.jar
 RUN sh -c 'touch /app.jar'
