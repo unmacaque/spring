@@ -13,11 +13,6 @@
     <relativePath>..</relativePath>
   </parent>
 
-  <properties>
-    <thymeleaf.version>3.0.1.RELEASE</thymeleaf.version>
-    <thymeleaf-layout-dialect.version>2.0.1</thymeleaf-layout-dialect.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
