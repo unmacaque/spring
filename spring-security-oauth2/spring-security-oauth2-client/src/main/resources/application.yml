@@ -1,0 +1,19 @@
+server:
+  context-path: /client
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+
+security:
+  oauth2:
+    client:
+      client-id: oauthclient
+      client-secret: secret
+      access-token-uri: http://localhost:9000/oauth/token
+      scope:
+      - read
+      user-authorization-uri: http://localhost:9000/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:9000/me
