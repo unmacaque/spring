@@ -22,7 +22,8 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.3.RELEASE</version>
+    <version>1.4.4.RELEASE</version>
+    <relativePath/>
   </parent>
 
   <modules>
@@ -66,11 +67,6 @@
   <build>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
-          <version>9.4.0.M0</version>
-        </plugin>
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
