@@ -39,6 +39,7 @@
     <module>spring-data-rest</module>
     <module>spring-hateoas</module>
     <module>spring-security</module>
+    <module>spring-security-oauth2</module>
     <module>spring-togglz</module>
     <module>spring-web</module>
   </modules>
