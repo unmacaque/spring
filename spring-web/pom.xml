@@ -15,6 +15,7 @@
 
   <modules>
     <module>spring-form-validation</module>
+    <module>spring-hateoas</module>
     <module>spring-mobile</module>
     <module>spring-rest</module>
     <module>spring-resttemplate</module>

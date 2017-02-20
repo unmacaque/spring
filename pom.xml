@@ -37,7 +37,6 @@
     <module>spring-cloud-netflix</module>
     <module>spring-data-neo4j</module>
     <module>spring-data-rest</module>
-    <module>spring-hateoas</module>
     <module>spring-security</module>
     <module>spring-security-oauth2</module>
     <module>spring-togglz</module>
