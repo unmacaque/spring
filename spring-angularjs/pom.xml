@@ -14,8 +14,8 @@
   </parent>
 
   <properties>
-    <jquery.version>2.2.4</jquery.version>
-    <angularjs.version>1.5.8</angularjs.version>
+    <jquery.version>3.1.1</jquery.version>
+    <angularjs.version>1.6.1</angularjs.version>
   </properties>
 
   <dependencies>

@@ -1,9 +1,6 @@
 spring:
   datasource:
     url: jdbc:h2:mem:spring
-  h2:
-    console:
-      enabled: true
   jpa:
     hibernate.ddl-auto: create
     generate-ddl: true
