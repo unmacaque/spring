@@ -1,22 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>spring-security</artifactId>
-  <name>Spring Security</name>
+  <artifactId>spring-security-x509</artifactId>
+  <name>Spring Security X.509</name>
   <url>https://bitbucket.org/unmacaque/spring</url>
   <packaging>pom</packaging>
 
   <parent>
     <groupId>com.gmail.unmacaque</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>spring-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
 
   <modules>
-    <module>spring-security-ldap</module>
-    <module>spring-security-oauth2</module>
-    <module>spring-security-web</module>
-    <module>spring-security-x509</module>
+    <module>spring-security-x509-client</module>
+    <module>spring-security-x509-server</module>
   </modules>
 </project>

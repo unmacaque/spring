@@ -1,0 +1,9 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:server.p12
+    key-store-password: storepass
+    client-auth: want
+    trust-store: classpath:trust.jks
+    trust-store-password: trustpass

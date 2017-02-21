@@ -1,0 +1,6 @@
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:client.p12
+    key-password: storepass
+    client-auth: need
