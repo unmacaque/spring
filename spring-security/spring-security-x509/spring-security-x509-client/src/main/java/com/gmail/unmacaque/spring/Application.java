@@ -19,6 +19,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -42,6 +44,7 @@ public class Application implements ApplicationRunner {
 	}
 
 	@Bean
+	@ConditionalOnResource(resources = "classpath:client.p12")
 	public RestTemplate restTemplate()
 			throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException, KeyStoreException,
 			KeyManagementException, UnrecoverableKeyException {
@@ -58,6 +61,12 @@ public class Application implements ApplicationRunner {
 				.build()).build();
 		ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
 		return new RestTemplate(requestFactory);
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public RestTemplate restTemplateNoSsl() {
+		return new RestTemplate();
 	}
 
 	@Override
