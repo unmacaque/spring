@@ -1,2 +1,0 @@
-application:
-  welcome: This page does nothing but you should totally check out the <a href="/actuator">actuator</a>.
