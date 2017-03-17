@@ -1,8 +1,6 @@
 package com.gmail.unmacaque.spring.upload;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,11 +46,8 @@ public class UploadController {
 			return "index";
 		}
 		try {
-			byte[] bytes = file.getBytes();
-			FileOutputStream fileOutputStream = new FileOutputStream(new File(tempDirectory.toFile(), file.getOriginalFilename()));
-			BufferedOutputStream stream = new BufferedOutputStream(fileOutputStream);
-			stream.write(bytes);
-			stream.close();
+			File destFile = new File(tempDirectory.toFile(), file.getOriginalFilename());
+			file.transferTo(destFile);
 			modelMap.addAttribute("filename", file.getOriginalFilename());
 			modelMap.addAttribute("filesize", file.getSize());
 			modelMap.addAttribute("filetype", file.getContentType());
