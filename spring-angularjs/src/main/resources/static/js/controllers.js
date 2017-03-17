@@ -1,7 +1,9 @@
 var taskControllers = angular.module('taskControllers', []);
 
 taskControllers.controller('TaskListController', ['$scope', 'Tasks', function($scope, Tasks) {
-	$scope.tasks = Tasks.query();
+	Tasks.get().$promise.then(function(data) {
+		$scope.tasks = data._embedded.tasks;
+	});
 }]);
 
 taskControllers.controller('TaskViewController', ['$scope', '$routeParams', 'Tasks', function($scope, $routeParams, Tasks) {

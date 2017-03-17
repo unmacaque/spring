@@ -1,15 +1,7 @@
 package com.gmail.unmacaque.spring.angularjs;
 
-import java.util.Collection;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface TaskRepository {
-	Collection<Task> getTasks();
-
-	Task getTask(int taskId);
-
-	void addTask(Task task);
-
-	void updateTask(Task task);
-
-	void deleteTask(Task task);
-}
+@RepositoryRestResource(collectionResourceRel = "tasks", path = "tasks")
+public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {}
