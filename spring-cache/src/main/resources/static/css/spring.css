@@ -6,6 +6,6 @@ h1 {
 	color: #6db33f
 }
 
-th, .odd {
-	background-color: #ddd;
+table tr:nth-child(odd) {
+	background-color: lightgray;
 }
