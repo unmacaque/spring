@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.jdbcAuthentication()
 				.dataSource(dataSource)
 					.usersByUsernameQuery("select username, password, enabled from USERS where username = ?")
-					.authoritiesByUsernameQuery("select username, authority from USERS u, AUTHORITIES a where u.username = a.username AND u.username = ?")
+					.authoritiesByUsernameQuery("select u.username, authority from USERS u, AUTHORITIES a where u.username = a.username AND u.username = ?")
 				.passwordEncoder(new ShaPasswordEncoder(256));
 		// @formatter:on
 	}
