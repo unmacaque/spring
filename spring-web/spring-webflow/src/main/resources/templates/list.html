@@ -12,28 +12,24 @@
   <p>Showing <strong th:text="${#maps.size(orders)}"></strong> orders.</p>
 
   <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Item</th>
-        <th>Amount</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Payment</th>
-        <th>State</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="order : ${orders}">
-        <td th:text="${order.key}"></td>
-        <td th:text="${order.value.itemId}"></td>
-        <td th:text="${order.value.amount}"></td>
-        <td th:text="${order.value.address.lastName}"></td>
-        <td th:text="${order.value.address.firstName}"></td>
-        <td th:text="${order.value.payment.type}"></td>
-        <td th:text="${order.value.state}"></td>
-      </tr>
-    </tbody>
+    <tr>
+      <th>ID</th>
+      <th>Item</th>
+      <th>Amount</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Payment</th>
+      <th>State</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.key}"></td>
+      <td th:text="${order.value.itemId}"></td>
+      <td th:text="${order.value.amount}"></td>
+      <td th:text="${order.value.address.lastName}"></td>
+      <td th:text="${order.value.address.firstName}"></td>
+      <td th:text="${order.value.payment.type}"></td>
+      <td th:text="${order.value.state}"></td>
+    </tr>
   </table>
 
 </body>

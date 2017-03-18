@@ -30,3 +30,11 @@ a:hover {
 .error {
 	color: red;
 }
+
+table {
+	width: 50em;
+}
+
+table tbody tr:nth-child(odd) {
+	background-color: lightgray;
+}
