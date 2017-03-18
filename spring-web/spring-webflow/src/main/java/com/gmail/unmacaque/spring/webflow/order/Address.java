@@ -2,52 +2,36 @@ package com.gmail.unmacaque.spring.webflow.order;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 5930179988863569939L;
 
-	@NotBlank
 	private String firstName;
 
-	@NotBlank
 	private String lastName;
 
-	@NotBlank
 	private String street;
 
-	@NotBlank
-	@Length(min = 1, max = 5)
 	private String postal;
 
-	@NotBlank
 	private String city;
 
-	@Column(name = "FIRST_NAME")
 	public String getFirstName() {
 		return firstName;
 	}
 
-	@Column(name = "LAST_NAME")
 	public String getLastName() {
 		return lastName;
 	}
 
-	@Column(name = "STREET")
 	public String getStreet() {
 		return street;
 	}
 
-	@Column(name = "POSTAL")
 	public String getPostal() {
 		return postal;
 	}
 
-	@Column(name = "CITY")
 	public String getCity() {
 		return city;
 	}

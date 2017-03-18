@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 public class OrderFactory {
 	public Address newAddress() {
 		Address address = new Address();
+		address.setCity("");
+		address.setFirstName("");
+		address.setLastName("");
+		address.setPostal("");
+		address.setStreet("");
 		return address;
 	}
 

@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.webflow.order;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +15,12 @@ public class Order implements Serializable {
 
 	private static final long serialVersionUID = 6804215891179770302L;
 
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
 	private int itemId;
+
 	private int amount;
 
 	@NotNull
@@ -29,28 +32,22 @@ public class Order implements Serializable {
 	@NotNull
 	private OrderState state;
 
-	@Column(name = "ADDRESS")
 	public Address getAddress() {
 		return address;
 	}
 
-	@Column(name = "AMOUNT")
 	public int getAmount() {
 		return amount;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	@Column(name = "ITEM_ID")
 	public int getItemId() {
 		return itemId;
 	}
 
-	@Column(name = "PAYMENT")
 	public Payment getPayment() {
 		return payment;
 	}
@@ -67,7 +64,7 @@ public class Order implements Serializable {
 		this.amount = amount;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
