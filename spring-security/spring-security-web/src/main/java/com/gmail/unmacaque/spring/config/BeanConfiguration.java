@@ -4,11 +4,13 @@ import javax.servlet.Filter;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
+@Configuration
 public class BeanConfiguration {
 
 	@Bean

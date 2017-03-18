@@ -6,7 +6,7 @@
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
-  <h1 th:text="#{hello.title(username)}"></h1>
+  <h1 th:text="#{hello.title(${username})}"></h1>
 
   <p th:text="#{hello.greeting}"></p>
 

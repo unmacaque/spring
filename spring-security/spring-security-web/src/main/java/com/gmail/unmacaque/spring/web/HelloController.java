@@ -1,5 +1,7 @@
 package com.gmail.unmacaque.spring.web;
 
+import java.security.Principal;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,28 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
-	@GetMapping
+	@GetMapping("/")
 	public String index() {
 		return "index";
 	}
 
 	@GetMapping("/admin")
-	public String admin(ModelMap model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-
-		model.addAttribute("username", username);
-
+	public String admin(ModelMap model, Principal principal) {
+		model.addAttribute("username", principal.getName());
 		return "admin";
 	}
 
 	@GetMapping("/hello")
-	public String hello(ModelMap model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-
-		model.addAttribute("username", username);
-
+	public String hello(ModelMap model, Principal principal) {
+		model.addAttribute("username", principal.getName());
 		return "hello";
 	}
 
