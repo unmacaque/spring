@@ -4,13 +4,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderFactory {
+	public Payment defaultPayment() {
+		return new Payment(PaymentType.CREDIT_CARD);
+	}
+
 	public Address newAddress() {
 		Address address = new Address();
-		address.setCity("");
-		address.setFirstName("");
-		address.setLastName("");
-		address.setPostal("");
-		address.setStreet("");
 		return address;
 	}
 
