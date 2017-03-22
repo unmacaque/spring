@@ -22,14 +22,6 @@ public class Item implements Serializable {
 	private BigDecimal price;
 	private int stock;
 
-	public Item() {}
-
-	public Item(String title, String description, BigDecimal price, int stock) {
-		this.title = title;
-		this.description = description;
-		this.price = price;
-	}
-
 	public long getId() {
 		return id;
 	}

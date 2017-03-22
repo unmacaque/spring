@@ -20,8 +20,6 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gmail.unmacaque.spring.domain.Item;
-
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
@@ -59,7 +57,7 @@ public class ItemRepositoryTest {
 
 	@Test
 	public void testPostItem() throws Exception {
-		Item item = new Item("foo", "bar", BigDecimal.valueOf(1.99), 1);
+		Item item = createItem();
 
 		ResponseEntity<Void> exchange = restTemplate.postForEntity(
 				"/items",
@@ -71,7 +69,7 @@ public class ItemRepositoryTest {
 
 	@Test
 	public void testPutItem() throws Exception {
-		Item item = new Item("foo", "bar", BigDecimal.valueOf(1.99), 1);
+		Item item = createItem();
 
 		ResponseEntity<Void> exchange = restTemplate.exchange(
 				"/items/2",
@@ -91,5 +89,14 @@ public class ItemRepositoryTest {
 				Void.class);
 
 		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.NO_CONTENT));
+	}
+
+	private Item createItem() {
+		Item item = new Item();
+		item.setTitle("foo");
+		item.setDescription("bar");
+		item.setPrice(BigDecimal.valueOf(1.99));
+		item.setStock(1);
+		return item;
 	}
 }
