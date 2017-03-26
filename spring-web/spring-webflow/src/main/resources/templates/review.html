@@ -15,6 +15,16 @@
 
   <fieldset>
     <div>
+      <strong>Item</strong>
+      <span th:text="*{itemId}"></span>
+    </div>
+
+    <div>
+      <strong>Amount</strong>
+      <span th:text="*{amount}"></span>
+    </div>
+
+    <div>
       <strong>First Name</strong>
       <span th:text="*{address.firstName}"></span>
     </div>
@@ -48,6 +58,7 @@
   <div>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <input type="submit" name="_eventId_cancel" th:value="#{order.transition.cancel}" />
+    <input type="submit" name="_eventId_reviseOrder" th:value="#{order.transition.reviseOrder}" />
     <input type="submit" name="_eventId_reviseAddress" th:value="#{order.transition.reviseAddress}" />
     <input type="submit" name="_eventId_revisePayment" th:value="#{order.transition.revisePayment}" />
     <input type="submit" name="_eventId_submit" th:value="#{order.transition.placeOrder}" />

@@ -9,6 +9,11 @@
     <evaluate expression="orderFactory.newOrder(address, payment)" result="flowScope.order" />
   </on-start>
 
+  <view-state id="setOrder" model="order" view="order">
+    <transition on="submit" to="setAddress" />
+    <transition on="cancel" to="orderCancelled" bind="false" />
+  </view-state>
+
   <view-state id="setAddress" model="address" view="address">
     <transition on="submit" to="setPayment" />
     <transition on="cancel" to="orderCancelled" bind="false" />
@@ -23,6 +28,7 @@
     <transition on="submit" to="orderPlaced">
       <evaluate expression="orderService.placeOrder(order)" />
     </transition>
+    <transition on="reviseOrder" to="setOrder" />
     <transition on="reviseAddress" to="setAddress" />
     <transition on="revisePayment" to="setPayment" />
     <transition on="cancel" to="orderCancelled" />

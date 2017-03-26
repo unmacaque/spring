@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Place Order</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+
+  <h1>Place Order</h1>
+
+  <p>Enter the details about your order in this form.</p>
+
+  <form action="#" th:action="${flowExecutionUrl}" th:object="${order}" method="post">
+
+  <fieldset>
+    <div>
+      <label for="itemId">Item</label>
+      <input type="text" th:field="*{itemId}" />
+      <span th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}" th:class="error"></span>
+    </div>
+
+    <div>
+      <label for="amount">Amount</label>
+      <input type="number" th:field="*{amount}" min="0" max="99">
+      <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" th:class="error"></span>
+    </div>
+  </fieldset>
+
+  <div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" name="_eventId_cancel" th:value="#{order.transition.cancel}" />
+    <input type="submit" name="_eventId_submit" />
+  </div>
+
+  </form>
+
+</body>
+</html>

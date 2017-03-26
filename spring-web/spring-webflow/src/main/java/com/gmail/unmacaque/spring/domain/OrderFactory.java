@@ -15,7 +15,7 @@ public class OrderFactory {
 
 	public Order newOrder(Address address, Payment payment) {
 		Order order = new Order();
-		order.setItemId(12345);
+		order.setItemId(10000);
 		order.setAmount(1);
 		order.setAddress(address);
 		order.setPayment(payment);
