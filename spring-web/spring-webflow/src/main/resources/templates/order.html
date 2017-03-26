@@ -30,6 +30,7 @@
   <div>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <input type="submit" name="_eventId_cancel" th:value="#{order.transition.cancel}" />
+    <input type="reset" />
     <input type="submit" name="_eventId_submit" />
   </div>
 
