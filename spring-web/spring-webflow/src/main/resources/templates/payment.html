@@ -17,7 +17,7 @@
     <div>
       <label for="type">Payment Type</label>
       <select th:field="*{type}">
-        <option th:each="type : ${T(com.gmail.unmacaque.spring.webflow.order.PaymentType).values()}" th:value="${type}"
+        <option th:each="type : ${T(com.gmail.unmacaque.spring.domain.PaymentType).values()}" th:value="${type}"
           th:text="#{__${type.value}__}"></option>
       </select>
       <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" th:class="error"></span>
