@@ -12,3 +12,5 @@ spring:
         cache:
           provider_class: org.hibernate.cache.NoCacheProvider
     show-sql: true
+  thymeleaf:
+    cache: false
