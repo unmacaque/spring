@@ -27,8 +27,8 @@
       <td th:text="${order.value.amount}"></td>
       <td th:text="${order.value.address.lastName}"></td>
       <td th:text="${order.value.address.firstName}"></td>
-      <td th:text="${order.value.payment.type}"></td>
-      <td th:text="${order.value.state}"></td>
+      <td th:text="#{__${order.value.payment.type.value}__}"></td>
+      <td th:text="#{__${order.value.state.value}__}"></td>
     </tr>
   </table>
 
