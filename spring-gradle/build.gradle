@@ -1,23 +1,24 @@
 buildscript {
-    repositories {
-        maven { url "http://repo.spring.io/libs-snapshot" }
-        maven { url "http://repo.spring.io/libs-milestone" }
-        mavenLocal()
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
     }
-
+    repositories {
+        mavenCentral()
+    }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RC1")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
 
 repositories {
-    maven { url "http://repo.spring.io/libs-snapshot" }
-    maven { url "http://repo.spring.io/libs-milestone" }
+    mavenCentral()
 }
 
 dependencies {
@@ -25,9 +26,4 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-}
-
-war {
-    baseName = 'spring-gradle'
-    version =  '1.0'
 }
