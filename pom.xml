@@ -14,9 +14,9 @@
     <jsoup.version>1.9.2</jsoup.version>
     <wiremock.version>2.1.7</wiremock.version>
     <xstream.version>1.4.9</xstream.version>
-    <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
-    <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
-    <thymeleaf-extras-springsecurity4.version>3.0.1.RELEASE</thymeleaf-extras-springsecurity4.version>
+    <thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
+    <thymeleaf-layout-dialect.version>2.2.1</thymeleaf-layout-dialect.version>
+    <thymeleaf-extras-springsecurity4.version>3.0.2.RELEASE</thymeleaf-extras-springsecurity4.version>
   </properties>
 
   <parent>
