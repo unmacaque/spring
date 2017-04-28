@@ -1,32 +1,29 @@
 package com.gmail.unmacaque.spring.web;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@WebMvcTest(GreetController.class)
 public class GreetControllerTest {
+
 	@Autowired
-	private TestRestTemplate restTemplate;
+	private MockMvc mvc;
 
 	@Test
 	public void testGreet() throws Exception {
-		Greeting exchange = restTemplate.getForObject("/", Greeting.class);
-
-		assertThat(exchange).hasFieldOrPropertyWithValue("message", "Hello World");
+		mvc.perform(get("/")).andExpect(content().json("{\"message\":\"Hello World\"}"));
 	}
 
 	@Test
 	public void testGreetWithName() throws Exception {
-		Greeting exchange = restTemplate.getForObject("/Spring", Greeting.class);
-
-		assertThat(exchange).hasFieldOrPropertyWithValue("message", "Spring");
+		mvc.perform(get("/Spring")).andExpect(content().json("{\"message\":\"Spring\"}"));
 	}
 }
