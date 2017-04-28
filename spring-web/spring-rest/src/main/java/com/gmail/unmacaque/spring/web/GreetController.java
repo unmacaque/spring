@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetController {
 	@GetMapping
-	public GreetResponse greet() {
-		return new GreetResponse();
+	public Greeting greet() {
+		return new Greeting();
 	}
 
 	@GetMapping("{name}")
-	public GreetResponse greet(@PathVariable("name") String name) {
-		return new GreetResponse(name);
+	public Greeting greet(@PathVariable("name") String name) {
+		return new Greeting(name);
 	}
 }

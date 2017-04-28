@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gmail.unmacaque.spring.web.GreetResponse;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class GreetControllerTest {
@@ -20,15 +18,15 @@ public class GreetControllerTest {
 
 	@Test
 	public void testGreet() throws Exception {
-		GreetResponse exchange = restTemplate.getForObject("/", GreetResponse.class);
+		Greeting exchange = restTemplate.getForObject("/", Greeting.class);
 
-		assertThat(exchange).hasFieldOrPropertyWithValue("response", "anonymous");
+		assertThat(exchange).hasFieldOrPropertyWithValue("message", "Hello World");
 	}
 
 	@Test
 	public void testGreetWithName() throws Exception {
-		GreetResponse exchange = restTemplate.getForObject("/Spring", GreetResponse.class);
+		Greeting exchange = restTemplate.getForObject("/Spring", Greeting.class);
 
-		assertThat(exchange).hasFieldOrPropertyWithValue("response", "Spring");
+		assertThat(exchange).hasFieldOrPropertyWithValue("message", "Spring");
 	}
 }
