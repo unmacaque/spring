@@ -1,0 +1,4 @@
+unmacaque:
+  spring:
+    cloud:
+      my-property: Test
