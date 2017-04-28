@@ -13,6 +13,10 @@
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+    <neo4j.version>2.3.10</neo4j.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -21,6 +25,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j</artifactId>
+      <version>${neo4j.version}</version>
     </dependency>
     <dependency>
       <groupId>org.neo4j</groupId>
