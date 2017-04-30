@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<main>
+  <h1>Messages</h1>
+  <app-message *ngFor="let message of messages" [message]="message">
+    {{message}}
+  </app-message>
+</main>
