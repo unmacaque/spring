@@ -14,3 +14,6 @@ spring:
   jackson:
     serialization:
       write-dates-as-timestamps: false
+  data:
+    rest:
+      base-path: /api
