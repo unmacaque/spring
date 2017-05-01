@@ -10,7 +10,7 @@ export class MessageService {
 
   constructor(private http: Http) { }
 
-  getMessages() : Promise<Message[]> {
+  getMessages(): Promise<Message[]> {
     return this.http.get('/api/messages')
       .toPromise()
       .then(response => response.json()._embedded.messages as Message[])
