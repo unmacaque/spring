@@ -1,6 +1,7 @@
-<main>
-  <h1>Messages</h1>
-  <app-message *ngFor="let message of messages" [message]="message">
-    {{message}}
-  </app-message>
-</main>
+<md-toolbar color="primary">
+  <span>Messages</span>
+</md-toolbar>
+
+<app-message *ngFor="let message of messages" [message]="message">
+  {{message}}
+</app-message>
