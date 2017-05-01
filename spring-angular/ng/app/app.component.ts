@@ -14,7 +14,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.messageService.getMessages().then(messages => this.messages = messages);
+    this.messageService.getMessages().then(messages => {
+      this.messages = messages.sort((a,b) => (a.createdDate > b.createdDate ? -1 : 1));
+    });
   }
 
 }
