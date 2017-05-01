@@ -7,6 +7,7 @@ Run `mvn package` to produce an executable jar file.
 # Projects
 
 - [**spring-android**](http://projects.spring.io/spring-android/) - call REST services in Android applications using Spring RestTemplate
+- [**spring-angular**](https://angular.io/) - develop a UI for Spring Boot applications with Angular and its new tooling
 - [**spring-angularjs**](https://spring.io/guides/gs/consuming-rest-angularjs/) - Spring MVC backed application with an AngularJS based frontend
 - [**spring-aop**](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html) - demonstrates Aspect-Oriented Programming
 - [**spring-boot**](http://projects.spring.io/spring-boot/) - a trivial command-line application created with Spring Boot
@@ -17,6 +18,6 @@ Run `mvn package` to produce an executable jar file.
 - [**spring-data-neo4j**](https://spring.io/guides/gs/accessing-data-neo4j/) - show how to work with a Neo4j data store in Spring
 - [**spring-data-rest**](https://spring.io/guides/gs/accessing-data-rest/) - expose CRUD operations on a JPA data store through REST
 - [**spring-gradle**](https://spring.io/guides/gs/gradle/) - building a Spring Boot project using the Gradle build management tool
-- [**spring-security**](http://projects.spring.io/spring-security/) - configuring HTTP security in a Spring application
+- [**spring-security**](http://projects.spring.io/spring-security/) - secure Spring Boot applications using Spring Security
 - [**spring-togglz**](http://www.togglz.org/) - easily switch off certain features of a Spring application during runtime
-- [**spring-web**](http://projects.spring.io/spring-webflow/) - creating a multi-step flow in a Spring MVC application
+- [**spring-web**](https://spring.io/guides/gs/serving-web-content/) - discover the possibilities of the Spring MVC framework
