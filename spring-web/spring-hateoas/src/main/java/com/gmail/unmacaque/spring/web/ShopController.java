@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
@@ -31,7 +30,6 @@ public class ShopController {
 
 	private final EntityLinks entityLinks;
 
-	@Autowired
 	public ShopController(Shop shop, EntityLinks entityLinks) {
 		this.shop = shop;
 		this.entityLinks = entityLinks;

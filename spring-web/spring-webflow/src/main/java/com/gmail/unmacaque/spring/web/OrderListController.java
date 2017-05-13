@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.web;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +18,6 @@ public class OrderListController {
 
 	private final OrderService orderService;
 
-	@Autowired
 	public OrderListController(OrderService orderService) {
 		this.orderService = orderService;
 	}
