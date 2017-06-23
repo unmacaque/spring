@@ -8,8 +8,8 @@ import javax.persistence.Column
 
 @Entity
 data class Message(
-        val sender: String = "",
-        val to: String = "",
-        val content: String = "",
+        val sender: String,
+        val to: String,
+        val content: String,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = -1) {}
