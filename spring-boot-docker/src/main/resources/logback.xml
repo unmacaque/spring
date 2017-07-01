@@ -1,0 +1,13 @@
+<configuration debug="false">
+  <include resource="org/springframework/boot/logging/logback/base.xml" />
+  <appender name="LOGSTASH"
+    class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <destination>localhost:9600</destination>
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="LOGSTASH" />
+  </root>
+</configuration>

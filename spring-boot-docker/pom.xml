@@ -15,12 +15,18 @@
 
   <properties>
     <docker.image.prefix>unmacaque</docker.image.prefix>
+    <logstash-logback-encoder.version>4.11</logstash-logback-encoder.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>${logstash-logback-encoder.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
