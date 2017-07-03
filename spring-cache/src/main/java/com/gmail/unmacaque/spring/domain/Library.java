@@ -8,6 +8,6 @@ import org.springframework.cache.annotation.Cacheable;
 public interface Library {
 
 	@Cacheable("books")
-	public List<Book> getBooks() throws IOException;
+	List<Book> getBooks() throws IOException;
 
 }
