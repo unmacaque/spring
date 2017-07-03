@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.config;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -20,8 +19,11 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 @Configuration
 public class WebFlowConfiguration extends AbstractFlowConfiguration {
 
-	@Autowired
-	private ThymeleafViewResolver viewResolver;
+	private final ThymeleafViewResolver viewResolver;
+
+	public WebFlowConfiguration(ThymeleafViewResolver viewResolver) {
+		this.viewResolver = viewResolver;
+	}
 
 	@Bean
 	public FlowExecutor flowExecutor() {

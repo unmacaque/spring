@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -10,8 +9,11 @@ import com.gmail.unmacaque.spring.config.BootApplicationProperties;
 @Component
 public class BootApplicationRunner implements ApplicationRunner {
 
-	@Autowired
-	private BootApplicationProperties applicationProperties;
+	private final BootApplicationProperties applicationProperties;
+
+	public BootApplicationRunner(BootApplicationProperties applicationProperties) {
+		this.applicationProperties = applicationProperties;
+	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {

@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
@@ -12,8 +11,11 @@ public class AopApplicationRunner implements ApplicationRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-	@Autowired
-	private HelloService helloService;
+	private final HelloService helloService;
+
+	public AopApplicationRunner(HelloService helloService) {
+		this.helloService = helloService;
+	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {

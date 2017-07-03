@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.config;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
@@ -17,9 +16,6 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 public class WebConfiguration extends WebMvcConfigurerAdapter {
-
-	@Autowired
-	private ThymeleafViewResolver thymeleafViewResolver;
 
 	@Bean
 	public DeviceResolverHandlerInterceptor deviceResolverHandlerInterceptor() {
@@ -48,7 +44,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public LiteDeviceDelegatingViewResolver liteDeviceAwareViewResolver() {
+	public LiteDeviceDelegatingViewResolver liteDeviceAwareViewResolver(ThymeleafViewResolver thymeleafViewResolver) {
 		LiteDeviceDelegatingViewResolver resolver = new LiteDeviceDelegatingViewResolver(thymeleafViewResolver);
 		resolver.setOrder(1);
 		resolver.setMobilePrefix("mobile/");
@@ -57,8 +53,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	@Override
-	public void addArgumentResolvers(
-			List<HandlerMethodArgumentResolver> argumentResolvers) {
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		argumentResolvers.add(deviceHandlerMethodArgumentResolver());
 		argumentResolvers.add(sitePreferenceHandlerMethodArgumentResolver());
 	}
