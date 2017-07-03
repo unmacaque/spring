@@ -5,13 +5,11 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gmail.unmacaque.spring.domain.Order;
 import com.gmail.unmacaque.spring.domain.OrderService;
 
 @Controller
-@RequestMapping("/list")
 public class OrderListController {
 
 	private static final String ORDERS_MODEL = "orders";
@@ -22,7 +20,7 @@ public class OrderListController {
 		this.orderService = orderService;
 	}
 
-	@GetMapping
+	@GetMapping("/list")
 	public String list() {
 		return "list";
 	}
