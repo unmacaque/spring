@@ -14,7 +14,7 @@ import com.gmail.unmacaque.spring.domain.Bundle;
 @Profile("!test")
 public class RestTemplateApplicationRunner implements ApplicationRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+	private static final Logger logger = LoggerFactory.getLogger(RestTemplateApplicationRunner.class);
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {

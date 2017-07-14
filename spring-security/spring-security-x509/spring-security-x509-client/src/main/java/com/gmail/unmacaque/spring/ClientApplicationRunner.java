@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class ClientApplicationRunner implements ApplicationRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClientApplicationRunner.class);
 
 	private final RestTemplate restTemplate;
 

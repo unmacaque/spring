@@ -9,7 +9,7 @@ import com.gmail.unmacaque.spring.aop.HelloService;
 
 public class AopApplicationRunner implements ApplicationRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+	private static final Logger logger = LoggerFactory.getLogger(AopApplicationRunner.class);
 
 	private final HelloService helloService;
 

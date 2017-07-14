@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring.config;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -31,7 +30,7 @@ public class SecurityConfiguration {
 	@Bean
 	@ConditionalOnResource(resources = "classpath:client.p12")
 	public RestTemplate restTemplate()
-			throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException, KeyStoreException,
+			throws NoSuchAlgorithmException, CertificateException, IOException, KeyStoreException,
 			KeyManagementException, UnrecoverableKeyException {
 
 		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -40,10 +39,12 @@ public class SecurityConfiguration {
 		KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 		trustStore.load(trustStoreResource.getInputStream(), "trustpass".toCharArray());
 
-		HttpClient httpClient = HttpClients.custom().setSSLContext(SSLContextBuilder.create()
-				.loadTrustMaterial(trustStore, null)
-				.loadKeyMaterial(keyStore, "storepass".toCharArray())
-				.build()).build();
+		HttpClient httpClient = HttpClients.custom()
+				.setSSLContext(SSLContextBuilder.create()
+						.loadTrustMaterial(trustStore, null)
+						.loadKeyMaterial(keyStore, "storepass".toCharArray())
+						.build())
+				.build();
 		ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
 		return new RestTemplate(requestFactory);
 	}
