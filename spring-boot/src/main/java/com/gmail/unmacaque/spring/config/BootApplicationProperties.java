@@ -15,7 +15,7 @@ public class BootApplicationProperties {
 	/**
 	 * List property. Will be printed to standard output.
 	 */
-	private List<String> myList = new ArrayList<>();
+	private final List<String> myList = new ArrayList<>();
 
 	public String getMyProperty() {
 		return myProperty;

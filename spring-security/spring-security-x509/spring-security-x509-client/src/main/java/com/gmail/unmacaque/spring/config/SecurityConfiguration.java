@@ -23,9 +23,9 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class SecurityConfiguration {
 
-	private ClassPathResource keyStoreResource = new ClassPathResource("client.p12");
+	private final ClassPathResource keyStoreResource = new ClassPathResource("client.p12");
 
-	private ClassPathResource trustStoreResource = new ClassPathResource("trust.jks");
+	private final ClassPathResource trustStoreResource = new ClassPathResource("trust.jks");
 
 	@Bean
 	@ConditionalOnResource(resources = "classpath:client.p12")
