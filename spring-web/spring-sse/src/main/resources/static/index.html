@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Spring SSE</title>
+<script>
+var eventSource;
+
+window.onload = function () {
+  document.getElementById("start").addEventListener("click", function() {
+      eventSource = new EventSource("http://localhost:8080/event");
+      eventSource.onmessage = function (event) {
+          document.getElementById("text").textContent = new Date(event.data).toString();
+      }
+      document.getElementById("start").setAttribute("disabled", "disabled");
+      document.getElementById("stop").removeAttribute("disabled");
+  });
+  
+  document.getElementById("stop").addEventListener("click", function() {
+      if (eventSource !== null) {
+          eventSource.close();
+      }
+      document.getElementById("start").removeAttribute("disabled");
+      document.getElementById("stop").setAttribute("disabled", "disabled");
+  });
+    
+}
+</script>
+</head>
+
+<body>
+
+<button id="start">Start</button>
+<button id="stop" disabled>Stop</button>
+
+<div id="text"></div>
+
+</body>
+
+</html>

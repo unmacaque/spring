@@ -19,6 +19,7 @@
     <module>spring-mobile</module>
     <module>spring-rest</module>
     <module>spring-resttemplate</module>
+    <module>spring-sse</module>
     <module>spring-thymeleaf</module>
     <module>spring-upload</module>
     <module>spring-webflow</module>
