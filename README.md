@@ -17,8 +17,8 @@ Run `mvn package` to produce an executable jar file.
 - [**spring-cloud**](http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html) - create microservices with Spring Cloud
 - [**spring-data-neo4j**](https://spring.io/guides/gs/accessing-data-neo4j/) - show how to work with a Neo4j data store in Spring
 - [**spring-data-rest**](https://spring.io/guides/gs/accessing-data-rest/) - expose CRUD operations on a JPA data store through REST
-- [**spring-kotlin**](https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin) - building a Spring Boot project using the Gradle build management tool
 - [**spring-gradle**](https://spring.io/guides/gs/gradle/) - building a Spring Boot project using the Gradle build management tool
+- [**spring-kotlin**](https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin) - building a Spring Boot project using the Gradle build management tool
 - [**spring-security**](http://projects.spring.io/spring-security/) - secure Spring Boot applications using Spring Security
 - [**spring-togglz**](http://www.togglz.org/) - easily switch off certain features of a Spring application during runtime
 - [**spring-web**](https://spring.io/guides/gs/serving-web-content/) - discover the possibilities of the Spring MVC framework
