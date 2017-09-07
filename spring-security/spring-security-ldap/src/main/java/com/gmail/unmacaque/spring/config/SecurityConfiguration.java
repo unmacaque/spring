@@ -17,7 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// @formatter:off
 		http
 			.authorizeRequests()
-				.anyRequest().fullyAuthenticated()
+				.anyRequest().hasRole("USERS")
 		.and()
 			.formLogin()
 		.and()

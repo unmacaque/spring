@@ -18,3 +18,10 @@ cn: John Doe
 sn: Doe
 uid: test
 userPassword: test
+
+dn: cn=users,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+ou: people
+cn: users
+uniquemember: uid=test,ou=people,dc=springframework,dc=org
