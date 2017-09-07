@@ -1,8 +1,6 @@
-/.openssl
-index.txt*
 *.csr
+*.crt
 *.key
 *.jks
 *.p12
-*.pem
-/serial*
+*.srl
