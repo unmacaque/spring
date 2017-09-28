@@ -1,0 +1,4 @@
+spring:
+  mobile:
+    devicedelegatingviewresolver:
+      enabled: true
