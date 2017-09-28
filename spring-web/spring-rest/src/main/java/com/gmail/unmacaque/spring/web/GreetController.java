@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 public class GreetController {
-	@GetMapping
+	@GetMapping("/")
 	public Greeting greet() {
 		return new Greeting();
 	}

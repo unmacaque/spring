@@ -15,7 +15,7 @@ public class ClientController {
 	@Autowired
 	CatalogClient catalogClient;
 
-	@GetMapping
+	@GetMapping("/")
 	public List<Product> index() {
 		return catalogClient.getProducts();
 	}

@@ -10,7 +10,7 @@ public class ClientController {
 	@Value("${unmacaque.spring.cloud.my-property}")
 	private String myProperty;
 
-	@GetMapping
+	@GetMapping("/")
 	public String myProperty() {
 		return myProperty;
 	}
