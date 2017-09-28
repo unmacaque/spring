@@ -27,6 +27,7 @@
   </parent>
 
   <modules>
+    <module>spring-angular</module>
     <module>spring-angularjs</module>
     <module>spring-aop</module>
     <module>spring-boot</module>
@@ -38,6 +39,7 @@
     <module>spring-data-rest</module>
     <module>spring-kotlin</module>
     <module>spring-security</module>
+    <module>spring-session</module>
     <module>spring-togglz</module>
     <module>spring-web</module>
   </modules>
