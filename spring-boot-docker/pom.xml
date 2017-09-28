@@ -14,7 +14,6 @@
   </parent>
 
   <properties>
-    <docker.image.prefix>unmacaque</docker.image.prefix>
     <logstash-logback-encoder.version>4.11</logstash-logback-encoder.version>
   </properties>
 
@@ -61,7 +60,7 @@
         <configuration>
           <images>
             <image>
-              <name>${docker.image.prefix}/${project.build.finalName}</name>
+              <name>%g/%a:%l</name>
               <build>
                 <dockerFile>Dockerfile</dockerFile>
                 <assembly>
