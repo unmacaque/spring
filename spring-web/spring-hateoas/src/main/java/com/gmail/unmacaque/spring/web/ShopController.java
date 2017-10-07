@@ -51,11 +51,7 @@ public class ShopController {
 
 	@GetMapping(value = "/{itemId}")
 	public Resource<Item> getItem(@PathVariable int itemId) {
-		Item item = shop.findItemById(itemId);
-
-		if (item == null) {
-			throw new NoSuchElementException();
-		}
+		Item item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
 		Resource<Item> resource = new Resource<>(item);
 		resource.add(entityLinks.linkToSingleResource(Item.class, itemId));
@@ -66,11 +62,7 @@ public class ShopController {
 	@PostMapping(value = "/{itemId}/order")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Resource<Item> orderItem(@PathVariable int itemId) {
-		Item item = shop.findItemById(itemId);
-
-		if (item == null) {
-			throw new NoSuchElementException();
-		}
+		Item item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
 		Resource<Item> resource = new Resource<>(item);
 		resource.add(entityLinks.linkToSingleResource(Item.class, itemId));
@@ -84,7 +76,7 @@ public class ShopController {
 		return resource;
 	}
 
-	@ExceptionHandler
+	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public void handleNoSuchElementException() {}
 }

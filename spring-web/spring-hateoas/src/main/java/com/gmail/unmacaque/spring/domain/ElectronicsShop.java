@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.domain;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,10 +27,9 @@ public class ElectronicsShop implements Shop {
 	}
 
 	@Override
-	public Item findItemById(int itemId) {
+	public Optional<Item> findItemById(int itemId) {
 		return items.stream()
 				.filter(item -> item.getItemId() == itemId)
-				.findFirst()
-				.orElse(null);
+				.findFirst();
 	}
 }
