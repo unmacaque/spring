@@ -2,12 +2,9 @@ package com.gmail.unmacaque.spring.config;
 
 import javax.servlet.Filter;
 
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @Configuration
@@ -19,16 +16,7 @@ public class BeanConfiguration {
 	}
 
 	@Bean
-	public MessageSource messageSource() {
-		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasename("classpath:messages");
-		return messageSource;
-	}
-
-	@Bean
-	public TemplateEngine templateEngine() {
-		TemplateEngine templateEngine = new TemplateEngine();
-		templateEngine.addDialect(new SpringSecurityDialect());
-		return templateEngine;
+	public SpringSecurityDialect springSecurityDialect() {
+		return new SpringSecurityDialect();
 	}
 }
