@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { MessageComponent } from './message.component';
 import { MessageService } from './message.service';
 
-import { MdCardModule } from '@angular/material';
-import { MdToolbarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { MdToolbarModule } from '@angular/material';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MdCardModule,
-    MdToolbarModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
