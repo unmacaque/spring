@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Message } from './message';
 
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MessageService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getMessages(): Promise<Message[]> {
-    return this.http.get('/api/messages')
-      .toPromise()
-      .then(response => response.json()._embedded.messages as Message[])
-      .catch(error => Promise.reject(error));
+  getMessages(): Observable<Object> {
+    return this.http.get('/api/messages');
   }
 
 }
