@@ -2,18 +2,20 @@ package com.gmail.unmacaque.spring.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private final DataSource dataSource;
@@ -43,13 +45,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// @formatter:off
-		auth
-			.jdbcAuthentication()
-				.dataSource(dataSource)
-					.usersByUsernameQuery("select username, password, enabled from USERS where username = ?")
-					.authoritiesByUsernameQuery("select u.username, authority from USERS u, AUTHORITIES a where u.username = a.username AND u.username = ?")
-				.passwordEncoder(new BCryptPasswordEncoder());
-		// @formatter:on
+		auth.authenticationProvider(authenticationProvider());
+	}
+
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		provider.setUserDetailsService(userDetailsService());
+		provider.setPasswordEncoder(passwordEncoder());
+		return provider;
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public UserDetailsManager userDetailsManager() throws Exception {
+		JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
+		manager.setDataSource(dataSource);
+		return manager;
 	}
 }
