@@ -6,8 +6,12 @@
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
-  <h1>Homepage</h1>
+  <h1 th:text="#{index.title}"></h1>
 
-  <p>Please <a href="/login" th:href="@{/login}">login</a> to gain privileged access.</p>
+  <p th:if="${userCreated}" th:class="success">User <span th:text="${userCreated}"></span> successfully created.</p>
+
+  <p><a href="/login" th:href="@{/login}" th:text="#{index.text.login}"></a></p>
+
+  <p><a href="/register" th:href="@{/register}" th:text="#{index.text.register}"></a></p>
 </body>
 </html>

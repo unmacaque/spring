@@ -9,7 +9,7 @@ h1 {
 fieldset label {
 	display: inline-block;
 	font-weight: bold;
-	width: 8em;
+	width: 12em;
 }
 
 a {
@@ -19,6 +19,14 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.error {
+	color: red;
+}
+
+.fielderror {
+	background-color: red;
 }
 
 .failed {
