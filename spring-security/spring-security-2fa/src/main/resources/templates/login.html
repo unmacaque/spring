@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+  <h1 th:text="#{login.title}"></h1>
+
+  <p th:if="${param.error}" th:text="#{login.error}" class="failed"></p>
+
+  <p th:text="#{login.text}"></p>
+
+  <form action="/login" th:action="@{/login}" method="post">
+
+  <fieldset>
+    <div>
+      <label th:text="#{login.username}" for="username"></label>
+      <input type="text" name="username" />
+    </div>
+
+    <div>
+      <label th:text="#{login.password}" for="password"></label>
+      <input type="password" name="password" />
+    </div>
+
+    <div>
+      <label th:text="#{login.otp}" for="otp"></label>
+      <input type="text" name="otp" size="6" maxlength="6" pattern="[0-9]{6}" />
+    </div>
+  </fieldset>
+
+  <div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input name="submit" type="submit" />
+  </div>
+
+  </form>
+
+</body>
+</html>

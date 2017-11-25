@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Homepage</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+  <h1 th:text="#{index.title}"></h1>
+
+  <p th:if="${param.logout}" th:text="#{index.logout}" class="success"></p>
+
+  <th:block th:if="${userCreated}">
+    <p class="success" th:text="#{index.registered(${userCreated})}"></p>
+
+    <p th:text="#{index.text.2fa}"></p>
+
+    <img th:src="'/qrcode?t=' + ${code}"/>
+  </th:block>
+
+  <p><a href="/login" th:href="@{/login}" th:text="#{index.text.login}"></a></p>
+
+  <p><a href="/register" th:href="@{/register}" th:text="#{index.text.register}"></a></p>
+</body>
+</html>

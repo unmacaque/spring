@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Register</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+  <h1 th:text="#{register.title}"></h1>
+
+  <p th:each="error : ${#fields.errors('global')}" th:text="${error}" th:class="error"></p>
+
+  <p th:text="#{register.text}"></p>
+
+  <form action="/register" th:action="@{/register}" th:object="${registerUser}" method="post">
+
+  <fieldset>
+    <div>
+      <label th:text="#{register.username}" for="username"></label>
+      <input type="text" th:field="*{username}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:class="error"></span>
+    </div>
+    <div>
+      <label th:text="#{register.mail}" for="mailAddress"></label>
+      <input type="email" th:field="*{mailAddress}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('mailAddress')}" th:errors="*{mailAddress}" th:class="error"></span>
+    </div>
+
+    <div>
+      <label th:text="#{register.password}" for="password"></label>
+      <input type="password" th:field="*{password}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:class="error"></span>
+    </div>
+
+    <div>
+      <label th:text="#{register.confirm}" for="confirm"></label>
+      <input type="password" th:field="*{passwordConfirm}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}" th:class="error"></span>
+    </div>
+  </fieldset>
+
+  <div>
+    <input name="submit" type="submit" />
+  </div>
+
+  </form>
+
+</body>
+</html>
