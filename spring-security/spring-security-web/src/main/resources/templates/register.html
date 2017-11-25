@@ -8,15 +8,11 @@
 <body>
   <h1 th:text="#{register.title}"></h1>
 
-  <th:block th:if="${error}">
-    <span th:text="#{register.error}" class="failed"></span>
-  </th:block>
+  <p th:each="error : ${#fields.errors('global')}" th:text="${error}" th:class="error"></p>
 
   <p th:text="#{register.text}"></p>
 
   <form action="/register" th:action="@{/register}" th:object="${registerUser}" method="post">
-
-  <p th:each="error : ${#fields.errors('global')}" th:text="${error}" th:class="error"></p>
 
   <fieldset>
     <div>

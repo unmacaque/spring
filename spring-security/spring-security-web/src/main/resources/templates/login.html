@@ -8,13 +8,7 @@
 <body>
   <h1 th:text="#{login.title}"></h1>
 
-  <th:block th:if="${error}">
-    <span th:text="#{login.error}" class="failed"></span>
-  </th:block>
-
-  <th:block th:if="${logout}">
-    <span th:text="#{login.success}" class="success"></span>
-  </th:block>
+  <p th:if="${param.error}" th:text="#{login.error}" class="failed"></p>
 
   <p th:text="#{login.text}"></p>
 

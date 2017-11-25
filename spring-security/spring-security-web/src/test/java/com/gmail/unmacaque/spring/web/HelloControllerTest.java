@@ -50,9 +50,7 @@ public class HelloControllerTest {
 	@Test
 	public void testHello_withoutAuthentication() throws Exception {
 		mockMvc.perform(get("/login"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("error", equalTo(false)))
-				.andExpect(model().attribute("logout", equalTo(false)));
+				.andExpect(status().isOk());
 	}
 
 	@Test

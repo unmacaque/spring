@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
@@ -30,17 +29,11 @@ public class HelloController {
 	}
 
 	@GetMapping("/login")
-	public String login(@RequestParam(required = false) String error,
-			@RequestParam(required = false) String logout, ModelMap modelMap) {
+	public String login() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			return "forward:/hello";
 		}
-
-		modelMap.addAttribute("error", error != null);
-		modelMap.addAttribute("logout", logout != null);
-
 		return "login";
 	}
 }

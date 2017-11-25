@@ -8,7 +8,9 @@
 <body>
   <h1 th:text="#{index.title}"></h1>
 
-  <p th:if="${userCreated}" th:class="success">User <span th:text="${userCreated}"></span> successfully created.</p>
+  <p th:if="${param.logout}" th:text="#{index.logout}" class="success"></p>
+
+  <p th:if="${userCreated}" th:text="#{index.registered(${userCreated})}" class="success"></p>
 
   <p><a href="/login" th:href="@{/login}" th:text="#{index.text.login}"></a></p>
 
