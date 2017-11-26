@@ -1,12 +1,23 @@
 package com.gmail.unmacaque.spring.domain;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("book")
 public class Book {
+
 	private String id;
+
 	private String author;
+
 	private String title;
+
 	private String genre;
+
 	private String price;
-	private String publish_date;
+
+	@XStreamAlias("publish-date")
+	private String publishDate;
+
 	private String description;
 
 	public String getId() {
@@ -49,12 +60,12 @@ public class Book {
 		this.price = price;
 	}
 
-	public String getPublish_date() {
-		return publish_date;
+	public String getPublishDate() {
+		return publishDate;
 	}
 
-	public void setPublish_date(String publish_date) {
-		this.publish_date = publish_date;
+	public void setPublishDate(String publishDate) {
+		this.publishDate = publishDate;
 	}
 
 	public String getDescription() {
