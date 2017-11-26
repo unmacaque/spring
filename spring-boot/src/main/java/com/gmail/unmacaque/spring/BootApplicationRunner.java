@@ -1,27 +1,31 @@
 package com.gmail.unmacaque.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.gmail.unmacaque.spring.config.BootApplicationProperties;
+import com.gmail.unmacaque.spring.domain.MyBean;
 
 @Component
 public class BootApplicationRunner implements ApplicationRunner {
 
-	private final BootApplicationProperties applicationProperties;
+	private static final Logger logger = LoggerFactory.getLogger(BootApplicationRunner.class);
 
-	public BootApplicationRunner(BootApplicationProperties applicationProperties) {
-		this.applicationProperties = applicationProperties;
+	private final MyBean myBean;
+
+	public BootApplicationRunner(MyBean myBean) {
+		this.myBean = myBean;
 	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println(applicationProperties.getMyProperty());
-		applicationProperties.getMyList().forEach(System.out::println);
+		logger.info(myBean.getString());
+		myBean.getList().forEach(logger::info);
 
-		args.getNonOptionArgs().forEach(System.out::println);
-		args.getOptionNames().forEach((option) -> System.out.println(option + "=" + args.getOptionValues(option)));
+		args.getNonOptionArgs().forEach(logger::info);
+		args.getOptionNames().forEach((option) -> logger.info(option + "=" + args.getOptionValues(option)));
 	}
 
 }
