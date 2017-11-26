@@ -1,57 +1,47 @@
 package com.gmail.unmacaque.spring.web;
 
-import static org.junit.Assert.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.gmail.unmacaque.spring.domain.Item;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
+@AutoConfigureMockMvc
 public class ShopControllerTest {
 
 	@Autowired
-	private TestRestTemplate restTemplate;
+	private MockMvc mvc;
 
 	@Test
 	public void testGetAll() throws Exception {
-		ResponseEntity<Resources<Resource<Item>>> exchange = restTemplate.exchange(
-				"/",
-				HttpMethod.GET,
-				null,
-				new ParameterizedTypeReference<Resources<Resource<Item>>>() {});
-
-		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.OK));
+		mvc.perform(get("/"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("_embedded", notNullValue()));
 	}
 
 	@Test
 	public void testGetItem() throws Exception {
-		ResponseEntity<Resource<Item>> exchange = restTemplate.exchange(
-				"/1",
-				HttpMethod.GET,
-				null,
-				new ParameterizedTypeReference<Resource<Item>>() {});
-
-		assertThat(exchange.getStatusCode(), equalTo(HttpStatus.OK));
-
-		Resource<Item> body = exchange.getBody();
-		Item item = body.getContent();
-
-		assertThat(item, hasProperty("itemId", equalTo(1)));
+		mvc.perform(get("/1"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("itemId", equalTo(1)))
+				.andExpect(jsonPath("title", notNullValue()))
+				.andExpect(jsonPath("description", notNullValue()))
+				.andExpect(jsonPath("price", notNullValue()))
+				.andExpect(jsonPath("_links.self.href", notNullValue()));
 	}
 }
