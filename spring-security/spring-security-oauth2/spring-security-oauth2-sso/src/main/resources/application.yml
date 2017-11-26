@@ -1,0 +1,9 @@
+security:
+  oauth2:
+    client:
+      client-id: oauth2-sso
+      client-secret: springsecurityoauth2
+      access-token-uri: http://localhost:9999/auth/oauth/token
+      user-authorization-uri: http://localhost:9999/auth/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9999/auth/oauth/check_token

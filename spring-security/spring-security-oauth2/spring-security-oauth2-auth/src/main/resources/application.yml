@@ -1,0 +1,8 @@
+server:
+  context-path: /auth
+  port: 9999
+
+security:
+  user:
+    name: user
+    password: pass

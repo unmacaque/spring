@@ -14,7 +14,8 @@
   </parent>
 
   <modules>
-    <module>spring-security-oauth2-client</module>
-    <module>spring-security-oauth2-server</module>
+    <module>spring-security-oauth2-auth</module>
+    <module>spring-security-oauth2-resource</module>
+    <module>spring-security-oauth2-sso</module>
   </modules>
 </project>
