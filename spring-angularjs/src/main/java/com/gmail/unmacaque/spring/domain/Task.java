@@ -1,12 +1,15 @@
 package com.gmail.unmacaque.spring.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Task implements Serializable {
@@ -17,9 +20,11 @@ public class Task implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotBlank
 	private String title;
 
-	private LocalDateTime date;
+	@NotNull
+	private LocalDate date;
 
 	private String text;
 
@@ -33,7 +38,7 @@ public class Task implements Serializable {
 		return title;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
@@ -53,7 +58,7 @@ public class Task implements Serializable {
 		this.title = title;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

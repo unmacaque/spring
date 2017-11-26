@@ -20,13 +20,15 @@ taskControllers.controller('TaskViewController', ['$scope', '$routeParams', 'Tas
 }]);
 
 taskControllers.controller('TaskAddController', ['$scope', '$location', '$routeParams', 'Tasks', function($scope, $location, $routeParams, Tasks) {
+	$scope.task = {};
+
 	$scope.saveTask = function() {
 		var taskSave = Tasks.save($scope.task);
 		return taskSave.$promise.then(
 				function(value) {
 					$location.path('/');
 				}, function(error) {
-					alert(error.data.message);
+					$scope.error = error.data.join(', ');
 				});
 	};
 }]);

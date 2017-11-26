@@ -1,6 +1,8 @@
 <div ng-controller="TaskAddController">
   <h3>Add New Task</h3>
 
+  <p ng-if="error" class="error">{{error}}</p>
+
   <fieldset>
     <legend>New Task</legend>
     <div>
@@ -8,8 +10,8 @@
       <input id="title" type="text" ng-model="task.title" />
     </div>
     <div>
-      <label for="datetime">Due Date</label>
-      <input id="datetime" type="datetime-local" ng-model="task.date" />
+      <label for="date">Due Date</label>
+      <input id="date" type="date" ng-model="task.date" />
     </div>
     <div>
       <label for="text">Text</label>
