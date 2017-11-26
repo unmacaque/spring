@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring;
+package com.gmail.unmacaque.spring.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
