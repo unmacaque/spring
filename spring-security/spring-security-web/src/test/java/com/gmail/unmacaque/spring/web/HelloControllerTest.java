@@ -1,9 +1,12 @@
 package com.gmail.unmacaque.spring.web;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -19,7 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 public class HelloControllerTest {
 
@@ -48,9 +51,19 @@ public class HelloControllerTest {
 	}
 
 	@Test
-	public void testHello_withoutAuthentication() throws Exception {
+	public void testLogin_withoutAuthentication() throws Exception {
 		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void testLogin_withRoleUser() throws Exception {
+		mockMvc.perform(formLogin()
+				.user("user")
+				.password("user"))
+				.andExpect(status().isFound())
+				.andExpect(authenticated().withUsername("user").withRoles("USER"))
+				.andExpect(redirectedUrl("/hello"));
 	}
 
 	@Test
