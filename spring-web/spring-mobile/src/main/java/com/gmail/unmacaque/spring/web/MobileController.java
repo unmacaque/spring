@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MobileController {
-	private static final String SPRING_MOBILE_SITE_PREFERENCE_COOKIE = "org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE";
+	public static final String SPRING_MOBILE_SITE_PREFERENCE_COOKIE = "org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE";
 
 	@ModelAttribute("device")
 	public String device(Device device) {
