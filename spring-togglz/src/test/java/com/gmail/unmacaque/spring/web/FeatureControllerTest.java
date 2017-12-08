@@ -1,7 +1,7 @@
-package com.gmail.unmacaque.spring;
+package com.gmail.unmacaque.spring.web;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
@@ -16,15 +16,35 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class ApplicationTest {
+public class FeatureControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testTogglzEndpoint() throws Exception {
-		mvc.perform(get("/togglz")
-				.with(user("admin").roles("ADMIN")))
+	public void testIndex() throws Exception {
+		mvc.perform(get("/"))
 				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void testFeatureA() throws Exception {
+		mvc.perform(get("/feature/FEATURE_A"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("feature", "FEATURE_A"));
+	}
+
+	@Test
+	public void testFeatureB() throws Exception {
+		mvc.perform(get("/feature/FEATURE_B"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("feature", "FEATURE_B"));
+	}
+
+	@Test
+	public void testFeatureC() throws Exception {
+		mvc.perform(get("/feature/FEATURE_C"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("feature", "FEATURE_C"));
 	}
 }

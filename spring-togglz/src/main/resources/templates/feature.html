@@ -7,7 +7,8 @@
 <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
 </head>
 <body>
-  <h1>Feature <span th:text="${feature}"></span></h1>
-  <p>Congratulations! You are seeing feature <span th:text="${feature}"></span>.</p>
+  <h1>Feature</h1>
+  <p togglz:active="${feature}">Congratulations! You are seeing feature <span th:text="${feature}"></span>.</p>
+  <p togglz:inactive="${feature}">Sorry, this feature is not available right now.</p>
 </body>
 </html>
