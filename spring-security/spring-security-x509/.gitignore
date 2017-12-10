@@ -1,6 +1,3 @@
-*.csr
-*.crt
-*.key
+/.tmp-ssl
 *.jks
 *.p12
-*.srl
