@@ -20,13 +20,15 @@ public class LibraryImpl implements Library {
 	@Value("classpath:books.xml")
 	private Resource resource;
 
+	private final XStream xstream;
+
+	public LibraryImpl(XStream xstream) {
+		this.xstream = xstream;
+	}
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Book> getBooks() {
-		XStream xstream = new XStream();
-		xstream.processAnnotations(Book.class);
-		xstream.alias("catalog", List.class);
-
 		logger.info("reading {}", resource.getFilename());
 
 		try {

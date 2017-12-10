@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ public class BooksRestController {
 	}
 
 	@GetMapping("/books")
-	public List<Book> getBooks() throws IOException {
+	public List<Book> getBooks() {
 		return library.getBooks();
 	}
 }

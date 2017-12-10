@@ -1,10 +1,15 @@
 package com.gmail.unmacaque.spring.domain;
 
+import java.util.StringJoiner;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("book")
 public class Book {
 
+	@XStreamAlias("id")
+	@XStreamAsAttribute
 	private String id;
 
 	private String author;
@@ -74,5 +79,12 @@ public class Book {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		StringJoiner joiner = new StringJoiner(",", "[", "]");
+		joiner.add(id).add(author).add(publishDate).add(description).add(genre).add(price);
+		return title + joiner.toString();
 	}
 }
