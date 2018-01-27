@@ -30,6 +30,10 @@ public class Person {
 	@Relationship(type = "KNOWS", direction = Relationship.UNDIRECTED)
 	private Collection<Person> acquaintances;
 
+	public Person() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}

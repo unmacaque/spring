@@ -18,8 +18,11 @@ public class Item implements Serializable {
 	private long id;
 
 	private String title;
+
 	private String description;
+
 	private BigDecimal price;
+
 	private int stock;
 
 	public long getId() {
@@ -56,5 +59,14 @@ public class Item implements Serializable {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public static Item create(String title, String description, BigDecimal price, int stock) {
+		Item item = new Item();
+		item.title = title;
+		item.description = description;
+		item.price = price;
+		item.stock = stock;
+		return item;
 	}
 }

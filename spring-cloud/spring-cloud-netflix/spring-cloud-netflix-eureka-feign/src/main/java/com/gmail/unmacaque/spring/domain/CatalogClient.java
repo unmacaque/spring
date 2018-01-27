@@ -3,17 +3,16 @@ package com.gmail.unmacaque.spring.domain;
 import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("catalog-provider")
 public interface CatalogClient {
 
-	@RequestMapping(value = "/products", method = RequestMethod.GET)
+	@GetMapping(value = "/products")
 	List<Product> getProducts();
 
-	@RequestMapping(value = "/products/{productId}", method = RequestMethod.GET)
+	@GetMapping(value = "/products/{productId}")
 	Product getProduct(@PathVariable("productId") long productId);
 
 }

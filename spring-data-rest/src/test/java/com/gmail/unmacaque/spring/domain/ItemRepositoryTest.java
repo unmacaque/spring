@@ -68,12 +68,7 @@ public class ItemRepositoryTest {
 				.andExpect(status().isNoContent());
 	}
 
-	private static Item createItem() {
-		Item item = new Item();
-		item.setTitle("foo");
-		item.setDescription("bar");
-		item.setPrice(BigDecimal.valueOf(1.99));
-		item.setStock(1);
-		return item;
+	public static Item createItem() {
+		return Item.create("foo", "A description for foo", BigDecimal.valueOf(1.99), 1);
 	}
 }
