@@ -6,6 +6,16 @@ security:
   basic:
     path: /togglz-console/*
   filter-order: 2
+spring:
+  datasource:
+    url: jdbc:h2:mem:spring
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 togglz:
   console:
     feature-admin-authority: ROLE_ADMIN

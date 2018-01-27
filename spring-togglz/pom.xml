@@ -32,6 +32,10 @@
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-spring-boot-starter</artifactId>
       <version>${togglz.version}</version>
@@ -50,6 +54,11 @@
       <groupId>com.github.heneke.thymeleaf</groupId>
       <artifactId>thymeleaf-extras-togglz</artifactId>
       <version>${thymeleaf-extras-togglz.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
