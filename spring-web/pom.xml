@@ -23,5 +23,6 @@
     <module>spring-thymeleaf</module>
     <module>spring-upload</module>
     <module>spring-webflow</module>
+    <module>spring-websockets</module>
   </modules>
 </project>

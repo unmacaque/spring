@@ -1,0 +1,43 @@
+body {
+	background-color: #f1f1f1;
+}
+
+h1 {
+	color: #6db33f
+}
+
+fieldset label {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+	vertical-align: top;
+}
+
+fieldset strong:first-child {
+	display: inline-block;
+	font-weight: bold;
+	width: 8em;
+}
+
+div {
+	margin: .5em 0;
+}
+
+textarea#message {
+	height: 6em;
+	width: 30em;
+}
+
+div#chat-content {
+	background-color: #fff;
+	overflow-y: scroll;
+	height: 40em;
+}
+
+div#chat-content span {
+	margin: 0 .5em;
+}
+
+div#chat-content .chat-status {
+    color: red;
+}

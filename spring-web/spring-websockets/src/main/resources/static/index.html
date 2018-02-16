@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Spring WebSocket</title>
+<link rel="stylesheet" href="css/spring.css" />
+<script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
+<script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+  var stompClient;
+
+  var onMessageReceive = function (json) {
+      var message = JSON.parse(json.body);
+      var formattedDate = new Date(message.postedOn).toLocaleString();
+      $('#chat-content').append(
+          $('<div>')
+              .addClass('chat-message')
+              .append($('<span>').css('font-weight', 'bold').text(message.author))
+              .append($('<span>').css('text-decoration', 'italic').text(formattedDate))
+              .append($('<span>').text(message.text))
+      );
+  };
+  
+  var updateButtonState = function (connected) {
+    if (connected) {
+        $('#connect').attr('disabled', 'disabled');
+        $('#disconnect, #post').removeAttr('disabled');
+    } else {
+        $('#connect').removeAttr('disabled');
+        $('#disconnect, #post').attr('disabled', 'disabled');
+    }
+  };
+
+  $('#connect').click(function (e) {
+    var socket = new SockJS("/socket-endpoint");
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        updateButtonState(true);
+        console.log(frame);
+        stompClient.subscribe("/topic/chat", onMessageReceive);
+    }, function (error) {
+        $('#chat-content').append(
+            $('<div>')
+                .addClass('chat-status')
+                .append($('<span>').text(error))
+        );
+        updateButtonState(false);
+    });
+  });
+
+  $('#disconnect').click(function (e) {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+        updateButtonState(false);
+    }
+  });
+
+  $('#post').click(function (e) {
+    var name = $('#name').val();
+    var text = $('#message').val();
+    if (name.length === 0 || text.length === 0) {
+        return;
+    }
+    var message = { "author": name, "postedOn": new Date(), "text": text };
+    stompClient.send("/chat/post", {}, JSON.stringify(message));
+    $('#message').val('');
+  });
+}
+</script>
+
+<body>
+
+<h1>Chat</h1>
+
+<fieldset>
+
+<div>
+  <button id="connect">Connect</button>
+  <button id="disconnect" disabled>Disconnect</button>
+</div>
+
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="text" id="name" placeholder="Your Name"/>
+</div>
+
+<div class="form-group">
+  <label for="message">Message</label>
+  <textarea id="message" placeholder="Enter your message here..."></textarea>
+</div>
+
+<input id="post" type="submit" disabled />
+
+</fieldset>
+
+<div id="chat-content"></div>
+
+</body>
+
+</html>
