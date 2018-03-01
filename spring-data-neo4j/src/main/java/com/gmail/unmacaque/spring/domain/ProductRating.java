@@ -51,4 +51,12 @@ public class ProductRating {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public static ProductRating create(Rating rating, Person person, Product product) {
+		ProductRating productRating = new ProductRating();
+		productRating.rating = rating;
+		productRating.person = person;
+		productRating.product = product;
+		return productRating;
+	}
 }

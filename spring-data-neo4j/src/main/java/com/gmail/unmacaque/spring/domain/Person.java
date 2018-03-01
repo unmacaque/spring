@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -18,7 +19,9 @@ public class Person {
 	private Long id;
 
 	private String name;
+
 	private int age;
+
 	private String gender;
 
 	@JsonManagedReference
@@ -32,12 +35,12 @@ public class Person {
 	@Relationship(type = "KNOWS", direction = Relationship.UNDIRECTED)
 	private Collection<Person> acquaintances;
 
-	public Person() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -86,5 +89,14 @@ public class Person {
 
 	public void setAcquaintances(Set<Person> acquaintances) {
 		this.acquaintances = acquaintances;
+	}
+
+	public static Person create(String name, int age, String gender, List<Person> acquaintances) {
+		Person person = new Person();
+		person.name = name;
+		person.age = age;
+		person.gender = gender;
+		person.acquaintances = acquaintances;
+		return person;
 	}
 }

@@ -53,4 +53,12 @@ public class Purchase {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public static Purchase create(LocalDateTime date, Person person, Product product) {
+		Purchase purchase = new Purchase();
+		purchase.date = date;
+		purchase.person = person;
+		purchase.product = product;
+		return purchase;
+	}
 }

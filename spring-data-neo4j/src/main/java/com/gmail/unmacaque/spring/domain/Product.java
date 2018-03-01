@@ -28,4 +28,10 @@ public class Product {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public static Product create(String title) {
+		Product person = new Product();
+		person.title = title;
+		return person;
+	}
 }
