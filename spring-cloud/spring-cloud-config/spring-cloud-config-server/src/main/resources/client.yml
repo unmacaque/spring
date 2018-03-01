@@ -1,4 +1,0 @@
-unmacaque:
-  spring:
-    cloud:
-      my-property: Hello Worlds
