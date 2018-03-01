@@ -1,12 +1,9 @@
-security:
-  user:
-    name: admin
-    password: togglz
-    role: ADMIN,USER
-  basic:
-    path: /togglz-console/*
-  filter-order: 2
 spring:
+  security:
+    user:
+      name: admin
+      password: togglz
+      roles: ADMIN,USER
   datasource:
     url: jdbc:h2:mem:spring
   h2:

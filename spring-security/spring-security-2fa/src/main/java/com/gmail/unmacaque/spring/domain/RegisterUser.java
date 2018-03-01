@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import com.gmail.unmacaque.spring.domain.validation.PasswordMatches;
 

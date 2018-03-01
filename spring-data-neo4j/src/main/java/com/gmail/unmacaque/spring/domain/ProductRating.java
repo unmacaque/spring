@@ -1,7 +1,8 @@
 package com.gmail.unmacaque.spring.domain;
 
 import org.neo4j.ogm.annotation.EndNode;
-import org.neo4j.ogm.annotation.GraphId;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
@@ -10,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @RelationshipEntity(type = "RATED")
 public class ProductRating {
 
-	@GraphId
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private Rating rating;

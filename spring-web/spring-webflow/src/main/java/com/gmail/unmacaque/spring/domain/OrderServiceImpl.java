@@ -2,6 +2,7 @@ package com.gmail.unmacaque.spring.domain;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -18,21 +19,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order cancelOrder(long orderId) throws NoSuchElementException {
-		Order order = getOrder(orderId);
-		orderRepository.delete(order);
+	public Optional<Order> cancelOrder(long orderId) throws NoSuchElementException {
+		Optional<Order> order = getOrder(orderId);
+		order.ifPresent(orderRepository::delete);
 		return order;
 	}
 
 	@Override
-	public Order getOrder(long orderId) throws NoSuchElementException {
-		Order order = orderRepository.findOne(orderId);
-
-		if (order != null) {
-			return order;
-		}
-
-		throw new NoSuchElementException();
+	public Optional<Order> getOrder(long orderId) throws NoSuchElementException {
+		return orderRepository.findById(orderId);
 	}
 
 	@Override

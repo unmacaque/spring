@@ -3,18 +3,16 @@ package com.gmail.unmacaque.spring.actuate.endpoint;
 import java.util.Collections;
 import java.util.Map;
 
-import org.springframework.boot.actuate.endpoint.AbstractEndpoint;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyEndpoint extends AbstractEndpoint<Map<String, Object>> {
+@Endpoint(id = "my-endpoint")
+public class MyEndpoint {
 
-	public MyEndpoint() {
-		super("myEndpoint", false);
-	}
-
-	@Override
-	public Map<String, Object> invoke() {
+	@ReadOperation
+	public Map<String, Object> message() {
 		return Collections.singletonMap("message", "Hello World");
 	}
 

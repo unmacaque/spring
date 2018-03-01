@@ -23,8 +23,9 @@ public class ServletConfiguration {
 	}
 
 	@Bean
-	public ServletRegistrationBean wireMockServletRegistrationBean() {
-		ServletRegistrationBean registration = new ServletRegistrationBean(wireMockServlet(), "/*");
+	public ServletRegistrationBean<WireMockHandlerDispatchingServlet> wireMockServletRegistrationBean() {
+		ServletRegistrationBean<WireMockHandlerDispatchingServlet> registration = new ServletRegistrationBean<>(
+				wireMockServlet(), "/*");
 		registration.addInitParameter("RequestHandlerClass", "com.github.tomakehurst.wiremock.http.StubRequestHandler");
 		return registration;
 	}

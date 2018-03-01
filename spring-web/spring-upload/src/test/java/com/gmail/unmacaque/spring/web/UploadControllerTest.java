@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.web;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,7 +30,7 @@ public class UploadControllerTest {
 
 	@Test
 	public void testPost() throws Exception {
-		mvc.perform(fileUpload("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes("UTF-8"))))
+		mvc.perform(multipart("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes("UTF-8"))))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeDoesNotExist("error"))
 				.andExpect(model().attribute("filename", "testFile"))
@@ -40,7 +40,7 @@ public class UploadControllerTest {
 
 	@Test
 	public void testPostWithEmptyFile() throws Exception {
-		mvc.perform(fileUpload("/").file("aFile", null))
+		mvc.perform(multipart("/").file("aFile", null))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("error", "File is empty"));
 	}

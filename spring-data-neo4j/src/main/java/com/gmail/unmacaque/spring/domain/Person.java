@@ -3,7 +3,8 @@ package com.gmail.unmacaque.spring.domain;
 import java.util.Collection;
 import java.util.Set;
 
-import org.neo4j.ogm.annotation.GraphId;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -12,7 +13,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @NodeEntity
 public class Person {
 
-	@GraphId
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private String name;

@@ -2,25 +2,25 @@ package com.gmail.unmacaque.spring.domain;
 
 import java.io.Serializable;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 5930179988863569939L;
 
-	@NotBlank
+	@NotEmpty
 	private String firstName;
 
-	@NotBlank
+	@NotEmpty
 	private String lastName;
 
-	@NotBlank
+	@NotEmpty
 	private String street;
 
-	@NotBlank
+	@NotEmpty
 	private String postal;
 
-	@NotBlank
+	@NotEmpty
 	private String city;
 
 	public String getFirstName() {

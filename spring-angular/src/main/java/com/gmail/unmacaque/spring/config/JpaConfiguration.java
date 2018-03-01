@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.config;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,6 @@ import org.springframework.data.auditing.DateTimeProvider;
 public class JpaConfiguration {
 	@Bean
 	public DateTimeProvider dateTimeProvider() {
-		return () -> Calendar.getInstance();
+		return () -> Optional.of(LocalDateTime.now());
 	}
 }
