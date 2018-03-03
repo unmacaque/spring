@@ -5,12 +5,4 @@ spring:
     console:
       enabled: true
   jpa:
-    hibernate.ddl-auto: create
-    generate-ddl: true
-    properties:
-      hibernate:
-        cache:
-          provider_class: org.hibernate.cache.NoCacheProvider
-        hbm2ddl:
-          import_files: spring-data-rest.sql
     show-sql: true

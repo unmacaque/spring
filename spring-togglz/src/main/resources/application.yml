@@ -10,8 +10,6 @@ spring:
     console:
       enabled: true
   jpa:
-    hibernate:
-      ddl-auto: create
     show-sql: true
 togglz:
   console:

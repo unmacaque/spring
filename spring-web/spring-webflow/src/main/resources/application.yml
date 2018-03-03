@@ -5,12 +5,6 @@ spring:
     console:
       enabled: true
   jpa:
-    hibernate.ddl-auto: create
-    generate-ddl: true
-    properties:
-      hibernate:
-        cache:
-          provider_class: org.hibernate.cache.NoCacheProvider
     show-sql: true
   thymeleaf:
     cache: false

@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,14 +16,14 @@ public class Task implements Serializable {
 	private static final long serialVersionUID = -2513462600168725588L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotEmpty
 	private String title;
 
 	@NotNull
-	private LocalDate date;
+	private LocalDateTime date;
 
 	private String text;
 
@@ -37,7 +37,7 @@ public class Task implements Serializable {
 		return title;
 	}
 
-	public LocalDate getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
@@ -57,7 +57,7 @@ public class Task implements Serializable {
 		this.title = title;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
