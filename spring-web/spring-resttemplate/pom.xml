@@ -13,7 +13,16 @@
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+    <spring-cloud-contract.version>1.2.3.RELEASE</spring-cloud-contract.version>
+  </properties>
+
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-contract-wiremock</artifactId>
+      <version>${spring-cloud-contract.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -27,11 +36,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.github.tomakehurst</groupId>
-      <artifactId>wiremock</artifactId>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 

@@ -1,4 +1,7 @@
-server:
-  context-parameters:
-    WireMockFileSourceRoot:
-    verboseLoggingEnabled: false
+wiremock:
+  server:
+    port: 8888
+    files:
+    - classpath:/src/test/resources/__files
+    stubs:
+    - classpath:/mappings

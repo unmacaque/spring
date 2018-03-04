@@ -6,6 +6,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.gmail.unmacaque.spring.domain.Bundle;
@@ -19,9 +20,13 @@ public class RestTemplateApplicationRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		RestTemplate restTemplate = new RestTemplate();
-		Bundle bundle = restTemplate.getForObject("http://localhost:8080/", Bundle.class);
-		if (bundle != null) {
-			logger.info(bundle.getContent());
+		try {
+			Bundle bundle = restTemplate.getForObject("http://localhost:8888/", Bundle.class);
+			if (bundle != null) {
+				logger.info(bundle.getContent());
+			}
+		} catch (RestClientException e) {
+			logger.error(e.toString(), e);
 		}
 	}
 }
