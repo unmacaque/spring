@@ -2,9 +2,6 @@ package com.gmail.unmacaque.spring.domain;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Item {
 	private static int itemIdGenerator = 1;
 
@@ -13,12 +10,7 @@ public class Item {
 	private final String description;
 	private final BigDecimal price;
 
-	@JsonCreator
-	private Item(
-			@JsonProperty("itemId") int itemId,
-			@JsonProperty("title") String title,
-			@JsonProperty("description") String description,
-			@JsonProperty("price") BigDecimal price) {
+	private Item(int itemId, String title, String description, BigDecimal price) {
 		this.itemId = itemId;
 		this.title = title;
 		this.description = description;
@@ -27,14 +19,6 @@ public class Item {
 
 	public static Item create(String title, String description, BigDecimal price) {
 		return new Item(itemIdGenerator++, title, description, price);
-	}
-
-	public static Item create(Item baseItem) {
-		return new Item(
-				itemIdGenerator++,
-				baseItem.getTitle(),
-				baseItem.getDescription(),
-				baseItem.getPrice());
 	}
 
 	public int getItemId() {

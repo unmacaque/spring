@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,5 +44,24 @@ public class ShopControllerTest {
 				.andExpect(jsonPath("description", notNullValue()))
 				.andExpect(jsonPath("price", notNullValue()))
 				.andExpect(jsonPath("_links.self.href", notNullValue()));
+	}
+
+	@Test
+	public void testOrderItem() throws Exception {
+		mvc.perform(post("/1/order"))
+				.andDo(print())
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("itemId", equalTo(1)))
+				.andExpect(jsonPath("title", notNullValue()))
+				.andExpect(jsonPath("description", notNullValue()))
+				.andExpect(jsonPath("price", notNullValue()))
+				.andExpect(jsonPath("_links.self.href", notNullValue()));
+	}
+
+	@Test
+	public void testOrderItemDoesNotExistNotFound() throws Exception {
+		mvc.perform(post("/99/order"))
+				.andDo(print())
+				.andExpect(status().isNotFound());
 	}
 }
