@@ -20,6 +20,8 @@ public class RestTemplateApplicationRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		RestTemplate restTemplate = new RestTemplate();
 		Bundle bundle = restTemplate.getForObject("http://localhost:8080/", Bundle.class);
-		logger.info(bundle.getContent());
+		if (bundle != null) {
+			logger.info(bundle.getContent());
+		}
 	}
 }

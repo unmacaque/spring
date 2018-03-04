@@ -46,7 +46,11 @@ public class UploadController {
 			return "index";
 		}
 		try {
-			File destFile = new File(tempDirectory.toFile(), file.getOriginalFilename());
+			String fileName = file.getOriginalFilename();
+			if (fileName == null) {
+				fileName = "newFile";
+			}
+			File destFile = new File(tempDirectory.toFile(), fileName);
 			file.transferTo(destFile);
 			modelMap.addAttribute("filename", file.getOriginalFilename());
 			modelMap.addAttribute("filesize", file.getSize());

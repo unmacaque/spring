@@ -40,7 +40,7 @@ public class UploadControllerTest {
 
 	@Test
 	public void testPostWithEmptyFile() throws Exception {
-		mvc.perform(multipart("/").file("aFile", null))
+		mvc.perform(multipart("/").file("aFile", new byte[0]))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("error", "File is empty"));
 	}
