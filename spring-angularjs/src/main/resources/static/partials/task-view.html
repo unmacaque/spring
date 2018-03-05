@@ -2,7 +2,7 @@
   <h3>{{task.title}}</h3>
 
   <p>Status: {{task.done | taskDoneFilter}}</p>
-  <p>Due Date: {{task.date | date : 'mediumDate'}}</p>
+  <p>Due Date: {{task.date | date : 'medium'}}</p>
   <p>{{task.text}}</p>
 
   <p><button ng-click="toggleDone()">Mark as {{task.done ? 'not Done' : 'Done'}}</button></p>
