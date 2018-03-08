@@ -2,37 +2,30 @@ package com.gmail.unmacaque.spring.autoconfigure;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.context.support.TestPropertySourceUtils;
+import org.springframework.boot.autoconfigure.AutoConfigurations;
+import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-import com.gmail.unmacaque.spring.domain.MyBean;
 import com.gmail.unmacaque.spring.domain.MyBeanImpl;
 
 public class MyBeanAutoConfigurationTest {
 
-	private AnnotationConfigApplicationContext context;
-
-	@Before
-	public void before() {
-		context = new AnnotationConfigApplicationContext();
-	}
-
-	@After
-	public void after() {
-		context.close();
-	}
+	private ApplicationContextRunner runner = new ApplicationContextRunner()
+			.withConfiguration(AutoConfigurations.of(MyBeanAutoConfiguration.class));
 
 	@Test
 	public void testConfiguration() {
-		TestPropertySourceUtils.addInlinedPropertiesToEnvironment(context, "application.my-property=foo", "application.my-list=foo");
-		context.register(MyBeanAutoConfiguration.class);
-		context.refresh();
+		runner.withPropertyValues("application.my-property=foo", "application.my-list=foo")
+				.run(context -> {
+					assertThat(context).hasSingleBean(MyBeanImpl.class);
+				});
+	}
 
-		MyBean bean = context.getBean(MyBean.class);
-		assertThat(bean).isInstanceOf(MyBeanImpl.class);
+	@Test
+	public void testConfigurationWithoutPropertiesFailsStartup() {
+		runner.run(context -> {
+			assertThat(context).hasFailed();
+		});
 	}
 
 }
