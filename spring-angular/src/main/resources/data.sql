@@ -1,1 +1,0 @@
-insert into message ( title, subtitle, content, created_date, last_modified_date ) values ('Hello', 'unmacaque', 'This is the first message posted with this nice litte application. Hope you like it. Feel free to post more messages. ☺️', '2017-04-01T15:30:00.000Z', '2017-04-01T15:30:00.000Z');

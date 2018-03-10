@@ -1,11 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:spring
-  jpa:
-    show-sql: true
   jackson:
     serialization:
       write-dates-as-timestamps: false
-  data:
-    rest:
-      base-path: /api

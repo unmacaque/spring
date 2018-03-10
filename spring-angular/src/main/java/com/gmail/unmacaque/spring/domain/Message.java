@@ -1,37 +1,25 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Message implements Serializable {
-
-	private static final long serialVersionUID = 2352043549853253811L;
+@Document
+public class Message {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
 	private String title;
 
-	private String subtitle;
+	private String author;
 
 	private String content;
 
 	@CreatedDate
-	@Column(updatable = false)
 	private Instant createdDate;
 
 	@LastModifiedDate
@@ -45,7 +33,7 @@ public class Message implements Serializable {
 		return createdDate;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -53,8 +41,8 @@ public class Message implements Serializable {
 		return lastModifiedDate;
 	}
 
-	public String getSubtitle() {
-		return subtitle;
+	public String getAuthor() {
+		return author;
 	}
 
 	public String getTitle() {
@@ -69,7 +57,7 @@ public class Message implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -77,8 +65,8 @@ public class Message implements Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public void setTitle(String title) {

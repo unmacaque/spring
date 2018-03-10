@@ -1,7 +1,13 @@
 package com.gmail.unmacaque.spring.domain;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.mongodb.repository.Tailable;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-@RepositoryRestResource(collectionResourceRel = "messages", path = "messages")
-public interface MessageRepository extends PagingAndSortingRepository<Message, Long> {}
+import reactor.core.publisher.Flux;
+
+public interface MessageRepository extends ReactiveCrudRepository<Message, String> {
+
+	@Tailable
+	Flux<Message> findWithTailableCursorBy();
+
+}

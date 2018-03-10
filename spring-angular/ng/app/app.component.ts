@@ -17,9 +17,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.messageService.getMessages()
     .subscribe(
-        data => {
-          const messages: Message[] = data['_embedded'].messages as Message[];
-          this.messages = messages.sort((a, b) => (a.createdDate > b.createdDate ? -1 : 1));
+        message => {
+          this.messages.push(message);
         },
         (error: HttpErrorResponse) => console.error(error.message)
       );
