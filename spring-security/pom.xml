@@ -17,6 +17,7 @@
     <module>spring-security-2fa</module>
     <module>spring-security-ldap</module>
     <module>spring-security-web</module>
+    <module>spring-security-webflux</module>
     <module>spring-security-x509</module>
   </modules>
 </project>
