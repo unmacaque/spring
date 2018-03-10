@@ -36,6 +36,7 @@
     <module>spring-security</module>
     <module>spring-togglz</module>
     <module>spring-web</module>
+    <module>spring-webflux</module>
   </modules>
 
   <dependencyManagement>
