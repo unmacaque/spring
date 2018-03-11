@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { MessageComponent } from './message.component';
-import { MessageService } from './message.service';
+import { MessageComponent } from './message/message.component';
+import { MessageService } from './message/message.service';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';

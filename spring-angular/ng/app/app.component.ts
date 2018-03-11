@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Message } from './message';
-import { MessageService } from './message.service';
+import { Message } from './message/message';
+import { MessageService } from './message/message.service';
 
 @Component({
   selector: 'app-root',

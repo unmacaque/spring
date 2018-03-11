@@ -19,7 +19,7 @@ export class MessageService {
         let message : Message = JSON.parse(event.data);
         this.zone.run(() => observer.next(message));
       };
-      //eventSource.onerror = (error) => observer.error(error);
+      eventSource.onerror = (error) => observer.error(error);
       return () => eventSource.close();
     });
   }
