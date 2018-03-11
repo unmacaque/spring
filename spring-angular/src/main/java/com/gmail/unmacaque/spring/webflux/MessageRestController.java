@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.webflux;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,7 @@ public class MessageRestController {
 	}
 
 	@PostMapping
-	public Mono<Message> postMessage(Message message) {
+	public Mono<Message> postMessage(@RequestBody Message message) {
 		return repository.save(message);
 	}
 
