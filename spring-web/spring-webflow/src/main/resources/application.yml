@@ -5,6 +5,7 @@ spring:
     console:
       enabled: true
   jpa:
+    open-in-view: true
     show-sql: true
   thymeleaf:
     cache: false

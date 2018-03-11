@@ -14,7 +14,7 @@
   </parent>
 
   <properties>
-    <spring-webflow.version>2.4.4.RELEASE</spring-webflow.version>
+    <spring-webflow.version>2.5.0.RELEASE</spring-webflow.version>
   </properties>
 
   <dependencies>
