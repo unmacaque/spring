@@ -1,6 +1,6 @@
 export class Message {
   title: string;
-  subtitle: string;
+  author: string;
   content: string;
   createdDate: Date;
   lastModifiedDate: Date;

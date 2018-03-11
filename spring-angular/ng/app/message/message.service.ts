@@ -1,4 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Message } from './message';
 
@@ -9,7 +10,7 @@ const EventSource: any = window['EventSource'];
 @Injectable()
 export class MessageService {
 
-  constructor(private zone: NgZone) { }
+  constructor(private http: HttpClient, private zone: NgZone) { }
 
   getMessages(): Observable<Message> {
     return Observable.create(observer => {
@@ -24,5 +25,8 @@ export class MessageService {
     });
   }
 
+  sendMessage(message : Message) : Observable<Message> {
+    return this.http.post<Message>('/api/messages', message);
+  }
 
 }
