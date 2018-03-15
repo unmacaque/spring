@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring.webflux;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,6 @@ public class WebFluxController {
 	public Flux<Greeting> helloFlux() {
 		return Flux
 				.<Greeting>generate(s -> s.next(new Greeting("Hello World", LocalDateTime.now())))
-				.delayElements(Duration.ofSeconds(1))
 				.take(10);
 	}
 }

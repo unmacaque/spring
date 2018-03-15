@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.Duration;
 import java.util.function.Supplier;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.reactivestreams.Publisher;
@@ -41,7 +40,6 @@ public class WebFluxControllerTest {
 	}
 
 	@Test
-	@Ignore
 	public void testFlux() {
 		// @formatter:off
 		Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
