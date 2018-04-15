@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-security-web</artifactId>
-  <name>Spring Security</name>
+  <name>Spring Security Web</name>
   <url>https://bitbucket.org/unmacaque/spring</url>
   <packaging>jar</packaging>
 
