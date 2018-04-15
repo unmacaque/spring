@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-togglz</artifactId>
@@ -17,6 +18,18 @@
     <thymeleaf-extras-togglz.version>2.0.0.RELEASE</thymeleaf-extras-togglz.version>
     <togglz.version>2.5.0.Final</togglz.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-distribution</artifactId>
+        <version>${togglz.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -42,17 +55,14 @@
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-spring-boot-starter</artifactId>
-      <version>${togglz.version}</version>
     </dependency>
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-console</artifactId>
-      <version>${togglz.version}</version>
     </dependency>
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-spring-security</artifactId>
-      <version>${togglz.version}</version>
     </dependency>
     <dependency>
       <groupId>com.github.heneke.thymeleaf</groupId>
