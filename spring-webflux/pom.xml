@@ -16,5 +16,6 @@
   <modules>
     <module>spring-webflux-annotated</module>
     <module>spring-webflux-functional</module>
+    <module>spring-webflux-webclient</module>
   </modules>
 </project>
