@@ -1,16 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:spring
-  jpa:
-    hibernate.ddl-auto: create
-    generate-ddl: true
-    properties:
-      hibernate:
-        cache:
-          provider_class: org.hibernate.cache.NoCacheProvider
-        hbm2ddl:
-          import_files: data.sql
-    show-sql: true
   jackson:
     serialization:
       write-dates-as-timestamps: false
