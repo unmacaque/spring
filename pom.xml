@@ -33,6 +33,7 @@
     <module>spring-data-neo4j</module>
     <module>spring-data-rest</module>
     <module>spring-kotlin</module>
+    <module>spring-restdocs</module>
     <module>spring-security</module>
     <module>spring-togglz</module>
     <module>spring-web</module>
