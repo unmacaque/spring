@@ -1,4 +1,4 @@
-# Instructions
+# spring-angular
 
 Before starting development run `npm install` once.
 

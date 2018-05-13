@@ -1,4 +1,4 @@
-# Instructions
+# spring-security-ldap
 
 First, run `mvn spring-boot:run` to start the Spring Boot application.
 
