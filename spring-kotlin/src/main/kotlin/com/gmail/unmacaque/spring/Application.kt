@@ -1,14 +1,12 @@
 package com.gmail.unmacaque.spring
 
-import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.ApplicationRunner
-import org.springframework.boot.ApplicationArguments
-import com.gmail.unmacaque.spring.domain.MessageRepository
 import com.gmail.unmacaque.spring.domain.Message
-import java.util.stream.Stream
-import java.util.stream.StreamSupport
+import com.gmail.unmacaque.spring.domain.MessageRepository
+import org.springframework.boot.ApplicationRunner
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+import java.util.stream.StreamSupport
 
 @SpringBootApplication
 class Application {
@@ -27,5 +25,5 @@ class Application {
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(Application::class.java, *args)
+    runApplication<Application>(*args)
 }
