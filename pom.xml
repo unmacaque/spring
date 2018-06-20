@@ -12,6 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <jsoup.version>1.9.2</jsoup.version>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     <xstream.version>1.4.10</xstream.version>
   </properties>
 
@@ -42,6 +43,13 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.jsoup</groupId>
         <artifactId>jsoup</artifactId>
