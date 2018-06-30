@@ -1,3 +1,9 @@
 spring:
   application:
     name: spring-boot-docker
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
