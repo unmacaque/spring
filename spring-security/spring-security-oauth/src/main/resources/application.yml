@@ -2,7 +2,17 @@ spring:
   security:
     oauth2:
       client:
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/auth
+            token-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/token
+            jwk-set-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/certs
+            user-info-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/userinfo
         registration:
-          github:
-            client-id: id-placeholder
-            client-secret: secret-placeholder
+          keycloak:
+            authorization-grant-type: authorization_code
+            client-name: Keycloak
+            client-id: spring-security-oauth
+            client-secret: springboot
+            redirect-uri-template: http://localhost:8080/login/oauth2/code/
+            scope: openid
