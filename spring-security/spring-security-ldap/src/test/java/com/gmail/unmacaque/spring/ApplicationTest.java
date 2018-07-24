@@ -1,7 +1,8 @@
 package com.gmail.unmacaque.spring;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
@@ -23,19 +24,14 @@ public class ApplicationTest {
 
 	@Test
 	public void testLogin_withValidCredentials() throws Exception {
-		mvc.perform(formLogin()
-				.user("test")
-				.password("test"))
-				.andExpect(status().isFound())
-				.andExpect(redirectedUrl("/"));
+		mvc.perform(get("/").with(httpBasic("test", "test")))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Hello, test"));
 	}
 
 	@Test
-	public void testLogin_withInvalidCredentials_redirectToLogin() throws Exception {
-		mvc.perform(formLogin()
-				.user("invalid")
-				.password("invalid"))
-				.andExpect(status().isFound())
-				.andExpect(redirectedUrl("/login?error"));
+	public void testLogin_withInvalidCredentials_unauthorized() throws Exception {
+		mvc.perform(get("/").with(httpBasic("foo", "bar")))
+				.andExpect(status().isUnauthorized());
 	}
 }
