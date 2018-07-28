@@ -19,7 +19,8 @@ public class WebClientApplicationRunner implements ApplicationRunner {
 				.create("http://localhost:8888")
 				.get()
 				.exchange()
-				.block()
+				.blockOptional()
+				.orElseThrow(IllegalStateException::new)
 				.toEntity(String.class)
 				.map(ResponseEntity::getBody)
 				.subscribe(log::info);
