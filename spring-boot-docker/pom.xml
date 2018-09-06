@@ -15,6 +15,7 @@
   </parent>
 
   <properties>
+    <dockerfile-maven.version>1.4.4</dockerfile-maven.version>
     <logstash-logback-encoder.version>5.1</logstash-logback-encoder.version>
   </properties>
 
@@ -56,20 +57,11 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
       <plugin>
-        <groupId>io.fabric8</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>${dockerfile-maven.version}</version>
         <configuration>
-          <images>
-            <image>
-              <name>%g/%a:%l</name>
-              <build>
-                <dockerFile>Dockerfile</dockerFile>
-                <assembly>
-                  <descriptorRef>artifact</descriptorRef>
-                </assembly>
-              </build>
-            </image>
-          </images>
+          <repository>unmacaque/${project.artifactId}</repository>
         </configuration>
       </plugin>
     </plugins>
