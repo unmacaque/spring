@@ -9,8 +9,7 @@ public class OrderFactory {
 	}
 
 	public Address newAddress() {
-		Address address = new Address();
-		return address;
+		return new Address();
 	}
 
 	public Order newOrder(Address address, Payment payment) {

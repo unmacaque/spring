@@ -10,22 +10,18 @@ import com.gmail.unmacaque.spring.domain.MyBeanImpl;
 
 public class MyBeanAutoConfigurationTest {
 
-	private ApplicationContextRunner runner = new ApplicationContextRunner()
+	private final ApplicationContextRunner runner = new ApplicationContextRunner()
 			.withConfiguration(AutoConfigurations.of(MyBeanAutoConfiguration.class));
 
 	@Test
 	public void testConfiguration() {
 		runner.withPropertyValues("application.my-property=foo", "application.my-list=foo")
-				.run(context -> {
-					assertThat(context).hasSingleBean(MyBeanImpl.class);
-				});
+				.run(context -> assertThat(context).hasSingleBean(MyBeanImpl.class));
 	}
 
 	@Test
 	public void testConfigurationWithoutPropertiesFailsStartup() {
-		runner.run(context -> {
-			assertThat(context).hasFailed();
-		});
+		runner.run(context -> assertThat(context).hasFailed());
 	}
 
 }

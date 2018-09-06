@@ -26,13 +26,13 @@ public class ApplicationTest {
 	private MockMvc mvc;
 
 	@Test
-	public void testGetIsUnauthorized() throws CertificateException, IOException, Exception {
+	public void testGetIsUnauthorized() throws Exception {
 		mvc.perform(get("/"))
 				.andExpect(status().isForbidden());
 	}
 
 	@Test
-	public void testGetWithX509IsAuthorized() throws CertificateException, IOException, Exception {
+	public void testGetWithX509IsAuthorized() throws Exception {
 		mvc.perform(get("/").with(x509("classpath:client.crt")))
 				.andExpect(status().isOk())
 				.andExpect(authenticated().withUsername("localhost"));

@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.config;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +69,7 @@ public class WebFlowConfiguration extends AbstractFlowConfiguration {
 	@Bean
 	public MvcViewFactoryCreator mvcViewFactoryCreator() {
 		MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
-		factoryCreator.setViewResolvers(Arrays.<ViewResolver>asList(viewResolver));
+		factoryCreator.setViewResolvers(Collections.singletonList(viewResolver));
 		factoryCreator.setUseSpringBeanBinding(true);
 		return factoryCreator;
 	}

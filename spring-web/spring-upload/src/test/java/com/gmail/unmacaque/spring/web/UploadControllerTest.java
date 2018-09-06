@@ -13,6 +13,8 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
@@ -30,7 +32,7 @@ public class UploadControllerTest {
 
 	@Test
 	public void testPost() throws Exception {
-		mvc.perform(multipart("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes("UTF-8"))))
+		mvc.perform(multipart("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes(StandardCharsets.UTF_8))))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeDoesNotExist("error"))
 				.andExpect(model().attribute("filename", "testFile"))
