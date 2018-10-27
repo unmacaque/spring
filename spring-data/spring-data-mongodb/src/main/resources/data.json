@@ -1,0 +1,27 @@
+[
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Quote",
+    "author": "Albert Einstein",
+    "text": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+  },
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Quote",
+    "author": "Mark Twain",
+    "text": "If you tell the truth, you don't have to remember anything."
+  },
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Quote",
+    "author": "Oscar Wilde",
+    "text": "To live is the rarest thing in the world. Most people exist, that is all."
+  },
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Quote",
+    "author": "Abraham Lincoln",
+    "text": "I am a slow walker, but I never walk back."
+  },
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Quote",
+    "author": "Buddha",
+    "text": "However many holy words you read, however many you speak, what good will they do you if you do not act on upon them?"
+  }
+]
