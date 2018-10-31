@@ -4,6 +4,7 @@ spring:
       client:
         provider:
           keycloak:
+            #issuer-uri: http://localhost:8180/auth/realms/spring-boot/
             authorization-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/auth
             token-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/token
             jwk-set-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/certs
