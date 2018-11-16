@@ -19,7 +19,7 @@ import 'rxjs/add/observable/of';
 
 class MockMessageService {
   getMessages() : Observable<Message> {
-    return Observable.of({
+    return Observable.create({
       title: 'Hello Karma',
       author: 'Karma',
       content: 'Angular is awesome',
