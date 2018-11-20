@@ -9,8 +9,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <jsoup.version>1.9.2</jsoup.version>
     <spring-cloud.version>Finchley.SR1</spring-cloud.version>
     <xstream.version>1.4.10</xstream.version>
@@ -32,7 +31,6 @@
     <module>spring-boot-docker</module>
     <module>spring-cache</module>
     <module>spring-data</module>
-    <module>spring-kotlin</module>
     <module>spring-restdocs</module>
     <module>spring-security</module>
     <module>spring-togglz</module>
