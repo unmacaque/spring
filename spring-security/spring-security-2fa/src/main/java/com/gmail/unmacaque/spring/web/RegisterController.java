@@ -1,8 +1,7 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
+import com.gmail.unmacaque.spring.domain.RegisterUser;
+import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
 import org.jboss.aerogear.security.otp.api.Base32;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -15,8 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.gmail.unmacaque.spring.domain.RegisterUser;
-import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 public class RegisterController {
@@ -55,7 +55,7 @@ public class RegisterController {
 		String secret;
 		try {
 			secret = createNewOtpUser(registerUser);
-			String code = URLEncoder.encode(String.format(OTPAUTH_CODE, "spring-security-2fa", secret), "UTF-8");
+			String code = URLEncoder.encode(String.format(OTPAUTH_CODE, "spring-security-2fa", secret), StandardCharsets.UTF_8);
 			modelMap.addAttribute("code", code);
 		} catch (RuntimeException e) {
 			result.reject("register.error.general", e.getMessage());

@@ -1,7 +1,6 @@
 package com.gmail.unmacaque.spring.config;
 
-import java.util.ArrayList;
-
+import com.gmail.unmacaque.spring.domain.Message;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +9,7 @@ import org.springframework.data.mongodb.core.CollectionOptions;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.repository.init.Jackson2ResourceReader;
 
-import com.gmail.unmacaque.spring.domain.Message;
+import java.util.ArrayList;
 
 @Configuration
 public class DataConfiguration implements ApplicationListener<ApplicationReadyEvent> {
