@@ -83,8 +83,8 @@
             ],
             "scripts": [],
             "assets": [
-              "ng/assets",
-              "ng/favicon.ico"
+              "ng/favicon.ico",
+              "ng/assets"
             ]
           }
         },
