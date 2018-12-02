@@ -1,8 +1,11 @@
-FROM openjdk:8-alpine
-VOLUME /tmp
-RUN apk add --no-cache curl
+FROM openjdk:11-jdk-slim AS build
+WORKDIR /opt
 ADD /target/spring-boot-docker.jar app.jar
-RUN sh -c 'touch /app.jar'
-HEALTHCHECK --start-period=10s CMD curl --fail http://localhost:8080/actuator/health || exit 1
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+RUN jar -xf *.jar
+FROM openjdk:11-jre-slim
+VOLUME /tmp
+COPY --from=build /opt/BOOT-INF/lib /app/lib
+COPY --from=build /opt/META-INF /app/META-INF
+COPY --from=build /opt/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp", "app:app/lib/*", "com.gmail.unmacaque.spring.Application"]
 EXPOSE 8080
