@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Homepage</title>
+<link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css" />
+</head>
+<body>
+  <h1>spring-security-config</h1>
+
+  <p>Welcome <strong th:text="${username}"></strong>!</p>
+
+  <p><a href="/logout" th:href="@{/logout}">Logout</a></p>
+</body>
+</html>

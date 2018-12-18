@@ -15,6 +15,7 @@
 
   <modules>
     <module>spring-security-2fa</module>
+    <module>spring-security-config</module>
     <module>spring-security-ldap</module>
     <module>spring-security-oauth</module>
     <module>spring-security-web</module>
