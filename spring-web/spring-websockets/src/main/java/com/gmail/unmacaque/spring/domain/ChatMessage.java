@@ -1,12 +1,12 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class ChatMessage {
 
 	private String author;
 
-	private LocalDateTime postedOn;
+	private ZonedDateTime postedOn;
 
 	private String text;
 
@@ -18,11 +18,11 @@ public class ChatMessage {
 		this.author = author;
 	}
 
-	public LocalDateTime getPostedOn() {
+	public ZonedDateTime getPostedOn() {
 		return postedOn;
 	}
 
-	public void setPostedOn(LocalDateTime postedOn) {
+	public void setPostedOn(ZonedDateTime postedOn) {
 		this.postedOn = postedOn;
 	}
 
