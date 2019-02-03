@@ -31,6 +31,7 @@
     <module>spring-boot-docker</module>
     <module>spring-cache</module>
     <module>spring-data</module>
+    <module>spring-resilience4j</module>
     <module>spring-restdocs</module>
     <module>spring-security</module>
     <module>spring-togglz</module>

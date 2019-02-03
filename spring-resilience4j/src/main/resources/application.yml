@@ -1,0 +1,8 @@
+resilience4j:
+  circuitbreaker:
+    backends:
+      myBreaker:
+        failureRateThreshold: 20
+        waitDurationInOpenState: 10s
+        ringBufferSizeInClosedState: 20
+        ringBufferSizeInHalfOpenState: 10
