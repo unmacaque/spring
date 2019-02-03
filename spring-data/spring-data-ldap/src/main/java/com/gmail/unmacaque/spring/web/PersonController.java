@@ -12,20 +12,21 @@ import java.util.Optional;
 @RestController
 public class PersonController {
 
-    @Autowired
-    private PersonRepository personRepository;
+	@Autowired
+	private PersonRepository personRepository;
 
-    @GetMapping({"/", "/persons"})
-    public Iterable<Person> getPersons(@RequestParam("name") Optional<String> name) {
-        return name.map(personRepository::findByNameLike).orElseGet(personRepository::findAll);
-    }
+	@GetMapping({"/", "/persons"})
+	public Iterable<Person> getPersons(@RequestParam("name") Optional<String> name) {
+		return name.map(personRepository::findByNameLike).orElseGet(personRepository::findAll);
+	}
 
-    @GetMapping("/persons/{uid}")
-    public Person getPersonByUid(@PathVariable("uid") String uid) {
-        return personRepository.findByUid(uid).orElseThrow();
-    }
+	@GetMapping("/persons/{uid}")
+	public Person getPersonByUid(@PathVariable("uid") String uid) {
+		return personRepository.findByUid(uid).orElseThrow();
+	}
 
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void handleNoSuchElementException() {}
+	@ExceptionHandler(NoSuchElementException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public void handleNoSuchElementException() {
+	}
 }

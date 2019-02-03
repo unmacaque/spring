@@ -22,48 +22,48 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ApplicationTest {
 
-    @Autowired
-    private MockMvc mvc;
+	@Autowired
+	private MockMvc mvc;
 
-    @Test
-    public void testGetPersons() throws Exception {
-        mvc.perform(get("/persons"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", not(empty())));
-    }
+	@Test
+	public void testGetPersons() throws Exception {
+		mvc.perform(get("/persons"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$", not(empty())));
+	}
 
-    @Test
-    public void testGetPersonByName() throws Exception {
-        mvc.perform(get("/persons?name=*Doe"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)));
-    }
+	@Test
+	public void testGetPersonByName() throws Exception {
+		mvc.perform(get("/persons?name=*Doe"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$", hasSize(2)));
+	}
 
-    @Test
-    public void testGetPersonByUid() throws Exception {
-        mvc.perform(get("/persons/fred"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("name", equalTo("Fred")))
-                .andExpect(jsonPath("uid", equalTo("fred")));
-    }
+	@Test
+	public void testGetPersonByUid() throws Exception {
+		mvc.perform(get("/persons/fred"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("name", equalTo("Fred")))
+				.andExpect(jsonPath("uid", equalTo("fred")));
+	}
 
-    @Test
-    public void testGetGroups() throws Exception {
-        mvc.perform(get("/groups"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", not(empty())));
-    }
+	@Test
+	public void testGetGroups() throws Exception {
+		mvc.perform(get("/groups"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$", not(empty())));
+	}
 
-    @Test
-    public void testGetGroupByMember() throws Exception {
-        mvc.perform(get("/groups?member=jadoe"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)));
-    }
+	@Test
+	public void testGetGroupByMember() throws Exception {
+		mvc.perform(get("/groups?member=jadoe"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$", hasSize(2)));
+	}
 
 }

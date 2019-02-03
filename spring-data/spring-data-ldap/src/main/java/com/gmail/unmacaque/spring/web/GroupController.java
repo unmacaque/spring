@@ -14,19 +14,19 @@ import java.util.Optional;
 @RestController
 public class GroupController {
 
-    @Autowired
-    private GroupRepository groupRepository;
+	@Autowired
+	private GroupRepository groupRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
+	@Autowired
+	private PersonRepository personRepository;
 
-    @GetMapping("/groups")
-    public Iterable<Group> getGroups(@RequestParam("member") Optional<String> uid) {
-        return uid
-                .flatMap(personRepository::findByUid)
-                .map(Person::getDn)
-                .map(groupRepository::findByMember)
-                .orElseGet(groupRepository::findAll);
-    }
+	@GetMapping("/groups")
+	public Iterable<Group> getGroups(@RequestParam("member") Optional<String> uid) {
+		return uid
+				.flatMap(personRepository::findByUid)
+				.map(Person::getDn)
+				.map(groupRepository::findByMember)
+				.orElseGet(groupRepository::findAll);
+	}
 
 }

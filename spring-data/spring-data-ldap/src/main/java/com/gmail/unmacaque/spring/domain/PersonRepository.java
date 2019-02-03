@@ -6,8 +6,8 @@ import java.util.Optional;
 
 public interface PersonRepository extends LdapRepository<Person> {
 
-    Optional<Person> findByUid(String uid);
+	Optional<Person> findByUid(String uid);
 
-    Iterable<Person> findByNameLike(String name);
+	Iterable<Person> findByNameLike(String name);
 
 }

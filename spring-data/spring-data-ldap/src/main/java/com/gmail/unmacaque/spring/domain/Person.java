@@ -11,26 +11,26 @@ import javax.naming.Name;
 @Entry(base = "ou=people,dc=springframework,dc=org", objectClasses = {"inetOrgPerson"})
 public final class Person {
 
-    @Id
-    @JsonIgnore
-    private Name dn;
+	@Id
+	@JsonIgnore
+	private Name dn;
 
-    @DnAttribute(value = "uid", index = 3)
-    private String uid;
+	@DnAttribute(value = "uid", index = 3)
+	private String uid;
 
-    @Attribute(name = "cn")
-    private String name;
+	@Attribute(name = "cn")
+	private String name;
 
-    public String getDn() {
-        return dn.toString();
-    }
+	public String getDn() {
+		return dn.toString();
+	}
 
-    public String getUid() {
-        return uid;
-    }
+	public String getUid() {
+		return uid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
 }
