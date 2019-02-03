@@ -15,10 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'http://localhost:8080/webjars/angularjs/1.5.8/angular.js',
-      'http://localhost:8080/webjars/angularjs/1.5.8/angular-resource.js',
-      'http://localhost:8080/webjars/angularjs/1.5.8/angular-route.js',
-      'http://localhost:8080/webjars/angularjs/1.5.8/angular-mocks.js',
+      'http://localhost:8080/webjars/angularjs/1.7.5/angular.js',
+      'http://localhost:8080/webjars/angularjs/1.7.5/angular-resource.js',
+      'http://localhost:8080/webjars/angularjs/1.7.5/angular-route.js',
+      'http://localhost:8080/webjars/angularjs/1.7.5/angular-mocks.js',
       'src/main/resources/static/js/**/*.js',
       'src/test/resources/static/js/**/*_test.js'
     ],

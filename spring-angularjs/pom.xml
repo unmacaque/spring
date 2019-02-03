@@ -16,7 +16,7 @@
 
   <properties>
     <jquery.version>3.3.1</jquery.version>
-    <angularjs.version>1.6.9</angularjs.version>
+    <angularjs.version>1.7.5</angularjs.version>
   </properties>
 
   <dependencies>

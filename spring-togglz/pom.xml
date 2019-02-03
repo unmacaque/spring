@@ -15,7 +15,7 @@
   </parent>
 
   <properties>
-    <thymeleaf-extras-togglz.version>2.0.0.RELEASE</thymeleaf-extras-togglz.version>
+    <thymeleaf-extras-togglz.version>2.0.1.RELEASE</thymeleaf-extras-togglz.version>
     <togglz.version>2.6.1.Final</togglz.version>
   </properties>
 

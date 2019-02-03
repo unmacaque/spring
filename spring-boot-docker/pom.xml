@@ -15,8 +15,8 @@
   </parent>
 
   <properties>
-    <dockerfile-maven.version>1.4.9</dockerfile-maven.version>
-    <logstash-logback-encoder.version>5.2</logstash-logback-encoder.version>
+    <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
+    <logstash-logback-encoder.version>5.3</logstash-logback-encoder.version>
   </properties>
 
   <dependencies>
