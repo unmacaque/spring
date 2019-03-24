@@ -33,7 +33,7 @@ public class WebFlowConfiguration extends AbstractFlowConfiguration {
 
 	@Bean
 	public FlowHandlerMapping flowHandlerMapping() {
-		FlowHandlerMapping flowHandlerMapping = new FlowHandlerMapping();
+		var flowHandlerMapping = new FlowHandlerMapping();
 		flowHandlerMapping.setOrder(0);
 		flowHandlerMapping.setFlowRegistry(flowRegistry());
 		return flowHandlerMapping;
@@ -41,7 +41,7 @@ public class WebFlowConfiguration extends AbstractFlowConfiguration {
 
 	@Bean
 	public FlowHandlerAdapter flowHandlerAdapter() {
-		FlowHandlerAdapter handlerAdapter = new FlowHandlerAdapter();
+		var handlerAdapter = new FlowHandlerAdapter();
 		handlerAdapter.setFlowExecutor(flowExecutor());
 		handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);
 		return handlerAdapter;
@@ -66,7 +66,7 @@ public class WebFlowConfiguration extends AbstractFlowConfiguration {
 
 	@Bean
 	public MvcViewFactoryCreator mvcViewFactoryCreator() {
-		MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
+		var factoryCreator = new MvcViewFactoryCreator();
 		factoryCreator.setViewResolvers(Collections.singletonList(viewResolver));
 		factoryCreator.setUseSpringBeanBinding(true);
 		return factoryCreator;

@@ -19,7 +19,7 @@ public class RestTemplateService {
 	}
 
 	public String doCall() {
-		Bundle bundle = restTemplate.getForObject("http://localhost:8888/", Bundle.class);
+		var bundle = restTemplate.getForObject("http://localhost:8888/", Bundle.class);
 		if (bundle != null) {
 			logger.info(bundle.getContent());
 		}

@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 
 public class RouteHandler {
 	public Mono<ServerResponse> handleRoot(ServerRequest request) {
-		Greeting greeting = new Greeting("Hello World", LocalDateTime.now());
+		var greeting = new Greeting("Hello World", LocalDateTime.now());
 		return ServerResponse
 				.ok()
 				.body(Mono.just(greeting), Greeting.class);
 	}
 
 	public Mono<ServerResponse> handleHelloName(ServerRequest request) {
-		Greeting greeting = new Greeting("Hello " + request.pathVariable("name"), LocalDateTime.now());
+		var greeting = new Greeting("Hello " + request.pathVariable("name"), LocalDateTime.now());
 		return ServerResponse
 				.ok()
 				.body(Mono.just(greeting), Greeting.class);

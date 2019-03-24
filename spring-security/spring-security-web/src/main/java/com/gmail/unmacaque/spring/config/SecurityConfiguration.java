@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public AuthenticationProvider authenticationProvider() throws Exception {
-		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		var provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userDetailsManager());
 		provider.setPasswordEncoder(passwordEncoder());
 		return provider;
@@ -69,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsManager userDetailsManager() throws Exception {
-		JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
+		var manager = new JdbcUserDetailsManager();
 		manager.setDataSource(dataSource);
 		return manager;
 	}

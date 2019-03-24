@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -26,11 +25,11 @@ public class ShopController {
 
 	@GetMapping
 	public Resources<Resource<Item>> getAllItems() {
-		List<Resource<Item>> itemResources = new ArrayList<>();
+		var itemResources = new ArrayList<Resource<Item>>();
 
 		shop.getItems().forEach(item -> itemResources.add(buildItemResource(item)));
 
-		Resources<Resource<Item>> resources = new Resources<>(itemResources);
+		var resources = new Resources<>(itemResources);
 		resources.add(linkTo(ShopController.class).withSelfRel());
 
 		return resources;
@@ -38,9 +37,9 @@ public class ShopController {
 
 	@GetMapping("/{itemId}")
 	public Resource<Item> getItem(@PathVariable int itemId) {
-		Item item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
+		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
-		Resource<Item> resource = new Resource<>(item);
+		var resource = new Resource<>(item);
 		resource.add(linkTo(ShopController.class).slash(item).withSelfRel());
 
 		return resource;
@@ -49,16 +48,16 @@ public class ShopController {
 	@PostMapping("/{itemId}/order")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Resource<Item> orderItem(@PathVariable int itemId) {
-		Item item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
+		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
-		Resource<Item> resource = new Resource<>(item);
+		var resource = new Resource<>(item);
 		resource.add(linkTo(ShopController.class).slash(item).withSelfRel());
 
 		return resource;
 	}
 
 	private Resource<Item> buildItemResource(Item item) {
-		Resource<Item> resource = new Resource<>(item);
+		var resource = new Resource<>(item);
 		resource.add(linkTo(ShopController.class).slash(item).withSelfRel());
 		return resource;
 	}

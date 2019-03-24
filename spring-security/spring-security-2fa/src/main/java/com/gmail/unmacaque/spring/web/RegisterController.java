@@ -67,7 +67,7 @@ public class RegisterController {
 
 	private String createNewOtpUser(RegisterUser registerUser) {
 		String secret = Base32.random();
-		User otpUser = new User(
+		var otpUser = new User(
 				registerUser.getUsername(),
 				registerUser.getPassword(),
 				AuthorityUtils.createAuthorityList("ROLE_USER"));

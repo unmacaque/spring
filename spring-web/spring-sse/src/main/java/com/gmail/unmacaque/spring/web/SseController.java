@@ -24,7 +24,7 @@ public class SseController {
 
 	@GetMapping("/event")
 	public SseEmitter sseEmitter() {
-		SseEmitter emitter = new SseEmitter();
+		var emitter = new SseEmitter();
 		emitters.add(emitter);
 		emitter.onCompletion(() -> emitters.remove(emitter));
 		emitter.onTimeout(() -> emitters.remove(emitter));
@@ -38,7 +38,7 @@ public class SseController {
 
 	@EventListener
 	public void emitEvent(LocalDateTime dateTime) {
-		for (SseEmitter emitter : emitters) {
+		for (var emitter : emitters) {
 			try {
 				emitter.send(dateTime.toString());
 			} catch (IOException e) {

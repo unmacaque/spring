@@ -25,7 +25,7 @@ public class LibraryImpl implements Library {
 		logger.info("reading {}", resource.getFilename());
 
 		try {
-			XmlMapper mapper = new XmlMapper();
+			var mapper = new XmlMapper();
 			return mapper.readValue(resource.getFile(), List.class);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);

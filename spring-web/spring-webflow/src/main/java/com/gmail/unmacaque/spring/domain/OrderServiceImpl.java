@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Map<Long, Order> getOrders() {
-		Iterable<Order> allOrders = orderRepository.findAll();
+		var allOrders = orderRepository.findAll();
 		return StreamSupport.stream(allOrders.spliterator(), false)
 				.collect(Collectors.toMap(Order::getId, Function.identity()));
 	}

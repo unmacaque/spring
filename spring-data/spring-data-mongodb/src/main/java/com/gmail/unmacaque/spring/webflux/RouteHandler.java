@@ -28,7 +28,7 @@ public class RouteHandler {
 	}
 
 	public Mono<ServerResponse> postQuote(ServerRequest request) {
-		Mono<Quote> quote = request.bodyToMono(Quote.class);
+		var quote = request.bodyToMono(Quote.class);
 		return ServerResponse
 				.ok()
 				.body(quoteRepository.saveAll(quote), Quote.class);

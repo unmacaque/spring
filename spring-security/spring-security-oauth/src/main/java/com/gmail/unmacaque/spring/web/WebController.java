@@ -14,7 +14,7 @@ public class WebController {
 		if (!(principal instanceof OAuth2AuthenticationToken)) {
 			return principal.toString();
 		}
-		OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) principal;
+		var token = (OAuth2AuthenticationToken) principal;
 		return token.getPrincipal().getAttributes();
 	}
 

@@ -11,7 +11,7 @@ public class MyHealthHealthIndicator implements HealthIndicator {
 
 	@Override
 	public Health health() {
-		Health.Builder builder = new Health.Builder();
+		var builder = new Health.Builder();
 		boolean good = true;
 
 		if (good) {

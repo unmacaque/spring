@@ -60,7 +60,7 @@ public class Registration implements Serializable {
 	}
 
 	public static Registration create(String firstName, String lastName, LocalDateTime date) {
-		Registration registration = new Registration();
+		var registration = new Registration();
 		registration.firstName = firstName;
 		registration.lastName = lastName;
 		registration.date = date;

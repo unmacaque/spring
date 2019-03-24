@@ -8,7 +8,10 @@ import com.rometools.rome.feed.synd.SyndPersonImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 @RestController
@@ -16,13 +19,10 @@ public class AtomController {
 
 	@GetMapping("/")
 	public Feed getFeed() {
-		Date now = new Date();
-
-		SyndPerson author = createPerson();
-
-		Feed feed = createFeed(author, now, "Spring Feed Atom");
-
-		List<Entry> entires = new ArrayList<>();
+		var now = new Date();
+		var author = createPerson();
+		var feed = createFeed(author, now, "Spring Feed Atom");
+		var entires = new ArrayList<Entry>();
 
 		entires.add(createEntry(author, now, "First feed entry", "This is the first feed entry"));
 		entires.add(createEntry(author, now, "Second feed entry", "This is the second feed entry"));
@@ -33,14 +33,14 @@ public class AtomController {
 	}
 
 	private SyndPerson createPerson() {
-		SyndPerson author = new SyndPersonImpl();
+		var author = new SyndPersonImpl();
 		author.setName("Andreas Trepczik");
 		author.setEmail("unmacaque@gmail.com");
 		return author;
 	}
 
 	private Feed createFeed(SyndPerson author, Date date, String title) {
-		Feed feed = new Feed();
+		var feed = new Feed();
 		feed.setFeedType("atom_1.0");
 		feed.setTitle(title);
 		feed.setUpdated(date);
@@ -49,14 +49,14 @@ public class AtomController {
 	}
 
 	private Entry createEntry(SyndPerson author, Date date, String title, String... values) {
-		Entry entry = new Entry();
+		var entry = new Entry();
 		entry.setAuthors(Collections.singletonList(author));
 		entry.setCreated(date);
 		entry.setUpdated(date);
 		entry.setTitle(title);
 		entry.setId(Integer.toString(title.hashCode()));
 
-		List<Content> contents = Arrays.stream(values)
+		var contents = Arrays.stream(values)
 				.map(this::createContent)
 				.collect(Collectors.toList());
 		entry.setContents(contents);
@@ -64,7 +64,7 @@ public class AtomController {
 	}
 
 	private Content createContent(String value) {
-		Content content = new Content();
+		var content = new Content();
 		content.setType("text/plain");
 		content.setValue(value);
 		return content;

@@ -12,10 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -24,8 +21,8 @@ public class UploadController {
 	private final Path tempDirectory;
 
 	public UploadController() throws IOException {
-		Set<PosixFilePermission> permissionSet = PosixFilePermissions.fromString("rwxr-xr-x");
-		FileAttribute<?> fileAttribute = PosixFilePermissions.asFileAttribute(permissionSet);
+		var permissionSet = PosixFilePermissions.fromString("rwxr-xr-x");
+		var fileAttribute = PosixFilePermissions.asFileAttribute(permissionSet);
 		tempDirectory = Files.createTempDirectory("upload", fileAttribute);
 	}
 
@@ -45,7 +42,7 @@ public class UploadController {
 			if (fileName == null) {
 				fileName = "newFile";
 			}
-			File destFile = new File(tempDirectory.toFile(), fileName);
+			var destFile = new File(tempDirectory.toFile(), fileName);
 			file.transferTo(destFile);
 			modelMap.addAttribute("filename", file.getOriginalFilename());
 			modelMap.addAttribute("filesize", file.getSize());

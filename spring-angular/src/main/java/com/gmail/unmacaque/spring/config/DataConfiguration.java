@@ -26,12 +26,12 @@ public class DataConfiguration implements ApplicationListener<ApplicationReadyEv
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		mongoTemplate.createCollection(Message.class, CollectionOptions.empty().capped().size(1000L)).subscribe();
 		// work around missing RepositoryPopulator support for reactive repositories
-		Jackson2ResourceReader reader = new Jackson2ResourceReader();
+		var reader = new Jackson2ResourceReader();
 		try {
 			@SuppressWarnings("unchecked")
-			ArrayList<Message> messages = (ArrayList<Message>) reader.readFrom(resource, null);
+			var messages = (ArrayList<Message>) reader.readFrom(resource, null);
 
-			for (Message message : messages) {
+			for (var message : messages) {
 				mongoTemplate.save(message).subscribe();
 			}
 		} catch (Exception e) {
