@@ -1,6 +1,6 @@
 package com.gmail.unmacaque.spring.domain;
 
-import com.thoughtworks.xstream.XStream;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,19 +19,14 @@ public class LibraryImpl implements Library {
 	@Value("classpath:books.xml")
 	private Resource resource;
 
-	private final XStream xstream;
-
-	public LibraryImpl(XStream xstream) {
-		this.xstream = xstream;
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Book> getBooks() {
 		logger.info("reading {}", resource.getFilename());
 
 		try {
-			return (List<Book>) xstream.fromXML(resource.getFile());
+			XmlMapper mapper = new XmlMapper();
+			return mapper.readValue(resource.getFile(), List.class);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 			return Collections.emptyList();

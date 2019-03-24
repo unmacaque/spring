@@ -1,15 +1,10 @@
 package com.gmail.unmacaque.spring.domain;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
+import java.time.LocalDate;
 import java.util.StringJoiner;
 
-@XStreamAlias("book")
 public class Book {
 
-	@XStreamAlias("id")
-	@XStreamAsAttribute
 	private String id;
 
 	private String author;
@@ -20,8 +15,7 @@ public class Book {
 
 	private String price;
 
-	@XStreamAlias("publish-date")
-	private String publishDate;
+	private LocalDate publishDate;
 
 	private String description;
 
@@ -65,11 +59,11 @@ public class Book {
 		this.price = price;
 	}
 
-	public String getPublishDate() {
+	public LocalDate getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(String publishDate) {
+	public void setPublishDate(LocalDate publishDate) {
 		this.publishDate = publishDate;
 	}
 
@@ -84,7 +78,7 @@ public class Book {
 	@Override
 	public String toString() {
 		StringJoiner joiner = new StringJoiner(",", "[", "]");
-		joiner.add(id).add(author).add(publishDate).add(description).add(genre).add(price);
+		joiner.add(id).add(author).add(publishDate.toString()).add(description).add(genre).add(price);
 		return title + joiner.toString();
 	}
 }
