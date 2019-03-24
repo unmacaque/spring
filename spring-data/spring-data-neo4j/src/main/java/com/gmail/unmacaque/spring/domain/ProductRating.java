@@ -1,12 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
-import org.neo4j.ogm.annotation.EndNode;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.RelationshipEntity;
-import org.neo4j.ogm.annotation.StartNode;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.neo4j.ogm.annotation.*;
 
 @RelationshipEntity(type = "RATED")
 public class ProductRating {

@@ -1,8 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 public class Payment implements Serializable {
 

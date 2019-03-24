@@ -1,13 +1,12 @@
 package com.gmail.unmacaque.spring;
 
-import java.math.BigDecimal;
-
+import com.gmail.unmacaque.spring.domain.Item;
+import com.gmail.unmacaque.spring.domain.ItemRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.gmail.unmacaque.spring.domain.Item;
-import com.gmail.unmacaque.spring.domain.ItemRepository;
+import java.math.BigDecimal;
 
 @Component
 public class DataRestApplicationRunner implements ApplicationRunner {

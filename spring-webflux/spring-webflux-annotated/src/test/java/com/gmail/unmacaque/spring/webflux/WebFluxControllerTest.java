@@ -1,10 +1,6 @@
 package com.gmail.unmacaque.spring.webflux;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.Duration;
-import java.util.function.Supplier;
-
+import com.gmail.unmacaque.spring.domain.Greeting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.reactivestreams.Publisher;
@@ -13,10 +9,12 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
-import com.gmail.unmacaque.spring.domain.Greeting;
-
 import reactor.test.StepVerifier;
+
+import java.time.Duration;
+import java.util.function.Supplier;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest(WebFluxController.class)

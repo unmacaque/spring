@@ -1,13 +1,13 @@
 package com.gmail.unmacaque.spring.domain;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
-import org.springframework.stereotype.Service;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {

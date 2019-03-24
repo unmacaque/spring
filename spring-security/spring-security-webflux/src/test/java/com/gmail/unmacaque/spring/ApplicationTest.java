@@ -1,7 +1,5 @@
 package com.gmail.unmacaque.spring;
 
-import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

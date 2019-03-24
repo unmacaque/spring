@@ -1,10 +1,10 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.time.LocalDateTime;
 
 @Controller
 public class DateController {

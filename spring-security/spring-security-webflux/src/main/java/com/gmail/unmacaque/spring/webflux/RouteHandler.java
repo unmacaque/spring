@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.webflux;
 
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
 import reactor.core.publisher.Mono;
 
 public class RouteHandler {

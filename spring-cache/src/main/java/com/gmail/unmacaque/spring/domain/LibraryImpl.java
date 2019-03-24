@@ -1,16 +1,15 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-
+import com.thoughtworks.xstream.XStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
-import com.thoughtworks.xstream.XStream;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 @Repository("library")
 public class LibraryImpl implements Library {

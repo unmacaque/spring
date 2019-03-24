@@ -1,8 +1,8 @@
 package com.gmail.unmacaque.spring.security;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.security.authentication.AuthenticationDetailsSource;
+
+import javax.servlet.http.HttpServletRequest;
 
 public final class OtpAuthenticationDetailsSource implements AuthenticationDetailsSource<HttpServletRequest, OtpWebAuthenticationDetails> {
 	@Override

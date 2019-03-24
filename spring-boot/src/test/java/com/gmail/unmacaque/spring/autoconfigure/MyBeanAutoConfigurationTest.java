@@ -1,12 +1,11 @@
 package com.gmail.unmacaque.spring.autoconfigure;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import com.gmail.unmacaque.spring.domain.MyBeanImpl;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-import com.gmail.unmacaque.spring.domain.MyBeanImpl;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MyBeanAutoConfigurationTest {
 

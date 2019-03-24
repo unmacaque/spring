@@ -1,10 +1,9 @@
 package com.gmail.unmacaque.spring.web;
 
+import com.gmail.unmacaque.spring.domain.ChatMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-
-import com.gmail.unmacaque.spring.domain.ChatMessage;
 
 @Controller
 public class ChatController {

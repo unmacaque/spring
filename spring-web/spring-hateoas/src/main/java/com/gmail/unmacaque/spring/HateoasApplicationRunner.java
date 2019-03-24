@@ -1,13 +1,12 @@
 package com.gmail.unmacaque.spring;
 
-import java.math.BigDecimal;
-
+import com.gmail.unmacaque.spring.domain.Item;
+import com.gmail.unmacaque.spring.domain.Shop;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.gmail.unmacaque.spring.domain.Item;
-import com.gmail.unmacaque.spring.domain.Shop;
+import java.math.BigDecimal;
 
 @Component
 public class HateoasApplicationRunner implements ApplicationRunner {

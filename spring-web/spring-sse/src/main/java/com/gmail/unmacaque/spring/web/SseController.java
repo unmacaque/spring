@@ -1,15 +1,15 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Controller
 public class SseController {

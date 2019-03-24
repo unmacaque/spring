@@ -1,13 +1,12 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.util.Map;
-
+import com.gmail.unmacaque.spring.domain.Order;
+import com.gmail.unmacaque.spring.domain.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.gmail.unmacaque.spring.domain.Order;
-import com.gmail.unmacaque.spring.domain.OrderService;
+import java.util.Map;
 
 @Controller
 public class OrderListController {

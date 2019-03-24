@@ -1,7 +1,5 @@
 package com.gmail.unmacaque.spring.config;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
@@ -11,6 +9,8 @@ import org.springframework.mobile.device.site.SitePreferenceHandlerMethodArgumen
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 @Configuration
 public class MobileConfiguration implements WebMvcConfigurer {

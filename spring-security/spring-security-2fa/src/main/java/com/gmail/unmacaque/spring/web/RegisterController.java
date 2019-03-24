@@ -44,7 +44,7 @@ public class RegisterController {
 
 	@PostMapping("/register")
 	public String registerPost(@Validated @ModelAttribute("registerUser") RegisterUser registerUser, BindingResult result,
-			ModelMap modelMap) throws UnsupportedEncodingException {
+							   ModelMap modelMap) throws UnsupportedEncodingException {
 		modelMap.addAttribute("registerUser", registerUser);
 		if (userDetailsManager.userExists(registerUser.getUsername())) {
 			result.reject("register.error.usernameexists");

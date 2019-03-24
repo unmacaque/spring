@@ -1,11 +1,10 @@
 package com.gmail.unmacaque.spring;
 
+import com.gmail.unmacaque.spring.aop.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-
-import com.gmail.unmacaque.spring.aop.HelloService;
 
 public class AopApplicationRunner implements ApplicationRunner {
 

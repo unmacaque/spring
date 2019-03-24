@@ -1,15 +1,14 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
+import com.gmail.unmacaque.spring.util.QrCodeUtil;
+import com.google.zxing.WriterException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gmail.unmacaque.spring.util.QrCodeUtil;
-import com.google.zxing.WriterException;
+import java.io.IOException;
+import java.io.OutputStream;
 
 @RestController
 public class QrCodeController {

@@ -1,9 +1,9 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.util.StringJoiner;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+import java.util.StringJoiner;
 
 @XStreamAlias("book")
 public class Book {

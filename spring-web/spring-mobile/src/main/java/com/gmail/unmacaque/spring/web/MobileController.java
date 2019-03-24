@@ -27,12 +27,12 @@ public class MobileController {
 	@ModelAttribute("platform")
 	public String platform(Device device) {
 		switch (device.getDevicePlatform()) {
-		case ANDROID:
-			return "Android";
-		case IOS:
-			return "iOS";
-		default:
-			return "Unspecified vendor";
+			case ANDROID:
+				return "Android";
+			case IOS:
+				return "iOS";
+			default:
+				return "Unspecified vendor";
 		}
 	}
 

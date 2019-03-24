@@ -1,5 +1,9 @@
 package com.gmail.unmacaque.spring.config;
 
+import com.gmail.unmacaque.spring.security.InMemoryOtpSecretRegistry;
+import com.gmail.unmacaque.spring.security.OtpAuthenticationDetailsSource;
+import com.gmail.unmacaque.spring.security.OtpAuthenticationProvider;
+import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -9,11 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import com.gmail.unmacaque.spring.security.InMemoryOtpSecretRegistry;
-import com.gmail.unmacaque.spring.security.OtpAuthenticationDetailsSource;
-import com.gmail.unmacaque.spring.security.OtpAuthenticationProvider;
-import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

@@ -1,10 +1,10 @@
 package com.gmail.unmacaque.spring.actuate.info;
 
-import java.time.LocalDateTime;
-
 import org.springframework.boot.actuate.info.Info.Builder;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class MyInfoContributor implements InfoContributor {

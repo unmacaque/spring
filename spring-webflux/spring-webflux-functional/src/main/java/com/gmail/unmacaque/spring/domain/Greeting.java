@@ -7,7 +7,8 @@ public class Greeting {
 
 	private LocalDateTime time;
 
-	public Greeting() {}
+	public Greeting() {
+	}
 
 	public Greeting(String name, LocalDateTime time) {
 		this.name = name;

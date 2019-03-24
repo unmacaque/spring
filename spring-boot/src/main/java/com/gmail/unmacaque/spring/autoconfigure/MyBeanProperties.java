@@ -1,13 +1,12 @@
 package com.gmail.unmacaque.spring.autoconfigure;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.validation.annotation.Validated;
+import java.util.ArrayList;
+import java.util.List;
 
 @ConfigurationProperties("application")
 @Validated

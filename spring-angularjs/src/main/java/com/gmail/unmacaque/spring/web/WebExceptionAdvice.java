@@ -1,14 +1,13 @@
 package com.gmail.unmacaque.spring.web;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.validation.ConstraintViolationException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintViolationException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class WebExceptionAdvice {

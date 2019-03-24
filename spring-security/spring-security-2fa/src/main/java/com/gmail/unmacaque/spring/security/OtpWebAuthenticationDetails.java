@@ -1,8 +1,8 @@
 package com.gmail.unmacaque.spring.security;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class OtpWebAuthenticationDetails extends WebAuthenticationDetails {
 

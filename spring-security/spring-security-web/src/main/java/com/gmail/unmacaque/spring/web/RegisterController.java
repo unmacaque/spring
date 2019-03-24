@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.web;
 
+import com.gmail.unmacaque.spring.domain.RegisterUser;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,8 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.gmail.unmacaque.spring.domain.RegisterUser;
 
 @Controller
 public class RegisterController {
@@ -38,7 +37,7 @@ public class RegisterController {
 
 	@PostMapping("/register")
 	public String registerPost(@Validated @ModelAttribute("registerUser") RegisterUser registerUser, BindingResult result,
-			ModelMap modelMap) {
+							   ModelMap modelMap) {
 		modelMap.addAttribute("registerUser", registerUser);
 		if (userDetailsManager.userExists(registerUser.getUsername())) {
 			result.reject("register.error.usernameexists");
