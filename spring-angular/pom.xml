@@ -13,6 +13,10 @@
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+    <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -47,10 +51,19 @@
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>${dockerfile-maven.version}</version>
+        <configuration>
+          <repository>unmacaque/${project.artifactId}</repository>
+        </configuration>
       </plugin>
     </plugins>
   </build>
