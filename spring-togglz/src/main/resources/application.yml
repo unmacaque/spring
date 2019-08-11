@@ -4,6 +4,11 @@ spring:
       name: admin
       password: togglz
       roles: ADMIN,USER
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,togglz
 togglz:
   console:
     feature-admin-authority: ROLE_ADMIN
