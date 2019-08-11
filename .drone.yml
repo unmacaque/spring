@@ -1,0 +1,22 @@
+kind: pipeline
+name: build
+
+steps:
+  - name: test
+    image: maven:3-jdk-11-slim
+    pull: always
+    volumes:
+      - name: maven-repository
+        path: /root/.m2/repository
+      - name: embed-mongo
+        path: /root/.embedmongo
+    commands:
+      - mvn test -fae
+
+volumes:
+  - name: maven-repository
+    host:
+      path: /var/tmp/maven-repository
+  - name: embed-mongo
+    host:
+      path: /var/tmp/embed-mongo
