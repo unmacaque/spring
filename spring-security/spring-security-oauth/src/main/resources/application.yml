@@ -15,5 +15,5 @@ spring:
             client-name: Keycloak
             client-id: spring-security-oauth
             client-secret: springboot
-            redirect-uri-template: http://localhost:8080/login/oauth2/code/
+            redirect-uri: http://localhost:8080/login/oauth2/code/
             scope: openid
