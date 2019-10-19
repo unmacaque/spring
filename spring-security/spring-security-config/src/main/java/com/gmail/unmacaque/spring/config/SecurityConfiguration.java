@@ -17,7 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/h2-console/**");
 	}
 

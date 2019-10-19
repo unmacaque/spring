@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/h2-console/**");
 	}
 
