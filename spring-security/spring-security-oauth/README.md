@@ -14,3 +14,24 @@ spring.security.oauth2.client.registration.myprovider.client-secret
 In the Spring Boot application, configure the OAuth2 authentication provider. See `application.yml` to view an example configuration of an OpenID Connect provider. Note: Some providers such as GitHub are already configured out of the box.
 
 Finally, run `mvn spring-boot:run`.
+
+## Integrations
+
+### Bitbucket
+
+Login to <https://bitbucket.org/> and go to _Bitbucket Settings_. From _Access Management_ choose _OAuth_. Click on the button _Add consumer_. In the next dialog, enter a value for _Callback URL_, which must correspond to the `redirect-uri` property in the Spring Boot configuration. The consumer must have at least a permission on _Email_ to allow login on behalf of the Bitbucket Account.
+
+```
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          bitbucket:
+            authorization-grant-type: authorization_code
+            client-name: Bitbucket
+            client-id: <key>
+            client-secret: <secret>
+            redirect-uri: http://localhost:8080/login/oauth2/code/
+            scope: email
+```

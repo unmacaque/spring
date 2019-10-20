@@ -9,6 +9,11 @@ spring:
             token-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/token
             jwk-set-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/certs
             user-info-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/userinfo
+          bitbucket:
+            authorization-uri: https://bitbucket.org/site/oauth2/authorize
+            token-uri: https://bitbucket.org/site/oauth2/access_token
+            user-info-uri: https://api.bitbucket.org/2.0/user
+            user-name-attribute: username
         registration:
           keycloak:
             authorization-grant-type: authorization_code
