@@ -4,6 +4,13 @@
 
 Before starting development run `npm install` in the `ng` subfolder once.
 
+Alternatively, run the following Maven commands:
+
+```
+mvn com.github.eirslett:frontend-maven-plugin:install-node-and-npm
+mvn com.github.eirslett:frontend-maven-plugin:npm
+```
+
 To start development mode, issue these commands:
 
 1. Run `npm start`

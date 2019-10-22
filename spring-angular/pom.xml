@@ -15,6 +15,7 @@
 
   <properties>
     <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
+    <frontend-maven.version>1.8.0</frontend-maven.version>
   </properties>
 
   <dependencies>
@@ -56,6 +57,15 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven.version}</version>
+        <configuration>
+          <workingDirectory>ng</workingDirectory>
+          <nodeVersion>v10.16.3</nodeVersion>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.spotify</groupId>
