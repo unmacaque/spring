@@ -1,28 +1,30 @@
 package com.gmail.unmacaque.spring;
 
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.gmail.unmacaque.spring.webflux.WebFluxService;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTest {
+class ApplicationTest {
 
-	@Rule
-	public WireMockRule wireMockRule = new WireMockRule(8888);
+	@BeforeAll
+	static void beforeEach() {
+		WireMock.configureFor(8888);
+		var server = new WireMockServer(8888);
+		server.start();
+	}
 
 	@Autowired
 	private WebFluxService service;
 
 	@Test
-	public void test() {
+	void test() {
 		stubFor(get(urlEqualTo("/"))
 				.willReturn(aResponse().withBody("Hello World")));
 

@@ -1,28 +1,25 @@
 package com.gmail.unmacaque.spring.web;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mobile.device.site.SitePreference;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.gmail.unmacaque.spring.web.MobileController.SPRING_MOBILE_SITE_PREFERENCE_COOKIE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MobileControllerTest {
+class MobileControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testIndex() throws Exception {
+	void testIndex() throws Exception {
 		mvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("index"))
@@ -33,7 +30,7 @@ public class MobileControllerTest {
 	}
 
 	@Test
-	public void testIndexWithSitePreferenceParam() throws Exception {
+	void testIndexWithSitePreferenceParam() throws Exception {
 		mvc.perform(get("/?site_preference=mobile"))
 				.andExpect(status().isOk())
 				.andExpect(cookie().value(SPRING_MOBILE_SITE_PREFERENCE_COOKIE, "MOBILE"))

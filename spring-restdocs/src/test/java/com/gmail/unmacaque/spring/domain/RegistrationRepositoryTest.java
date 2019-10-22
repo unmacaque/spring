@@ -1,18 +1,16 @@
 package com.gmail.unmacaque.spring.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.restdocs.JUnitRestDocumentation;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,15 +26,12 @@ import static org.springframework.restdocs.request.RequestDocumentation.pathPara
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @Transactional
-public class RegistrationRepositoryTest {
-
-	@Rule
-	public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+@ExtendWith(RestDocumentationExtension.class)
+class RegistrationRepositoryTest {
 
 	@Autowired
 	private ObjectFactory<ObjectMapper> objectMapperFactory;
@@ -46,13 +41,13 @@ public class RegistrationRepositoryTest {
 	@Autowired
 	private MockMvc mvc;
 
-	@Before
-	public void before() {
+	@BeforeEach
+	void before() {
 		JacksonTester.initFields(this, objectMapperFactory);
 	}
 
 	@Test
-	public void getRegistrations() throws Exception {
+	void getRegistrations() throws Exception {
 		mvc.perform(get("/registrations"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$._embedded.registrations.length()", equalTo(2)))
@@ -67,7 +62,7 @@ public class RegistrationRepositoryTest {
 	}
 
 	@Test
-	public void getRegistration() throws Exception {
+	void getRegistration() throws Exception {
 		mvc.perform(get("/registrations/{id}", 1))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.firstName", equalTo("Fred")))
@@ -85,7 +80,7 @@ public class RegistrationRepositoryTest {
 	}
 
 	@Test
-	public void postRegistration() throws Exception {
+	void postRegistration() throws Exception {
 		mvc.perform(post("/registrations")
 				.content(json.write(createRegistration()).getJson()))
 				.andExpect(status().isCreated())
@@ -98,7 +93,7 @@ public class RegistrationRepositoryTest {
 	}
 
 	@Test
-	public void putRegistration() throws Exception {
+	void putRegistration() throws Exception {
 		mvc.perform(put("/registrations/{id}", 2)
 				.content(json.write(createRegistration()).getJson()))
 				.andExpect(status().isNoContent())
@@ -113,14 +108,14 @@ public class RegistrationRepositoryTest {
 	}
 
 	@Test
-	public void deleteRegistration() throws Exception {
+	void deleteRegistration() throws Exception {
 		mvc.perform(delete("/registrations/{id}", 1))
 				.andExpect(status().isNoContent())
 				.andDo(document("{method-name}",
 						pathParameters(parameterWithName("id").description("Unique id of the registration"))));
 	}
 
-	public static Registration createRegistration() {
+	static Registration createRegistration() {
 		return Registration.create("John", "Doe", LocalDateTime.of(2018, 3, 15, 16, 0));
 	}
 }

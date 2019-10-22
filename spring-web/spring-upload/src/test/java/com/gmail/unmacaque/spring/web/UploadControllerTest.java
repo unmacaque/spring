@@ -1,11 +1,9 @@
 package com.gmail.unmacaque.spring.web;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.nio.charset.StandardCharsets;
@@ -16,21 +14,20 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(UploadController.class)
-public class UploadControllerTest {
+class UploadControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testGet() throws Exception {
+	void testGet() throws Exception {
 		mvc.perform(get("/"))
 				.andExpect(status().isOk());
 	}
 
 	@Test
-	public void testPost() throws Exception {
+	void testPost() throws Exception {
 		mvc.perform(multipart("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes(StandardCharsets.UTF_8))))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeDoesNotExist("error"))
@@ -40,7 +37,7 @@ public class UploadControllerTest {
 	}
 
 	@Test
-	public void testPostWithEmptyFile() throws Exception {
+	void testPostWithEmptyFile() throws Exception {
 		mvc.perform(multipart("/").file("aFile", new byte[0]))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("error", "File is empty"));

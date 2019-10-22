@@ -1,28 +1,25 @@
 package com.gmail.unmacaque.spring;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTest {
+class ApplicationTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
 
 	private WebTestClient webTestClient;
 
-	@Before
-	public void setup() {
+	@BeforeEach
+	void setup() {
 		webTestClient = WebTestClient
 				.bindToApplicationContext(applicationContext)
 				.apply(springSecurity())
@@ -31,7 +28,7 @@ public class ApplicationTest {
 	}
 
 	@Test
-	public void testRoot() {
+	void testRoot() {
 		webTestClient
 				.get()
 				.uri("/")
@@ -42,7 +39,7 @@ public class ApplicationTest {
 
 	@Test
 	@WithMockUser
-	public void testHelloName() {
+	void testHelloName() {
 		webTestClient
 				.get()
 				.uri("/hello/John")
@@ -52,7 +49,7 @@ public class ApplicationTest {
 	}
 
 	@Test
-	public void testHelloNameWithoutAuthenticationIsUnauthorized() {
+	void testHelloNameWithoutAuthenticationIsUnauthorized() {
 		webTestClient
 				.get()
 				.uri("/hello/John")

@@ -1,10 +1,8 @@
 package com.gmail.unmacaque.spring.web;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -12,22 +10,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(FormController.class)
-public class FormControllerTest {
+class FormControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testGet() throws Exception {
+	void testGet() throws Exception {
 		mvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(model().hasNoErrors());
 	}
 
 	@Test
-	public void testPost() throws Exception {
+	void testPost() throws Exception {
 		mvc.perform(post("/")
 				.param("shortName", "foo")
 				.param("shortInteger", "42"))
@@ -37,7 +34,7 @@ public class FormControllerTest {
 	}
 
 	@Test
-	public void testPostWithErrors() throws Exception {
+	void testPostWithErrors() throws Exception {
 		mvc.perform(post("/"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasFieldErrors("data", "shortName", "shortInteger"))
@@ -45,7 +42,7 @@ public class FormControllerTest {
 	}
 
 	@Test
-	public void testPostWithMoreErrors() throws Exception {
+	void testPostWithMoreErrors() throws Exception {
 		mvc.perform(post("/")
 				.param("comment", "<script>alert(1)</script>"))
 				.andExpect(status().isOk())

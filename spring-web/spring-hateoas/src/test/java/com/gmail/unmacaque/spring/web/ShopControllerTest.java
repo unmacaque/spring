@@ -1,11 +1,9 @@
 package com.gmail.unmacaque.spring.web;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -16,16 +14,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ShopControllerTest {
+class ShopControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testGetAll() throws Exception {
+	void testGetAll() throws Exception {
 		mvc.perform(get("/"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -33,7 +30,7 @@ public class ShopControllerTest {
 	}
 
 	@Test
-	public void testGetItem() throws Exception {
+	void testGetItem() throws Exception {
 		mvc.perform(get("/1"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -45,7 +42,7 @@ public class ShopControllerTest {
 	}
 
 	@Test
-	public void testOrderItem() throws Exception {
+	void testOrderItem() throws Exception {
 		mvc.perform(post("/1/order"))
 				.andDo(print())
 				.andExpect(status().isCreated())
@@ -57,7 +54,7 @@ public class ShopControllerTest {
 	}
 
 	@Test
-	public void testOrderItemDoesNotExistNotFound() throws Exception {
+	void testOrderItemDoesNotExistNotFound() throws Exception {
 		mvc.perform(post("/99/order"))
 				.andDo(print())
 				.andExpect(status().isNotFound());

@@ -1,13 +1,11 @@
 package com.gmail.unmacaque.spring.webflux;
 
 import com.gmail.unmacaque.spring.domain.Greeting;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.test.StepVerifier;
 
@@ -16,15 +14,14 @@ import java.util.function.Supplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
 @WebFluxTest(WebFluxController.class)
-public class WebFluxControllerTest {
+class WebFluxControllerTest {
 
 	@Autowired
 	private WebTestClient webTestClient;
 
 	@Test
-	public void testHello() {
+	void testHello() {
 		// @formatter:off
 		webTestClient
 				.get()
@@ -38,7 +35,7 @@ public class WebFluxControllerTest {
 	}
 
 	@Test
-	public void testFlux() {
+	void testFlux() {
 		// @formatter:off
 		Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
 				.get()
