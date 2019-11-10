@@ -30,6 +30,7 @@
     <module>spring-boot-docker</module>
     <module>spring-cache</module>
     <module>spring-data</module>
+    <module>spring-initializr</module>
     <module>spring-kotlin</module>
     <module>spring-resilience4j</module>
     <module>spring-restdocs</module>
