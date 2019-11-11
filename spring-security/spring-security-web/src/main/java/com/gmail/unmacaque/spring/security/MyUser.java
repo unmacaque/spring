@@ -7,6 +7,8 @@ import java.util.Set;
 @Table(name = "USERS")
 public class MyUser {
 
+	private Long userId;
+
 	private Set<MyAuthority> authorities;
 
 	private boolean isEnabled;
@@ -15,7 +17,13 @@ public class MyUser {
 
 	private String username;
 
-	@OneToMany(fetch = FetchType.EAGER, targetEntity = MyAuthority.class)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getUserId() {
+		return userId;
+	}
+
+	@OneToMany(fetch = FetchType.EAGER, targetEntity = MyAuthority.class, mappedBy = "username")
 	public Set<MyAuthority> getAuthorities() {
 		return authorities;
 	}
@@ -25,7 +33,6 @@ public class MyUser {
 		return password;
 	}
 
-	@Id
 	@Column(name = "USERNAME")
 	public String getUsername() {
 		return username;
@@ -34,6 +41,10 @@ public class MyUser {
 	@Column(name = "ENABLED", nullable = false)
 	public boolean isEnabled() {
 		return isEnabled;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public void setAuthorities(Set<MyAuthority> authorities) {

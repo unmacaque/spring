@@ -12,23 +12,9 @@ public class MyAuthority {
 
 	private String authority;
 
-	@ManyToOne(targetEntity = MyUser.class)
-	@JoinColumn(name = "USERNAME")
-	public MyUser getUsername() {
-		return username;
-	}
-
-	public void setUsername(MyUser username) {
-		this.username = username;
-	}
-
 	@Column(name = "AUTHORITY")
 	public String getAuthority() {
 		return authority;
-	}
-
-	public void setAuthority(String authority) {
-		this.authority = authority;
 	}
 
 	@Id
@@ -37,8 +23,22 @@ public class MyAuthority {
 		return authorityId;
 	}
 
+	@ManyToOne(targetEntity = MyUser.class)
+	@JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
+	public MyUser getUsername() {
+		return username;
+	}
+
 	public void setAuthorityId(long authorityId) {
 		this.authorityId = authorityId;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	public void setUsername(MyUser username) {
+		this.username = username;
 	}
 
 	@Override
