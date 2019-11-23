@@ -12,10 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
 		http
-			.authorizeRequests()
-				.anyRequest().permitAll();
-		// @formatter:on
+			.authorizeRequests(authorizeRequests ->
+				authorizeRequests.
+					anyRequest().permitAll()
+			);
 	}
 }

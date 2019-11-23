@@ -10,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -23,16 +25,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
 		http
-			.authorizeRequests()
-				.antMatchers("/api").hasRole("ADMIN")
-				.anyRequest().hasRole("USER")
-		.and()
-			.formLogin()
-		.and()
-			.httpBasic();
-		// @formatter:on
+			.authorizeRequests(authorizeRequests ->
+				authorizeRequests
+					.antMatchers("/api").hasRole("ADMIN")
+					.anyRequest().hasRole("USER")
+			)
+			.formLogin(withDefaults())
+			.httpBasic(withDefaults());
 	}
 
 	@Override

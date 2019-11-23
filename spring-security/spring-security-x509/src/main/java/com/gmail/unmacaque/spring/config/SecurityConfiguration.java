@@ -13,15 +13,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
 		http
-			.authorizeRequests()
-				.anyRequest().fullyAuthenticated()
-		.and()
-			.x509()
-				.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
-				.userDetailsService(userDetailsService());
-		// @formatter:on
+			.authorizeRequests(authorizeRequests ->
+				authorizeRequests
+					.anyRequest().fullyAuthenticated()
+			)
+			.x509(x509 ->
+				x509
+					.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
+					.userDetailsService(userDetailsService()
+					)
+			);
 	}
 
 	@Override

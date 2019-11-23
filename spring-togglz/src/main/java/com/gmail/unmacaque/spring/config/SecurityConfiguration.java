@@ -15,13 +15,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
 		http
-			.authorizeRequests()
-				.antMatchers("/togglz/*").hasRole("ADMIN")
-			.anyRequest()
-				.permitAll();
-		// @formatter:on
+			.authorizeRequests(authorizeRequests ->
+				authorizeRequests
+					.antMatchers("/togglz/*").hasRole("ADMIN")
+					.anyRequest().permitAll()
+			);
 	}
 
 }
