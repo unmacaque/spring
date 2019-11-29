@@ -26,8 +26,9 @@ class FormControllerTest {
 	@Test
 	void testPost() throws Exception {
 		mvc.perform(post("/")
-				.param("shortName", "foo")
-				.param("shortInteger", "42"))
+				.param("name", "foo")
+				.param("mail", "foo@bar.org")
+				.param("age", "42"))
 				.andExpect(status().isOk())
 				.andExpect(model().hasNoErrors())
 				.andExpect(model().attributeExists("formData"));
@@ -37,16 +38,7 @@ class FormControllerTest {
 	void testPostWithErrors() throws Exception {
 		mvc.perform(post("/"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeHasFieldErrors("data", "shortName", "shortInteger"))
-				.andExpect(model().attributeDoesNotExist("formData"));
-	}
-
-	@Test
-	void testPostWithMoreErrors() throws Exception {
-		mvc.perform(post("/")
-				.param("comment", "<script>alert(1)</script>"))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasFieldErrors("data", "comment"))
+				.andExpect(model().attributeHasFieldErrors("data", "name", "mail", "age"))
 				.andExpect(model().attributeDoesNotExist("formData"));
 	}
 }

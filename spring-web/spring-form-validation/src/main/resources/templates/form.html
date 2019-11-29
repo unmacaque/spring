@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Hello</title>
@@ -10,10 +10,27 @@
   <h1>Validation Example</h1>
 
   <th:block th:if="${formData}" th:object="${formData}">
-    <p><strong>The server has received your submission:</strong></p>
-    <p><strong>Short Name = <span th:text="*{shortName}"></span></strong></p>
-    <p><strong>Short Integer = <span th:text="*{shortInteger}"></span></strong></p>
-    <p><strong>Comment = <span th:text="*{comment}"></span></strong></p>
+    <p>
+      <strong>The server has received your submission:</strong>
+    </p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <td th:text="*{name}"></td>
+      </tr>
+      <tr>
+        <th>Mail</th>
+        <td th:text="*{mail}"></td>
+      </tr>
+      <tr>
+        <th>Age</th>
+        <td th:text="*{age}"></td>
+      </tr>
+      <tr>
+        <th>Comment</th>
+        <td th:text="*{comment}"></td>
+      </tr>
+    </table>
   </th:block>
 
   <p>Enter all fields and click on submit.</p>
@@ -22,15 +39,21 @@
 
   <fieldset>
     <div>
-      <label for="shortName">Short Name</label>
-      <input type="text" th:field="*{shortName}" th:errorclass="fielderror" />
-      <span th:if="${#fields.hasErrors('shortName')}" th:errors="*{shortName}" th:class="error"></span>
+      <label for="name">Name</label>
+      <input type="text" th:field="*{name}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:class="error"></span>
     </div>
 
     <div>
-      <label for="shortInteger">Short Name</label>
-      <input type="text" th:field="*{shortInteger}" th:errorclass="fielderror"/>
-      <span th:if="${#fields.hasErrors('shortInteger')}" th:errors="*{shortInteger}" th:class="error"></span>
+      <label for="mail">Mail</label>
+      <input type="email" th:field="*{mail}" th:errorclass="fielderror" />
+      <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" th:class="error"></span>
+    </div>
+
+    <div>
+      <label for="age">Age</label>
+      <input type="text" th:field="*{age}" th:errorclass="fielderror"/>
+      <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" th:class="error"></span>
     </div>
 
     <div>

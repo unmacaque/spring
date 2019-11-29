@@ -1,44 +1,54 @@
 package com.gmail.unmacaque.spring.web;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class FormData {
-	@NotNull
-	@Length(min = 3, max = 5)
-	private String shortName;
+	@NotEmpty
+	@Length(min = 3)
+	private String name;
 
-	@NotNull
+	@NotEmpty
+	@Email
+	private String mail;
+
 	@Min(10)
-	@Max(10000)
-	private String shortInteger;
+	@Max(99)
+	private int age;
 
-	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Length(max = 200)
 	private String comment;
 
-	public String getShortName() {
-		return shortName;
+	public String getName() {
+		return name;
 	}
 
-	public String getShortInteger() {
-		return shortInteger;
+	public String getMail() {
+		return mail;
+	}
+
+	public int getAge() {
+		return age;
 	}
 
 	public String getComment() {
 		return comment;
 	}
 
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setShortInteger(String shortInteger) {
-		this.shortInteger = shortInteger;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public void setComment(String comment) {
