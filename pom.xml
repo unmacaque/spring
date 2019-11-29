@@ -23,7 +23,6 @@
 
   <modules>
     <module>spring-angular</module>
-    <module>spring-angularjs</module>
     <module>spring-aop</module>
     <module>spring-boot</module>
     <module>spring-boot-actuator</module>
