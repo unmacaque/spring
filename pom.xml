@@ -34,6 +34,7 @@
     <module>spring-resilience4j</module>
     <module>spring-restdocs</module>
     <module>spring-security</module>
+    <module>spring-testcontainers</module>
     <module>spring-togglz</module>
     <module>spring-web</module>
     <module>spring-webflux</module>
