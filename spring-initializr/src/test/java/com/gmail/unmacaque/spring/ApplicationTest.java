@@ -20,7 +20,7 @@ class ApplicationTest {
 	@Test
 	void testGroupId() throws Exception {
 		mvc.perform(get("/"))
-			.andExpect(jsonPath("$.groupId.default", equalTo("com.gmail.unmacaque.spring")));
+				.andExpect(jsonPath("$.groupId.default", equalTo("com.gmail.unmacaque.spring")));
 	}
 
 }

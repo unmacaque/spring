@@ -20,21 +20,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.authorizeRequests(authorizeRequests ->
-				authorizeRequests.antMatchers("/hello").hasRole("USER")
-			)
-			.formLogin(formLogin ->
-				formLogin
-					.authenticationDetailsSource(new OtpAuthenticationDetailsSource())
-					.loginPage("/login")
-					.failureUrl("/login?error")
-					.defaultSuccessUrl("/hello")
-			)
-			.logout(logout ->
-				logout
-					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/?logout")
-			);
+				.authorizeRequests(authorizeRequests ->
+						authorizeRequests.antMatchers("/hello").hasRole("USER")
+				)
+				.formLogin(formLogin ->
+						formLogin
+								.authenticationDetailsSource(new OtpAuthenticationDetailsSource())
+								.loginPage("/login")
+								.failureUrl("/login?error")
+								.defaultSuccessUrl("/hello")
+				)
+				.logout(logout ->
+						logout
+								.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+								.logoutSuccessUrl("/?logout")
+				);
 	}
 
 	@Override
