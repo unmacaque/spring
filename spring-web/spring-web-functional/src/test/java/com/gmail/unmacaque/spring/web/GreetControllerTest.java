@@ -2,13 +2,16 @@ package com.gmail.unmacaque.spring.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
-@WebMvcTest(GreetController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class GreetControllerTest {
 
 	@Autowired
@@ -21,6 +24,6 @@ class GreetControllerTest {
 
 	@Test
 	void testGreetWithName() throws Exception {
-		mvc.perform(get("/Spring")).andExpect(content().json("{\"message\":\"Spring\"}"));
+		mvc.perform(post("/Spring")).andExpect(content().json("{\"message\":\"Spring\"}"));
 	}
 }

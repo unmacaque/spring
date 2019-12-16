@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Greeting {
 
 	private LocalDateTime date;
+
 	private String message;
 
 	public Greeting() {
