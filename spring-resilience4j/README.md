@@ -1,6 +1,6 @@
 # spring-resilience4j
 
-[Resilience4j](https://resilience4j.github.io/resilience4j/) is a lightweight, easy-to-use fault tolerance library inspired by Netflix Hystrix, but designed for Java 8 and functional programming.
+[Resilience4j](https://resilience4j.github.io/resilience4j/) is a lightweight fault tolerance library inspired by Netflix Hystrix, but designed for functional programming.
 
 ## CircuitBreaker
 
@@ -20,7 +20,8 @@ Basic concept of a CircuitBreaker:
 
 Spring Boot notes:
 
-- `CircuitBreaker` beans can be created via properties. A `HealthIndicator` is auto-registered for each CircuitBreaker. The beans can be retrieved by injecting the `CircuitBreakerRegistry`.
+- `CircuitBreaker` beans can be created via properties.
+- `HealthIndicator` instance must be explicitly enabled using the property `registerHealthIndicator`
 - The mapping of the CircuitBreaker states to Spring Boot Actuator health status is as follows:
   - `CLOSED` = `UP`
   - `OPEN` = `DOWN`
