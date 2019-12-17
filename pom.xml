@@ -10,7 +10,6 @@
 
   <properties>
     <java.version>11</java.version>
-    <jsoup.version>1.11.3</jsoup.version>
     <wiremock.version>2.18.0</wiremock.version>
   </properties>
 
@@ -42,11 +41,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.jsoup</groupId>
-        <artifactId>jsoup</artifactId>
-        <version>${jsoup.version}</version>
-      </dependency>
       <dependency>
         <groupId>com.github.tomakehurst</groupId>
         <artifactId>wiremock-standalone</artifactId>
