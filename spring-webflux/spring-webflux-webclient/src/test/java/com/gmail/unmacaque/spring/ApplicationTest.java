@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class ApplicationTest {
@@ -25,10 +26,11 @@ class ApplicationTest {
 
 	@Test
 	void test() {
-		stubFor(get(urlEqualTo("/"))
-				.willReturn(aResponse().withBody("Hello World")));
+		stubFor(get(urlEqualTo("/")).willReturn(aResponse().withBody("Hello World")));
 
-		service.doCall();
+		String value = service.doCall();
+
+		assertThat(value).isEqualTo("Hello World");
 
 		verify(getRequestedFor(urlEqualTo("/")));
 	}

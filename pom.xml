@@ -10,7 +10,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <wiremock.version>2.18.0</wiremock.version>
+    <wiremock.version>2.25.1</wiremock.version>
   </properties>
 
   <parent>

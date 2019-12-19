@@ -11,8 +11,8 @@ public class WebFluxService {
 
 	private static final Logger log = LoggerFactory.getLogger(WebFluxService.class);
 
-	public void doCall() {
-		WebClient
+	public String doCall() {
+		return WebClient
 				.create("http://localhost:8888")
 				.get()
 				.exchange()
@@ -20,7 +20,8 @@ public class WebFluxService {
 				.orElseThrow(IllegalStateException::new)
 				.toEntity(String.class)
 				.map(ResponseEntity::getBody)
-				.subscribe(log::info);
+				.doOnNext(log::info)
+				.block();
 	}
 
 }
