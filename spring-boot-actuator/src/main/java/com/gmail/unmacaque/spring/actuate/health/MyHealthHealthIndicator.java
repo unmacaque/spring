@@ -4,15 +4,20 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 @Component
 public class MyHealthHealthIndicator implements HealthIndicator {
 
 	private static final String MESSAGE_KEY = "message";
 
+	private final AtomicBoolean flip = new AtomicBoolean(true);
+
 	@Override
 	public Health health() {
 		var builder = new Health.Builder();
-		boolean good = true;
+		boolean good = flip.get();
+		flip.set(!good);
 
 		if (good) {
 			builder.up()
