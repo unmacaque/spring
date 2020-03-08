@@ -10,4 +10,4 @@ target
 .apt_generated
 .idea
 *.iml
-node
+node_modules
