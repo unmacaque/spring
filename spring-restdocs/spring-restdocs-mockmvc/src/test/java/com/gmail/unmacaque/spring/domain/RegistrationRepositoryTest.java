@@ -58,7 +58,9 @@ class RegistrationRepositoryTest {
 						responseFields(
 								subsectionWithPath("_embedded.registrations").description("An array of registration objects"),
 								subsectionWithPath("_links").ignored(),
-								subsectionWithPath("page").ignored())));
+								subsectionWithPath("page").ignored())
+						)
+				);
 	}
 
 	@Test
@@ -76,7 +78,9 @@ class RegistrationRepositoryTest {
 								fieldWithPath("firstName").description("First name of the registered person"),
 								fieldWithPath("lastName").description("Last name of the registered person"),
 								fieldWithPath("date").description("Date for the registration"),
-								subsectionWithPath("_links").ignored())));
+								subsectionWithPath("_links").ignored())
+						)
+				);
 	}
 
 	@Test
@@ -89,7 +93,9 @@ class RegistrationRepositoryTest {
 								fieldWithPath("id").ignored(),
 								fieldWithPath("firstName").description("First name of the registered person"),
 								fieldWithPath("lastName").description("Last name of the registered person"),
-								fieldWithPath("date").description("Date for the registration"))));
+								fieldWithPath("date").description("Date for the registration"))
+						)
+				);
 	}
 
 	@Test
@@ -104,7 +110,9 @@ class RegistrationRepositoryTest {
 								fieldWithPath("id").ignored(),
 								fieldWithPath("firstName").description("First name of the registered person"),
 								fieldWithPath("lastName").description("Last name of the registered person"),
-								fieldWithPath("date").description("Date for the registration"))));
+								fieldWithPath("date").description("Date for the registration"))
+						)
+				);
 	}
 
 	@Test
@@ -112,7 +120,9 @@ class RegistrationRepositoryTest {
 		mvc.perform(delete("/registrations/{id}", 1))
 				.andExpect(status().isNoContent())
 				.andDo(document("{method-name}",
-						pathParameters(parameterWithName("id").description("Unique id of the registration"))));
+						pathParameters(parameterWithName("id").description("Unique id of the registration"))
+						)
+				);
 	}
 
 	static Registration createRegistration() {
