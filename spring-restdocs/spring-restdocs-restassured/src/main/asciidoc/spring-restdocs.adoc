@@ -1,0 +1,23 @@
+:toc2:
+
+= spring-restdocs
+
+== GET /registrations
+
+operation::get-registrations[]
+
+== GET /registrations/\{id}
+
+operation::get-registration[]
+
+== POST /registrations/\{id}
+
+operation::post-registration[]
+
+== PUT /registrations/\{id}
+
+operation::put-registration[]
+
+== DELETE /registrations/\{id}
+
+operation::delete-registration[]
