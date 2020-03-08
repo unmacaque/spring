@@ -1,0 +1,11 @@
+:toc2:
+
+= spring-restdocs
+
+== GET /messages
+
+operation::get-messages[]
+
+== POST /messages
+
+operation::post-messages[]

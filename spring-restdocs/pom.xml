@@ -16,5 +16,6 @@
   <modules>
     <module>spring-restdocs-mockmvc</module>
     <module>spring-restdocs-restassured</module>
+    <module>spring-restdocs-webtestclient</module>
   </modules>
 </project>

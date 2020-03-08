@@ -1,0 +1,14 @@
+[
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Message",
+    "title": "Hello",
+    "author": "John Doe",
+    "content": "This is the first message posted with this nice litte application. Hope you like it. Feel free to post more messages. \uD83D\uDE42"
+  },
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Message",
+    "title": "Hi John",
+    "author": "Jane Doe",
+    "content": "Hi John. Nice blog you have got there. Will check regularly for some interesting updates. \uD83D\uDC4B"
+  }
+]
