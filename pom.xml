@@ -10,6 +10,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
     <wiremock.version>2.25.1</wiremock.version>
   </properties>
 
@@ -48,4 +49,16 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${asciidoctor-maven-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
