@@ -30,6 +30,8 @@ To run end-to-end tests:
 
 Run `npm run build` to build static assets for productive use.
 
+Update Angular and related dependencies to the next version using the command `ng update --all`.
+
 ## Spring Boot
 
 Run `mvn package` to build an executable standalone jar without static assets.

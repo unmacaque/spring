@@ -1,4 +1,5 @@
 import { SpringAngularPage } from './app.po';
+import { browser, logging } from 'protractor';
 
 describe('spring-angular App', () => {
   let page: SpringAngularPage;
@@ -7,9 +8,9 @@ describe('spring-angular App', () => {
     page = new SpringAngularPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitle()).toEqual('Spring Boot &amp; Angular');
+    expect(page.getTitleText()).toEqual('Spring Boot &amp; Angular');
   });
 
   afterEach(async () => {
