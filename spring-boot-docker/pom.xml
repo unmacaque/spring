@@ -15,7 +15,6 @@
   </parent>
 
   <properties>
-    <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
     <logstash-logback-encoder.version>5.3</logstash-logback-encoder.version>
   </properties>
 
@@ -59,7 +58,6 @@
       <plugin>
         <groupId>com.spotify</groupId>
         <artifactId>dockerfile-maven-plugin</artifactId>
-        <version>${dockerfile-maven.version}</version>
         <configuration>
           <repository>unmacaque/${project.artifactId}</repository>
         </configuration>
