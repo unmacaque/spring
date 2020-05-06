@@ -7,9 +7,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import reactor.test.StepVerifier;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class ApplicationTest {
@@ -28,9 +28,9 @@ class ApplicationTest {
 	void test() {
 		stubFor(get(urlEqualTo("/")).willReturn(aResponse().withBody("Hello World")));
 
-		String value = service.doCall();
-
-		assertThat(value).isEqualTo("Hello World");
+		StepVerifier.create(service.doCall())
+				.expectNext("Hello World")
+				.verifyComplete();
 
 		verify(getRequestedFor(urlEqualTo("/")));
 	}
