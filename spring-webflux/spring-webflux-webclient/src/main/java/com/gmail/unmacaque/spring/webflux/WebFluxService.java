@@ -2,7 +2,6 @@ package com.gmail.unmacaque.spring.webflux;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -16,11 +15,8 @@ public class WebFluxService {
 		return WebClient
 				.create("http://localhost:8888")
 				.get()
-				.exchange()
-				.blockOptional()
-				.orElseThrow(IllegalStateException::new)
-				.toEntity(String.class)
-				.map(ResponseEntity::getBody)
+				.retrieve()
+				.bodyToMono(String.class)
 				.doOnNext(log::info);
 	}
 
