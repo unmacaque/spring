@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.test.StepVerifier;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -15,7 +16,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 class ApplicationTest {
 
 	@BeforeAll
-	static void beforeEach() {
+	static void beforeAll() {
 		WireMock.configureFor(8888);
 		var server = new WireMockServer(8888);
 		server.start();
@@ -25,12 +26,23 @@ class ApplicationTest {
 	private WebFluxService service;
 
 	@Test
-	void test() {
-		stubFor(get(urlEqualTo("/")).willReturn(aResponse().withBody("Hello World")));
+	void testOk() {
+		stubFor(get(urlEqualTo("/")).willReturn(ok("Hello World")));
 
 		StepVerifier.create(service.doCall())
 				.expectNext("Hello World")
 				.verifyComplete();
+
+		verify(getRequestedFor(urlEqualTo("/")));
+	}
+
+	@Test
+	void testNotFound() {
+		stubFor(get(urlEqualTo("/")).willReturn(notFound()));
+
+		StepVerifier.create(service.doCall())
+				.expectError(WebClientResponseException.class)
+				.verify();
 
 		verify(getRequestedFor(urlEqualTo("/")));
 	}
