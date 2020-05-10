@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Greeting {
 	private String name;
@@ -11,8 +12,8 @@ public class Greeting {
 	}
 
 	public Greeting(String name, LocalDateTime time) {
-		this.name = name;
-		this.time = time;
+		this.name = Objects.requireNonNull(name);
+		this.time = Objects.requireNonNull(time);
 	}
 
 	public String getName() {

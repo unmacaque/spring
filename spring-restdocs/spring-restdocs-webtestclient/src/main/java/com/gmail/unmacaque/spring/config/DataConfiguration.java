@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.mongodb.core.CollectionOptions;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.repository.init.Jackson2ResourceReader;
+import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class DataConfiguration implements ApplicationListener<ApplicationReadyEv
 	}
 
 	@Override
-	public void onApplicationEvent(ApplicationReadyEvent event) {
+	public void onApplicationEvent(@NonNull ApplicationReadyEvent event) {
 		mongoTemplate.createCollection(Message.class, CollectionOptions.empty().capped().size(1000L)).subscribe();
 		// work around missing RepositoryPopulator support for reactive repositories
 		var reader = new Jackson2ResourceReader();
