@@ -8,8 +8,8 @@ import org.springframework.hateoas.server.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
@@ -25,24 +25,19 @@ public class ShopController {
 
 	@GetMapping
 	public CollectionModel<EntityModel<Item>> getAllItems() {
-		var itemCollectionModel = new ArrayList<EntityModel<Item>>();
+		var itemCollectionModel = shop.getItems()
+				.stream()
+				.map(this::buildItemEntityModel)
+				.collect(Collectors.toUnmodifiableList());
 
-		shop.getItems().forEach(item -> itemCollectionModel.add(buildItemEntityModel(item)));
-
-		var CollectionModel = new CollectionModel<>(itemCollectionModel);
-		CollectionModel.add(linkTo(ShopController.class).withSelfRel());
-
-		return CollectionModel;
+		return CollectionModel.of(itemCollectionModel, linkTo(ShopController.class).withSelfRel());
 	}
 
 	@GetMapping("/{itemId}")
 	public EntityModel<Item> getItem(@PathVariable int itemId) {
 		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
-		var EntityModel = new EntityModel<>(item);
-		EntityModel.add(linkTo(ShopController.class).slash(item).withSelfRel());
-
-		return EntityModel;
+		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
 	}
 
 	@PostMapping("/{itemId}/order")
@@ -50,16 +45,11 @@ public class ShopController {
 	public EntityModel<Item> orderItem(@PathVariable int itemId) {
 		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
-		var EntityModel = new EntityModel<>(item);
-		EntityModel.add(linkTo(ShopController.class).slash(item).withSelfRel());
-
-		return EntityModel;
+		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
 	}
 
 	private EntityModel<Item> buildItemEntityModel(Item item) {
-		var EntityModel = new EntityModel<>(item);
-		EntityModel.add(linkTo(ShopController.class).slash(item).withSelfRel());
-		return EntityModel;
+		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
 	}
 
 	@ExceptionHandler(NoSuchElementException.class)
