@@ -18,6 +18,7 @@
     <module>spring-data-ldap</module>
     <module>spring-data-mongodb</module>
     <module>spring-data-neo4j</module>
+    <module>spring-data-r2dbc</module>
     <module>spring-data-rest</module>
   </modules>
 </project>
