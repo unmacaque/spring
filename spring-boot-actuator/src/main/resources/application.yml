@@ -1,4 +1,7 @@
 management:
+  health:
+    probes:
+      enabled: true
   endpoint:
     health:
       show-details: always
