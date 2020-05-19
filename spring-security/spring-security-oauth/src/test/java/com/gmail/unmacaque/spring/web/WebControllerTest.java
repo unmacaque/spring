@@ -6,7 +6,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.oidcLogin;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -18,8 +21,11 @@ class WebControllerTest {
 
 	@Test
 	void testIndex() throws Exception {
-		mvc.perform(get("/login"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/")
+				.with(oidcLogin()))
+				.andExpect(status().isOk())
+				.andExpect(authenticated().withUsername("user"))
+				.andExpect(content().string("user"));
 	}
 
 }
