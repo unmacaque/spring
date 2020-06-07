@@ -54,3 +54,5 @@ initializr:
       default: false
   group-id:
     value: com.gmail.unmacaque.spring
+  env:
+    spring-boot-metadata-url:
