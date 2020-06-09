@@ -35,3 +35,24 @@ spring:
             redirect-uri: http://localhost:8080/login/oauth2/code/
             scope: email
 ```
+
+### GitLab
+
+Login to <https://gitlab.com>. Go to the [Applications]( https://gitlab.com/profile/applications) section in the User Settings.
+
+Create a new application using the `redirect-uri` property as the value for _Redirect URI_. Make sure the scope _openid_ is checked. Press _Save application_ to create the application and show the client ID and secret.
+
+```
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          gitlab:
+            authorization-grant-type: authorization_code
+            client-name: GitLab
+            client-id: <key>
+            client-secret: <secret>
+            redirect-uri: http://localhost:8080/login/oauth2/code/
+            scope: openid
+```
