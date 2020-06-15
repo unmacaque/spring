@@ -16,7 +16,7 @@ public class MessageRouteHandler {
 	}
 
 	public Mono<ServerResponse> getMessages(ServerRequest request) {
-		Flux<Message> messages = repository.findAll();
+		final Flux<Message> messages = repository.findAll();
 		return ServerResponse
 				.ok()
 				.body(messages, Message.class);

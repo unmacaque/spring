@@ -77,7 +77,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		StringJoiner joiner = new StringJoiner(",", "[", "]");
+		final StringJoiner joiner = new StringJoiner(",", "[", "]");
 		joiner.add(id).add(author).add(publishDate.toString()).add(description).add(genre).add(price);
 		return title + joiner.toString();
 	}

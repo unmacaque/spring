@@ -13,7 +13,7 @@ public class OrderFactory {
 	}
 
 	public Order newOrder(Address address, Payment payment) {
-		var order = new Order();
+		final var order = new Order();
 		order.setItemId(10000);
 		order.setAmount(1);
 		order.setAddress(address);

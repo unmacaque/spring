@@ -25,7 +25,7 @@ public class ShopController {
 
 	@GetMapping
 	public CollectionModel<EntityModel<Item>> getAllItems() {
-		var itemCollectionModel = shop.getItems()
+		final var itemCollectionModel = shop.getItems()
 				.stream()
 				.map(this::buildItemEntityModel)
 				.collect(Collectors.toUnmodifiableList());
@@ -35,7 +35,7 @@ public class ShopController {
 
 	@GetMapping("/{itemId}")
 	public EntityModel<Item> getItem(@PathVariable int itemId) {
-		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
+		final var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
 		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
 	}
@@ -43,7 +43,7 @@ public class ShopController {
 	@PostMapping("/{itemId}/order")
 	@ResponseStatus(HttpStatus.CREATED)
 	public EntityModel<Item> orderItem(@PathVariable int itemId) {
-		var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
+		final var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
 
 		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
 	}

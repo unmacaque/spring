@@ -12,10 +12,10 @@ public class DataConfiguration {
 
 	@Bean
 	public ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
-		var initializer = new ConnectionFactoryInitializer();
+		final var initializer = new ConnectionFactoryInitializer();
 		initializer.setConnectionFactory(connectionFactory);
 
-		var populator = new ResourceDatabasePopulator(new ClassPathResource("init.sql"));
+		final var populator = new ResourceDatabasePopulator(new ClassPathResource("init.sql"));
 		initializer.setDatabasePopulator(populator);
 		return initializer;
 	}

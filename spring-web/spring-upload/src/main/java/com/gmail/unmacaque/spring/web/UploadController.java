@@ -21,8 +21,8 @@ public class UploadController {
 	private final Path tempDirectory;
 
 	public UploadController() throws IOException {
-		var permissionSet = PosixFilePermissions.fromString("rwxr-xr-x");
-		var fileAttribute = PosixFilePermissions.asFileAttribute(permissionSet);
+		final var permissionSet = PosixFilePermissions.fromString("rwxr-xr-x");
+		final var fileAttribute = PosixFilePermissions.asFileAttribute(permissionSet);
 		tempDirectory = Files.createTempDirectory("upload", fileAttribute);
 	}
 
@@ -42,7 +42,7 @@ public class UploadController {
 			if (fileName == null) {
 				fileName = "newFile";
 			}
-			var destFile = new File(tempDirectory.toFile(), fileName);
+			final var destFile = new File(tempDirectory.toFile(), fileName);
 			file.transferTo(destFile);
 			modelMap.addAttribute("filename", file.getOriginalFilename());
 			modelMap.addAttribute("filesize", file.getSize());

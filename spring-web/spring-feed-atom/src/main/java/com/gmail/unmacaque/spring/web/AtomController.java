@@ -19,10 +19,10 @@ public class AtomController {
 
 	@GetMapping("/")
 	public Feed getFeed() {
-		var now = new Date();
-		var author = createPerson();
-		var feed = createFeed(author, now, "Spring Feed Atom");
-		var entires = new ArrayList<Entry>();
+		final var now = new Date();
+		final var author = createPerson();
+		final var feed = createFeed(author, now, "Spring Feed Atom");
+		final var entires = new ArrayList<Entry>();
 
 		entires.add(createEntry(author, now, "First feed entry", "This is the first feed entry"));
 		entires.add(createEntry(author, now, "Second feed entry", "This is the second feed entry"));
@@ -33,14 +33,14 @@ public class AtomController {
 	}
 
 	private SyndPerson createPerson() {
-		var author = new SyndPersonImpl();
+		final var author = new SyndPersonImpl();
 		author.setName("Andreas Trepczik");
 		author.setEmail("unmacaque@gmail.com");
 		return author;
 	}
 
 	private Feed createFeed(SyndPerson author, Date date, String title) {
-		var feed = new Feed();
+		final var feed = new Feed();
 		feed.setFeedType("atom_1.0");
 		feed.setTitle(title);
 		feed.setUpdated(date);
@@ -49,14 +49,14 @@ public class AtomController {
 	}
 
 	private Entry createEntry(SyndPerson author, Date date, String title, String... values) {
-		var entry = new Entry();
+		final var entry = new Entry();
 		entry.setAuthors(Collections.singletonList(author));
 		entry.setCreated(date);
 		entry.setUpdated(date);
 		entry.setTitle(title);
 		entry.setId(Integer.toString(title.hashCode()));
 
-		var contents = Arrays.stream(values)
+		final var contents = Arrays.stream(values)
 				.map(this::createContent)
 				.collect(Collectors.toList());
 		entry.setContents(contents);
@@ -64,7 +64,7 @@ public class AtomController {
 	}
 
 	private Content createContent(String value) {
-		var content = new Content();
+		final var content = new Content();
 		content.setType("text/plain");
 		content.setValue(value);
 		return content;

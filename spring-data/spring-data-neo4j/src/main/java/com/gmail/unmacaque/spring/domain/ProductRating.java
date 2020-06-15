@@ -48,7 +48,7 @@ public class ProductRating {
 	}
 
 	public static ProductRating create(Rating rating, Person person, Product product) {
-		ProductRating productRating = new ProductRating();
+		final ProductRating productRating = new ProductRating();
 		productRating.rating = rating;
 		productRating.person = person;
 		productRating.product = product;

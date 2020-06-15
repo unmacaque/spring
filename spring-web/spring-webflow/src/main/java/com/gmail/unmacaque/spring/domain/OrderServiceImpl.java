@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Optional<Order> cancelOrder(long orderId) throws NoSuchElementException {
-		Optional<Order> order = getOrder(orderId);
+		final Optional<Order> order = getOrder(orderId);
 		order.ifPresent(orderRepository::delete);
 		return order;
 	}
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Map<Long, Order> getOrders() {
-		var allOrders = orderRepository.findAll();
+		final var allOrders = orderRepository.findAll();
 		return StreamSupport.stream(allOrders.spliterator(), false)
 				.collect(Collectors.toMap(Order::getId, Function.identity()));
 	}

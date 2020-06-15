@@ -15,8 +15,8 @@ public class MyHealthHealthIndicator implements HealthIndicator {
 
 	@Override
 	public Health health() {
-		var builder = new Health.Builder();
-		boolean good = flip.get();
+		final var builder = new Health.Builder();
+		final boolean good = flip.get();
 		flip.set(!good);
 
 		if (good) {

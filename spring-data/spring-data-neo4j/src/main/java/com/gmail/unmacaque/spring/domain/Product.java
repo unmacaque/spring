@@ -30,7 +30,7 @@ public class Product {
 	}
 
 	public static Product create(String title) {
-		Product person = new Product();
+		final Product person = new Product();
 		person.title = title;
 		return person;
 	}

@@ -52,10 +52,10 @@ public class RegisterController {
 		if (result.hasErrors()) {
 			return "register";
 		}
-		String secret;
+		final String secret;
 		try {
 			secret = createNewOtpUser(registerUser);
-			String code = URLEncoder.encode(String.format(OTPAUTH_CODE, "spring-security-2fa", secret), StandardCharsets.UTF_8);
+			final String code = URLEncoder.encode(String.format(OTPAUTH_CODE, "spring-security-2fa", secret), StandardCharsets.UTF_8);
 			modelMap.addAttribute("code", code);
 		} catch (RuntimeException e) {
 			result.reject("register.error.general", e.getMessage());
@@ -66,8 +66,8 @@ public class RegisterController {
 	}
 
 	private String createNewOtpUser(RegisterUser registerUser) {
-		String secret = Base32.random();
-		var otpUser = new User(
+		final String secret = Base32.random();
+		final var otpUser = new User(
 				registerUser.getUsername(),
 				registerUser.getPassword(),
 				AuthorityUtils.createAuthorityList("ROLE_USER"));

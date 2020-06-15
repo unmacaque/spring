@@ -50,7 +50,7 @@ public class Purchase {
 	}
 
 	public static Purchase create(LocalDateTime date, Person person, Product product) {
-		Purchase purchase = new Purchase();
+		final Purchase purchase = new Purchase();
 		purchase.date = date;
 		purchase.person = person;
 		purchase.product = product;

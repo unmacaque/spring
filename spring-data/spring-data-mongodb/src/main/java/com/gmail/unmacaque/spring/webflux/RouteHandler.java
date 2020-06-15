@@ -15,7 +15,7 @@ public class RouteHandler {
 	}
 
 	public Mono<ServerResponse> getQuote(ServerRequest request) {
-		String id = request.pathVariables().get("id");
+		final String id = request.pathVariables().get("id");
 		return ServerResponse
 				.ok()
 				.body(quoteRepository.findById(id), Quote.class);
@@ -28,7 +28,7 @@ public class RouteHandler {
 	}
 
 	public Mono<ServerResponse> postQuote(ServerRequest request) {
-		var quote = request.bodyToMono(Quote.class);
+		final var quote = request.bodyToMono(Quote.class);
 		return ServerResponse
 				.ok()
 				.body(quoteRepository.saveAll(quote), Quote.class);

@@ -91,7 +91,7 @@ public class Person {
 	}
 
 	public static Person create(String name, int age, String gender, List<Person> acquaintances) {
-		Person person = new Person();
+		final Person person = new Person();
 		person.name = name;
 		person.age = age;
 		person.gender = gender;

@@ -19,10 +19,11 @@ public class RestTemplateService {
 	}
 
 	public String doCall() {
-		var bundle = restTemplate.getForObject("http://localhost:8888/", Bundle.class);
-		if (bundle != null) {
-			logger.info(bundle.getContent());
+		final var bundle = restTemplate.getForObject("http://localhost:8888/", Bundle.class);
+		if (bundle == null) {
+			return null;
 		}
+		logger.info(bundle.getContent());
 		return bundle.toString();
 	}
 }

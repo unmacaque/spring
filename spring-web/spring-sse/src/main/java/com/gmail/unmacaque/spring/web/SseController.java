@@ -24,7 +24,7 @@ public class SseController {
 
 	@GetMapping("/event")
 	public SseEmitter sseEmitter() {
-		var emitter = new SseEmitter();
+		final var emitter = new SseEmitter();
 		emitters.add(emitter);
 		emitter.onCompletion(() -> emitters.remove(emitter));
 		emitter.onTimeout(() -> emitters.remove(emitter));

@@ -28,7 +28,7 @@ public class ThymeleafController {
 
 	@ModelAttribute("mappings")
 	public Collection<String> mappings() {
-		Set<RequestMappingInfo> mappingInfoSet = handlerMapping.getHandlerMethods().keySet();
+		final Set<RequestMappingInfo> mappingInfoSet = handlerMapping.getHandlerMethods().keySet();
 		return mappingInfoSet
 				.stream()
 				.map(RequestMappingInfo::getPatternsCondition)

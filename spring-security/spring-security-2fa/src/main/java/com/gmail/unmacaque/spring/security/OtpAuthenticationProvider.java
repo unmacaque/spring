@@ -24,17 +24,17 @@ public class OtpAuthenticationProvider extends DaoAuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
-		String verificationCode = ((OtpWebAuthenticationDetails) auth.getDetails()).getVerificationCode();
-		UserDetails user = userDetailsService.loadUserByUsername(auth.getName());
-		String secret = otpSecretRegistry.getSecret(user.getUsername());
+		final String verificationCode = ((OtpWebAuthenticationDetails) auth.getDetails()).getVerificationCode();
+		final UserDetails user = userDetailsService.loadUserByUsername(auth.getName());
+		final String secret = otpSecretRegistry.getSecret(user.getUsername());
 		if (secret == null) {
 			throw new UsernameNotFoundException("User not eligible for two-factor authentication");
 		}
-		Totp totp = new Totp(secret);
+		final Totp totp = new Totp(secret);
 		if (!isValidLong(verificationCode) || !totp.verify(verificationCode)) {
 			throw new BadCredentialsException("Invalid verificationCode");
 		}
-		Authentication result = super.authenticate(auth);
+		final Authentication result = super.authenticate(auth);
 		return new UsernamePasswordAuthenticationToken(user, result.getCredentials(), result.getAuthorities());
 	}
 
