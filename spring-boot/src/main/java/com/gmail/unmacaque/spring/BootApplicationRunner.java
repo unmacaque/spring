@@ -19,7 +19,7 @@ public class BootApplicationRunner implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		logger.info(myBean.getString());
 		myBean.getList().forEach(logger::info);
 

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
@@ -43,8 +42,10 @@ public class RegisterController {
 	}
 
 	@PostMapping("/register")
-	public String registerPost(@Validated @ModelAttribute("registerUser") RegisterUser registerUser, BindingResult result,
-							   ModelMap modelMap) throws UnsupportedEncodingException {
+	public String registerPost(
+			@Validated @ModelAttribute("registerUser") RegisterUser registerUser,
+			BindingResult result,
+			ModelMap modelMap) {
 		modelMap.addAttribute("registerUser", registerUser);
 		if (userDetailsManager.userExists(registerUser.getUsername())) {
 			result.reject("register.error.usernameexists");

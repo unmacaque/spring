@@ -52,12 +52,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configure(AuthenticationManagerBuilder auth) {
 		auth.authenticationProvider(authenticationProvider());
 	}
 
 	@Bean
-	public AuthenticationProvider authenticationProvider() throws Exception {
+	public AuthenticationProvider authenticationProvider() {
 		final var provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userDetailsManager());
 		provider.setPasswordEncoder(passwordEncoder());
@@ -70,7 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public UserDetailsManager userDetailsManager() throws Exception {
+	public UserDetailsManager userDetailsManager() {
 		final var manager = new JdbcUserDetailsManager();
 		manager.setDataSource(dataSource);
 		return manager;

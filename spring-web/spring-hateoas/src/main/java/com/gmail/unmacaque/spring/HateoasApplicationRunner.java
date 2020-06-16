@@ -18,7 +18,7 @@ public class HateoasApplicationRunner implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		shop.addItem(Item.create("CPU", "The core of any computer", BigDecimal.valueOf(129.99)));
 		shop.addItem(Item.create("RAM", "The core of any computer", BigDecimal.valueOf(59.99)));
 	}

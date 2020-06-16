@@ -18,7 +18,7 @@ public class DataRestApplicationRunner implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		itemRepository.save(Item.create("Monitor", "You cannot develop without it", BigDecimal.valueOf(99.99), 5));
 	}
 
