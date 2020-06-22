@@ -32,7 +32,7 @@ spring:
             client-name: Bitbucket
             client-id: <key>
             client-secret: <secret>
-            redirect-uri: http://localhost:8080/login/oauth2/code/
+            redirect-uri: "{baseUrl}/login/oauth2/code/"
             scope: email
 ```
 
@@ -53,6 +53,6 @@ spring:
             client-name: GitLab
             client-id: <key>
             client-secret: <secret>
-            redirect-uri: http://localhost:8080/login/oauth2/code/
+            redirect-uri: "{baseUrl}/login/oauth2/code/"
             scope: openid
 ```
