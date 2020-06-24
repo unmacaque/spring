@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebController {
 
 	@GetMapping("/")
-	public String hello(@AuthenticationPrincipal OidcUser user) {
+	public String index(@AuthenticationPrincipal OidcUser user) {
 		return user.getSubject();
 	}
 

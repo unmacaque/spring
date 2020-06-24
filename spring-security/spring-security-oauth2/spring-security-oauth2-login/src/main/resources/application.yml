@@ -3,12 +3,6 @@ spring:
     oauth2:
       client:
         provider:
-          keycloak:
-            #issuer-uri: http://localhost:8180/auth/realms/spring-boot/
-            authorization-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/auth
-            token-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/token
-            jwk-set-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/certs
-            user-info-uri: http://localhost:8180/auth/realms/spring-boot/protocol/openid-connect/userinfo
           bitbucket:
             authorization-uri: https://bitbucket.org/site/oauth2/authorize
             token-uri: https://bitbucket.org/site/oauth2/access_token
@@ -17,10 +11,10 @@ spring:
           gitlab:
             issuer-uri: https://gitlab.com
         registration:
-          keycloak:
+          gitlab:
             authorization-grant-type: authorization_code
-            client-name: Keycloak
-            client-id: spring-security-oauth
-            client-secret: springboot
+            client-name: GitLab
+            client-id: <placeholder>
+            client-secret: <placeholder>
             redirect-uri: "{baseUrl}/login/oauth2/code/"
             scope: openid
