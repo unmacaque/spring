@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-restdocs</artifactId>
   <name>Spring REST Docs</name>
-  <url>https://bitbucket.org/unmacaque/spring</url>
+  <url>https://github.com/unmacaque/spring</url>
   <packaging>pom</packaging>
 
   <parent>

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-security-ldap</artifactId>
   <name>Spring Security LDAP</name>
-  <url>https://bitbucket.org/unmacaque/spring</url>
+  <url>https://github.com/unmacaque/spring</url>
   <packaging>jar</packaging>
 
   <parent>

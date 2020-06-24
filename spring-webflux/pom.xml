@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-webflux</artifactId>
   <name>Spring WebFlux</name>
-  <url>https://bitbucket.org/unmacaque/spring</url>
+  <url>https://github.com/unmacaque/spring</url>
   <packaging>pom</packaging>
 
   <parent>

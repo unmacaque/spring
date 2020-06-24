@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-restdocs-restassured</artifactId>
   <name>Spring REST Docs REST Assured</name>
-  <url>https://bitbucket.org/unmacaque/spring</url>
+  <url>https://github.com/unmacaque/spring</url>
   <packaging>jar</packaging>
 
   <parent>

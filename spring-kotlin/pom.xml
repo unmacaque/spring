@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>spring-kotlin</artifactId>
   <name>Spring Kotlin</name>
-  <url>https://bitbucket.org/unmacaque/spring</url>
+  <url>https://github.com/unmacaque/spring</url>
   <packaging>jar</packaging>
 
   <parent>
