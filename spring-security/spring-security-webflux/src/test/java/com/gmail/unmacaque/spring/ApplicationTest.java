@@ -1,31 +1,18 @@
 package com.gmail.unmacaque.spring;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
-
 @SpringBootTest
+@AutoConfigureWebTestClient
 class ApplicationTest {
 
 	@Autowired
-	private ApplicationContext applicationContext;
-
 	private WebTestClient webTestClient;
-
-	@BeforeEach
-	void setup() {
-		webTestClient = WebTestClient
-				.bindToApplicationContext(applicationContext)
-				.apply(springSecurity())
-				.configureClient()
-				.build();
-	}
 
 	@Test
 	void testRoot() {
@@ -33,8 +20,8 @@ class ApplicationTest {
 				.get()
 				.uri("/")
 				.exchange()
-				.expectStatus()
-				.isOk();
+				.expectStatus().isOk()
+				.expectBody(String.class).isEqualTo("Hello World");
 	}
 
 	@Test
@@ -44,8 +31,8 @@ class ApplicationTest {
 				.get()
 				.uri("/hello/John")
 				.exchange()
-				.expectStatus()
-				.isOk();
+				.expectStatus().isOk()
+				.expectBody(String.class).isEqualTo("Hello John");
 	}
 
 	@Test
@@ -54,8 +41,7 @@ class ApplicationTest {
 				.get()
 				.uri("/hello/John")
 				.exchange()
-				.expectStatus()
-				.isUnauthorized();
+				.expectStatus().isUnauthorized();
 	}
 
 }
