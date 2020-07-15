@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gmail.unmacaque</groupId>
@@ -10,10 +10,10 @@
 
   <properties>
     <java.version>11</java.version>
-    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
+    <asciidoctor-maven-plugin.version>2.0.0</asciidoctor-maven-plugin.version>
     <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-    <frontend-maven-plugin.version>1.9.1</frontend-maven-plugin.version>
-    <wiremock.version>2.25.1</wiremock.version>
+    <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
+    <wiremock.version>2.27.1</wiremock.version>
   </properties>
 
   <parent>
