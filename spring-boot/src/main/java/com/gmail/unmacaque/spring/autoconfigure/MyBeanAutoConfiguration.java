@@ -20,7 +20,12 @@ public class MyBeanAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public MyBean myBean() {
-		return new MyBeanImpl(properties.getMyProperty(), properties.getMyList());
+		return new MyBeanImpl(
+				properties.getMyProperty(),
+				properties.getMyList(),
+				properties.getAuthor().getName(),
+				properties.getAuthor().getMail()
+		);
 	}
 
 }

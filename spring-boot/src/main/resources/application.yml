@@ -4,3 +4,6 @@ application:
     - Apples
     - Bananas
     - Oranges
+  author:
+    name: Foobar
+    mail: foo@example.com

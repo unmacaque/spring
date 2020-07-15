@@ -8,9 +8,12 @@ public class MyBeanImpl implements MyBean {
 
 	private final List<String> myList;
 
-	public MyBeanImpl(String myString, List<String> myList) {
+	private final Author author;
+
+	public MyBeanImpl(String myString, List<String> myList, String name, String mail) {
 		this.myString = myString;
 		this.myList = myList;
+		this.author = new Author(name, mail);
 	}
 
 	@Override
@@ -23,4 +26,8 @@ public class MyBeanImpl implements MyBean {
 		return myList;
 	}
 
+	@Override
+	public Author getAuthor() {
+		return author;
+	}
 }

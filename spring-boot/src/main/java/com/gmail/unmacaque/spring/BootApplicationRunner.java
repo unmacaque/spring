@@ -24,7 +24,7 @@ public class BootApplicationRunner implements ApplicationRunner {
 		myBean.getList().forEach(logger::info);
 
 		args.getNonOptionArgs().forEach(logger::info);
-		args.getOptionNames().forEach((option) -> logger.info(option + "=" + args.getOptionValues(option)));
+		args.getOptionNames().forEach(option -> logger.info("{}={}", option, args.getOptionValues(option)));
 	}
 
 }

@@ -23,4 +23,16 @@ class MyBeanAutoConfigurationTest {
 		runner.run(context -> assertThat(context).hasFailed());
 	}
 
+	@Test
+	void testConfigurationPropertyValidationNotEmpty() {
+		runner.withPropertyValues("application.my-property=foo", "application.author.name=")
+				.run(context -> assertThat(context).hasFailed());
+	}
+
+	@Test
+	void testConfigurationPropertyValidationEmail() {
+		runner.withPropertyValues("application.my-property=foo", "application.author.mail=foo@")
+				.run(context -> assertThat(context).hasFailed());
+	}
+
 }

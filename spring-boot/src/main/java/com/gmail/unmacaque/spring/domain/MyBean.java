@@ -6,4 +6,6 @@ public interface MyBean {
 	String getString();
 
 	List<String> getList();
+
+	Author getAuthor();
 }
