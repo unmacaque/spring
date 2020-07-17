@@ -22,7 +22,6 @@ class WebFluxControllerTest {
 
 	@Test
 	void testHello() {
-		// @formatter:off
 		webTestClient
 				.get()
 				.uri("/hello")
@@ -31,12 +30,10 @@ class WebFluxControllerTest {
 				.expectBody()
 				.jsonPath("name").isEqualTo("Hello World")
 				.jsonPath("time").exists();
-		// @formatter:on
 	}
 
 	@Test
 	void testFlux() {
-		// @formatter:off
 		Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
 				.get()
 				.uri("/flux")
@@ -44,7 +41,6 @@ class WebFluxControllerTest {
 				.exchange()
 				.expectStatus().isOk()
 				.returnResult(Greeting.class).getResponseBody();
-		// @formatter:on
 
 		StepVerifier.withVirtualTime(scenarioSupplier)
 				.expectSubscription()

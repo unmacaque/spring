@@ -15,7 +15,6 @@ class ApplicationTest {
 
 	@Test
 	void testRoot() {
-		// @formatter:off
 		webTestClient.get()
 				.uri("/")
 				.exchange()
@@ -23,12 +22,10 @@ class ApplicationTest {
 				.expectBody()
 				.jsonPath("name").isEqualTo("Hello World")
 				.jsonPath("time").exists();
-		// @formatter:on
 	}
 
 	@Test
 	void testHelloName() {
-		// @formatter:off
 		webTestClient.get()
 				.uri("/hello/John")
 				.exchange()
@@ -36,6 +33,5 @@ class ApplicationTest {
 				.expectBody()
 				.jsonPath("name").isEqualTo("Hello John")
 				.jsonPath("time").exists();
-		// @formatter:on
 	}
 }
