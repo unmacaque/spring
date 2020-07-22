@@ -14,7 +14,7 @@
   </parent>
 
   <properties>
-    <spring-initializr.version>0.8.0.RELEASE</spring-initializr.version>
+    <spring-initializr.version>0.9.0</spring-initializr.version>
   </properties>
 
   <dependencyManagement>
@@ -37,11 +37,6 @@
     <dependency>
       <groupId>io.spring.initializr</groupId>
       <artifactId>initializr-generator-spring</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.hateoas</groupId>
-      <artifactId>spring-hateoas</artifactId>
-      <version>1.0.5.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
