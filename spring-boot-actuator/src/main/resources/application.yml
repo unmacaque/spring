@@ -1,9 +1,13 @@
 management:
   health:
-    probes:
+    livenessstate:
+      enabled: true
+    readinessstate:
       enabled: true
   endpoint:
     health:
+      probes:
+        enabled: true
       show-details: always
   endpoints:
     web:
