@@ -10,7 +10,6 @@
       <groupId>com.gmail.unmacaque</groupId>
       <artifactId>spring-restdocs</artifactId>
       <version>0.0.1-SNAPSHOT</version>
-      <relativePath>..</relativePath>
     </parent>
 
     <dependencies>
