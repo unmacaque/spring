@@ -16,5 +16,6 @@
   <modules>
     <module>spring-security-oauth2-client</module>
     <module>spring-security-oauth2-login</module>
+    <module>spring-security-oauth2-webflux</module>
   </modules>
 </project>
