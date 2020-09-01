@@ -15,7 +15,8 @@ class ApplicationTest {
 
 	@Test
 	void testRoot() {
-		webTestClient.get()
+		webTestClient
+				.get()
 				.uri("/")
 				.exchange()
 				.expectStatus().isOk()
@@ -26,7 +27,8 @@ class ApplicationTest {
 
 	@Test
 	void testHelloName() {
-		webTestClient.get()
+		webTestClient
+				.get()
 				.uri("/hello/John")
 				.exchange()
 				.expectStatus().isOk()
