@@ -4,6 +4,7 @@ import com.gmail.unmacaque.spring.domain.Person;
 import com.gmail.unmacaque.spring.domain.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
@@ -16,8 +17,8 @@ public class PersonController {
 	private PersonRepository personRepository;
 
 	@GetMapping({"/", "/persons"})
-	public Iterable<Person> getPersons(@RequestParam("name") Optional<String> name) {
-		return name.map(personRepository::findByNameLike).orElseGet(personRepository::findAll);
+	public Iterable<Person> getPersons(@RequestParam("name") @Nullable String name) {
+		return Optional.ofNullable(name).map(personRepository::findByNameLike).orElseGet(personRepository::findAll);
 	}
 
 	@GetMapping("/persons/{uid}")
