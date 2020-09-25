@@ -1,5 +1,5 @@
-# Spring
+# spring
 
-To start a project, run `mvn spring-boot:run`. If it is a web application, open [http://localhost:8080](http://localhost:8080) in a browser.
+Run the Gradle task `check` to test all projects.
 
-Run `mvn package` to produce an executable jar file.
+Run the Gradle task `bootRun` to start an individual Spring Boot application.

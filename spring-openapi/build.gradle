@@ -1,0 +1,17 @@
+dependencies {
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.5.8'
+    runtimeOnly 'org.springdoc:springdoc-openapi-ui:1.5.8'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    runtimeOnly 'com.h2database:h2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring OpenAPI'
+
+buildscript {
+    apply plugin: 'com.github.johnrengelman.processes'
+    apply plugin: 'org.springdoc.openapi-gradle-plugin'
+}

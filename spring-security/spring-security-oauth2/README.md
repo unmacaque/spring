@@ -13,7 +13,7 @@ spring.security.oauth2.client.registration.myprovider.client-secret
 
 In the Spring Boot application, configure the OAuth2 authentication provider. See `application.yml` to view an example configuration of an OpenID Connect provider. Note: Some providers such as GitHub are already configured out of the box.
 
-Finally, run `mvn spring-boot:run`.
+Finally, start the Spring Boot application and open <http://localhost:8080>.
 
 ## Integrations
 

@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim AS build
 WORKDIR /opt
-COPY /target/spring-boot-docker.jar app.jar
+COPY /build/libs/spring-boot-docker-0.0.1-SNAPSHOT.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
 FROM openjdk:11-jre-slim
 VOLUME /tmp

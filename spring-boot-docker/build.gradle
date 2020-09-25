@@ -1,0 +1,18 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    runtimeOnly 'net.logstash.logback:logstash-logback-encoder:5.3'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring Boot Docker'
+
+buildscript {
+    apply plugin: 'org.sglahn.gradle-dockerfile-plugin'
+
+    docker {
+        imageName = "unmacaque/${project.name}"
+    }
+}

@@ -7,4 +7,4 @@ steps:
     image: unmacaque/ci-run
     pull: never
     commands:
-      - mvn test -fae
+      - ./gradlew check
