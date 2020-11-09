@@ -1,18 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MyItem from './MyItem'
 import '../App.css';
 
-interface IState {
-    items: string[];
-}
+export default function MyList() {
+    const [items, setItems] = useState<string[]>([])
 
-class MyList extends React.Component<any, IState> {
-    constructor(props: any) {
-        super(props);
-        this.state = { items: [] };
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         fetch('/api/')
             .then((response) => {
                 if (!response.ok) {
@@ -20,24 +13,21 @@ class MyList extends React.Component<any, IState> {
                 }
                 return response.json()
             })
-            .then((data: string[]) => {
-                this.setState({ items: data });
-            }, (error) => {
-                console.error(error);
-            })
-    }
+            .then((data: string[]) => setItems(data))
+            .catch(console.error);
+    }, [])
 
-    renderItems() {
-        return this.state.items.map(item =>
-            <MyItem key={item} value={item} />
+    function renderItems() {
+        return (
+            items.map((item, key) =>
+                <MyItem key={key} value={item} />
+            )
         )
     }
 
-    render() {
-        return <ul className="item-list">
-            {this.renderItems()}
+    return (
+        <ul className="item-list">
+            {renderItems()}
         </ul>
-    }
+    )
 }
-
-export default MyList
