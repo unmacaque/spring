@@ -25,6 +25,18 @@ class ApplicationTests(
 ) {
 
     @Test
+    fun testGetHello() {
+        mvc.get("/hello")
+            .andExpect {
+                status { isOk }
+                content {
+                    contentType(MediaType.TEXT_PLAIN)
+                    string("Hello World")
+                }
+            }
+    }
+
+    @Test
     fun testGetMessages() {
         mvc.get("/messages/")
             .andExpect {
