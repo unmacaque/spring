@@ -5,4 +5,4 @@ import org.springframework.boot.context.properties.ConstructorBinding
 
 @ConstructorBinding
 @ConfigurationProperties("app")
-data class ApplicationProperties(val text: String = "World")
+data class ApplicationProperties(/** Text to show **/ val text: String = "World")

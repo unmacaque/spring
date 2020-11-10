@@ -32,6 +32,11 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
     </dependency>
@@ -80,6 +85,14 @@
             <plugin>spring</plugin>
           </compilerPlugins>
         </configuration>
+        <executions>
+          <execution>
+            <id>kapt</id>
+            <goals>
+              <goal>kapt</goal>
+            </goals>
+          </execution>
+        </executions>
         <dependencies>
           <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
