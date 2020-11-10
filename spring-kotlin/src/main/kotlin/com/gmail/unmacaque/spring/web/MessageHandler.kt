@@ -6,7 +6,7 @@ import org.springframework.web.servlet.function.ServerRequest
 import org.springframework.web.servlet.function.ServerResponse
 import org.springframework.web.servlet.function.body
 
-class RouteHandler(private val repository: MessageRepository) {
+class MessageHandler(private val repository: MessageRepository) {
 
     fun getMessages(request: ServerRequest): ServerResponse {
         val messages = repository.findAll()

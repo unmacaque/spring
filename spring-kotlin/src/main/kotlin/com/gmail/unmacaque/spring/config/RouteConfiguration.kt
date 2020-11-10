@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.config
 
 import com.gmail.unmacaque.spring.domain.MessageRepository
-import com.gmail.unmacaque.spring.web.RouteHandler
+import com.gmail.unmacaque.spring.web.MessageHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.function.router
@@ -10,15 +10,15 @@ import org.springframework.web.servlet.function.router
 class RouteConfiguration {
 
     @Bean
-    fun routeHandler(repository: MessageRepository) = RouteHandler(repository)
+    fun routeHandler(repository: MessageRepository) = MessageHandler(repository)
 
     @Bean
-    fun routerFunction(routeHandler: RouteHandler) =
+    fun routerFunction(messageHandler: MessageHandler) =
         router {
             "/messages".nest {
-                GET("/", routeHandler::getMessages)
-                GET("/{id}", routeHandler::getMessage)
-                POST("/", routeHandler::postMessage)
+                GET("/", messageHandler::getMessages)
+                GET("/{id}", messageHandler::getMessage)
+                POST("/", messageHandler::postMessage)
             }
         }
 
