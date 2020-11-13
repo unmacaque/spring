@@ -1,27 +1,15 @@
 package com.gmail.unmacaque.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.neo4j.ogm.annotation.*;
+import org.springframework.data.neo4j.core.schema.RelationshipProperties;
+import org.springframework.data.neo4j.core.schema.TargetNode;
 
-@RelationshipEntity(type = "RATED")
+@RelationshipProperties
 public class ProductRating {
-
-	@Id
-	@GeneratedValue
-	private Long id;
 
 	private Rating rating;
 
-	@JsonBackReference
-	@StartNode
-	private Person person;
-
-	@EndNode
+	@TargetNode
 	private Product product;
-
-	public Long getId() {
-		return id;
-	}
 
 	public Rating getRating() {
 		return rating;
@@ -29,14 +17,6 @@ public class ProductRating {
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
 	}
 
 	public Product getProduct() {
@@ -47,10 +27,9 @@ public class ProductRating {
 		this.product = product;
 	}
 
-	public static ProductRating create(Rating rating, Person person, Product product) {
+	public static ProductRating create(Rating rating, Product product) {
 		final ProductRating productRating = new ProductRating();
 		productRating.rating = rating;
-		productRating.person = person;
 		productRating.product = product;
 		return productRating;
 	}

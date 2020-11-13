@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring;
 
+import io.spring.initializr.web.mapper.InitializrMetadataVersion;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootVersion;
@@ -21,7 +22,8 @@ class ApplicationTest {
 
 	@Test
 	void testMetadata() throws Exception {
-		mvc.perform(get("/"))
+		mvc.perform(get("/")
+				.accept(InitializrMetadataVersion.V2_2.getMediaType()))
 				.andExpect(jsonPath("$.type.default", equalTo("maven-project")))
 				.andExpect(jsonPath("$.type.values.*.id", containsInAnyOrder("maven-project", "maven-build", "gradle-project", "gradle-build")))
 				.andExpect(jsonPath("$.packaging.default", equalTo("jar")))

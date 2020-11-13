@@ -1,16 +1,13 @@
 package com.gmail.unmacaque.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
-@NodeEntity
+@Node
 public class Person {
 
 	@Id
@@ -21,18 +18,16 @@ public class Person {
 
 	private int age;
 
-	private String gender;
+	private Gender gender;
 
-	@JsonManagedReference
-	@Relationship(type = "PURCHASED")
-	private Collection<Purchase> purchases;
+	@Relationship(type = "PURCHASED", direction = Relationship.Direction.INCOMING)
+	private List<Purchase> purchases;
 
-	@JsonManagedReference
-	@Relationship(type = "RATED")
-	private Collection<ProductRating> ratings;
+	@Relationship(type = "RATED", direction = Relationship.Direction.INCOMING)
+	private List<ProductRating> ratings;
 
-	@Relationship(type = "KNOWS", direction = Relationship.UNDIRECTED)
-	private Collection<Person> acquaintances;
+	@Relationship(type = "KNOWS", direction = Relationship.Direction.INCOMING)
+	private List<Person> acquaintances;
 
 	public Long getId() {
 		return id;
@@ -58,44 +53,55 @@ public class Person {
 		this.age = age;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
-	public Collection<Purchase> getPurchases() {
+	public List<Purchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(Collection<Purchase> purchases) {
+	public void setPurchases(List<Purchase> purchases) {
 		this.purchases = purchases;
 	}
 
-	public Collection<ProductRating> getRatings() {
+	public List<ProductRating> getRatings() {
 		return ratings;
 	}
 
-	public void setRatings(Collection<ProductRating> ratings) {
+	public void setRatings(List<ProductRating> ratings) {
 		this.ratings = ratings;
 	}
 
-	public Collection<Person> getAcquaintances() {
+	public List<Person> getAcquaintances() {
 		return acquaintances;
 	}
 
-	public void setAcquaintances(Set<Person> acquaintances) {
+	public void setAcquaintances(List<Person> acquaintances) {
 		this.acquaintances = acquaintances;
 	}
 
-	public static Person create(String name, int age, String gender, List<Person> acquaintances) {
+	public static Person create(String name, int age, Gender gender) {
 		final Person person = new Person();
 		person.name = name;
 		person.age = age;
 		person.gender = gender;
-		person.acquaintances = acquaintances;
+		return person;
+	}
+
+	public Person withAcquaintances(Person... persons) {
+		final Person person = create(this.name, this.age, this.gender);
+		person.setAcquaintances(List.of(persons));
+		return person;
+	}
+
+	public Person withPurchases(Purchase... purchases) {
+		final Person person = create(this.name, this.age, this.gender);
+		person.setPurchases(List.of(purchases));
 		return person;
 	}
 }

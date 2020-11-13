@@ -1,29 +1,17 @@
 package com.gmail.unmacaque.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.neo4j.ogm.annotation.*;
+import org.springframework.data.neo4j.core.schema.RelationshipProperties;
+import org.springframework.data.neo4j.core.schema.TargetNode;
 
 import java.time.LocalDateTime;
 
-@RelationshipEntity(type = "PURCHASED")
+@RelationshipProperties
 public class Purchase {
-
-	@Id
-	@GeneratedValue
-	private Long id;
 
 	private LocalDateTime date;
 
-	@JsonBackReference
-	@StartNode
-	private Person person;
-
-	@EndNode
+	@TargetNode
 	private Product product;
-
-	public Long getId() {
-		return id;
-	}
 
 	public LocalDateTime getDate() {
 		return date;
@@ -31,14 +19,6 @@ public class Purchase {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
 	}
 
 	public Product getProduct() {
@@ -49,11 +29,10 @@ public class Purchase {
 		this.product = product;
 	}
 
-	public static Purchase create(LocalDateTime date, Person person, Product product) {
+	public static Purchase create(LocalDateTime date, Product product) {
 		final Purchase purchase = new Purchase();
-		purchase.date = date;
-		purchase.person = person;
-		purchase.product = product;
+ 		purchase.date = date;
+ 		purchase.product = product;
 		return purchase;
 	}
 }

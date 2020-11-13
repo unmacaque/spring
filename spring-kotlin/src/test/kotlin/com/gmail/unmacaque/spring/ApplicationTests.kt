@@ -26,11 +26,11 @@ class ApplicationTests(
 
     @Test
     fun testGetHello() {
-        mvc.get("/hello")
+        mvc.get("/hello/")
             .andExpect {
-                status { isOk }
+                status { isOk() }
                 content {
-                    contentType(MediaType.TEXT_PLAIN)
+                    contentTypeCompatibleWith(MediaType.TEXT_PLAIN)
                     string("Hello World")
                 }
             }
@@ -40,9 +40,11 @@ class ApplicationTests(
     fun testGetMessages() {
         mvc.get("/messages/")
             .andExpect {
-                status { isOk }
-                content { contentType(MediaType.APPLICATION_JSON) }
-                jsonPath("$.length()") { value(3) }
+                status { isOk() }
+                content {
+                    contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
+                    jsonPath("$.length()") { value(3) }
+                }
             }
     }
 
@@ -50,29 +52,33 @@ class ApplicationTests(
     fun testGetMessage() {
         mvc.get("/messages/1")
             .andExpect {
-                status { isOk }
-                content { contentType(MediaType.APPLICATION_JSON) }
-                jsonPath("$.sender") { value("Homer") }
-                jsonPath("$.recipient") { value("Marge") }
-                jsonPath("$.content") { value("I like beer.") }
+                status { isOk() }
+                content {
+                    contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
+                    jsonPath("$.sender") { value("Homer") }
+                    jsonPath("$.recipient") { value("Marge") }
+                    jsonPath("$.content") { value("I like beer.") }
+                }
             }
     }
 
     @Test
     @WithMockUser
     fun testPostMessage() {
-        mvc.post("/messages") {
+        mvc.post("/messages/") {
             content = json.write(Message("Homer", "Moe", "Hello Moe!")).json
             contentType = MediaType.APPLICATION_JSON
             with(SecurityMockMvcRequestPostProcessors.csrf())
         }
             .andExpect {
-                status { isOk }
-                content { contentType(MediaType.APPLICATION_JSON) }
-                jsonPath("$.id") { value(4) }
-                jsonPath("$.sender") { value("Homer") }
-                jsonPath("$.recipient") { value("Moe") }
-                jsonPath("$.content") { value("Hello Moe!") }
+                status { isOk() }
+                content {
+                    contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
+                    jsonPath("$.id") { value(4) }
+                    jsonPath("$.sender") { value("Homer") }
+                    jsonPath("$.recipient") { value("Moe") }
+                    jsonPath("$.content") { value("Hello Moe!") }
+                }
             }
     }
 

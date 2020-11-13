@@ -1,5 +1,4 @@
 spring:
   profiles: external
-  data:
-    neo4j:
-      uri: bolt://localhost:7687
+  neo4j:
+    uri: bolt://localhost:7687
