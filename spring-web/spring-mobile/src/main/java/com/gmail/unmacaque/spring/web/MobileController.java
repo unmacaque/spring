@@ -45,7 +45,7 @@ public class MobileController {
 	public boolean isSitePreferenceSet(
 			@RequestParam(value = "site_preference", required = false) String sitePreferenceParam,
 			@CookieValue(value = SPRING_MOBILE_SITE_PREFERENCE_COOKIE, defaultValue = "") String sitePreferenceCookie) {
-		return !StringUtils.isEmpty(sitePreferenceParam) || !StringUtils.isEmpty(sitePreferenceCookie);
+		return StringUtils.hasText(sitePreferenceParam) || StringUtils.hasText(sitePreferenceCookie);
 	}
 
 	@GetMapping("/")

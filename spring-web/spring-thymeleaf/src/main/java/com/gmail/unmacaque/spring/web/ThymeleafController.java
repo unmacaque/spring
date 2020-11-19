@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -32,6 +33,7 @@ public class ThymeleafController {
 		return mappingInfoSet
 				.stream()
 				.map(RequestMappingInfo::getPatternsCondition)
+				.filter(Objects::nonNull)
 				.map(PatternsRequestCondition::getPatterns)
 				.flatMap(Collection::stream)
 				.collect(Collectors.toCollection(TreeSet::new));
