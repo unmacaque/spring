@@ -4,6 +4,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,22 +33,19 @@ public class UploadController {
 	}
 
 	@PostMapping
-	public String postUpload(@RequestParam("aFile") MultipartFile file, ModelMap modelMap) {
+	public String postUpload(@RequestPart("aFile") MultipartFile file, ModelMap modelMap) {
 		if (file.isEmpty()) {
 			modelMap.addAttribute("error", "File is empty");
 			return "index";
 		}
+		final String fileName = StringUtils.hasText(file.getOriginalFilename()) ? file.getOriginalFilename() : "newFile";
+		final var destFile = new File(tempDirectory.toFile(), fileName).toPath();
 		try {
-			String fileName = file.getOriginalFilename();
-			if (fileName == null) {
-				fileName = "newFile";
-			}
-			final var destFile = new File(tempDirectory.toFile(), fileName);
-			file.transferTo(destFile);
+			Files.write(destFile, file.getBytes());
 			modelMap.addAttribute("filename", file.getOriginalFilename());
 			modelMap.addAttribute("filesize", file.getSize());
 			modelMap.addAttribute("filetype", file.getContentType());
-		} catch (Exception e) {
+		} catch (IOException e) {
 			modelMap.addAttribute("error", e.getMessage());
 		}
 		return "index";

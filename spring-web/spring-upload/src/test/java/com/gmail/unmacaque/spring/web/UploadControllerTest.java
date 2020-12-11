@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.springframework.http.MediaType.APPLICATION_OCTET_STREAM_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -28,7 +29,8 @@ class UploadControllerTest {
 
 	@Test
 	void testPost() throws Exception {
-		mvc.perform(multipart("/").file(new MockMultipartFile("aFile", "testFile", "application/octet-stream", "S".getBytes(StandardCharsets.UTF_8))))
+		mvc.perform(multipart("/")
+				.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, "S".getBytes(StandardCharsets.UTF_8))))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeDoesNotExist("error"))
 				.andExpect(model().attribute("filename", "testFile"))
@@ -38,7 +40,8 @@ class UploadControllerTest {
 
 	@Test
 	void testPostWithEmptyFile() throws Exception {
-		mvc.perform(multipart("/").file("aFile", new byte[0]))
+		mvc.perform(multipart("/")
+				.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, new byte[0])))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("error", "File is empty"));
 	}
