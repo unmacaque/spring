@@ -21,7 +21,7 @@ public class InitializrConfiguration {
 	@Bean
 	public InitializrMetadataUpdateStrategy initializrMetadataUpdateStrategy() {
 		return metadata -> {
-			final DefaultMetadataElement version = DefaultMetadataElement.create(SpringBootVersion.getVersion(), true);
+			final var version = DefaultMetadataElement.create(SpringBootVersion.getVersion(), true);
 			metadata.updateSpringBootVersions(List.of(version));
 			return metadata;
 		};
