@@ -7,9 +7,8 @@ import javax.persistence.Id
 
 @Entity
 data class Message(
-        val sender: String,
-        val recipient: String,
-        val content: String,
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long = -1
+    val sender: String,
+    val recipient: String,
+    val content: String,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long = -1
 )

@@ -18,7 +18,7 @@ class MessageHandler(private val repository: MessageRepository) {
         val message = repository.findById(messageId)
         return message
             .map { ServerResponse.ok().body(it) }
-            .orElseGet( ServerResponse.notFound()::build )
+            .orElseGet(ServerResponse.notFound()::build)
     }
 
     fun postMessage(request: ServerRequest): ServerResponse {
