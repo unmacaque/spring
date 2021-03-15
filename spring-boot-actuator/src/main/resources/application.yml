@@ -13,3 +13,7 @@ management:
     web:
       exposure:
         include: "*"
+  metrics:
+    distribution:
+      slo:
+        http.server.requests: 1ms,2500us,5ms,10ms,25ms,50ms,100,250ms,500ms,1s,2500ms,5s
