@@ -24,10 +24,12 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-ldap</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.unboundid</groupId>
       <artifactId>unboundid-ldapsdk</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

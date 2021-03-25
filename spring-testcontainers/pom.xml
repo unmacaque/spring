@@ -44,16 +44,12 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-rest-hal-explorer</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

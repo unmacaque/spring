@@ -58,15 +58,18 @@
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-console</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.togglz</groupId>
       <artifactId>togglz-spring-security</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.github.heneke.thymeleaf</groupId>
       <artifactId>thymeleaf-extras-togglz</artifactId>
       <version>${thymeleaf-extras-togglz.version}</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
