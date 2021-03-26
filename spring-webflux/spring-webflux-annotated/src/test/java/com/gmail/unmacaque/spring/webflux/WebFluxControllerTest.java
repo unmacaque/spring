@@ -34,7 +34,7 @@ class WebFluxControllerTest {
 
 	@Test
 	void testFlux() {
-		Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
+		final Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
 				.get()
 				.uri("/flux")
 				.accept(MediaType.APPLICATION_NDJSON)

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.boot.test.json.JsonContent;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,7 +20,7 @@ class GreetingJsonTest {
 	void testSerialize() throws IOException {
 		Greeting greeting = new Greeting("Spring Boot", LocalDateTime.of(2017, 4, 17, 0, 0));
 
-		JsonContent<Greeting> json = tester.write(greeting);
+		final var json = tester.write(greeting);
 
 		assertThat(json).hasJsonPathStringValue("@.message", "Spring Boot");
 	}
@@ -30,7 +29,7 @@ class GreetingJsonTest {
 	void testDeserialize() throws IOException {
 		String json = "{\"date\":\"2017-04-17T00:00:00\",\"message\":\"Spring Boot\"}";
 
-		Greeting greeting = tester.parseObject(json);
+		final var greeting = tester.parseObject(json);
 
 		assertThat(greeting.getDate()).isEqualTo(LocalDateTime.of(2017, 4, 17, 0, 0));
 		assertThat(greeting.getMessage()).isEqualTo("Spring Boot");

@@ -22,7 +22,7 @@ class ApplicationTest {
 
 	@Test
 	void getMessages() {
-		Flux<Message> messages = webTestClient
+		final Flux<Message> messages = webTestClient
 				.get()
 				.uri("/api/messages")
 				.accept(MediaType.APPLICATION_NDJSON)
@@ -40,7 +40,7 @@ class ApplicationTest {
 
 	@Test
 	void postMessage() {
-		Message message = createMessage("Hello", "unmacaque", "It works!");
+		final var message = createMessage("Hello", "unmacaque", "It works!");
 
 		webTestClient
 				.post()
@@ -51,7 +51,7 @@ class ApplicationTest {
 	}
 
 	private static Message createMessage(String title, String author, String content) {
-		Message message = new Message();
+		final var message = new Message();
 		message.setTitle(title);
 		message.setAuthor(author);
 		message.setContent(content);

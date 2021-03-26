@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.client.ExpectedCount.once;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.anything;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -28,8 +29,10 @@ class ApplicationTest {
 						.contentType(MediaType.APPLICATION_JSON)
 		);
 
-		service.doCall();
+		final String result = service.doCall();
 		server.verify();
+
+		assertThat(result).isEqualTo("Hello World");
 	}
 
 }

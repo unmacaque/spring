@@ -18,7 +18,7 @@ class ApplicationTest {
 	@BeforeAll
 	static void beforeAll() {
 		WireMock.configureFor(8888);
-		var server = new WireMockServer(8888);
+		final var server = new WireMockServer(8888);
 		server.start();
 	}
 

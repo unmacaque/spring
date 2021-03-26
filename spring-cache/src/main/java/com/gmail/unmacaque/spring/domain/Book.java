@@ -79,6 +79,6 @@ public class Book {
 	public String toString() {
 		final StringJoiner joiner = new StringJoiner(",", "[", "]");
 		joiner.add(id).add(author).add(publishDate.toString()).add(description).add(genre).add(price);
-		return title + joiner.toString();
+		return title + joiner;
 	}
 }
