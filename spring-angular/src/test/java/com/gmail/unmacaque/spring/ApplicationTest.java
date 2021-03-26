@@ -25,10 +25,10 @@ class ApplicationTest {
 		Flux<Message> messages = webTestClient
 				.get()
 				.uri("/api/messages")
-				.accept(MediaType.APPLICATION_STREAM_JSON)
+				.accept(MediaType.APPLICATION_NDJSON)
 				.exchange()
 				.expectStatus().isOk()
-				.expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_STREAM_JSON)
+				.expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_NDJSON)
 				.returnResult(Message.class)
 				.getResponseBody();
 

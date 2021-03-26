@@ -37,7 +37,7 @@ class WebFluxControllerTest {
 		Supplier<? extends Publisher<? extends Greeting>> scenarioSupplier = () -> webTestClient
 				.get()
 				.uri("/flux")
-				.accept(MediaType.APPLICATION_STREAM_JSON)
+				.accept(MediaType.APPLICATION_NDJSON)
 				.exchange()
 				.expectStatus().isOk()
 				.returnResult(Greeting.class).getResponseBody();
