@@ -34,6 +34,7 @@
     <module>spring-initializr</module>
     <module>spring-kafka</module>
     <module>spring-kotlin</module>
+    <module>spring-openapi</module>
     <module>spring-react</module>
     <module>spring-resilience4j</module>
     <module>spring-restdocs</module>
