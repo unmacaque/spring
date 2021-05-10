@@ -1,3 +1,8 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.openapi'
+}
+
 dependencies {
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.5.8'
     runtimeOnly 'org.springdoc:springdoc-openapi-ui:1.5.8'
@@ -10,8 +15,3 @@ dependencies {
 }
 
 description = 'Spring OpenAPI'
-
-buildscript {
-    apply plugin: 'com.github.johnrengelman.processes'
-    apply plugin: 'org.springdoc.openapi-gradle-plugin'
-}

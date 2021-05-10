@@ -1,3 +1,7 @@
+plugins {
+    id 'unmacaque.spring-boot'
+}
+
 dependencies {
     implementation platform('io.spring.initializr:initializr-bom:0.10.2')
 

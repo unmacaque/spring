@@ -1,3 +1,9 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.node'
+    id 'unmacaque.docker'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -11,15 +17,10 @@ dependencies {
 
 description = 'Spring Angular'
 
-buildscript {
-    apply plugin: 'com.github.node-gradle.node'
-    apply plugin: 'org.sglahn.gradle-dockerfile-plugin'
+node {
+    nodeProjectDir = file("${project.projectDir}/ng")
+}
 
-    node {
-        nodeProjectDir = file("${project.projectDir}/ng")
-    }
-
-    docker {
-        imageName = "unmacaque/${project.name}"
-    }
+docker {
+    imageName = "unmacaque/${project.name}"
 }

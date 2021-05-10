@@ -1,3 +1,8 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.docker'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -9,10 +14,6 @@ dependencies {
 
 description = 'Spring Boot Docker'
 
-buildscript {
-    apply plugin: 'org.sglahn.gradle-dockerfile-plugin'
-
-    docker {
-        imageName = "unmacaque/${project.name}"
-    }
+docker {
+    imageName = "unmacaque/${project.name}"
 }

@@ -1,3 +1,8 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.spring-restdocs'
+}
+
 dependencies {
     asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
@@ -10,28 +15,3 @@ dependencies {
 }
 
 description = 'Spring REST Docs MockMvc'
-
-buildscript {
-    apply plugin: 'org.asciidoctor.jvm.convert'
-
-    ext {
-        snippetsDir = file('build/generated-snippets')
-    }
-
-    test {
-        outputs.dir snippetsDir
-    }
-
-    asciidoctor {
-        configurations 'asciidoctorExtensions'
-        inputs.dir snippetsDir
-        dependsOn test
-    }
-
-    bootJar {
-        dependsOn asciidoctor
-        from ("${project.buildDir}/docs/asciidoc") {
-            into 'static/docs'
-        }
-    }
-}

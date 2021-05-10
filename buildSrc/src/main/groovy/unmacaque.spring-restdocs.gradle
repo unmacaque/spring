@@ -1,0 +1,28 @@
+plugins {
+    id 'org.asciidoctor.jvm.convert'
+}
+
+configurations {
+    asciidoctorExtensions
+}
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+    outputs.dir snippetsDir
+}
+
+asciidoctor {
+    configurations 'asciidoctorExtensions'
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+bootJar {
+    dependsOn asciidoctor
+    from ("${project.buildDir}/docs/asciidoc") {
+        into 'static/docs'
+    }
+}

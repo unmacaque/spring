@@ -1,3 +1,7 @@
+plugins {
+    id 'unmacaque.spring-boot'
+}
+
 dependencies {
     implementation platform('org.togglz:togglz-distribution:2.6.1.Final')
 

@@ -1,3 +1,7 @@
+plugins {
+    id 'unmacaque.spring-boot'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     runtimeOnly 'org.atteo:evo-inflector:1.2.2'
