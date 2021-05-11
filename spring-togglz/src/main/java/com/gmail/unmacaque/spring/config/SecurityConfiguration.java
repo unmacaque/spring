@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,9 +19,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests(authorizeRequests ->
 						authorizeRequests
-								.antMatchers("/togglz/*").hasRole("ADMIN")
+								.antMatchers("/togglz-console/*").hasRole("ADMIN")
 								.anyRequest().permitAll()
-				);
+				)
+				.httpBasic(Customizer.withDefaults());
 	}
 
 }
