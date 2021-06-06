@@ -8,7 +8,7 @@ import org.springframework.web.servlet.function.body
 
 class MessageHandler(private val repository: MessageRepository) {
 
-    fun getMessages(request: ServerRequest): ServerResponse {
+    fun getMessages(@Suppress("UNUSED_PARAMETER") request: ServerRequest): ServerResponse {
         val messages = repository.findAll()
         return ServerResponse.ok().body(messages)
     }
