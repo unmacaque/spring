@@ -18,7 +18,7 @@ class GreetingJsonTest {
 
 	@Test
 	void testSerialize() throws IOException {
-		Greeting greeting = new Greeting("Spring Boot", LocalDateTime.of(2017, 4, 17, 0, 0));
+		final var greeting = new Greeting("Spring Boot", LocalDateTime.of(2017, 4, 17, 0, 0));
 
 		final var json = tester.write(greeting);
 
@@ -27,7 +27,7 @@ class GreetingJsonTest {
 
 	@Test
 	void testDeserialize() throws IOException {
-		String json = "{\"date\":\"2017-04-17T00:00:00\",\"message\":\"Spring Boot\"}";
+		final String json = "{\"date\":\"2017-04-17T00:00:00\",\"message\":\"Spring Boot\"}";
 
 		final var greeting = tester.parseObject(json);
 

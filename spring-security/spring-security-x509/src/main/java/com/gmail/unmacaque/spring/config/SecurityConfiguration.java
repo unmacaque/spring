@@ -21,8 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.x509(x509 ->
 						x509
 								.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
-								.userDetailsService(userDetailsService()
-								)
+								.userDetailsService(userDetailsService())
 				);
 	}
 
