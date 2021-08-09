@@ -1,6 +1,8 @@
 spring:
   application:
     name: spring-boot-docker
+  main:
+    banner-mode: off
 
 management:
   endpoints:
