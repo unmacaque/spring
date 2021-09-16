@@ -21,4 +21,13 @@ class CircuitBreakerControllerTest {
 				.exchange()
 				.expectStatus().isOk();
 	}
+
+	@Test
+	void testRatelimiter() {
+		webClient
+				.get()
+				.uri("/ratelimiter")
+				.exchange()
+				.expectStatus().isOk();
+	}
 }

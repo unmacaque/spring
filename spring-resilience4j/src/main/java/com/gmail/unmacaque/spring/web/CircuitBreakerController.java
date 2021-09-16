@@ -1,10 +1,14 @@
 package com.gmail.unmacaque.spring.web;
 
-import com.gmail.unmacaque.spring.domain.IntegerService;
+import com.gmail.unmacaque.spring.domain.CounterService;
 import com.gmail.unmacaque.spring.util.FailureException;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import io.github.resilience4j.reactor.circuitbreaker.operator.CircuitBreakerOperator;
+import io.github.resilience4j.reactor.ratelimiter.operator.RateLimiterOperator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -12,24 +16,34 @@ import reactor.core.publisher.Mono;
 @RestController
 public class CircuitBreakerController {
 
-	private final CircuitBreaker circuitBreaker;
+	@Autowired
+	private CircuitBreakerRegistry circuitBreakerRegistry;
 
-	private final IntegerService integerService;
+	@Autowired
+	private RateLimiterRegistry rateLimiterRegistry;
 
-	public CircuitBreakerController(CircuitBreaker circuitBreaker, IntegerService integerService) {
-		this.circuitBreaker = circuitBreaker;
-		this.integerService = integerService;
-	}
+	@Autowired
+	private CounterService counterService;
 
 	@GetMapping({"/", "breaker"})
 	public Mono<String> breaker() {
 		return Mono
-				.fromCallable(integerService::retrieveInteger)
-				.transform(CircuitBreakerOperator.of(circuitBreaker))
+				.fromCallable(counterService::retrieveIntegerOrThrow)
+				.transformDeferred(CircuitBreakerOperator.of(circuitBreakerRegistry.circuitBreaker("myBreaker")))
 				.map(Object::toString)
 				.onErrorReturn(FailureException.class, "A failure has occured")
 				.onErrorReturn(CallNotPermittedException.class,
 						"We are encountering technical difficulties. Please try again after some time.");
+	}
+
+	@GetMapping("/ratelimiter")
+	public Mono<String> ratelimiter() {
+		return Mono
+				.fromCallable(counterService::retrieveInteger)
+				.transform(RateLimiterOperator.of(rateLimiterRegistry.rateLimiter("myLimiter")))
+				.map(Object::toString)
+				.onErrorReturn(RequestNotPermitted.class,
+						"We are currently experiencing heavy load. Please try again after some time.");
 	}
 
 }

@@ -5,3 +5,9 @@ resilience4j:
         failureRateThreshold: 20
         waitDurationInOpenState: 10s
         slidingWindowSize: 10
+  ratelimiter:
+    instances:
+      myLimiter:
+        timeoutDuration: 1s
+        limitRefreshPeriod: 10s
+        limitForPeriod: 10

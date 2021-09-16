@@ -26,4 +26,4 @@ Spring Boot notes:
   - `CLOSED` = `UP`
   - `OPEN` = `DOWN`
   - `HALF_OPEN` = `UNKNOWN`
- 
+
