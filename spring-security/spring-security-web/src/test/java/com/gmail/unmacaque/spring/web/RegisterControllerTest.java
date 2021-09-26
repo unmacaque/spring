@@ -29,22 +29,26 @@ class RegisterControllerTest {
 	@Test
 	void testGetRegister() throws Exception {
 		mockMvc.perform(get("/register"))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeExists("registerUser"));
+				.andExpectAll(
+						status().isOk(),
+						model().attributeExists("registerUser")
+				);
 	}
 
 	@Test
 	void testPostRegister() throws Exception {
 		mockMvc.perform(post("/register")
-				.param("username", "foo")
-				.param("mailAddress", "foo@bar.org")
-				.param("password", "springsecurity")
-				.param("passwordConfirm", "springsecurity")
-				.with(csrf()))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeExists("registerUser"))
-				.andExpect(model().attribute("userCreated", "foo"))
-				.andExpect(view().name("index"));
+						.param("username", "foo")
+						.param("mailAddress", "foo@bar.org")
+						.param("password", "springsecurity")
+						.param("passwordConfirm", "springsecurity")
+						.with(csrf()))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeExists("registerUser"),
+						model().attribute("userCreated", "foo"),
+						view().name("index")
+				);
 
 		verify(userDetailsManager).userExists("foo");
 		verify(userDetailsManager).createUser(any());
@@ -53,15 +57,17 @@ class RegisterControllerTest {
 	@Test
 	void testPostRegister_withIncompleteUserDetails() throws Exception {
 		mockMvc.perform(post("/register")
-				.param("username", "")
-				.param("mailAddress", "")
-				.param("password", "")
-				.param("passwordConfirm", "")
-				.with(csrf()))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("registerUser"))
-				.andExpect(model().attributeHasFieldErrors("registerUser", "username", "mailAddress", "password", "passwordConfirm"))
-				.andExpect(view().name("register"));
+						.param("username", "")
+						.param("mailAddress", "")
+						.param("password", "")
+						.param("passwordConfirm", "")
+						.with(csrf()))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeHasErrors("registerUser"),
+						model().attributeHasFieldErrors("registerUser", "username", "mailAddress", "password", "passwordConfirm"),
+						view().name("register")
+				);
 	}
 
 	@Test
@@ -69,14 +75,16 @@ class RegisterControllerTest {
 		doReturn(true).when(userDetailsManager).userExists("foo");
 
 		mockMvc.perform(post("/register")
-				.param("username", "foo")
-				.param("mailAddress", "foo@bar.org")
-				.param("password", "springsecurity")
-				.param("passwordConfirm", "springsecurity")
-				.with(csrf()))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("registerUser"))
-				.andExpect(view().name("register"));
+						.param("username", "foo")
+						.param("mailAddress", "foo@bar.org")
+						.param("password", "springsecurity")
+						.param("passwordConfirm", "springsecurity")
+						.with(csrf()))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeHasErrors("registerUser"),
+						view().name("register")
+				);
 	}
 
 	@Test
@@ -84,13 +92,15 @@ class RegisterControllerTest {
 		doThrow(RuntimeException.class).when(userDetailsManager).createUser(any());
 
 		mockMvc.perform(post("/register")
-				.param("username", "foo")
-				.param("mailAddress", "foo@bar.org")
-				.param("password", "springsecurity")
-				.param("passwordConfirm", "springsecurity")
-				.with(csrf()))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("registerUser"))
-				.andExpect(view().name("register"));
+						.param("username", "foo")
+						.param("mailAddress", "foo@bar.org")
+						.param("password", "springsecurity")
+						.param("passwordConfirm", "springsecurity")
+						.with(csrf()))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeHasErrors("registerUser"),
+						view().name("register")
+				);
 	}
 }

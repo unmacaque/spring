@@ -23,9 +23,11 @@ class WebControllerTest {
 	@Test
 	void testIndex() throws Exception {
 		mvc.perform(get("/")
-				.with(oauth2Client("gitlab")))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$", not(empty())));
+						.with(oauth2Client("gitlab")))
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$", not(empty()))
+				);
 	}
 
 }

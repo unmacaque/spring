@@ -19,7 +19,9 @@ class ThymeleafControllerTest {
 	@Test
 	void test() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("mappings", notNullValue()));
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("mappings", notNullValue())
+				);
 	}
 }

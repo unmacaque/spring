@@ -20,7 +20,7 @@ class ApplicationTest {
 	@Test
 	void testTogglzEndpoint() throws Exception {
 		mvc.perform(get("/actuator/togglz")
-				.with(user("admin").roles("ADMIN")))
+						.with(user("admin").roles("ADMIN")))
 				.andExpect(status().isOk());
 	}
 }

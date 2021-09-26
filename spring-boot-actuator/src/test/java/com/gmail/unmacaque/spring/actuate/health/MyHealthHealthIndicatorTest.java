@@ -21,8 +21,10 @@ class MyHealthHealthIndicatorTest {
 	@Test
 	void testHealthIndicator() throws Exception {
 		mvc.perform(get("/actuator/health"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("status", equalTo("UP")))
-				.andExpect(jsonPath("components.myHealth.status", equalTo("UP")));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("status", equalTo("UP")),
+						jsonPath("components.myHealth.status", equalTo("UP"))
+				);
 	}
 }

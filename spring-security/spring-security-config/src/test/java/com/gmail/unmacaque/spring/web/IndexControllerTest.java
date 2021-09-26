@@ -24,17 +24,21 @@ class IndexControllerTest {
 	@Test
 	void testIndex() throws Exception {
 		mockMvc.perform(formLogin().user("user").password("user"))
-				.andExpect(status().isFound())
-				.andExpect(authenticated().withUsername("user").withRoles("USER"))
-				.andExpect(redirectedUrl("/"));
+				.andExpectAll(
+						status().isFound(),
+						authenticated().withUsername("user").withRoles("USER"),
+						redirectedUrl("/")
+				);
 	}
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testIndex_withRoleUser() throws Exception {
 		mockMvc.perform(get("/"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("username", equalTo("user")));
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("username", equalTo("user"))
+				);
 	}
 
 	@Test

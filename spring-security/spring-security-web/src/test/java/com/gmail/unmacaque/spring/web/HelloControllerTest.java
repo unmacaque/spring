@@ -34,16 +34,20 @@ class HelloControllerTest {
 	@WithAnonymousUser
 	void testHello_withoutAuthentication_redirectToLogin() throws Exception {
 		mockMvc.perform(get("/hello"))
-				.andExpect(status().isFound())
-				.andExpect(redirectedUrlPattern("**/login"));
+				.andExpectAll(
+						status().isFound(),
+						redirectedUrlPattern("**/login")
+				);
 	}
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testHello_withRoleUser() throws Exception {
 		mockMvc.perform(get("/hello"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("username", equalTo("user")));
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("username", equalTo("user"))
+				);
 	}
 
 	@Test
@@ -56,25 +60,31 @@ class HelloControllerTest {
 	@Test
 	void testLogin_withRoleUser() throws Exception {
 		mockMvc.perform(formLogin().user("user").password("user"))
-				.andExpect(status().isFound())
-				.andExpect(authenticated().withUsername("user").withRoles("USER"))
-				.andExpect(redirectedUrl("/hello"));
+				.andExpectAll(
+						status().isFound(),
+						authenticated().withUsername("user").withRoles("USER"),
+						redirectedUrl("/hello")
+				);
 	}
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testLogin_withRoleUser_redirectToHello() throws Exception {
 		mockMvc.perform(get("/login"))
-				.andExpect(status().isOk())
-				.andExpect(forwardedUrl("/hello"));
+				.andExpectAll(
+						status().isOk(),
+						forwardedUrl("/hello")
+				);
 	}
 
 	@Test
 	@WithMockUser(username = "admin", roles = "ADMIN")
 	void testAdmin_withRoleAdmin() throws Exception {
 		mockMvc.perform(get("/admin"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("username", equalTo("admin")));
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("username", equalTo("admin"))
+				);
 	}
 
 	@Test

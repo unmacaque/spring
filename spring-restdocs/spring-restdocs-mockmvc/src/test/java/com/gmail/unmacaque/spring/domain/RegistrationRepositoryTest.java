@@ -49,16 +49,18 @@ class RegistrationRepositoryTest {
 	@Test
 	void getRegistrations() throws Exception {
 		mvc.perform(get("/registrations"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$._embedded.registrations.length()", equalTo(2)))
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$._embedded.registrations.length()", equalTo(2))
+				)
 				.andDo(document("{method-name}",
-						links(halLinks(),
-								linkWithRel("self").description("Link to same resource"),
-								linkWithRel("profile").description("Link to the profile of this resource")),
-						responseFields(
-								subsectionWithPath("_embedded.registrations").description("An array of registration objects"),
-								subsectionWithPath("_links").ignored(),
-								subsectionWithPath("page").ignored())
+								links(halLinks(),
+										linkWithRel("self").description("Link to same resource"),
+										linkWithRel("profile").description("Link to the profile of this resource")),
+								responseFields(
+										subsectionWithPath("_embedded.registrations").description("An array of registration objects"),
+										subsectionWithPath("_links").ignored(),
+										subsectionWithPath("page").ignored())
 						)
 				);
 	}
@@ -66,19 +68,21 @@ class RegistrationRepositoryTest {
 	@Test
 	void getRegistration() throws Exception {
 		mvc.perform(get("/registrations/{id}", 1))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.firstName", equalTo("Fred")))
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$.firstName", equalTo("Fred"))
+				)
 				.andDo(document("{method-name}",
-						pathParameters(
-								parameterWithName("id").description("Unique id of the registration")),
-						links(
-								linkWithRel("self").description("Link to same resource"),
-								linkWithRel("registration").description("Link to this registration instance")),
-						responseFields(
-								fieldWithPath("firstName").description("First name of the registered person"),
-								fieldWithPath("lastName").description("Last name of the registered person"),
-								fieldWithPath("date").description("Date for the registration"),
-								subsectionWithPath("_links").ignored())
+								pathParameters(
+										parameterWithName("id").description("Unique id of the registration")),
+								links(
+										linkWithRel("self").description("Link to same resource"),
+										linkWithRel("registration").description("Link to this registration instance")),
+								responseFields(
+										fieldWithPath("firstName").description("First name of the registered person"),
+										fieldWithPath("lastName").description("Last name of the registered person"),
+										fieldWithPath("date").description("Date for the registration"),
+										subsectionWithPath("_links").ignored())
 						)
 				);
 	}
@@ -86,14 +90,14 @@ class RegistrationRepositoryTest {
 	@Test
 	void postRegistration() throws Exception {
 		mvc.perform(post("/registrations")
-				.content(json.write(createRegistration()).getJson()))
+						.content(json.write(createRegistration()).getJson()))
 				.andExpect(status().isCreated())
 				.andDo(document("{method-name}",
-						requestFields(
-								fieldWithPath("id").ignored(),
-								fieldWithPath("firstName").description("First name of the registered person"),
-								fieldWithPath("lastName").description("Last name of the registered person"),
-								fieldWithPath("date").description("Date for the registration"))
+								requestFields(
+										fieldWithPath("id").ignored(),
+										fieldWithPath("firstName").description("First name of the registered person"),
+										fieldWithPath("lastName").description("Last name of the registered person"),
+										fieldWithPath("date").description("Date for the registration"))
 						)
 				);
 	}
@@ -101,16 +105,16 @@ class RegistrationRepositoryTest {
 	@Test
 	void putRegistration() throws Exception {
 		mvc.perform(put("/registrations/{id}", 2)
-				.content(json.write(createRegistration()).getJson()))
+						.content(json.write(createRegistration()).getJson()))
 				.andExpect(status().isNoContent())
 				.andDo(document("{method-name}",
-						pathParameters(
-								parameterWithName("id").description("Unique id of the registration")),
-						requestFields(
-								fieldWithPath("id").ignored(),
-								fieldWithPath("firstName").description("First name of the registered person"),
-								fieldWithPath("lastName").description("Last name of the registered person"),
-								fieldWithPath("date").description("Date for the registration"))
+								pathParameters(
+										parameterWithName("id").description("Unique id of the registration")),
+								requestFields(
+										fieldWithPath("id").ignored(),
+										fieldWithPath("firstName").description("First name of the registered person"),
+										fieldWithPath("lastName").description("Last name of the registered person"),
+										fieldWithPath("date").description("Date for the registration"))
 						)
 				);
 	}
@@ -120,7 +124,7 @@ class RegistrationRepositoryTest {
 		mvc.perform(delete("/registrations/{id}", 1))
 				.andExpect(status().isNoContent())
 				.andDo(document("{method-name}",
-						pathParameters(parameterWithName("id").description("Unique id of the registration"))
+								pathParameters(parameterWithName("id").description("Unique id of the registration"))
 						)
 				);
 	}

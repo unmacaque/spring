@@ -23,16 +23,18 @@ class BooksRestControllerTest {
 	@Test
 	void testGetBooks() throws Exception {
 		mvc.perform(get("/")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.length()", equalTo(12)))
-				.andExpect(jsonPath("$.[0].id", notNullValue()))
-				.andExpect(jsonPath("$.[0].author", notNullValue()))
-				.andExpect(jsonPath("$.[0].title", notNullValue()))
-				.andExpect(jsonPath("$.[0].genre", notNullValue()))
-				.andExpect(jsonPath("$.[0].price", notNullValue()))
-				.andExpect(jsonPath("$.[0].publish-date", notNullValue()))
-				.andExpect(jsonPath("$.[0].description", notNullValue()));
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$.length()", equalTo(12)),
+						jsonPath("$.[0].id", notNullValue()),
+						jsonPath("$.[0].author", notNullValue()),
+						jsonPath("$.[0].title", notNullValue()),
+						jsonPath("$.[0].genre", notNullValue()),
+						jsonPath("$.[0].price", notNullValue()),
+						jsonPath("$.[0].publish-date", notNullValue()),
+						jsonPath("$.[0].description", notNullValue())
+				);
 	}
 
 }

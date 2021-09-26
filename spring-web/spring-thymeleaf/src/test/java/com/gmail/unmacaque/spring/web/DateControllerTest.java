@@ -19,7 +19,9 @@ class DateControllerTest {
 	@Test
 	void test() throws Exception {
 		mvc.perform(get("/date"))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("date", notNullValue()));
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("date", notNullValue())
+				);
 	}
 }

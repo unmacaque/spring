@@ -27,16 +27,20 @@ class HelloControllerTest {
 	@Test
 	void testHello_withoutAuthentication_redirectToLogin() throws Exception {
 		mockMvc.perform(get("/hello"))
-				.andExpect(status().isFound())
-				.andExpect(redirectedUrlPattern("**/login"));
+				.andExpectAll(
+						status().isFound(),
+						redirectedUrlPattern("**/login")
+				);
 	}
 
 	@Test
 	void testHello_withRoleUser() throws Exception {
 		mockMvc.perform(get("/hello")
-				.with(user("user").roles("USER")))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("username", equalTo("user")));
+						.with(user("user").roles("USER")))
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("username", equalTo("user"))
+				);
 	}
 
 	@Test
@@ -48,9 +52,11 @@ class HelloControllerTest {
 	@Test
 	void testLogin_withRoleUser_redirectToHello() throws Exception {
 		mockMvc.perform(get("/login")
-				.with(user("user").roles("USER")))
-				.andExpect(status().isOk())
-				.andExpect(forwardedUrl("/hello"));
+						.with(user("user").roles("USER")))
+				.andExpectAll(
+						status().isOk(),
+						forwardedUrl("/hello")
+				);
 	}
 
 }

@@ -19,7 +19,9 @@ class WebControllerTest {
 	@Test
 	void test() throws Exception {
 		mvc.perform(get("/api/"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON));
+				.andExpectAll(
+						status().isOk(),
+						content().contentType(MediaType.APPLICATION_JSON)
+				);
 	}
 }

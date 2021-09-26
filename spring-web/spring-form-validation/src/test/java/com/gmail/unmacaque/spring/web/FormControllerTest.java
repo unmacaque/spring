@@ -19,26 +19,32 @@ class FormControllerTest {
 	@Test
 	void testGet() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isOk())
-				.andExpect(model().hasNoErrors());
+				.andExpectAll(
+						status().isOk(),
+						model().hasNoErrors()
+				);
 	}
 
 	@Test
 	void testPost() throws Exception {
 		mvc.perform(post("/")
-				.param("name", "foo")
-				.param("mail", "foo@bar.org")
-				.param("age", "42"))
-				.andExpect(status().isOk())
-				.andExpect(model().hasNoErrors())
-				.andExpect(model().attributeExists("formData"));
+						.param("name", "foo")
+						.param("mail", "foo@bar.org")
+						.param("age", "42"))
+				.andExpectAll(
+						status().isOk(),
+						model().hasNoErrors(),
+						model().attributeExists("formData")
+				);
 	}
 
 	@Test
 	void testPostWithErrors() throws Exception {
 		mvc.perform(post("/"))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasFieldErrors("data", "name", "mail", "age"))
-				.andExpect(model().attributeDoesNotExist("formData"));
+				.andExpectAll(
+						status().isOk(),
+						model().attributeHasFieldErrors("data", "name", "mail", "age"),
+						model().attributeDoesNotExist("formData")
+				);
 	}
 }

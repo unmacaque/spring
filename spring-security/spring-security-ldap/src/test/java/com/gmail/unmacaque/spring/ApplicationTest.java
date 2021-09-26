@@ -20,14 +20,18 @@ class ApplicationTest {
 
 	@Test
 	void testLogin_withValidCredentials() throws Exception {
-		mvc.perform(get("/").with(httpBasic("test", "test")))
-				.andExpect(status().isOk())
-				.andExpect(content().string("Hello, test"));
+		mvc.perform(get("/")
+						.with(httpBasic("test", "test")))
+				.andExpectAll(
+						status().isOk(),
+						content().string("Hello, test")
+				);
 	}
 
 	@Test
 	void testLogin_withInvalidCredentials_unauthorized() throws Exception {
-		mvc.perform(get("/").with(httpBasic("foo", "bar")))
+		mvc.perform(get("/")
+						.with(httpBasic("foo", "bar")))
 				.andExpect(status().isUnauthorized());
 	}
 }

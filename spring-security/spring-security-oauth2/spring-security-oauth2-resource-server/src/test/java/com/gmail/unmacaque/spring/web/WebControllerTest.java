@@ -22,10 +22,12 @@ class WebControllerTest {
 	@Test
 	void testAuthenticated() throws Exception {
 		mvc.perform(get("/")
-				.with(jwt().jwt(jwt -> jwt.claim("scope", "read").claim("sub", "test").build())))
-				.andExpect(status().isOk())
-				.andExpect(authenticated().withUsername("test"))
-				.andExpect(content().string("test"));
+						.with(jwt().jwt(jwt -> jwt.claim("scope", "read").claim("sub", "test").build())))
+				.andExpectAll(
+						status().isOk(),
+						authenticated().withUsername("test"),
+						content().string("test")
+				);
 	}
 
 	@Test

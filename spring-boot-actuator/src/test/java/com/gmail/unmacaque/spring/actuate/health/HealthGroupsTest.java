@@ -21,14 +21,18 @@ class HealthGroupsTest {
 	@Test
 	void testLiveness() throws Exception {
 		mvc.perform(get("/actuator/health/liveness"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("status", equalTo("UP")));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("status", equalTo("UP"))
+				);
 	}
 
 	@Test
 	void testReadiness() throws Exception {
 		mvc.perform(get("/actuator/health/readiness"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("status", equalTo("UP")));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("status", equalTo("UP"))
+				);
 	}
 }

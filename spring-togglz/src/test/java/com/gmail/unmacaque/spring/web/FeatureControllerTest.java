@@ -24,8 +24,10 @@ class FeatureControllerTest {
 	@Test
 	void testFeatureA() throws Exception {
 		mvc.perform(get("/feature/FEATURE_A"))
-				.andExpect(status().isOk())
-				.andExpect(content().string("enabled"));
+				.andExpectAll(
+						status().isOk(),
+						content().string("enabled")
+				);
 	}
 
 	@Test
@@ -34,7 +36,9 @@ class FeatureControllerTest {
 		assertThat(manager.isActive(Features.FEATURE_B)).isFalse();
 
 		mvc.perform(get("/feature/FEATURE_B"))
-				.andExpect(status().isOk())
-				.andExpect(content().string("disabled"));
+				.andExpectAll(
+						status().isOk(),
+						content().string("disabled")
+				);
 	}
 }

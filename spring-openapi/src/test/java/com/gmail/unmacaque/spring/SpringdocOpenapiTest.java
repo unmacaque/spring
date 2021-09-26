@@ -27,15 +27,19 @@ class SpringdocOpenapiTest {
 	@Test
 	void testOpenapiJson() throws Exception {
 		mvc.perform(get("/v3/api-docs"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("openapi", startsWith("3.")));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("openapi", startsWith("3."))
+				);
 	}
 
 	@Test
 	void testOpenapiYaml() throws Exception {
 		mvc.perform(get("/v3/api-docs.yaml"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith("application/vnd.oai.openapi"));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith("application/vnd.oai.openapi")
+				);
 	}
 }

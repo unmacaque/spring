@@ -21,7 +21,9 @@ class MyInfoContributorTest {
 	@Test
 	void testInfoContributor() throws Exception {
 		mvc.perform(get("/actuator/info"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("myInfo", notNullValue()));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("myInfo", notNullValue())
+				);
 	}
 }

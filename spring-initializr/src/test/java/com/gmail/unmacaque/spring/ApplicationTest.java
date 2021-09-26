@@ -23,16 +23,18 @@ class ApplicationTest {
 	@Test
 	void testMetadata() throws Exception {
 		mvc.perform(get("/")
-				.accept(InitializrMetadataVersion.V2_2.getMediaType()))
-				.andExpect(jsonPath("$.type.default", equalTo("maven-project")))
-				.andExpect(jsonPath("$.type.values.*.id", containsInAnyOrder("maven-project", "maven-build", "gradle-project", "gradle-build")))
-				.andExpect(jsonPath("$.packaging.default", equalTo("jar")))
-				.andExpect(jsonPath("$.packaging.values.*.id", containsInAnyOrder("jar", "war")))
-				.andExpect(jsonPath("$.javaVersion.default", equalTo("11")))
-				.andExpect(jsonPath("$.language.default", equalTo("java")))
-				.andExpect(jsonPath("$.language.values.*.id", containsInAnyOrder("groovy", "java", "kotlin")))
-				.andExpect(jsonPath("$.bootVersion.default", equalTo(SpringBootVersion.getVersion())))
-				.andExpect(jsonPath("$.groupId.default", equalTo("com.gmail.unmacaque.spring")));
+						.accept(InitializrMetadataVersion.V2_2.getMediaType()))
+				.andExpectAll(
+						jsonPath("$.type.default", equalTo("maven-project")),
+						jsonPath("$.type.values.*.id", containsInAnyOrder("maven-project", "maven-build", "gradle-project", "gradle-build")),
+						jsonPath("$.packaging.default", equalTo("jar")),
+						jsonPath("$.packaging.values.*.id", containsInAnyOrder("jar", "war")),
+						jsonPath("$.javaVersion.default", equalTo("11")),
+						jsonPath("$.language.default", equalTo("java")),
+						jsonPath("$.language.values.*.id", containsInAnyOrder("groovy", "java", "kotlin")),
+						jsonPath("$.bootVersion.default", equalTo(SpringBootVersion.getVersion())),
+						jsonPath("$.groupId.default", equalTo("com.gmail.unmacaque.spring"))
+				);
 	}
 
 }

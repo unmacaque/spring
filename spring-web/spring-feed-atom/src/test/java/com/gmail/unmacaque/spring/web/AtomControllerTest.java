@@ -18,12 +18,14 @@ class AtomControllerTest {
 	@Test
 	void testGet() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_ATOM_XML))
-				.andExpect(xpath("/feed").exists())
-				.andExpect(xpath("/feed/title").string("Spring Feed Atom"))
-				.andExpect(xpath("/feed/updated").exists())
-				.andExpect(xpath("/feed/entry").nodeCount(2));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_ATOM_XML),
+						xpath("/feed").exists(),
+						xpath("/feed/title").string("Spring Feed Atom"),
+						xpath("/feed/updated").exists(),
+						xpath("/feed/entry").nodeCount(2)
+				);
 	}
 
 }

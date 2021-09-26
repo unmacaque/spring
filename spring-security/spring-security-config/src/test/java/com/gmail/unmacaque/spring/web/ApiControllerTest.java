@@ -22,15 +22,17 @@ class ApiControllerTest {
 	@Test
 	void testApi() throws Exception {
 		mockMvc.perform(get("/api")
-				.with(httpBasic("admin", "admin")))
-				.andExpect(status().isOk())
-				.andExpect(content().string("admin"));
+						.with(httpBasic("admin", "admin")))
+				.andExpectAll(
+						status().isOk(),
+						content().string("admin")
+				);
 	}
 
 	@Test
 	void testApi_withUser_isForbidden() throws Exception {
 		mockMvc.perform(get("/api")
-				.with(httpBasic("user", "user")))
+						.with(httpBasic("user", "user")))
 				.andExpect(status().isForbidden());
 	}
 
@@ -38,8 +40,10 @@ class ApiControllerTest {
 	@WithMockUser(username = "admin", roles = "ADMIN")
 	void testApi_withRoleAdmin() throws Exception {
 		mockMvc.perform(get("/api"))
-				.andExpect(status().isOk())
-				.andExpect(content().string("admin"));
+				.andExpectAll(
+						status().isOk(),
+						content().string("admin")
+				);
 	}
 
 	@Test

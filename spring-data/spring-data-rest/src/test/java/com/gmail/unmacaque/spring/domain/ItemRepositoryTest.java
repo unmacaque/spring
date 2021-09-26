@@ -39,28 +39,32 @@ class ItemRepositoryTest {
 	@Test
 	void testGetItems() throws Exception {
 		mvc.perform(get("/items"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$._embedded.items.length()", equalTo(3)));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$._embedded.items.length()", equalTo(3))
+				);
 	}
 
 	@Test
 	void testGetItem() throws Exception {
 		mvc.perform(get("/items/1"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.title", equalTo("CPU")));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("$.title", equalTo("CPU"))
+				);
 	}
 
 	@Test
 	void testPostItem() throws Exception {
 		mvc.perform(post("/items")
-				.content(json.write(createItem()).getJson()))
+						.content(json.write(createItem()).getJson()))
 				.andExpect(status().isCreated());
 	}
 
 	@Test
 	void testPutItem() throws Exception {
 		mvc.perform(put("/items/2")
-				.content(json.write(createItem()).getJson()))
+						.content(json.write(createItem()).getJson()))
 				.andExpect(status().isNoContent());
 	}
 

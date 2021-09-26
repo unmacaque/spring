@@ -10,7 +10,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,39 +23,41 @@ class ShopControllerTest {
 	@Test
 	void testGetAll() throws Exception {
 		mvc.perform(get("/"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("_embedded", notNullValue()));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("_embedded", notNullValue())
+				);
 	}
 
 	@Test
 	void testGetItem() throws Exception {
 		mvc.perform(get("/1"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("itemId", equalTo(1)))
-				.andExpect(jsonPath("title", notNullValue()))
-				.andExpect(jsonPath("description", notNullValue()))
-				.andExpect(jsonPath("price", notNullValue()))
-				.andExpect(jsonPath("_links.self.href", notNullValue()));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("itemId", equalTo(1)),
+						jsonPath("title", notNullValue()),
+						jsonPath("description", notNullValue()),
+						jsonPath("price", notNullValue()),
+						jsonPath("_links.self.href", notNullValue())
+				);
 	}
 
 	@Test
 	void testOrderItem() throws Exception {
 		mvc.perform(post("/1/order"))
-				.andDo(print())
-				.andExpect(status().isCreated())
-				.andExpect(jsonPath("itemId", equalTo(1)))
-				.andExpect(jsonPath("title", notNullValue()))
-				.andExpect(jsonPath("description", notNullValue()))
-				.andExpect(jsonPath("price", notNullValue()))
-				.andExpect(jsonPath("_links.self.href", notNullValue()));
+				.andExpectAll(
+						status().isCreated(),
+						jsonPath("itemId", equalTo(1)),
+						jsonPath("title", notNullValue()),
+						jsonPath("description", notNullValue()),
+						jsonPath("price", notNullValue()),
+						jsonPath("_links.self.href", notNullValue())
+				);
 	}
 
 	@Test
 	void testOrderItemDoesNotExistNotFound() throws Exception {
 		mvc.perform(post("/99/order"))
-				.andDo(print())
 				.andExpect(status().isNotFound());
 	}
 }

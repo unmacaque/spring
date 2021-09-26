@@ -26,8 +26,11 @@ class ApplicationTest {
 
 	@Test
 	void testGetWithX509IsAuthorized() throws Exception {
-		mvc.perform(get("/").with(x509("classpath:client.crt")))
-				.andExpect(status().isOk())
-				.andExpect(authenticated().withUsername("localhost"));
+		mvc.perform(get("/")
+						.with(x509("classpath:client.crt")))
+				.andExpectAll(
+						status().isOk(),
+						authenticated().withUsername("localhost")
+				);
 	}
 }

@@ -30,20 +30,24 @@ class UploadControllerTest {
 	@Test
 	void testPost() throws Exception {
 		mvc.perform(multipart("/")
-				.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, "S".getBytes(StandardCharsets.UTF_8))))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeDoesNotExist("error"))
-				.andExpect(model().attribute("filename", "testFile"))
-				.andExpect(model().attribute("filesize", equalTo(1L)))
-				.andExpect(model().attribute("filetype", "application/octet-stream"));
+						.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, "S".getBytes(StandardCharsets.UTF_8))))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeDoesNotExist("error"),
+						model().attribute("filename", "testFile"),
+						model().attribute("filesize", equalTo(1L)),
+						model().attribute("filetype", "application/octet-stream")
+				);
 	}
 
 	@Test
 	void testPostWithEmptyFile() throws Exception {
 		mvc.perform(multipart("/")
-				.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, new byte[0])))
-				.andExpect(status().isOk())
-				.andExpect(model().attribute("error", "File is empty"));
+						.file(new MockMultipartFile("aFile", "testFile", APPLICATION_OCTET_STREAM_VALUE, new byte[0])))
+				.andExpectAll(
+						status().isOk(),
+						model().attribute("error", "File is empty")
+				);
 	}
 
 }

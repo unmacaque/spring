@@ -21,7 +21,9 @@ class MyEndpointTest {
 	@Test
 	void testEndpoint() throws Exception {
 		mvc.perform(get("/actuator/my-endpoint"))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("message", equalTo("Hello World")));
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("message", equalTo("Hello World"))
+				);
 	}
 }

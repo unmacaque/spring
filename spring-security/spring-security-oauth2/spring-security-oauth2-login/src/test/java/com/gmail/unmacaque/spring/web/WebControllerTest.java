@@ -22,10 +22,12 @@ class WebControllerTest {
 	@Test
 	void testIndex() throws Exception {
 		mvc.perform(get("/")
-				.with(oidcLogin()))
-				.andExpect(status().isOk())
-				.andExpect(authenticated().withUsername("user"))
-				.andExpect(content().string("user"));
+						.with(oidcLogin()))
+				.andExpectAll(
+						status().isOk(),
+						authenticated().withUsername("user"),
+						content().string("user")
+				);
 	}
 
 }

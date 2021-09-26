@@ -24,42 +24,52 @@ class ApplicationTest {
 	@Test
 	void testGetPersons() throws Exception {
 		mvc.perform(get("/persons"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$", not(empty())));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("$", not(empty()))
+				);
 	}
 
 	@Test
 	void testGetPersonByName() throws Exception {
 		mvc.perform(get("/persons?name=*Doe"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$", hasSize(2)));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("$", hasSize(2))
+				);
 	}
 
 	@Test
 	void testGetPersonByUid() throws Exception {
 		mvc.perform(get("/persons/fred"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("name", equalTo("Fred")))
-				.andExpect(jsonPath("uid", equalTo("fred")));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("name", equalTo("Fred")),
+						jsonPath("uid", equalTo("fred"))
+				);
 	}
 
 	@Test
 	void testGetGroups() throws Exception {
 		mvc.perform(get("/groups"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$", not(empty())));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("$", not(empty()))
+				);
 	}
 
 	@Test
 	void testGetGroupByMember() throws Exception {
 		mvc.perform(get("/groups?member=jadoe"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$", hasSize(2)));
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("$", hasSize(2))
+				);
 	}
 
 }

@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -19,11 +19,13 @@ class GreetControllerTest {
 
 	@Test
 	void testGreet() throws Exception {
-		mvc.perform(get("/")).andExpect(content().json("{\"message\":\"Hello World\"}"));
+		mvc.perform(get("/"))
+				.andExpect(jsonPath("$.message").value("Hello World"));
 	}
 
 	@Test
 	void testGreetWithName() throws Exception {
-		mvc.perform(post("/Spring")).andExpect(content().json("{\"message\":\"Spring\"}"));
+		mvc.perform(post("/Spring"))
+				.andExpect(jsonPath("$.message").value("Spring"));
 	}
 }
