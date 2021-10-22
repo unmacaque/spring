@@ -3,8 +3,8 @@ type: docker
 name: build
 
 steps:
-  - name: test
-    image: unmacaque/ci-run
+  - name: check
+    image: unmacaque/gradle:7-jdk11
     pull: never
     commands:
-      - ./gradlew check
+      - gradle check
