@@ -6,19 +6,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     runtimeOnly 'org.springframework.data:spring-data-rest-hal-explorer'
-    runtimeOnly('org.neo4j:neo4j:4.2.5') {
+    runtimeOnly('org.neo4j:neo4j:4.2.7') {
         exclude group: 'org.slf4j', module: 'slf4j-api'
         exclude group: 'org.slf4j', module: 'slf4j-nop'
     }
-    runtimeOnly('org.neo4j:neo4j-ogm-embedded-driver:3.2.23') {
+    runtimeOnly('org.neo4j:neo4j-ogm-embedded-driver:3.2.27') {
         exclude group: 'org.slf4j', module: 'slf4j-api'
     }
-    runtimeOnly('org.neo4j:neo4j-ogm-http-driver:3.2.23') {
+    runtimeOnly('org.neo4j:neo4j-ogm-http-driver:3.2.27') {
         exclude group: 'org.slf4j', module: 'slf4j-api'
     }
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation('org.neo4j.test:neo4j-harness:4.2.5') {
+    testImplementation('org.neo4j.test:neo4j-harness:4.2.7') {
         exclude group: 'org.slf4j', module: 'slf4j-api'
         exclude group: 'org.slf4j', module: 'slf4j-nop'
     }
