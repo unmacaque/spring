@@ -15,5 +15,6 @@ dependencies {
 description = 'Spring Boot Docker'
 
 docker {
-    imageName = "unmacaque/${project.name}"
+    name = "unmacaque/${project.name}"
+    files tasks.bootJar
 }

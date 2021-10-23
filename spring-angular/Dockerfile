@@ -6,7 +6,7 @@ RUN npx ng build --prod
 
 FROM openjdk:11-jdk-slim AS build
 WORKDIR /src
-COPY /build/libs/spring-angular-0.0.1-SNAPSHOT.jar app.jar
+COPY *.jar app.jar
 RUN jar -xf *.jar
 
 FROM openjdk:11-jre-slim

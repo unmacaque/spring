@@ -1,8 +1,10 @@
 # spring-boot-docker
 
-1. Run the task `bootJar` to build a JAR file of the Spring Boot app
-1. Run the task `dockerBuild` to build a layered Docker image of the app
-1. Execute `docker run -p 8080:8080 -t unmacaque/spring-boot-docker` to start the containerized app
+Run the task `docker` to build a layered Docker image of the app.
+ 
+Execute the following command to start the containerized app.
+
+    docker run -p 8080:8080 -t unmacaque/spring-boot-docker
 
 ## Logging
 
