@@ -5,5 +5,5 @@ server:
     key-store: classpath:server.p12
     key-store-password: storepass
     client-auth: need
-    trust-store: classpath:trust.jks
+    trust-store: classpath:trust.p12
     trust-store-password: trustpass
