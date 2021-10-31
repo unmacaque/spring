@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.gmail.unmacaque.spring.domain.hello;
+
+message Greeting {
+    string message = 1;
+    int32 count = 2;
+    repeated string names = 3;
+    DayOfWeek dayOfWeek = 4;
+
+    enum DayOfWeek {
+        MONDAY = 0;
+        TUESDAY = 1;
+        WEDNESDAY = 2;
+        THURSDAY = 3;
+        FRIDAY = 4;
+        SATURDAY = 5;
+        SUNDAY = 6;
+    }
+}
