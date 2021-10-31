@@ -5,3 +5,9 @@ plugins {
 dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.19.1'
 }
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.19.1'
+    }
+}
