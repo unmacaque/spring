@@ -1,0 +1,7 @@
+plugins {
+    id 'com.google.protobuf'
+}
+
+dependencies {
+    implementation 'com.google.protobuf:protobuf-java:3.19.1'
+}
