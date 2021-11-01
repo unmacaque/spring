@@ -1,0 +1,24 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.protobuf'
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-netty-shaded:1.41.0'
+    implementation 'io.grpc:grpc-protobuf:1.41.0'
+    implementation 'io.grpc:grpc-stub:1.41.0'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring gRPC Server'
+
+protobuf {
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:1.41.0" }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc {} }
+    }
+}

@@ -1,0 +1,17 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'unmacaque.protobuf'
+}
+
+dependencies {
+    implementation project(':spring-grpc:spring-grpc-server')
+    implementation 'io.grpc:grpc-netty-shaded:1.41.0'
+    implementation 'io.grpc:grpc-protobuf:1.41.0'
+    implementation 'io.grpc:grpc-stub:1.41.0'
+    implementation 'com.google.protobuf:protobuf-java-util:3.19.1'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring gRPC Client'
