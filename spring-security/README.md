@@ -39,3 +39,11 @@ An implementation of `UserDetailsService` that also allows modifying the user en
 ## UserDetailsService
 
 Component that maps a username to a `UserDetails` object.
+
+## AuthenticationEntryPoint
+
+Invoked by `ExceptionTranslationFilter`. Implements the behaviour how to react on `AuthenticationException` and `AccessDeniedException`. Mostly used to start an authentication scheme, e.g. by redirecting to a login form, initiating a basic authentication.
+
+## AbstractPreAuthenticatedProcessingFilter
+
+Base class for filters, which handle requests that are already authenticated by external systems. It works by extracting principal information from the `HttpServletRequest`, e.g. `X509AuthenticationFilter`.
