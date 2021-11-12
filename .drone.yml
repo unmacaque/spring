@@ -4,7 +4,7 @@ name: build
 
 steps:
   - name: check
-    image: unmacaque/gradle:7-jdk11
+    image: unmacaque/gradle:7-jdk17
     pull: never
     commands:
       - gradle check
