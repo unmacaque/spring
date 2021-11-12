@@ -52,7 +52,7 @@ class WebFluxControllerTest {
 	}
 
 	private void assertGreeting(Greeting greeting) {
-		assertThat(greeting.getName()).isEqualTo("Hello World");
-		assertThat(greeting.getTime()).isNotNull();
+		assertThat(greeting.name()).isEqualTo("Hello World");
+		assertThat(greeting.time()).isNotNull();
 	}
 }

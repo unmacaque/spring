@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 @Entity
 public class Item implements Serializable {
 
-	private static final long serialVersionUID = -8805477227470066934L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

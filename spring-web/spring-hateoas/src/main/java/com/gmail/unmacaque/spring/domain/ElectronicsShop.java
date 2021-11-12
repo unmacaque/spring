@@ -23,7 +23,7 @@ public class ElectronicsShop implements Shop {
 	@Override
 	public Optional<Item> findItemById(int itemId) {
 		return items.stream()
-				.filter(item -> item.getItemId() == itemId)
+				.filter(item -> item.itemId() == itemId)
 				.findFirst();
 	}
 }

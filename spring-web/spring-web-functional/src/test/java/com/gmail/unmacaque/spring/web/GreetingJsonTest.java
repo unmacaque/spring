@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.web;
 
+import com.gmail.unmacaque.spring.domain.Greeting;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -31,7 +32,7 @@ class GreetingJsonTest {
 
 		final var greeting = tester.parseObject(json);
 
-		assertThat(greeting.getDate()).isEqualTo(LocalDateTime.of(2017, 4, 17, 0, 0));
-		assertThat(greeting.getMessage()).isEqualTo("Spring Boot");
+		assertThat(greeting.date()).isEqualTo(LocalDateTime.of(2017, 4, 17, 0, 0));
+		assertThat(greeting.message()).isEqualTo("Spring Boot");
 	}
 }

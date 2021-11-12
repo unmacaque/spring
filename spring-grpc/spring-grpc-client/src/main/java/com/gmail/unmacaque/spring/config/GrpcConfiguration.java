@@ -17,7 +17,7 @@ public class GrpcConfiguration {
 	@Bean
 	public ForecastServiceGrpc.ForecastServiceBlockingStub forecastService() {
 		final var channel = ManagedChannelBuilder
-				.forAddress(grpcProperties.getClient().getHost(), grpcProperties.getClient().getPort())
+				.forAddress(grpcProperties.client().host(), grpcProperties.client().port())
 				.usePlaintext()
 				.build();
 		return ForecastServiceGrpc.newBlockingStub(channel);

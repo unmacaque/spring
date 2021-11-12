@@ -5,34 +5,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 
 @ConfigurationProperties("grpc")
 @ConstructorBinding
-public class GrpcProperties {
+public record GrpcProperties(GrpcProperties.Client client) {
 
-	private final Client client;
-
-	public GrpcProperties(Client client) {
-		this.client = client;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public static class Client {
-		private final String host;
-
-		private final int port;
-
-		public Client(String host, int port) {
-			this.host = host;
-			this.port = port;
-		}
-
-		public String getHost() {
-			return host;
-		}
-
-		public int getPort() {
-			return port;
-		}
-	}
+	public static record Client(String host, int port) {}
 }

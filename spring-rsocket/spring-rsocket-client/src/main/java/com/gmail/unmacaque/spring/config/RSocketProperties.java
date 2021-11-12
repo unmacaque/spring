@@ -8,35 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties("rsocket")
 @ConstructorBinding
 @Validated
-public class RSocketProperties {
+public record RSocketProperties(@DefaultValue RSocketProperties.Client client) {
 
-	private final Client client;
-
-	public RSocketProperties(@DefaultValue Client client) {
-		this.client = client;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public static class Client {
-
-		private final String host;
-
-		private final int port;
-
-		public Client(@DefaultValue("localhost") String host, @DefaultValue("7000") int port) {
-			this.host = host;
-			this.port = port;
-		}
-
-		public String getHost() {
-			return host;
-		}
-
-		public int getPort() {
-			return port;
-		}
-	}
+	public static record Client(@DefaultValue("localhost") String host, @DefaultValue("7000") int port) {}
 }

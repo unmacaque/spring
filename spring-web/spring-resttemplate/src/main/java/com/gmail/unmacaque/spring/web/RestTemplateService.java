@@ -23,7 +23,7 @@ public class RestTemplateService {
 		if (bundle == null) {
 			return null;
 		}
-		logger.info(bundle.getContent());
-		return bundle.toString();
+		logger.info(bundle.content());
+		return bundle.content();
 	}
 }

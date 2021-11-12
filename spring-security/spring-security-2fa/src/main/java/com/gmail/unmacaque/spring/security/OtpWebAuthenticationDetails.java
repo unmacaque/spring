@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public class OtpWebAuthenticationDetails extends WebAuthenticationDetails {
 
-	private static final long serialVersionUID = -6546187301992666489L;
-
 	private final String verificationCode;
 
 	public OtpWebAuthenticationDetails(HttpServletRequest request) {
