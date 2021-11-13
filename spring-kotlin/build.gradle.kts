@@ -24,6 +24,8 @@ dependencies {
 
 description = "Spring Kotlin"
 
+java.targetCompatibility = JavaVersion.VERSION_11
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
