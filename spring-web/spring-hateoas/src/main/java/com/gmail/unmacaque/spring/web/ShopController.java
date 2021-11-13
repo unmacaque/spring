@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
@@ -28,7 +27,7 @@ public class ShopController {
 		final var itemCollectionModel = shop.getItems()
 				.stream()
 				.map(this::buildItemEntityModel)
-				.collect(Collectors.toUnmodifiableList());
+				.toList();
 
 		return CollectionModel.of(itemCollectionModel, linkTo(ShopController.class).withSelfRel());
 	}
