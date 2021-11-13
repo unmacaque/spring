@@ -68,10 +68,11 @@ public class RegisterController {
 
 	private String createNewOtpUser(RegisterUser registerUser) {
 		final String secret = Base32.random();
-		final var otpUser = new User(
-				registerUser.getUsername(),
-				registerUser.getPassword(),
-				AuthorityUtils.createAuthorityList("ROLE_USER"));
+		final var otpUser = User
+				.withUsername(registerUser.getUsername())
+				.password("{noop}" + registerUser.getPassword())
+				.authorities(AuthorityUtils.createAuthorityList("ROLE_USER"))
+				.build();
 		otpSecretRegistry.addUser(registerUser.getUsername(), secret);
 		userDetailsManager.createUser(otpUser);
 		return secret;

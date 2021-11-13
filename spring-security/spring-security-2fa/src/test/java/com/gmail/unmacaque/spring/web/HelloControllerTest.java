@@ -48,15 +48,4 @@ class HelloControllerTest {
 		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
 	}
-
-	@Test
-	void testLogin_withRoleUser_redirectToHello() throws Exception {
-		mockMvc.perform(get("/login")
-						.with(user("user").roles("USER")))
-				.andExpectAll(
-						status().isOk(),
-						forwardedUrl("/hello")
-				);
-	}
-
 }
