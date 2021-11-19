@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.web.servlet.invoke
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 @Configuration
 class SecurityConfiguration : WebSecurityConfigurerAdapter() {
@@ -11,7 +12,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http {
             authorizeRequests {
-                authorize({ it.method == "GET" }, permitAll)
+                authorize(AntPathRequestMatcher("/**", "GET"), permitAll)
                 authorize(anyRequest, authenticated)
             }
             formLogin { }
