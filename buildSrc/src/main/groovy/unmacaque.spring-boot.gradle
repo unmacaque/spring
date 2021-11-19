@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'unmacaque.java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
 }
@@ -9,18 +9,8 @@ configurations {
     integrationRuntime.extendsFrom testRuntime
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
 group = 'com.gmail.unmacaque'
 version = '1.0.0-SNAPSHOT'
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
 
 sourceSets {
     integration {
@@ -29,10 +19,6 @@ sourceSets {
             runtimeClasspath += main.output + test.output
         }
     }
-}
-
-test {
-    useJUnitPlatform()
 }
 
 task integrationTest(type: Test) {
