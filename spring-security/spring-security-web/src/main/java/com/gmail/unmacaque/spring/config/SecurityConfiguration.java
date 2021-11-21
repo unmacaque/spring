@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/h2-console/**");
+		web.ignoring().requestMatchers(PathRequest.toH2Console());
 	}
 
 	@Override

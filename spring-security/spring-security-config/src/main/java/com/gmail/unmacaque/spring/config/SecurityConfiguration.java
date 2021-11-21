@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -49,7 +50,7 @@ public class SecurityConfiguration {
 
 		@Override
 		public void configure(WebSecurity web) {
-			web.ignoring().antMatchers("/h2-console/**");
+			web.ignoring().requestMatchers(PathRequest.toH2Console());
 		}
 
 		@Override
