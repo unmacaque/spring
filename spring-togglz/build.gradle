@@ -2,7 +2,7 @@ plugins {
     id 'unmacaque.spring-boot'
 }
 
-ext.togglzVersion = '2.9.8'
+ext.togglzVersion = '3.0.0'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

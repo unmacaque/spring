@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation 'io.opentelemetry.instrumentation:opentelemetry-spring-starter:1.6.0-alpha'
+    implementation 'io.opentelemetry.instrumentation:opentelemetry-spring-starter:1.9.0-alpha'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
