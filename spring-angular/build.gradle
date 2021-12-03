@@ -23,5 +23,17 @@ node {
 
 docker {
     name = "unmacaque/${project.name}"
-    files tasks.bootJar
+    files tasks.bootJar.outputs
+    copySpec.with {
+        into('.') {
+            with {
+                from('.').include('*.jar')
+            }
+        }
+        into('ng') {
+            with {
+                from('ng').exclude('dist', 'node_modules')
+            }
+        }
+    }
 }

@@ -1,3 +1,9 @@
+FROM node:lts-alpine AS react-build
+WORKDIR /react
+COPY react .
+RUN npm install
+RUN npm run build
+
 FROM eclipse-temurin:17-alpine AS build
 RUN apk update && apk add binutils
 WORKDIR /opt
@@ -11,6 +17,7 @@ COPY --from=build /opt/runtime/ /usr/local/
 COPY --from=build /opt/dependencies/ ./
 COPY --from=build /opt/spring-boot-loader/ ./
 COPY --from=build /opt/application/ ./
+COPY --from=react-build /react/build /app/static
 RUN addgroup -S java && adduser -S java -G java
 USER java
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]

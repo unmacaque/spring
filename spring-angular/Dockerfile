@@ -4,17 +4,22 @@ COPY ng .
 RUN npm install
 RUN npx ng build --prod
 
-FROM openjdk:11-jdk-slim AS build
-WORKDIR /src
+FROM eclipse-temurin:17-alpine AS build
+RUN apk update && apk add binutils
+WORKDIR /opt
 COPY *.jar app.jar
-RUN jar -xf *.jar
+RUN java -Djarmode=layertools -jar app.jar extract
+RUN jlink --output runtime --no-header-files --no-man-pages --strip-debug --compress=0 --add-modules ALL-MODULE-PATH
 
-FROM openjdk:11-jre-slim
-VOLUME /tmp
-COPY --from=build /src/BOOT-INF/lib /app/lib
-COPY --from=build /src/META-INF /app/META-INF
-COPY --from=build /src/BOOT-INF/classes /app
+FROM alpine:3.14
+WORKDIR /app
+COPY --from=build /opt/runtime/ /usr/local/
+COPY --from=build /opt/dependencies/ ./
+COPY --from=build /opt/spring-boot-loader/ ./
+COPY --from=build /opt/application/ ./
 COPY --from=ng-build /ng/dist/spring-angular /app/static
-ENTRYPOINT ["java","-cp", "app:app/lib/*", "com.gmail.unmacaque.spring.Application"]
+RUN addgroup -S java && adduser -S java -G java
+USER java
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 EXPOSE 8080
 VOLUME /root/.embedmongo
