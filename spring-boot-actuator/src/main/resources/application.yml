@@ -1,18 +1,23 @@
 management:
-  health:
-    livenessstate:
-      enabled: true
-    readinessstate:
-      enabled: true
   endpoint:
     health:
       probes:
         enabled: true
       show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
   metrics:
     distribution:
       slo:
