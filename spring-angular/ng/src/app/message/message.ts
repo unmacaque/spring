@@ -1,7 +1,7 @@
-export class Message {
+export interface Message {
   title: string;
   author: string;
   content: string;
-  createdDate: Date;
-  lastModifiedDate: Date;
+  createdDate?: Date;
+  lastModifiedDate?: Date;
 }

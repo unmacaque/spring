@@ -1,11 +1,7 @@
-import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Injectable, NgZone } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Message } from './message';
-
-import { Observable } from 'rxjs/Observable';
-
-const EventSource: any = window['EventSource'];
 
 @Injectable()
 export class MessageService {
@@ -13,19 +9,19 @@ export class MessageService {
   constructor(private http: HttpClient, private zone: NgZone) { }
 
   getMessages(): Observable<Message> {
-    return Observable.create(observer => {
-      let eventSource = new EventSource('/api/messages');
-      eventSource.onmessage = event => {
-        console.log(event);
-        let message : Message = JSON.parse(event.data);
+    return new Observable(observer => {
+      let eventSource: EventSource = new EventSource('/api/messages');
+      eventSource.onmessage = (event: { data: string; }) => {
+        console.debug(event);
+        let message: Message = JSON.parse(event.data);
         this.zone.run(() => observer.next(message));
       };
-      eventSource.onerror = (error) => observer.error(error);
+      eventSource.onerror = (error: Event) => observer.error(error);
       return () => eventSource.close();
     });
   }
 
-  sendMessage(message : Message) : Observable<Message> {
+  sendMessage(message: Message): Observable<Message> {
     return this.http.post<Message>('/api/messages', message);
   }
 

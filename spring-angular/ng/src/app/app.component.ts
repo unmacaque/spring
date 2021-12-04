@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Message } from './message/message';
 import { MessageService } from './message/message.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   messages: Message[] = [];
@@ -16,11 +15,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.getMessages()
-    .subscribe(
-        message => {
-          this.messages.push(message);
-        },
-        (error: HttpErrorResponse) => console.error(error.message)
+      .subscribe(
+        {
+          next: (message: Message) => {
+            this.messages.push(message);
+          },
+          error: (error: ErrorEvent) => console.error(error)
+        }
       );
   }
 

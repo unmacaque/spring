@@ -1,22 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MessageFormComponent } from './message-form.component';
-import { MessageService } from '../message/message.service';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageService } from '../message/message.service';
+import { MessageFormComponent } from './message-form.component';
 
-class MockMessageService {}
+class MockMessageService { }
 
 describe('MessageFormComponent', () => {
   let component: MessageFormComponent;
   let fixture: ComponentFixture<MessageFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageFormComponent ],
+      declarations: [MessageFormComponent],
       imports: [
         FormsModule,
         MatFormFieldModule,
@@ -27,7 +25,7 @@ describe('MessageFormComponent', () => {
         { provide: MessageService, useClass: MockMessageService }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

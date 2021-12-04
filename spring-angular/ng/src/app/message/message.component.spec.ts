@@ -1,21 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MessageComponent } from './message.component';
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
+import { MessageComponent } from './message.component';
 
 describe('MessageComponent', () => {
   let component: MessageComponent;
   let fixture: ComponentFixture<MessageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageComponent ],
+      declarations: [MessageComponent],
       imports: [
         MatCardModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
