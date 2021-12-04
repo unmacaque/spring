@@ -22,4 +22,3 @@ RUN addgroup -S java && adduser -S java -G java
 USER java
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 EXPOSE 8080
-VOLUME /root/.embedmongo

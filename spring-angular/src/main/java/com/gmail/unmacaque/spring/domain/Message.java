@@ -3,11 +3,9 @@ package com.gmail.unmacaque.spring.domain;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
 
-@Document
 public class Message {
 
 	@Id
@@ -71,5 +69,13 @@ public class Message {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public static Message of(String title, String author, String content) {
+		final var message = new Message();
+		message.title = title;
+		message.author = author;
+		message.content = content;
+		return message;
 	}
 }

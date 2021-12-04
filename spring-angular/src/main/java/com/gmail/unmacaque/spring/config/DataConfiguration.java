@@ -1,41 +1,24 @@
 package com.gmail.unmacaque.spring.config;
 
-import com.gmail.unmacaque.spring.domain.Message;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationListener;
+import io.r2dbc.spi.ConnectionFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.mongodb.core.CollectionOptions;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
-import org.springframework.data.repository.init.Jackson2ResourceReader;
-import org.springframework.lang.NonNull;
-
-import java.util.ArrayList;
+import org.springframework.data.r2dbc.config.EnableR2dbcAuditing;
+import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
+import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 
 @Configuration
-public class DataConfiguration implements ApplicationListener<ApplicationReadyEvent> {
+@EnableR2dbcAuditing
+public class DataConfiguration {
 
-	private final ClassPathResource resource = new ClassPathResource("data.json");
+	@Bean
+	public ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
+		final var initializer = new ConnectionFactoryInitializer();
+		initializer.setConnectionFactory(connectionFactory);
 
-	private final ReactiveMongoTemplate mongoTemplate;
-
-	public DataConfiguration(ReactiveMongoTemplate mongoTemplate) {
-		this.mongoTemplate = mongoTemplate;
-	}
-
-	@Override
-	public void onApplicationEvent(@NonNull ApplicationReadyEvent event) {
-		mongoTemplate.createCollection(Message.class, CollectionOptions.empty().capped().size(1000L)).subscribe();
-		// work around missing RepositoryPopulator support for reactive repositories
-		final var reader = new Jackson2ResourceReader();
-		try {
-			@SuppressWarnings("unchecked") final var messages = (ArrayList<Message>) reader.readFrom(resource, null);
-
-			for (var message : messages) {
-				mongoTemplate.save(message).subscribe();
-			}
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
+		final var populator = new ResourceDatabasePopulator(new ClassPathResource("init.sql"));
+		initializer.setDatabasePopulator(populator);
+		return initializer;
 	}
 }

@@ -19,7 +19,7 @@ public class MessageRestController {
 
 	@GetMapping
 	public Flux<Message> messages() {
-		return repository.findWithTailableCursorBy();
+		return repository.findAll();
 	}
 
 	@PostMapping
