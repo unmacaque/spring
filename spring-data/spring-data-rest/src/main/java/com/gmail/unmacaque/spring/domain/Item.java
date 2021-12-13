@@ -57,13 +57,4 @@ public class Item implements Serializable {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-
-	public static Item create(String title, String description, BigDecimal price, int stock) {
-		final var item = new Item();
-		item.title = title;
-		item.description = description;
-		item.price = price;
-		item.stock = stock;
-		return item;
-	}
 }

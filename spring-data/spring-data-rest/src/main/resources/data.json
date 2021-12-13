@@ -1,0 +1,9 @@
+[
+  {
+    "_class": "com.gmail.unmacaque.spring.domain.Item",
+    "title": "Monitor",
+    "description": "You cannot develop without it",
+    "price": 99.99,
+    "stock": 5
+  }
+]

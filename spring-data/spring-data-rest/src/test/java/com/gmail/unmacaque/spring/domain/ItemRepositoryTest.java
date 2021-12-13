@@ -75,6 +75,11 @@ class ItemRepositoryTest {
 	}
 
 	static Item createItem() {
-		return Item.create("foo", "A description for foo", BigDecimal.valueOf(1.99), 1);
+		final var item = new Item();
+		item.setTitle("foo");
+		item.setDescription("A description for foo");
+		item.setPrice(BigDecimal.valueOf(1.99));
+		item.setStock(1);
+		return item;
 	}
 }
