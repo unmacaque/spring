@@ -1,5 +1,5 @@
 package com.gmail.unmacaque.spring.domain;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-public record Greeting(String name, LocalDateTime time) {}
+public record Greeting(String name, Instant time) {}

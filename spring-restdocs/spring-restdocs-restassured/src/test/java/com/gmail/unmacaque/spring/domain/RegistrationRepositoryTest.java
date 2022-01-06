@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -185,6 +186,8 @@ class RegistrationRepositoryTest {
 	}
 
 	static Registration createRegistration() {
-		return Registration.create("John", "Doe", LocalDateTime.of(2018, 3, 15, 16, 0));
+		return Registration.create("John", "Doe",
+				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
+		);
 	}
 }

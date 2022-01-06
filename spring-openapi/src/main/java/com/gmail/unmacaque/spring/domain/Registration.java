@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 public class Registration implements Serializable {
@@ -23,7 +23,7 @@ public class Registration implements Serializable {
 	private String lastName;
 
 	@NotNull
-	private LocalDateTime date;
+	private Instant date;
 
 	public long getId() {
 		return id;
@@ -49,11 +49,11 @@ public class Registration implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public LocalDateTime getDate() {
+	public Instant getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Instant date) {
 		this.date = date;
 	}
 

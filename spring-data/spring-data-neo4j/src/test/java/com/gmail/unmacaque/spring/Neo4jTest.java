@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.data.neo4j.DataNeo4jTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -59,7 +59,7 @@ class Neo4jTest {
 		assertThat(personRepository.findByPurchasedTitle("USB flash drives")).isEmpty();
 
 		final Product product = Product.create("USB flash drives");
-		final Purchase purchase = Purchase.create(LocalDateTime.MIN, product);
+		final Purchase purchase = Purchase.create(Instant.now(), product);
 		final Person person = Person.create("John Doe", 42, Gender.MALE).withPurchases(purchase);
 		productRepository.save(product);
 		personRepository.save(person);

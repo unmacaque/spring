@@ -2,7 +2,7 @@ package com.gmail.unmacaque.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 public record Book(
 		String id,
@@ -10,6 +10,6 @@ public record Book(
 		String title,
 		String genre,
 		String price,
-		@JsonProperty("publish-date") LocalDate publishDate,
+		@JsonProperty("publish-date") Instant publishDate,
 		String description
 ) {}

@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @RestController
 public class WebFluxController {
 
 	@GetMapping("/hello")
 	public Mono<Greeting> hello() {
-		return Mono.just(new Greeting("Hello World", LocalDateTime.now()));
+		return Mono.just(new Greeting("Hello World", Instant.now()));
 	}
 
 	@GetMapping("/flux")
 	public Flux<Greeting> helloFlux() {
 		return Flux
-				.<Greeting>generate(s -> s.next(new Greeting("Hello World", LocalDateTime.now())))
+				.<Greeting>generate(s -> s.next(new Greeting("Hello World", Instant.now())))
 				.take(10);
 	}
 }

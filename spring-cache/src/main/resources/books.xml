@@ -5,7 +5,7 @@
     <title>XML Developer's Guide</title>
     <genre>Computer</genre>
     <price>44.95</price>
-    <publish-date>2000-10-01</publish-date>
+    <publish-date>2000-10-01T00:00:00.00Z</publish-date>
     <description>An in-depth look at creating applications
       with XML.
     </description>
@@ -15,7 +15,7 @@
     <title>Midnight Rain</title>
     <genre>Fantasy</genre>
     <price>5.95</price>
-    <publish-date>2000-12-16</publish-date>
+    <publish-date>2000-12-16T00:00:00.00Z</publish-date>
     <description>A former architect battles corporate zombies,
       an evil sorceress, and her own childhood to become queen
       of the world.
@@ -26,7 +26,7 @@
     <title>Maeve Ascendant</title>
     <genre>Fantasy</genre>
     <price>5.95</price>
-    <publish-date>2000-11-17</publish-date>
+    <publish-date>2000-11-17T00:00:00.00Z</publish-date>
     <description>After the collapse of a nanotechnology
       society in England, the young survivors lay the
       foundation for a new society.
@@ -37,7 +37,7 @@
     <title>Oberon's Legacy</title>
     <genre>Fantasy</genre>
     <price>5.95</price>
-    <publish-date>2001-03-10</publish-date>
+    <publish-date>2001-03-10T00:00:00.00Z</publish-date>
     <description>In post-apocalypse England, the mysterious
       agent known only as Oberon helps to create a new life
       for the inhabitants of London. Sequel to Maeve
@@ -49,7 +49,7 @@
     <title>The Sundered Grail</title>
     <genre>Fantasy</genre>
     <price>5.95</price>
-    <publish-date>2001-09-10</publish-date>
+    <publish-date>2001-09-10T00:00:00.00Z</publish-date>
     <description>The two daughters of Maeve, half-sisters,
       battle one another for control of England. Sequel to
       Oberon's Legacy.
@@ -60,7 +60,7 @@
     <title>Lover Birds</title>
     <genre>Romance</genre>
     <price>4.95</price>
-    <publish-date>2000-09-02</publish-date>
+    <publish-date>2000-09-02T00:00:00.00Z</publish-date>
     <description>When Carla meets Paul at an ornithology
       conference, tempers fly as feathers get ruffled.
     </description>
@@ -70,7 +70,7 @@
     <title>Splish Splash</title>
     <genre>Romance</genre>
     <price>4.95</price>
-    <publish-date>2000-11-02</publish-date>
+    <publish-date>2000-11-02T00:00:00.00Z</publish-date>
     <description>A deep sea diver finds true love twenty
       thousand leagues beneath the sea.
     </description>
@@ -80,7 +80,7 @@
     <title>Creepy Crawlies</title>
     <genre>Horror</genre>
     <price>4.95</price>
-    <publish-date>2000-12-06</publish-date>
+    <publish-date>2000-12-06T00:00:00.00Z</publish-date>
     <description>An anthology of horror stories about roaches,
       centipedes, scorpions and other insects.
     </description>
@@ -90,7 +90,7 @@
     <title>Paradox Lost</title>
     <genre>Science Fiction</genre>
     <price>6.95</price>
-    <publish-date>2000-11-02</publish-date>
+    <publish-date>2000-11-02T00:00:00.00Z</publish-date>
     <description>After an inadvertant trip through a Heisenberg
       Uncertainty Device, James Salway discovers the problems
       of being quantum.
@@ -101,7 +101,7 @@
     <title>Microsoft .NET: The Programming Bible</title>
     <genre>Computer</genre>
     <price>36.95</price>
-    <publish-date>2000-12-09</publish-date>
+    <publish-date>2000-12-09T00:00:00.00Z</publish-date>
     <description>Microsoft's .NET initiative is explored in
       detail in this deep programmer's reference.
     </description>
@@ -111,7 +111,7 @@
     <title>MSXML3: A Comprehensive Guide</title>
     <genre>Computer</genre>
     <price>36.95</price>
-    <publish-date>2000-12-01</publish-date>
+    <publish-date>2000-12-01T00:00:00.00Z</publish-date>
     <description>The Microsoft MSXML3 parser is covered in
       detail, with attention to XML DOM interfaces, XSLT processing,
       SAX and more.
@@ -122,7 +122,7 @@
     <title>Visual Studio 7: A Comprehensive Guide</title>
     <genre>Computer</genre>
     <price>49.95</price>
-    <publish-date>2001-04-16</publish-date>
+    <publish-date>2001-04-16T00:00:00.00Z</publish-date>
     <description>Microsoft Visual Studio 7 is explored in depth,
       looking
       at how Visual Basic, Visual C++, C#, and ASP+ are

@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.*;
@@ -130,6 +131,8 @@ class RegistrationRepositoryTest {
 	}
 
 	static Registration createRegistration() {
-		return Registration.create("John", "Doe", LocalDateTime.of(2018, 3, 15, 16, 0));
+		return Registration.create("John", "Doe",
+				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
+		);
 	}
 }
