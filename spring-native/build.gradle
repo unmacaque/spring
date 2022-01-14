@@ -1,0 +1,25 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'org.springframework.experimental.aot'
+    id 'org.graalvm.buildtools.native'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+graalvmNative {
+    binaries {
+        main {
+            mainClass = 'com.gmail.unmacaque.spring.Application'
+            buildArgs.add('--allow-incomplete-classpath')
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+            buildArgs.add('--no-fallback')
+            buildArgs.add('--install-exit-handlers')
+            buildArgs.add('-H:+InlineBeforeAnalysis')
+        }
+    }
+}
+
+description = 'Spring Native'

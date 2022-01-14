@@ -12,6 +12,10 @@ configurations {
 group = 'com.gmail.unmacaque'
 version = '1.0.0-SNAPSHOT'
 
+repositories {
+    maven { url = uri("https://repo.spring.io/release") }
+}
+
 sourceSets {
     integration {
         java {
