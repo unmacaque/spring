@@ -9,11 +9,15 @@ configurations {
     integrationRuntime.extendsFrom testRuntime
 }
 
-group = 'com.gmail.unmacaque'
+group = 'com.gmail.unmacaque.spring'
 version = '1.0.0-SNAPSHOT'
 
 repositories {
     maven { url = uri("https://repo.spring.io/release") }
+}
+
+springBoot {
+    buildInfo()
 }
 
 sourceSets {
