@@ -9,7 +9,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -25,7 +24,7 @@ class IndexControllerTest {
 
 	@Test
 	void testIndex() throws Exception {
-		mockMvc.perform(formLogin().user("user").password("user"))
+		mockMvc.perform(formLogin().user("user").password("pass"))
 				.andExpectAll(
 						status().isFound(),
 						authenticated().withUsername("user").withRoles("USER"),
@@ -39,7 +38,7 @@ class IndexControllerTest {
 		mockMvc.perform(get("/"))
 				.andExpectAll(
 						status().isOk(),
-						model().attribute("username", equalTo("user"))
+						model().attribute("username", "user")
 				);
 	}
 

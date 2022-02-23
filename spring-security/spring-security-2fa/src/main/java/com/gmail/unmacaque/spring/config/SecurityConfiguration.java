@@ -7,19 +7,18 @@ import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		return http
 				.authorizeRequests(authorizeRequests ->
 						authorizeRequests
 								.antMatchers("/hello").hasRole("USER")
@@ -35,15 +34,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						logout
 								.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 								.logoutSuccessUrl("/?logout")
-				);
+				)
+				.build();
 	}
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) {
-		auth.authenticationProvider(authenticationProvider());
-	}
-
-	private AuthenticationProvider authenticationProvider() {
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
 		return new OtpAuthenticationProvider(userDetailsManager(), otpSecretRegistry());
 	}
 

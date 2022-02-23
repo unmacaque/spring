@@ -1,39 +1,28 @@
 package com.gmail.unmacaque.spring.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration {
 
-	private final DataSource dataSource;
+	@Autowired
+	private DataSource dataSource;
 
-	public SecurityConfiguration(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
-	@Override
-	public void configure(WebSecurity web) {
-		web.ignoring().requestMatchers(PathRequest.toH2Console());
-	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		return http
 				.authorizeRequests(authorizeRequests ->
 						authorizeRequests
 								.antMatchers("/hello").hasRole("USER")
@@ -49,20 +38,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						logout
 								.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 								.logoutSuccessUrl("/?logout")
-				);
-	}
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) {
-		auth.authenticationProvider(authenticationProvider());
+				)
+				.userDetailsService(new JdbcUserDetailsManager(dataSource))
+				.build();
 	}
 
 	@Bean
-	public AuthenticationProvider authenticationProvider() {
-		final var provider = new DaoAuthenticationProvider();
-		provider.setUserDetailsService(userDetailsManager());
-		provider.setPasswordEncoder(passwordEncoder());
-		return provider;
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		return web -> web.ignoring().requestMatchers(PathRequest.toH2Console());
 	}
 
 	@Bean
@@ -70,10 +53,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	public UserDetailsManager userDetailsManager() {
-		final var manager = new JdbcUserDetailsManager();
-		manager.setDataSource(dataSource);
-		return manager;
-	}
 }

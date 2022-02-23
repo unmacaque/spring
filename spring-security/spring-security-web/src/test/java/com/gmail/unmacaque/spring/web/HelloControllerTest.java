@@ -10,7 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -48,7 +47,7 @@ class HelloControllerTest {
 		mockMvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isOk(),
-						model().attribute("username", equalTo("user"))
+						model().attribute("username", "user")
 				);
 	}
 
@@ -85,7 +84,7 @@ class HelloControllerTest {
 		mockMvc.perform(get("/admin"))
 				.andExpectAll(
 						status().isOk(),
-						model().attribute("username", equalTo("admin"))
+						model().attribute("username", "admin")
 				);
 	}
 

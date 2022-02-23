@@ -1,9 +1,7 @@
 package com.gmail.unmacaque.spring.web;
 
 import com.gmail.unmacaque.spring.domain.RegisterUser;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,11 +16,8 @@ public class RegisterController {
 
 	private final UserDetailsManager userDetailsManager;
 
-	private final PasswordEncoder passwordEncoder;
-
-	public RegisterController(UserDetailsManager userDetailsManager, PasswordEncoder passwordEncoder) {
+	public RegisterController(UserDetailsManager userDetailsManager) {
 		this.userDetailsManager = userDetailsManager;
-		this.passwordEncoder = passwordEncoder;
 	}
 
 	@ModelAttribute
@@ -46,10 +41,12 @@ public class RegisterController {
 			return "register";
 		}
 		try {
-			userDetailsManager.createUser(new User(
-					registerUser.getUsername(),
-					passwordEncoder.encode(registerUser.getPassword()),
-					AuthorityUtils.createAuthorityList("ROLE_USER")));
+			userDetailsManager.createUser(User
+					.builder()
+					.username(registerUser.getUsername())
+					.password(registerUser.getPassword())
+					.roles("USER").build()
+			);
 		} catch (RuntimeException e) {
 			result.reject("register.error.general", e.getMessage());
 			return "register";

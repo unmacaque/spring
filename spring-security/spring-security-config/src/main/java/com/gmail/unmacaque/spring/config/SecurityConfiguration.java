@@ -2,14 +2,17 @@ package com.gmail.unmacaque.spring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
@@ -18,58 +21,49 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfiguration {
 
-	@Configuration
+	@Autowired
+	private DataSource dataSource;
+
+	@Bean
 	@Order(1)
-	public static class ApiSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-		@Autowired
-		private DataSource dataSource;
-
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-					.antMatcher("/api/**")
-					.authorizeRequests(authorizeRequests ->
-							authorizeRequests
-									.anyRequest().hasRole("ADMIN")
-					)
-					.httpBasic(withDefaults());
-		}
-
-		@Override
-		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth
-					.jdbcAuthentication()
-					.dataSource(dataSource)
-					.passwordEncoder(new BCryptPasswordEncoder());
-		}
+	public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
+		return http
+				.antMatcher("/api/**")
+				.authorizeRequests(authorizeRequests ->
+						authorizeRequests
+								.anyRequest().hasRole("ADMIN")
+				)
+				.httpBasic(withDefaults())
+				.userDetailsService(new JdbcUserDetailsManager(dataSource))
+				.build();
 	}
 
-	@Configuration
-	public static class UserSecurityConfiguration extends WebSecurityConfigurerAdapter {
+	@Bean
+	public SecurityFilterChain userSecurityFilterChain(HttpSecurity http) throws Exception {
+		return http
+				.authorizeRequests(authorizeRequests ->
+						authorizeRequests
+								.anyRequest().authenticated()
+				)
+				.formLogin(withDefaults())
+				.userDetailsService(new InMemoryUserDetailsManager(
+						User
+								.builder()
+								.username("user")
+								.password("$2b$12$2iwDl4LHHddmGqhufhjfCOaD6K7gxzsCsPCjyxqozrAdDc8XsgpDG")
+								.roles("USER")
+								.build()
+				))
+				.build();
+	}
 
-		@Override
-		public void configure(WebSecurity web) {
-			web.ignoring().requestMatchers(PathRequest.toH2Console());
-		}
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		return web -> web.ignoring().requestMatchers(PathRequest.toH2Console());
+	}
 
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-					.authorizeRequests(authorizeRequests ->
-							authorizeRequests
-									.anyRequest().authenticated()
-					)
-					.formLogin(withDefaults());
-		}
-
-		@SuppressWarnings("deprecation")
-		@Override
-		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth
-					.inMemoryAuthentication()
-					.passwordEncoder(NoOpPasswordEncoder.getInstance())
-					.withUser("user").password("user").roles("USER");
-		}
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
