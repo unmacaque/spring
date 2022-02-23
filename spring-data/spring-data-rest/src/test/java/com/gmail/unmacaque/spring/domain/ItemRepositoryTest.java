@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,7 +40,7 @@ class ItemRepositoryTest {
 		mvc.perform(get("/items"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("$._embedded.items.length()", equalTo(3))
+						jsonPath("$._embedded.items.length()").value(3)
 				);
 	}
 
@@ -50,7 +49,7 @@ class ItemRepositoryTest {
 		mvc.perform(get("/items/1"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("$.title", equalTo("CPU"))
+						jsonPath("$.title").value("CPU")
 				);
 	}
 

@@ -8,7 +8,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.http.MediaType.APPLICATION_OCTET_STREAM_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
@@ -35,7 +34,7 @@ class UploadControllerTest {
 						status().isOk(),
 						model().attributeDoesNotExist("error"),
 						model().attribute("filename", "testFile"),
-						model().attribute("filesize", equalTo(1L)),
+						model().attribute("filesize", 1L),
 						model().attribute("filetype", "application/octet-stream")
 				);
 	}

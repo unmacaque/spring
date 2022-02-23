@@ -6,8 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -25,7 +23,7 @@ class ShopControllerTest {
 		mvc.perform(get("/"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("_embedded", notNullValue())
+						jsonPath("_embedded").exists()
 				);
 	}
 
@@ -34,11 +32,11 @@ class ShopControllerTest {
 		mvc.perform(get("/1"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("itemId", equalTo(1)),
-						jsonPath("title", notNullValue()),
-						jsonPath("description", notNullValue()),
-						jsonPath("price", notNullValue()),
-						jsonPath("_links.self.href", notNullValue())
+						jsonPath("itemId").value(1),
+						jsonPath("title").exists(),
+						jsonPath("description").exists(),
+						jsonPath("price").exists(),
+						jsonPath("_links.self.href").exists()
 				);
 	}
 
@@ -47,11 +45,11 @@ class ShopControllerTest {
 		mvc.perform(post("/1/order"))
 				.andExpectAll(
 						status().isCreated(),
-						jsonPath("itemId", equalTo(1)),
-						jsonPath("title", notNullValue()),
-						jsonPath("description", notNullValue()),
-						jsonPath("price", notNullValue()),
-						jsonPath("_links.self.href", notNullValue())
+						jsonPath("itemId").value(1),
+						jsonPath("title").exists(),
+						jsonPath("description").exists(),
+						jsonPath("price").exists(),
+						jsonPath("_links.self.href").exists()
 				);
 	}
 

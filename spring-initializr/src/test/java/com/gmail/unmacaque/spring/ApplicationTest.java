@@ -8,7 +8,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -25,15 +24,15 @@ class ApplicationTest {
 		mvc.perform(get("/")
 						.accept(InitializrMetadataVersion.V2_2.getMediaType()))
 				.andExpectAll(
-						jsonPath("$.type.default", equalTo("maven-project")),
-						jsonPath("$.type.values.*.id", containsInAnyOrder("maven-project", "maven-build", "gradle-project", "gradle-build")),
-						jsonPath("$.packaging.default", equalTo("jar")),
-						jsonPath("$.packaging.values.*.id", containsInAnyOrder("jar", "war")),
-						jsonPath("$.javaVersion.default", equalTo("11")),
-						jsonPath("$.language.default", equalTo("java")),
-						jsonPath("$.language.values.*.id", containsInAnyOrder("groovy", "java", "kotlin")),
-						jsonPath("$.bootVersion.default", equalTo(SpringBootVersion.getVersion())),
-						jsonPath("$.groupId.default", equalTo("com.gmail.unmacaque.spring"))
+						jsonPath("$.type.default").value("maven-project"),
+						jsonPath("$.type.values.*.id").value(containsInAnyOrder("maven-project", "maven-build", "gradle-project", "gradle-build")),
+						jsonPath("$.packaging.default").value("jar"),
+						jsonPath("$.packaging.values.*.id").value(containsInAnyOrder("jar", "war")),
+						jsonPath("$.javaVersion.default").value("11"),
+						jsonPath("$.language.default").value("java"),
+						jsonPath("$.language.values.*.id").value(containsInAnyOrder("groovy", "java", "kotlin")),
+						jsonPath("$.bootVersion.default").value(SpringBootVersion.getVersion()),
+						jsonPath("$.groupId.default").value("com.gmail.unmacaque.spring")
 				);
 	}
 

@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -52,7 +51,7 @@ class RegistrationRepositoryTest {
 		mvc.perform(get("/registrations"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("$._embedded.registrations.length()", equalTo(2))
+						jsonPath("$._embedded.registrations.length()").value(2)
 				)
 				.andDo(document("{method-name}",
 								links(halLinks(),
@@ -71,7 +70,7 @@ class RegistrationRepositoryTest {
 		mvc.perform(get("/registrations/{id}", 1))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("$.firstName", equalTo("Fred"))
+						jsonPath("$.firstName").value("Fred")
 				)
 				.andDo(document("{method-name}",
 								pathParameters(

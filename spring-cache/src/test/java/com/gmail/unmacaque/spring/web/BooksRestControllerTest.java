@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,14 +24,14 @@ class BooksRestControllerTest {
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("$.length()", equalTo(12)),
-						jsonPath("$.[0].id", notNullValue()),
-						jsonPath("$.[0].author", notNullValue()),
-						jsonPath("$.[0].title", notNullValue()),
-						jsonPath("$.[0].genre", notNullValue()),
-						jsonPath("$.[0].price", notNullValue()),
-						jsonPath("$.[0].publish-date", notNullValue()),
-						jsonPath("$.[0].description", notNullValue())
+						jsonPath("$.length()").value(12),
+						jsonPath("$.[0].id").exists(),
+						jsonPath("$.[0].author").exists(),
+						jsonPath("$.[0].title").exists(),
+						jsonPath("$.[0].genre").exists(),
+						jsonPath("$.[0].price").exists(),
+						jsonPath("$.[0].publish-date").exists(),
+						jsonPath("$.[0].description").exists()
 				);
 	}
 

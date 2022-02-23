@@ -7,10 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -27,7 +23,7 @@ class ApplicationTest {
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
-						jsonPath("$", not(empty()))
+						jsonPath("$").isNotEmpty()
 				);
 	}
 
@@ -37,7 +33,7 @@ class ApplicationTest {
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
-						jsonPath("$", hasSize(2))
+						jsonPath("$.length()").value(2)
 				);
 	}
 
@@ -47,8 +43,8 @@ class ApplicationTest {
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
-						jsonPath("name", equalTo("Fred")),
-						jsonPath("uid", equalTo("fred"))
+						jsonPath("name").value("Fred"),
+						jsonPath("uid").value("fred")
 				);
 	}
 
@@ -58,7 +54,7 @@ class ApplicationTest {
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
-						jsonPath("$", not(empty()))
+						jsonPath("$").isNotEmpty()
 				);
 	}
 
@@ -68,7 +64,7 @@ class ApplicationTest {
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
-						jsonPath("$", hasSize(2))
+						jsonPath("$.length()").value(2)
 				);
 	}
 
