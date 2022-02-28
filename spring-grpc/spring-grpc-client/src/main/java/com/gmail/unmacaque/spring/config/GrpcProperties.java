@@ -7,5 +7,5 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 public record GrpcProperties(GrpcProperties.Client client) {
 
-	public static record Client(String host, int port) {}
+	public record Client(String host, int port) {}
 }

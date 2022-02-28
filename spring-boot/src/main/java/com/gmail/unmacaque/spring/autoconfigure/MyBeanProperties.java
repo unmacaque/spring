@@ -21,5 +21,5 @@ public record MyBeanProperties(
 
 	@ConstructorBinding
 	@Validated
-	public static record NestedProperties(@NotEmpty String name, @Email String mail) {}
+	public record NestedProperties(@NotEmpty String name, @Email String mail) {}
 }

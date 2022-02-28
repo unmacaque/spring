@@ -10,5 +10,5 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public record RSocketProperties(@DefaultValue RSocketProperties.Client client) {
 
-	public static record Client(@DefaultValue("localhost") String host, @DefaultValue("7000") int port) {}
+	public record Client(@DefaultValue("localhost") String host, @DefaultValue("7000") int port) {}
 }
