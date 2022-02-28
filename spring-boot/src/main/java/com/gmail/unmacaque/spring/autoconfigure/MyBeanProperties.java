@@ -1,7 +1,6 @@
 package com.gmail.unmacaque.spring.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.validation.annotation.Validated;
 
@@ -10,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@ConstructorBinding
 @ConfigurationProperties("application")
 @Validated
 public record MyBeanProperties(
@@ -19,7 +17,6 @@ public record MyBeanProperties(
 		@DefaultValue MyBeanProperties.NestedProperties author
 ) {
 
-	@ConstructorBinding
 	@Validated
 	public record NestedProperties(@NotEmpty String name, @Email String mail) {}
 }
