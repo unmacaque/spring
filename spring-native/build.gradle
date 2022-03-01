@@ -12,7 +12,10 @@ dependencies {
 graalvmNative {
     binaries {
         main {
-            mainClass = 'com.gmail.unmacaque.spring.Application'
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(17)
+                vendor = JvmVendorSpec.matching("GraalVM Community")
+            }
             buildArgs.add('--allow-incomplete-classpath')
             buildArgs.add('--report-unsupported-elements-at-runtime')
             buildArgs.add('--no-fallback')
