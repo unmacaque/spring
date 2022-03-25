@@ -11,7 +11,7 @@ dependencies {
     implementation("io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE")
     implementation("com.github.node-gradle:gradle-node-plugin:3.1.0")
     implementation("com.palantir.gradle.docker:gradle-docker:0.30.0")
-    implementation("com.google.protobuf:protobuf-gradle-plugin:0.8.17")
+    implementation("com.google.protobuf:protobuf-gradle-plugin:0.8.18")
     implementation("com.gorylenko.gradle-git-properties:gradle-git-properties:2.3.2")
     implementation("org.asciidoctor:asciidoctor-gradle-jvm:3.3.2")
     implementation("org.springdoc:springdoc-openapi-gradle-plugin:1.3.3")
