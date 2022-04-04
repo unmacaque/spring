@@ -1,15 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function RootApp() {
+  return (
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  )
+}
+
+const container = document.getElementById('root')
+if (container) {
+  const root = createRoot(container)
+  root.render(<RootApp />)
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
