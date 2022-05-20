@@ -2,8 +2,8 @@ server:
   port: 8443
   ssl:
     enabled: true
-    key-store: classpath:server.p12
-    key-store-password: storepass
+    certificate: classpath:server.pem
+    certificate-private-key: classpath:server.key
+    key-password:
     client-auth: need
-    trust-store: classpath:trust.p12
-    trust-store-password: trustpass
+    trust-certificate: classpath:trust.pem
