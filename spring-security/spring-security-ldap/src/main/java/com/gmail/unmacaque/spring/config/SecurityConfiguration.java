@@ -1,22 +1,19 @@
 package com.gmail.unmacaque.spring.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.ldap.core.support.BaseLdapPathContextSource;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration {
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// @formatter:off
-		auth
-			.ldapAuthentication()
-				.userDnPatterns("uid={0},ou=people")
-				.groupSearchBase("ou=people")
-				.contextSource()
-					.url("ldap://localhost:8389/dc=springframework,dc=org");
-		// @formatter:on
+	@Bean
+	public AuthenticationManager ldapAuthenticationManager(BaseLdapPathContextSource contextSource) {
+		final var factory = new LdapBindAuthenticationManagerFactory(contextSource);
+		factory.setUserDnPatterns("uid={0},ou=people,dc=springframework,dc=org");
+		return factory.createAuthenticationManager();
 	}
 
 }

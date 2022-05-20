@@ -5,7 +5,7 @@ plugins {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    runtimeOnly 'org.springframework.security:spring-security-ldap'
+    implementation 'org.springframework.security:spring-security-ldap'
     runtimeOnly 'com.unboundid:unboundid-ldapsdk'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
