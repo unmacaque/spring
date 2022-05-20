@@ -9,7 +9,7 @@ import java.time.Instant;
 public class Message {
 
 	@Id
-	private String id;
+	private Long id;
 
 	private String title;
 
@@ -31,7 +31,7 @@ public class Message {
 		return createdDate;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -55,7 +55,7 @@ public class Message {
 		this.createdDate = createdDate;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
