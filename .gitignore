@@ -12,3 +12,4 @@ target
 .idea
 *.iml
 node_modules
+!buildSrc/src/*/java/**/build
