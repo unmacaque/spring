@@ -1,15 +1,22 @@
 package com.gmail.unmacaque.spring.build.ssl;
 
+import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
+import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.OutputFile;
 
 public abstract class CertificateDescription {
 
-	public abstract Property<String> getCert();
+	@OutputFile
+	public abstract RegularFileProperty getCert();
 
-	public abstract Property<String> getKey();
+	@OutputFile
+	public abstract RegularFileProperty getKey();
 
+	@Input
 	public abstract Property<String> getSubject();
 
+	@Input
 	public abstract Property<Integer> getDays();
 
 	public CertificateDescription() {
