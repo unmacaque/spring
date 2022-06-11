@@ -2,8 +2,7 @@
 
 Mutual TLS authentication with Spring Security.
 
-1. Run `./openssl.sh`
-1. Start `spring-security-x509`
+Run with Gradle task `bootRun`.
 
 Example authenticated request using _cURL_:
 

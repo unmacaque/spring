@@ -27,10 +27,10 @@ class ApplicationTest {
 	@Test
 	void testGetWithX509IsAuthorized() throws Exception {
 		mvc.perform(get("/")
-						.with(x509("classpath:client.crt")))
+						.with(x509("classpath:ssl/client.pem")))
 				.andExpectAll(
 						status().isOk(),
-						authenticated().withUsername("localhost")
+						authenticated().withUsername("client")
 				);
 	}
 }

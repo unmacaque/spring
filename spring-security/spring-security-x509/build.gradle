@@ -1,5 +1,6 @@
 plugins {
     id 'unmacaque.spring-boot'
+    id 'unmacaque.ssl'
 }
 
 dependencies {
@@ -9,5 +10,29 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
+
+ssl {
+    ca {
+        cert = file('trust.pem')
+        key = file('trust.key')
+        subject = 'CN=root CA'
+    }
+
+    certs {
+        server {
+            cert = file('server.pem')
+            key = file('server.key')
+            subject = 'CN=localhost'
+        }
+
+        client {
+            cert = file('client.pem')
+            key = file('client.key')
+            subject = 'CN=client'
+        }
+    }
+}
+
+processResources.dependsOn generateSslCertificates
 
 description = 'Spring Security X.509'
