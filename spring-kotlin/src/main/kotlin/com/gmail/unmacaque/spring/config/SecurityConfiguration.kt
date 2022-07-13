@@ -14,7 +14,7 @@ class SecurityConfiguration {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain =
         run {
             http {
-                authorizeRequests {
+                authorizeHttpRequests {
                     authorize(AntPathRequestMatcher("/**", "GET"), permitAll)
                     authorize(anyRequest, authenticated)
                 }

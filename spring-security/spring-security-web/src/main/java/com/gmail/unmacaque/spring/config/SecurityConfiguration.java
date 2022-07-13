@@ -23,8 +23,8 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
-				.authorizeRequests(authorizeRequests ->
-						authorizeRequests
+				.authorizeHttpRequests(requests ->
+						requests
 								.antMatchers("/hello").hasRole("USER")
 								.antMatchers("/admin").hasRole("ADMIN")
 				)

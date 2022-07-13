@@ -29,8 +29,8 @@ public class SecurityConfiguration {
 	public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.antMatcher("/api/**")
-				.authorizeRequests(authorizeRequests ->
-						authorizeRequests
+				.authorizeHttpRequests(requests ->
+						requests
 								.anyRequest().hasRole("ADMIN")
 				)
 				.httpBasic(withDefaults())
@@ -41,8 +41,8 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain userSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
-				.authorizeRequests(authorizeRequests ->
-						authorizeRequests
+				.authorizeHttpRequests(requests ->
+						requests
 								.anyRequest().authenticated()
 				)
 				.formLogin(withDefaults())

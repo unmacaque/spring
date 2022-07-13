@@ -13,9 +13,9 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
-				.authorizeRequests(authorizeRequests ->
-						authorizeRequests
-								.anyRequest().fullyAuthenticated()
+				.authorizeHttpRequests(requests ->
+						requests
+								.anyRequest().authenticated()
 				)
 				.x509(x509 ->
 						x509
