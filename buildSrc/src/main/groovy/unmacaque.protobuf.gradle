@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation 'com.google.protobuf:protobuf-java:3.19.1'
+    implementation 'com.google.protobuf:protobuf-java:3.21.2'
 }
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.19.1'
+        artifact = 'com.google.protobuf:protoc:3.21.2'
     }
 }
