@@ -1,4 +1,4 @@
 plugins {
     id 'org.springdoc.openapi-gradle-plugin'
-    id 'com.github.johnrengelman.processes'
+    id 'com.github.psxpaul.execfork'
 }
