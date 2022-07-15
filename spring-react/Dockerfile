@@ -11,7 +11,7 @@ COPY *.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
 RUN jlink --output runtime --no-header-files --no-man-pages --strip-debug --compress=0 --add-modules ALL-MODULE-PATH
 
-FROM alpine:3.14
+FROM alpine:3.16
 WORKDIR /app
 COPY --from=build /opt/runtime/ /usr/local/
 COPY --from=build /opt/dependencies/ ./
