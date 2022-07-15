@@ -1,4 +1,0 @@
-spring:
-  profiles: external
-  neo4j:
-    uri: bolt://localhost:7687
