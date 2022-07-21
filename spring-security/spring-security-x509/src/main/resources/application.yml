@@ -4,6 +4,5 @@ server:
     enabled: true
     certificate: classpath:ssl/server.pem
     certificate-private-key: classpath:ssl/server.key
-    key-password:
     client-auth: need
     trust-certificate: classpath:ssl/trust.pem
