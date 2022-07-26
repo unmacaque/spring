@@ -7,3 +7,5 @@ application:
   author:
     name: Foobar
     mail: foo@example.com
+  data-size: 16KB
+  duration: 5m

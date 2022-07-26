@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @AutoConfiguration
 @ConditionalOnClass(MyBean.class)
 @EnableConfigurationProperties(MyBeanProperties.class)
@@ -21,10 +23,13 @@ public class MyBeanAutoConfiguration {
 	@ConditionalOnMissingBean
 	public MyBean myBean() {
 		return new MyBeanImpl(
-				properties.myProperty(),
-				properties.myList(),
-				properties.author().name(),
-				properties.author().mail()
+				List.of(
+						properties.myProperty(),
+						properties.myList(),
+						properties.author(),
+						properties.dataSize(),
+						properties.duration()
+				)
 		);
 	}
 

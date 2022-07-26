@@ -20,8 +20,7 @@ public class BootApplicationRunner implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) {
-		logger.info(myBean.getString());
-		myBean.getList().forEach(logger::info);
+		myBean.objects().stream().map(Object::toString).forEach(logger::info);
 
 		args.getNonOptionArgs().forEach(logger::info);
 		args.getOptionNames().forEach(option -> logger.info("{}={}", option, args.getOptionValues(option)));
