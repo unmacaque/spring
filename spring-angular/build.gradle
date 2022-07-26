@@ -2,6 +2,7 @@ plugins {
     id 'unmacaque.spring-boot'
     id 'unmacaque.node'
     id 'unmacaque.docker'
+    id 'idea'
 }
 
 dependencies {
@@ -16,6 +17,12 @@ dependencies {
 }
 
 description = 'Spring Angular'
+
+idea {
+    module {
+        excludeDirs += file('ng/node_modules')
+    }
+}
 
 node {
     nodeProjectDir = file("${project.projectDir}/ng")

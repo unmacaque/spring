@@ -2,6 +2,7 @@ plugins {
     id 'unmacaque.spring-boot'
     id 'unmacaque.node'
     id 'unmacaque.docker'
+    id 'idea'
 }
 
 dependencies {
@@ -11,6 +12,12 @@ dependencies {
 }
 
 description = 'Spring ReactJS'
+
+idea {
+    module {
+        excludeDirs += file('react/node_modules')
+    }
+}
 
 node {
     nodeProjectDir = file("${project.projectDir}/react")
