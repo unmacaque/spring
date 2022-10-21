@@ -1,3 +1,10 @@
 spring:
   application:
     name: spring-opentelemetry
+
+otel:
+  exporter:
+    logging:
+      enabled: true
+    otlp:
+      enabled: false
