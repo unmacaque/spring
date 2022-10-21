@@ -1,6 +1,6 @@
 package com.gmail.unmacaque.spring.security;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "AUTHORITIES")

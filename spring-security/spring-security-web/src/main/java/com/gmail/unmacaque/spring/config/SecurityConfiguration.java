@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.config;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +26,11 @@ public class SecurityConfiguration {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
-								.antMatchers("/hello").hasRole("USER")
-								.antMatchers("/admin").hasRole("ADMIN")
+								.dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+								.requestMatchers("/hello").hasRole("USER")
+								.requestMatchers("/admin").hasRole("ADMIN")
+								.requestMatchers("/", "/login", "/register").permitAll()
+								.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				)
 				.formLogin(formLogin ->
 						formLogin

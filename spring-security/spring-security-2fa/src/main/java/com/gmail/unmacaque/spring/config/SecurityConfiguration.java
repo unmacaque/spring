@@ -4,6 +4,7 @@ import com.gmail.unmacaque.spring.security.InMemoryOtpSecretRegistry;
 import com.gmail.unmacaque.spring.security.OtpAuthenticationDetailsSource;
 import com.gmail.unmacaque.spring.security.OtpAuthenticationProvider;
 import com.gmail.unmacaque.spring.security.OtpSecretRegistry;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -21,7 +22,10 @@ public class SecurityConfiguration {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
-								.antMatchers("/hello").hasRole("USER")
+								.requestMatchers("/", "/qrcode").permitAll()
+								.requestMatchers("/hello").hasRole("USER")
+								.requestMatchers("/login", "/register").permitAll()
+								.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				)
 				.formLogin(formLogin ->
 						formLogin

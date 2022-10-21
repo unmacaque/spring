@@ -22,7 +22,7 @@ public class ShopController {
 		this.shop = shop;
 	}
 
-	@GetMapping
+	@GetMapping("/")
 	public CollectionModel<EntityModel<Item>> getAllItems() {
 		final var itemCollectionModel = shop.getItems()
 				.stream()

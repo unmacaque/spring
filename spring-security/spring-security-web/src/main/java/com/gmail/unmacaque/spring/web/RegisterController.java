@@ -2,6 +2,7 @@ package com.gmail.unmacaque.spring.web;
 
 import com.gmail.unmacaque.spring.domain.RegisterUser;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,8 +17,11 @@ public class RegisterController {
 
 	private final UserDetailsManager userDetailsManager;
 
-	public RegisterController(UserDetailsManager userDetailsManager) {
+	private final PasswordEncoder encoder;
+
+	public RegisterController(UserDetailsManager userDetailsManager, PasswordEncoder encoder) {
 		this.userDetailsManager = userDetailsManager;
+		this.encoder = encoder;
 	}
 
 	@ModelAttribute
@@ -44,7 +48,7 @@ public class RegisterController {
 			userDetailsManager.createUser(User
 					.builder()
 					.username(registerUser.getUsername())
-					.password(registerUser.getPassword())
+					.password(encoder.encode(registerUser.getPassword()))
 					.roles("USER").build()
 			);
 		} catch (RuntimeException e) {

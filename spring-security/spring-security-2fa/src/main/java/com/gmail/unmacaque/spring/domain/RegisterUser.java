@@ -1,9 +1,8 @@
 package com.gmail.unmacaque.spring.domain;
 
 import com.gmail.unmacaque.spring.domain.validation.PasswordMatches;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @PasswordMatches
 public class RegisterUser {

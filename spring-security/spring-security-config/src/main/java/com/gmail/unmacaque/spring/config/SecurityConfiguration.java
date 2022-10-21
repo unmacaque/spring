@@ -28,7 +28,7 @@ public class SecurityConfiguration {
 	@Order(1)
 	public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
-				.antMatcher("/api/**")
+				.securityMatcher("/api/**")
 				.authorizeHttpRequests(requests ->
 						requests
 								.anyRequest().hasRole("ADMIN")

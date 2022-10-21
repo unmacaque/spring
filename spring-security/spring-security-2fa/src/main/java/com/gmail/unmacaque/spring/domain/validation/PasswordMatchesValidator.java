@@ -1,9 +1,8 @@
 package com.gmail.unmacaque.spring.domain.validation;
 
 import com.gmail.unmacaque.spring.domain.RegisterUser;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, RegisterUser> {
 

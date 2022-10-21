@@ -26,7 +26,7 @@ class ApplicationTest {
 	private KafkaConsumer consumer;
 
 	@Test
-	void testConsume() throws InterruptedException {
+	void testConsume() {
 		final var producerProps = KafkaTestUtils.producerProps(broker);
 		final var producerFactory = new DefaultKafkaProducerFactory<String, String>(producerProps);
 		final var template = new KafkaTemplate<>(producerFactory);

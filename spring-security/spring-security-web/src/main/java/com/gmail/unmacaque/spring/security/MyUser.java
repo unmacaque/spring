@@ -1,10 +1,11 @@
 package com.gmail.unmacaque.spring.security;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Set;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
 public class MyUser {
 
 	private Long userId;

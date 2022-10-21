@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.domain
 
-import org.springframework.data.repository.PagingAndSortingRepository
+import org.springframework.data.repository.CrudRepository
 
-interface MessageRepository : PagingAndSortingRepository<Message, Long>
+interface MessageRepository :
+    CrudRepository<Message, Long>

@@ -16,7 +16,7 @@ public class SecurityConfiguration {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
-								.antMatchers("/togglz-console/*").hasRole("ADMIN")
+								.requestMatchers("/togglz-console/*").hasRole("ADMIN")
 								.anyRequest().permitAll()
 				)
 				.httpBasic(Customizer.withDefaults())

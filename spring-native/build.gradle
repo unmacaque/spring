@@ -1,6 +1,5 @@
 plugins {
     id 'unmacaque.spring-boot'
-    id 'org.springframework.experimental.aot'
     id 'org.graalvm.buildtools.native'
 }
 
@@ -16,11 +15,6 @@ graalvmNative {
                 languageVersion = JavaLanguageVersion.of(17)
                 vendor = JvmVendorSpec.matching("GraalVM Community")
             }
-            buildArgs.add('--allow-incomplete-classpath')
-            buildArgs.add('--report-unsupported-elements-at-runtime')
-            buildArgs.add('--no-fallback')
-            buildArgs.add('--install-exit-handlers')
-            buildArgs.add('-H:+InlineBeforeAnalysis')
         }
     }
 }
