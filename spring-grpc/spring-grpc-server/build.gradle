@@ -5,9 +5,9 @@ plugins {
 }
 
 dependencies {
-    implementation 'io.grpc:grpc-netty-shaded:1.47.0'
-    implementation 'io.grpc:grpc-protobuf:1.47.0'
-    implementation 'io.grpc:grpc-stub:1.47.0'
+    implementation 'io.grpc:grpc-netty-shaded:1.50.2'
+    implementation 'io.grpc:grpc-protobuf:1.50.2'
+    implementation 'io.grpc:grpc-stub:1.50.2'
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -17,7 +17,7 @@ description = 'Spring gRPC Server'
 
 protobuf {
     plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:1.47.0" }
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:1.50.2" }
     }
     generateProtoTasks {
         all()*.plugins { grpc {} }
