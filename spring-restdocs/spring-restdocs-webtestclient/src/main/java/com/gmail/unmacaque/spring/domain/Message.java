@@ -3,15 +3,13 @@ package com.gmail.unmacaque.spring.domain;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
 
-@Document
 public class Message {
 
 	@Id
-	private String id;
+	private Long id;
 
 	private String title;
 
@@ -33,7 +31,7 @@ public class Message {
 		return createdDate;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -57,7 +55,7 @@ public class Message {
 		this.createdDate = createdDate;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
