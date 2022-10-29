@@ -1,9 +1,8 @@
-package com.gmail.unmacaque.spring;
+package com.gmail.unmacaque.spring.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -11,20 +10,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class ApplicationTest {
+@WebMvcTest(WebController.class)
+class WebControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	void testHello() throws Exception {
-		mvc.perform(get("/"))
+	void testPositiveMatch() throws Exception {
+		mvc.perform(get("/LI"))
 				.andExpectAll(
 						status().isOk(),
 						content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN),
-						content().string("Hello World")
+						content().string("Liechtenstein")
+				);
+	}
+
+	@Test
+	void testNegativeMatch() throws Exception {
+		mvc.perform(get("/XX"))
+				.andExpectAll(
+						status().isNotFound()
 				);
 	}
 
