@@ -3,13 +3,15 @@ plugins {
 }
 
 dependencies {
-    implementation 'io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:1.19.1-alpha'
-    implementation 'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.19.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly 'io.micrometer:micrometer-registry-otlp'
+    runtimeOnly 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-exporter-logging'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.micrometer:micrometer-observation-test'
 }
 
 description = 'Spring Boot OpenTelemetry'

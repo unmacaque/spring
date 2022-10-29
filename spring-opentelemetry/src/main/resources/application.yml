@@ -2,9 +2,11 @@ spring:
   application:
     name: spring-opentelemetry
 
-otel:
-  exporter:
-    logging:
-      enabled: true
-    otlp:
-      enabled: false
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
