@@ -32,6 +32,7 @@ include(':spring-security:spring-security-oauth2:spring-security-oauth2-webflux'
 include(':spring-security:spring-security-web')
 include(':spring-security:spring-security-webflux')
 include(':spring-security:spring-security-x509')
+include(':spring-serviceproxy:spring-serviceproxy-http')
 include(':spring-testcontainers')
 include(':spring-web:spring-feed-atom')
 include(':spring-web:spring-form-validation')
