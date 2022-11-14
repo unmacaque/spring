@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.config;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -24,7 +25,12 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public WebSecurityCustomizer webSecurityCustomizer() {
-		return web -> web.ignoring().requestMatchers(PathRequest.toH2Console());
+	@Order(Ordered.HIGHEST_PRECEDENCE)
+	public SecurityFilterChain h2ConsoleSecurityFilterChain(HttpSecurity http) throws Exception {
+		return http
+				.securityMatcher(PathRequest.toH2Console())
+				.csrf(CsrfConfigurer::disable)
+				.headers(headers -> headers.frameOptions().sameOrigin())
+				.build();
 	}
 }
