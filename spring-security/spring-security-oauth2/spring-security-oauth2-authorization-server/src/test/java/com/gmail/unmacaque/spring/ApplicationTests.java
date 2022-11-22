@@ -1,0 +1,37 @@
+package com.gmail.unmacaque.spring;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+class ApplicationTests {
+
+	@Autowired
+	private MockMvc mvc;
+
+	@Test
+	void testAuthenticated() throws Exception {
+		mvc.perform(get("/.well-known/openid-configuration"))
+				.andExpectAll(
+						status().isOk(),
+						jsonPath("issuer").exists(),
+						jsonPath("authorization_endpoint").exists(),
+						jsonPath("token_endpoint").exists(),
+						jsonPath("userinfo_endpoint").exists(),
+						jsonPath("response_types_supported").value("code"),
+						jsonPath("grant_types_supported").value(
+								containsInAnyOrder("authorization_code", "client_credentials", "refresh_token")),
+						jsonPath("scopes_supported").value("openid")
+				);
+	}
+
+}
