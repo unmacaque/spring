@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.test.StepVerifier;
 
@@ -49,6 +51,23 @@ class WebFluxControllerTest {
 				.thenAwait(Duration.ofSeconds(9))
 				.expectNextCount(9)
 				.verifyComplete();
+	}
+
+	@Test
+	void testEvents() {
+		final Supplier<? extends Publisher<? extends ServerSentEvent<Greeting>>> scenarioSupplier = () -> webTestClient
+				.get()
+				.uri("/events")
+				.accept(MediaType.TEXT_EVENT_STREAM)
+				.exchange()
+				.expectStatus().isOk()
+				.returnResult(new ParameterizedTypeReference<ServerSentEvent<Greeting>>() {}).getResponseBody();
+
+		StepVerifier.withVirtualTime(scenarioSupplier)
+				.expectSubscription()
+				.assertNext(event -> assertThat(event.data()).isNotNull().satisfies(this::assertGreeting))
+				.thenCancel()
+				.verify();
 	}
 
 	private void assertGreeting(Greeting greeting) {
