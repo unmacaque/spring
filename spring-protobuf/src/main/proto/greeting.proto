@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 
-package com.gmail.unmacaque.spring.domain.hello;
+package com.gmail.unmacaque.spring.protobuf.domain.hello;
 
 message Greeting {
     string message = 1;

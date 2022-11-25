@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+import "com/gmail/unmacaque/spring/grpc/domain/location.proto";
+import "com/gmail/unmacaque/spring/grpc/domain/weather_forecast.proto";
+
+package com.gmail.unmacaque.spring.grpc.domain;
+
+service ForecastService {
+    rpc Forecast(Location) returns (WeatherForecast) {}
+}

@@ -1,6 +1,6 @@
 [
   {
-    "_class": "com.gmail.unmacaque.spring.domain.Item",
+    "_class": "com.gmail.unmacaque.spring.data.rest.domain.Item",
     "title": "Monitor",
     "description": "You cannot develop without it",
     "price": 99.99,

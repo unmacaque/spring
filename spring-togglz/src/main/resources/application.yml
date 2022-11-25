@@ -12,4 +12,4 @@ management:
 togglz:
   console:
     feature-admin-authority: ROLE_ADMIN
-  feature-enums: com.gmail.unmacaque.spring.togglz.Features
+  feature-enums: com.gmail.unmacaque.spring.togglz.togglz.Features
