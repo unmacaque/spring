@@ -4,7 +4,7 @@ import org.springframework.web.reactive.function.client.ClientResponse;
 
 public class ServerErrorException extends RuntimeException {
 
-	private final ClientResponse response;
+	private final transient ClientResponse response;
 
 	public ServerErrorException(ClientResponse response) {
 		this.response = response;

@@ -10,12 +10,12 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class QrCodeUtil {
 	public static void writeToStream(OutputStream stream, String text) throws WriterException, IOException {
-		final var hints = new HashMap<EncodeHintType, Object>();
+		final var hints = new EnumMap<>(EncodeHintType.class);
 		final var ecl = ErrorCorrectionLevel.L;
 		hints.put(EncodeHintType.ERROR_CORRECTION, ecl);
 		hints.put(EncodeHintType.MARGIN, 0);

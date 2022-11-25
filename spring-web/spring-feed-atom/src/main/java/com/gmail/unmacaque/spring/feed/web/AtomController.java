@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 @RestController
 public class AtomController {
@@ -58,7 +57,7 @@ public class AtomController {
 
 		final var contents = Arrays.stream(values)
 				.map(this::createContent)
-				.collect(Collectors.toList());
+				.toList();
 		entry.setContents(contents);
 		return entry;
 	}
