@@ -57,7 +57,7 @@ class RegisterControllerTest {
 	}
 
 	@Test
-	void testPostRegister_withIncompleteUserDetails() throws Exception {
+	void testPostRegisterWithIncompleteUserDetails() throws Exception {
 		mockMvc.perform(post("/register")
 						.param("username", "")
 						.param("mailAddress", "")
@@ -73,7 +73,7 @@ class RegisterControllerTest {
 	}
 
 	@Test
-	void testPostRegister_withUsernameAlreadyExists() throws Exception {
+	void testPostRegisterWithUsernameAlreadyExists() throws Exception {
 		doReturn(true).when(userDetailsManager).userExists("foo");
 
 		mockMvc.perform(post("/register")
@@ -90,7 +90,7 @@ class RegisterControllerTest {
 	}
 
 	@Test
-	void testPostRegister_withInternalError() throws Exception {
+	void testPostRegisterWithInternalError() throws Exception {
 		doThrow(RuntimeException.class).when(userDetailsManager).createUser(any());
 
 		mockMvc.perform(post("/register")

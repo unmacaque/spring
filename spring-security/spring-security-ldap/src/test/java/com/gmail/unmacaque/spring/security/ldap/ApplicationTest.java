@@ -19,7 +19,7 @@ class ApplicationTest {
 	private MockMvc mvc;
 
 	@Test
-	void testLogin_withValidCredentials() throws Exception {
+	void testLoginWithValidCredentials() throws Exception {
 		mvc.perform(get("/")
 						.with(httpBasic("test", "test")))
 				.andExpectAll(
@@ -29,7 +29,7 @@ class ApplicationTest {
 	}
 
 	@Test
-	void testLogin_withInvalidCredentials_unauthorized() throws Exception {
+	void testLoginWithInvalidCredentialsIsUnauthorized() throws Exception {
 		mvc.perform(get("/")
 						.with(httpBasic("foo", "bar")))
 				.andExpect(status().isUnauthorized());

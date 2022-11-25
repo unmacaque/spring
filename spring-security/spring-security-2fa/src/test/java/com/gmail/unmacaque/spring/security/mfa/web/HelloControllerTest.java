@@ -24,7 +24,7 @@ class HelloControllerTest {
 	}
 
 	@Test
-	void testHello_withoutAuthentication_redirectToLogin() throws Exception {
+	void testHelloWithNoAuthenticationRedirectToLogin() throws Exception {
 		mockMvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isFound(),
@@ -33,7 +33,7 @@ class HelloControllerTest {
 	}
 
 	@Test
-	void testHello_withRoleUser() throws Exception {
+	void testHelloWithRoleUser() throws Exception {
 		mockMvc.perform(get("/hello")
 						.with(user("user").roles("USER")))
 				.andExpectAll(
@@ -43,7 +43,7 @@ class HelloControllerTest {
 	}
 
 	@Test
-	void testHello_withoutAuthentication() throws Exception {
+	void testHelloWithoutAuthentication() throws Exception {
 		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
 	}

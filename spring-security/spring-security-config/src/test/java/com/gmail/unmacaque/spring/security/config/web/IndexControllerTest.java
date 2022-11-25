@@ -34,7 +34,7 @@ class IndexControllerTest {
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
-	void testIndex_withRoleUser() throws Exception {
+	void testIndexWithRoleUser() throws Exception {
 		mockMvc.perform(get("/"))
 				.andExpectAll(
 						status().isOk(),
@@ -44,7 +44,7 @@ class IndexControllerTest {
 
 	@Test
 	@WithAnonymousUser
-	void testLogin_withoutAuthentication() throws Exception {
+	void testLoginWithoutAuthentication() throws Exception {
 		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
 	}

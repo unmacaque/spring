@@ -32,7 +32,7 @@ class ApiControllerTest {
 	}
 
 	@Test
-	void testApi_withUser_isForbidden() throws Exception {
+	void testApiWithUserIsForbidden() throws Exception {
 		mockMvc.perform(get("/api")
 						.with(httpBasic("user", "user")))
 				.andExpect(status().isForbidden());
@@ -40,7 +40,7 @@ class ApiControllerTest {
 
 	@Test
 	@WithMockUser(username = "admin", roles = "ADMIN")
-	void testApi_withRoleAdmin() throws Exception {
+	void testApiWithRoleAdmin() throws Exception {
 		mockMvc.perform(get("/api"))
 				.andExpectAll(
 						status().isOk(),
@@ -50,7 +50,7 @@ class ApiControllerTest {
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
-	void testApi_withRoleUser_isForbidden() throws Exception {
+	void testApiWithRoleUserIsForbidden() throws Exception {
 		mockMvc.perform(get("/api"))
 				.andExpect(status().isForbidden());
 	}

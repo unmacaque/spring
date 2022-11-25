@@ -33,7 +33,7 @@ class HelloControllerTest {
 
 	@Test
 	@WithAnonymousUser
-	void testHello_withoutAuthentication_redirectToLogin() throws Exception {
+	void testHelloWithoutAuthenticationRedirectToLogin() throws Exception {
 		mockMvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isFound(),
@@ -43,7 +43,7 @@ class HelloControllerTest {
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
-	void testHello_withRoleUser() throws Exception {
+	void testHelloWithRoleUser() throws Exception {
 		mockMvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isOk(),
@@ -53,13 +53,13 @@ class HelloControllerTest {
 
 	@Test
 	@WithAnonymousUser
-	void testLogin_withoutAuthentication() throws Exception {
+	void testLoginWithoutAuthentication() throws Exception {
 		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
 	}
 
 	@Test
-	void testLogin_withRoleUser() throws Exception {
+	void testLoginWithRoleUser() throws Exception {
 		mockMvc.perform(formLogin().user("user").password("user"))
 				.andExpectAll(
 						status().isFound(),
@@ -70,7 +70,7 @@ class HelloControllerTest {
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
-	void testLogin_withRoleUser_redirectToHello() throws Exception {
+	void testLoginWithLoggedInUserRedirectToHello() throws Exception {
 		mockMvc.perform(get("/login"))
 				.andExpectAll(
 						status().isOk(),
@@ -80,7 +80,7 @@ class HelloControllerTest {
 
 	@Test
 	@WithMockUser(username = "admin", roles = "ADMIN")
-	void testAdmin_withRoleAdmin() throws Exception {
+	void testAdminWithRoleAdmin() throws Exception {
 		mockMvc.perform(get("/admin"))
 				.andExpectAll(
 						status().isOk(),
@@ -90,7 +90,7 @@ class HelloControllerTest {
 
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
-	void testAdmin_withRoleUser_isForbidden() throws Exception {
+	void testAdminWithRoleUserIsForbidden() throws Exception {
 		mockMvc.perform(get("/admin"))
 				.andExpect(status().isForbidden());
 	}
