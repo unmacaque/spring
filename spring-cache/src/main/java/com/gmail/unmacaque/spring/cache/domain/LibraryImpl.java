@@ -22,7 +22,6 @@ public class LibraryImpl implements Library {
 	private Resource resource;
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Book> getBooks() {
 		logger.info("reading {}", resource.getFilename());
 

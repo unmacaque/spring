@@ -16,7 +16,7 @@ class WebControllerTest {
 	private WebTestClient client;
 
 	@Test
-	void testIndex() throws Exception {
+	void testIndex() {
 		client
 				.mutateWith(mockOidcLogin())
 				.get()

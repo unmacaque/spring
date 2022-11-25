@@ -15,7 +15,7 @@ class MessageRepositoryTest {
 	private MessageRepository repository;
 
 	@Test
-	void testFindAll() throws Exception {
+	void testFindAll() {
 		repository.findAll()
 				.as(StepVerifier::create)
 				.expectNextCount(2)
@@ -23,7 +23,7 @@ class MessageRepositoryTest {
 	}
 
 	@Test
-	void testFindById() throws Exception {
+	void testFindById() {
 		repository.findById(1L)
 				.as(StepVerifier::create)
 				.expectNextCount(1)
