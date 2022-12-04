@@ -14,7 +14,7 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
 
 	@Bean

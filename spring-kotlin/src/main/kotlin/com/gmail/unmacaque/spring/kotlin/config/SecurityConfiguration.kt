@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 class SecurityConfiguration {
 
     @Bean

@@ -6,7 +6,7 @@ import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
 
 	@Bean

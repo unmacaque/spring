@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class RouteConfiguration {
 
 	@Bean

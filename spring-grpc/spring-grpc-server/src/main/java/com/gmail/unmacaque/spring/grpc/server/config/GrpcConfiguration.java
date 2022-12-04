@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class GrpcConfiguration {
 
 	private static final Logger logger = LoggerFactory.getLogger(GrpcConfiguration.class);

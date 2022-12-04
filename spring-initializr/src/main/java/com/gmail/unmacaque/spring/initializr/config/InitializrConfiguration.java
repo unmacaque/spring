@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.nio.file.Files;
 import java.util.List;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class InitializrConfiguration {
 
 	@Bean

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class ObservationConfiguration {
 
 	@Bean

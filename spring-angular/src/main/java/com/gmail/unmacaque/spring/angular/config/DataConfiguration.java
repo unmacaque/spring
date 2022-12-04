@@ -8,7 +8,7 @@ import org.springframework.data.r2dbc.config.EnableR2dbcAuditing;
 import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableR2dbcAuditing
 public class DataConfiguration {
 

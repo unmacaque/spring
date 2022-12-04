@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class ProxyConfiguration {
 
 	@Bean

@@ -6,7 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class DataConfiguration {
 
 	@Bean
