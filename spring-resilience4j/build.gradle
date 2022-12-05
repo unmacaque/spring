@@ -3,9 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation platform('io.github.resilience4j:resilience4j-bom:2.0.0')
+    implementation platform('io.github.resilience4j:resilience4j-bom:2.0.1')
 
-    implementation 'io.github.resilience4j:resilience4j-spring-boot2'
+    implementation 'io.github.resilience4j:resilience4j-spring-boot3'
     implementation 'io.github.resilience4j:resilience4j-reactor'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
