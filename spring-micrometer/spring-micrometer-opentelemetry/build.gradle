@@ -14,4 +14,4 @@ dependencies {
     testImplementation 'io.micrometer:micrometer-observation-test'
 }
 
-description = 'Spring Boot OpenTelemetry'
+description = 'Spring Boot Micrometer OpenTelemetry'

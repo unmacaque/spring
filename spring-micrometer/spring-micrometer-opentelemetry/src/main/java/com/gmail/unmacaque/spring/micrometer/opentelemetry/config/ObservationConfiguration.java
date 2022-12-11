@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.opentelemetry.config;
+package com.gmail.unmacaque.spring.micrometer.opentelemetry.config;
 
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
 import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;

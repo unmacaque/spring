@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-opentelemetry
+    name: spring-micrometer-opentelemetry
 
 logging:
   pattern:

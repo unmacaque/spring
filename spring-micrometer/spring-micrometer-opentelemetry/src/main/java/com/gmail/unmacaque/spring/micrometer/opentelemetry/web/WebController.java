@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.opentelemetry.web;
+package com.gmail.unmacaque.spring.micrometer.opentelemetry.web;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
