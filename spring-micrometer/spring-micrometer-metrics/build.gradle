@@ -1,0 +1,14 @@
+plugins {
+    id 'unmacaque.spring-boot'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring Boot Micrometer Metrics'
