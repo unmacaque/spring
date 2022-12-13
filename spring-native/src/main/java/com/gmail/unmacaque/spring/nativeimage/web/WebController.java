@@ -24,7 +24,7 @@ public class WebController {
 		final var countries = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Country>>() {});
 		countryMap = countries
 				.stream()
-				.collect(Collectors.toMap(Country::code, Country::name));
+				.collect(Collectors.toUnmodifiableMap(Country::code, Country::name));
 	}
 
 	@GetMapping("/{countryCode}")
