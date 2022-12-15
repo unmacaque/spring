@@ -14,5 +14,3 @@ dependencies {
 }
 
 description = 'Spring OpenAPI'
-
-tasks.register("bootRunMainClassName")

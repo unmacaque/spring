@@ -13,7 +13,7 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-gradle-plugin:0.9.1'
     implementation 'com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.1'
     implementation 'org.asciidoctor:asciidoctor-gradle-jvm:3.3.2'
-    implementation 'org.springdoc:springdoc-openapi-gradle-plugin:1.5.0'
+    implementation 'org.springdoc:springdoc-openapi-gradle-plugin:1.6.0'
     implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.0'
     implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.17'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
