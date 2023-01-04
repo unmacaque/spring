@@ -14,12 +14,6 @@ version = '1.0.0-SNAPSHOT'
 
 repositories {
     maven { url = uri("https://repo.spring.io/release") }
-    maven {
-        url = uri("https://repo.spring.io/milestone")
-        content {
-            includeModule("org.springframework.security", "spring-security-bom")
-        }
-    }
 }
 
 springBoot {

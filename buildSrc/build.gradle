@@ -6,7 +6,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21'
     implementation 'org.jetbrains.kotlin:kotlin-allopen:1.7.21'
     implementation 'org.jetbrains.kotlin:kotlin-noarg:1.7.21'
-    implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.0.0'
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.0.1'
     implementation 'io.spring.gradle:dependency-management-plugin:1.1.0'
     implementation 'com.github.node-gradle:gradle-node-plugin:3.4.0'
     implementation 'com.palantir.gradle.docker:gradle-docker:0.34.0'
