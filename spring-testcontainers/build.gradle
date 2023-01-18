@@ -6,7 +6,6 @@ dependencies {
     implementation platform('org.testcontainers:testcontainers-bom:1.17.6')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:mockserver'
