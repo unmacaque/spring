@@ -15,7 +15,7 @@ public class KafkaConsumer {
 	final AtomicReference<String> lastReceived = new AtomicReference<>();
 
 	@KafkaListener(topics = "testtopic")
-	public void produce(String value) {
+	public void consume(String value) {
 		lastReceived.set(value);
 		logger.info("received data={}", value);
 	}
