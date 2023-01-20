@@ -3,10 +3,10 @@ plugins {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21'
-    implementation 'org.jetbrains.kotlin:kotlin-allopen:1.7.21'
-    implementation 'org.jetbrains.kotlin:kotlin-noarg:1.7.21'
-    implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.0.2'
+    implementation buildLibs.kotlin.gradle
+    implementation buildLibs.kotlin.allopen
+    implementation buildLibs.kotlin.noarg
+    implementation buildLibs.springBoot
     implementation 'io.spring.gradle:dependency-management-plugin:1.1.0'
     implementation 'com.github.node-gradle:gradle-node-plugin:3.4.0'
     implementation 'com.palantir.gradle.docker:gradle-docker:0.34.0'
@@ -16,7 +16,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-gradle-plugin:1.6.0'
     implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.0'
     implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.17'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    testImplementation buildLibs.junit.jupiter
 }
 
 gradlePlugin {
@@ -26,7 +26,7 @@ gradlePlugin {
             implementationClass = 'com.gmail.unmacaque.spring.build.ssl.SslPlugin'
 
             dependencies {
-                implementation 'org.bouncycastle:bcpkix-jdk18on:1.71'
+                implementation buildLibs.bouncycastle.bcpkix
             }
         }
     }
