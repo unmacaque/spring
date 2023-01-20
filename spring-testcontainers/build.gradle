@@ -3,14 +3,14 @@ plugins {
 }
 
 dependencies {
-    implementation platform('org.testcontainers:testcontainers-bom:1.17.6')
+    implementation platform(libs.testcontainers.bom)
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:mockserver'
     testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.mock-server:mockserver-client-java:5.14.0'
+    testImplementation libs.mockserver.client.java
 }
 
 description = 'Spring Testcontainers'

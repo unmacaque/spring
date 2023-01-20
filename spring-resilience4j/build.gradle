@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation platform('io.github.resilience4j:resilience4j-bom:2.0.1')
+    implementation platform(libs.resilience4j.bom)
 
     implementation 'io.github.resilience4j:resilience4j-spring-boot3'
     implementation 'io.github.resilience4j:resilience4j-reactor'

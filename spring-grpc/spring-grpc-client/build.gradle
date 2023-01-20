@@ -5,10 +5,8 @@ plugins {
 
 dependencies {
     implementation project(':spring-grpc:spring-grpc-server')
-    implementation 'io.grpc:grpc-netty-shaded:1.51.0'
-    implementation 'io.grpc:grpc-protobuf:1.51.0'
-    implementation 'io.grpc:grpc-stub:1.51.0'
-    implementation 'com.google.protobuf:protobuf-java-util:3.19.1'
+    implementation libs.bundles.grpc
+    implementation libs.protobuf.java.util
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -2,24 +2,22 @@ plugins {
     id 'unmacaque.spring-boot'
 }
 
-ext.togglzVersion = '3.2.0'
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation("org.togglz:togglz-spring-boot-starter:${togglzVersion}") {
+    implementation(libs.togglz.spring.boot.starter) {
         exclude(group: 'org.thymeleaf', module: 'thymeleaf')
         exclude(group: 'org.thymeleaf', module: 'thymeleaf-spring5')
     }
-    runtimeOnly "org.togglz:togglz-console:${togglzVersion}"
-    runtimeOnly "org.togglz:togglz-spring-security:${togglzVersion}"
+    runtimeOnly libs.togglz.console
+    runtimeOnly libs.togglz.spring.security
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation "org.togglz:togglz-junit:${togglzVersion}"
+    testImplementation libs.togglz.junit
 }
 
 description = 'Spring Togglz'

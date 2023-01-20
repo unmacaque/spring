@@ -1,0 +1,57 @@
+[versions]
+aerogearOtpJava = "1.0.0"
+grpc = "1.52.1"
+initializr = "0.13.0"
+logstashLogbackEncoder = "7.2"
+mockserver = "5.15.0"
+protobuf = "3.21.12"
+resilience4j = "2.0.1"
+rome = "1.18.0"
+springdocOpenapi = "2.0.2"
+springSecurityOAuth2AuthorizationServer = "1.0.0"
+testcontainers = "1.17.6"
+togglz = "3.3.3"
+wiremock = "2.35.0"
+zxing = "3.5.1"
+
+[libraries]
+aerogear-otp-java = { module = "org.jboss.aerogear:aerogear-otp-java", version.ref = "aerogearOtpJava" }
+
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpc" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+
+initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref = "initializr" }
+
+mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
+
+logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogbackEncoder" }
+
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+
+resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
+
+rome = { module = "com.rometools:rome", version.ref = "rome" }
+
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
+
+spring-security-oauth2-authorization-server = { module = "org.springframework.security:spring-security-oauth2-authorization-server", version.ref = "springSecurityOAuth2AuthorizationServer" }
+
+testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
+
+togglz-spring-boot-starter = { module = "org.togglz:togglz-spring-boot-starter", version.ref = "togglz" }
+togglz-console = { module = "org.togglz:togglz-console", version.ref = "togglz" }
+togglz-spring-security = { module = "org.togglz:togglz-spring-security", version.ref = "togglz" }
+togglz-junit = { module = "org.togglz:togglz-junit", version.ref = "togglz" }
+
+webjars-webstompClient = { module = "org.webjars.npm:webstomp-client", version = "1.2.6" }
+webjars-jquery = { module = "org.webjars:jquery", version = "3.6.0" }
+
+wiremock = { module = "com.github.tomakehurst:wiremock-jre8-standalone", version.ref = "wiremock" }
+
+zxing-javase = { module = "com.google.zxing:javase", version.ref = "zxing" }
+
+[bundles]
+grpc = ["grpc-netty-shaded", "grpc-protobuf", "grpc-stub"]
+togglz = ["togglz-spring-boot-starter", "togglz-console", "togglz-spring-security"]

@@ -5,8 +5,8 @@ plugins {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     runtimeOnly 'org.webjars:webjars-locator-core'
-    runtimeOnly 'org.webjars.npm:webstomp-client:1.2.6'
-    runtimeOnly 'org.webjars:jquery:3.3.1'
+    runtimeOnly libs.webjars.webstompClient
+    runtimeOnly libs.webjars.jquery
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
