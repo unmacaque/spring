@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @ExposesResourceFor(Item.class)
+@RequestMapping("/items")
 public class ShopController {
 
 	private final Shop shop;
@@ -22,7 +24,7 @@ public class ShopController {
 		this.shop = shop;
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public CollectionModel<EntityModel<Item>> getAllItems() {
 		final var itemCollectionModel = shop.getItems()
 				.stream()
@@ -35,20 +37,18 @@ public class ShopController {
 	@GetMapping("/{itemId}")
 	public EntityModel<Item> getItem(@PathVariable int itemId) {
 		final var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
-
-		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
+		return buildItemEntityModel(item);
 	}
 
 	@PostMapping("/{itemId}/order")
 	@ResponseStatus(HttpStatus.CREATED)
 	public EntityModel<Item> orderItem(@PathVariable int itemId) {
 		final var item = shop.findItemById(itemId).orElseThrow(NoSuchElementException::new);
-
-		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
+		return buildItemEntityModel(item);
 	}
 
 	private EntityModel<Item> buildItemEntityModel(Item item) {
-		return EntityModel.of(item, linkTo(ShopController.class).slash(item).withSelfRel());
+		return EntityModel.of(item, linkTo(methodOn(ShopController.class).getItem(item.itemId())).withSelfRel());
 	}
 
 	@ExceptionHandler(NoSuchElementException.class)
