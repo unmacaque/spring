@@ -5,7 +5,7 @@ import org.togglz.core.annotation.EnabledByDefault;
 import org.togglz.core.annotation.Label;
 import org.togglz.core.context.FeatureContext;
 
-public enum Features implements Feature {
+public enum TogglzFeature implements Feature {
 
 	@EnabledByDefault
 	@Label("Feature A")

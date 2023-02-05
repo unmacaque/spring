@@ -10,7 +10,7 @@ rome = "1.18.0"
 springdocOpenapi = "2.0.2"
 springSecurityOAuth2AuthorizationServer = "1.0.0"
 testcontainers = "1.17.6"
-togglz = "3.3.3"
+togglz = "4.0.0-M1"
 wiremock = "2.35.0"
 zxing = "3.5.1"
 
