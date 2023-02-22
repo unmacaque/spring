@@ -11,12 +11,12 @@
 
 The RSocket interaction type that an `@MessageMapping` method supports is determined from the cardinality of the input.
 
-|Interaction|Input|Output|
-|---|---|---|
-|Request-Response|`Mono<T>`|`Mono<U>`|
-|Request-Stream|`Mono<T>`|`Flux<U>`|
-|Channel|`Flux<T>`|`Flux<U>`|
-|Fire-and-Forget|`Mono<T>`|`Mono<Void>`|
+| Interaction      | Input     | Output       |
+|------------------|-----------|--------------|
+| Request-Response | `Mono<T>` | `Mono<U>`    |
+| Request-Stream   | `Mono<T>` | `Flux<U>`    |
+| Channel          | `Flux<T>` | `Flux<U>`    |
+| Fire-and-Forget  | `Mono<T>` | `Mono<Void>` |
 
 ## RSocketResponder
 
