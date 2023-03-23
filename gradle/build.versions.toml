@@ -2,7 +2,7 @@
 bouncycastlePkix = "1.72"
 junit = "5.9.2"
 kotlin = "1.7.22"
-springBoot = "3.0.4"
+springBoot = "3.0.5"
 
 [libraries]
 bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastlePkix" }
