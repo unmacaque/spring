@@ -8,7 +8,6 @@ resilience4j = "2.0.2"
 rome = "1.18.0"
 springdocOpenapi = "2.1.0"
 springSecurityOAuth2AuthorizationServer = "1.0.1"
-testcontainers = "1.18.0"
 togglz = "4.0.0-M1"
 wiremock = "2.35.0"
 zxing = "3.5.1"
@@ -34,8 +33,6 @@ rome = { module = "com.rometools:rome", version.ref = "rome" }
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
 
 spring-security-oauth2-authorization-server = { module = "org.springframework.security:spring-security-oauth2-authorization-server", version.ref = "springSecurityOAuth2AuthorizationServer" }
-
-testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
 
 togglz-spring-boot-starter = { module = "org.togglz:togglz-spring-boot-starter", version.ref = "togglz" }
 togglz-console = { module = "org.togglz:togglz-console", version.ref = "togglz" }

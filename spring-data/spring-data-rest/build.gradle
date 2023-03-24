@@ -3,8 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation platform(libs.testcontainers.bom)
-
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'org.springframework.data:spring-data-rest-hal-explorer'
