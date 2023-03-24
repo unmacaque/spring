@@ -7,7 +7,6 @@ protobuf = "3.22.0"
 resilience4j = "2.0.2"
 rome = "1.18.0"
 springdocOpenapi = "2.1.0"
-springSecurityOAuth2AuthorizationServer = "1.0.1"
 togglz = "4.0.0-M1"
 wiremock = "2.35.0"
 zxing = "3.5.1"
@@ -31,8 +30,6 @@ resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version
 rome = { module = "com.rometools:rome", version.ref = "rome" }
 
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
-
-spring-security-oauth2-authorization-server = { module = "org.springframework.security:spring-security-oauth2-authorization-server", version.ref = "springSecurityOAuth2AuthorizationServer" }
 
 togglz-spring-boot-starter = { module = "org.togglz:togglz-spring-boot-starter", version.ref = "togglz" }
 togglz-console = { module = "org.togglz:togglz-console", version.ref = "togglz" }

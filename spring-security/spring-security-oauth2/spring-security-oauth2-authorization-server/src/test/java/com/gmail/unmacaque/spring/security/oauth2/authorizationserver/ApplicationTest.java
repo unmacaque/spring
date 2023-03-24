@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasItems;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,7 +29,7 @@ class ApplicationTest {
 						jsonPath("userinfo_endpoint").exists(),
 						jsonPath("response_types_supported").value("code"),
 						jsonPath("grant_types_supported").value(
-								containsInAnyOrder("authorization_code", "client_credentials", "refresh_token")),
+								hasItems("authorization_code", "client_credentials", "refresh_token")),
 						jsonPath("scopes_supported").value("openid")
 				);
 	}

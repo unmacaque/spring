@@ -9,7 +9,7 @@ spring:
       client:
         provider:
           authorization-server:
-            issuer-uri: http://localhost:8765
+            issuer-uri: http://127.0.0.1:8765
         registration:
           authorization-server:
             authorization-grant-type: authorization_code

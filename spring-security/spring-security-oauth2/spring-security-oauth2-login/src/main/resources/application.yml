@@ -3,13 +3,13 @@ spring:
     oauth2:
       client:
         provider:
-          gitlab:
-            issuer-uri: https://gitlab.com
+          authorization-server:
+            issuer-uri: http://127.0.0.1:8765
         registration:
-          gitlab:
+          authorization-server:
             authorization-grant-type: authorization_code
-            client-name: GitLab
-            client-id: <placeholder>
-            client-secret: <placeholder>
+            client-name: Spring Security OAuth2 Authorization Server
+            client-id: spring-security-oauth2-client
+            client-secret: secret
             redirect-uri: "{baseUrl}/login/oauth2/code/"
-            scope: openid
+            scope: openid,profile
