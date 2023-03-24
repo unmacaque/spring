@@ -181,7 +181,7 @@ class RegistrationRepositoryTest {
 				.port(port)
 				.delete("/registrations/{id}", 1)
 		.then()
-				.statusCode(is(equalTo(204)));
+				.statusCode(is(equalTo(200)));
 		// @formatter:on
 	}
 
