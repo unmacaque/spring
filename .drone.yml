@@ -5,7 +5,7 @@ name: default
 
 steps:
   - name: check
-    image: unmacaque/gradle:7-jdk17
+    image: unmacaque/gradle:8-jdk17
     pull: never
     commands:
       - gradle check
