@@ -2,7 +2,6 @@
 aerogearOtpJava = "1.0.0"
 grpc = "1.53.0"
 initializr = "0.13.0"
-logstashLogbackEncoder = "7.2"
 mockserver = "5.15.0"
 protobuf = "3.22.0"
 resilience4j = "2.0.2"
@@ -24,8 +23,6 @@ grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
 initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref = "initializr" }
 
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
-
-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogbackEncoder" }
 
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }

@@ -1,7 +1,7 @@
 # spring-boot-docker
 
 Run the task `docker` to build a layered Docker image of the app.
- 
+
 Execute the following command to start the containerized app.
 
     docker run -p 8080:8080 -t unmacaque/spring-boot-docker
@@ -35,18 +35,6 @@ Example LogQL statement to query the log lines of this container:
 ### Fluentd
 
 Add the parameter `--log-driver fluentd` to Docker to send logs to a running Fluentd instance.
-
-### Logstash
-
-Enable either of the profiles `logstash-tcp` or `logstash-udp`.
-
-If required, the logstash endpoint can be changed by setting the environment variables like below:
-
-```
-LOGSTASH_HOST=localhost
-LOGSTASH_PORT_TCP=9600
-LOGSTASH_PORT_UDP=9514
-```
 
 ## Prometheus
 
