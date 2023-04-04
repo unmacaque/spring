@@ -1,6 +1,5 @@
 plugins {
     id 'unmacaque.spring-boot'
-    id 'unmacaque.docker'
     id 'com.gorylenko.gradle-git-properties'
 }
 
@@ -14,8 +13,3 @@ dependencies {
 }
 
 description = 'Spring Boot Docker'
-
-docker {
-    name = "unmacaque/${project.name}"
-    files tasks.bootJar.outputs
-}

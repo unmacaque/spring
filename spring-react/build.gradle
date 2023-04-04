@@ -1,7 +1,6 @@
 plugins {
     id 'unmacaque.spring-boot'
     id 'unmacaque.node'
-    id 'unmacaque.docker'
     id 'idea'
 }
 
@@ -21,21 +20,4 @@ idea {
 
 node {
     nodeProjectDir = file("${project.projectDir}/react")
-}
-
-docker {
-    name = "unmacaque/${project.name}"
-    files tasks.bootJar.outputs
-    copySpec.with {
-        into('.') {
-            with {
-                from('.').include('*.jar')
-            }
-        }
-        into('react') {
-            with {
-                from('react').exclude('build', 'node_modules')
-            }
-        }
-    }
 }
