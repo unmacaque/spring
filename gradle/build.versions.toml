@@ -3,6 +3,7 @@ bouncycastlePkix = "1.72"
 junit = "5.9.2"
 kotlin = "1.8.10"
 springBoot = "3.0.5"
+spock = '2.4-M1-groovy-3.0'
 
 [libraries]
 bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastlePkix" }
@@ -14,3 +15,5 @@ kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref =
 kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
 
 springBoot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
+
+spock = { module = 'org.spockframework:spock-core', version.ref = "spock" }

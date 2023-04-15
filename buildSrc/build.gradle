@@ -16,6 +16,8 @@ dependencies {
     implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.2'
     implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.21'
     testImplementation buildLibs.junit.jupiter
+    testImplementation gradleTestKit()
+    testImplementation buildLibs.spock
 }
 
 gradlePlugin {
