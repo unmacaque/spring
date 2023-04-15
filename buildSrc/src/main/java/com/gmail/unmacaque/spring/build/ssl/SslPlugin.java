@@ -19,13 +19,15 @@ public class SslPlugin implements Plugin<Project> {
 		final var extension = project.getExtensions().create(EXTENSION_NAME, SslPluginExtension.class);
 		final var container = project.container(NamedCertificateDescription.class);
 
-		final var sslTask = project.getTasks().create(TASK_NAME, SslTask.class);
 		project.getPlugins().withType(JavaPlugin.class, java -> {
 			final var sourceSetContainer = project.getExtensions().getByType(SourceSetContainer.class);
 			final var mainSourceSet = sourceSetContainer.getByName(SourceSet.MAIN_SOURCE_SET_NAME).getName();
 
-			final var outputPath = project.getLayout().getBuildDirectory().dir("resources/" + mainSourceSet + "/ssl").get();
-			sslTask.setProperty("outputDir", outputPath);
+			final var outputDir = project.getLayout().getBuildDirectory().dir("resources/" + mainSourceSet + "/ssl");
+			extension.getOutputDir().convention(outputDir);
 		});
+
+		final var sslTask = project.getTasks().create(TASK_NAME, SslTask.class);
+		sslTask.setProperty("outputDir", extension.getOutputDir());
 	}
 }

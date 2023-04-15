@@ -9,6 +9,7 @@ import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
@@ -29,7 +30,11 @@ public abstract class SslTask extends DefaultTask {
 		project.getPlugins().withType(SslPlugin.class, ssl -> {
 			final var sslExtension = project.getExtensions().getByType(SslPluginExtension.class);
 			final var outputDir = getOutputDir().get().getAsFile();
-			outputDir.mkdirs();
+			try {
+				Files.createDirectories(outputDir.toPath());
+			} catch (IOException e) {
+				throw new UncheckedIOException(e);
+			}
 
 			// CA Certificate
 			final var caDescription = sslExtension.getCa();
