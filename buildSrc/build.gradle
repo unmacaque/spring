@@ -8,13 +8,13 @@ dependencies {
     implementation buildLibs.kotlin.noarg
     implementation buildLibs.springBoot
     implementation 'io.spring.gradle:dependency-management-plugin:1.1.0'
-    implementation 'com.github.node-gradle:gradle-node-plugin:3.4.0'
-    implementation 'com.google.protobuf:protobuf-gradle-plugin:0.9.1'
+    implementation 'com.github.node-gradle:gradle-node-plugin:3.5.1'
+    implementation 'com.google.protobuf:protobuf-gradle-plugin:0.9.2'
     implementation 'com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.1'
     implementation 'org.asciidoctor:asciidoctor-gradle-jvm:3.3.2'
     implementation 'org.springdoc:springdoc-openapi-gradle-plugin:1.6.0'
-    implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.0'
-    implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.17'
+    implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.2'
+    implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.21'
     testImplementation buildLibs.junit.jupiter
 }
 
