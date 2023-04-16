@@ -33,6 +33,4 @@ ssl {
     }
 }
 
-processResources.dependsOn generateSslCertificates
-
 description = 'Spring Security X.509'

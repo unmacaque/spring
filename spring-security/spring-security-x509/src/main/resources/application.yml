@@ -2,7 +2,7 @@ server:
   port: 8443
   ssl:
     enabled: true
-    certificate: classpath:ssl/server.pem
-    certificate-private-key: classpath:ssl/server.key
+    certificate: classpath:ssl/server/server.pem
+    certificate-private-key: classpath:ssl/server/server.key
     client-auth: need
-    trust-certificate: classpath:ssl/trust.pem
+    trust-certificate: classpath:ssl/ca/trust.pem

@@ -9,6 +9,10 @@ import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
 import org.bouncycastle.crypto.util.PrivateKeyFactory;
+import org.bouncycastle.jce.PrincipalUtil;
+import org.bouncycastle.openssl.PEMKeyPair;
+import org.bouncycastle.openssl.PEMParser;
+import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
 import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
@@ -19,10 +23,9 @@ import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 
 import javax.security.auth.x500.X500Principal;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.math.BigInteger;
+import java.nio.file.Files;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -37,9 +40,13 @@ public class Ssl {
 
 	public static final String SIGNATURE_ALGORITHM = "SHA256withRSA";
 
-	public static KeyPair createKeyPair() throws NoSuchAlgorithmException {
-		final var keyGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
-		return keyGenerator.generateKeyPair();
+	public static KeyPair generateKeyPair() {
+		try {
+			final KeyPairGenerator keyGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
+			return keyGenerator.generateKeyPair();
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static X509Certificate createCaCertificate(KeyPair keyPair, String subjectName, int days) throws OperatorCreationException, CertificateException, CertIOException {
@@ -76,7 +83,7 @@ public class Ssl {
 	public static X509Certificate signCertificateRequest(
 			PKCS10CertificationRequest signingRequest,
 			PrivateKey caPrivateKey,
-			String caSubjectName,
+			X509Certificate caCertificate,
 			KeyPair certificateKeyPair,
 			int days
 	) throws OperatorCreationException, CertificateException, NoSuchProviderException, IOException {
@@ -91,7 +98,7 @@ public class Ssl {
 		final var notAfter = Date.from(now.plus(Duration.ofDays(days)));
 
 		final var certificateBuilder = new X509v3CertificateBuilder(
-				new X500Name(caSubjectName),
+				new X500Name(PrincipalUtil.getIssuerX509Principal(caCertificate).getName()),
 				BigInteger.ONE,
 				notBefore,
 				notAfter,
@@ -115,5 +122,36 @@ public class Ssl {
 			pemWriter.writeObject(object);
 		}
 		return stringWriter.toString();
+	}
+
+	public static void writeKeyPair(File keyFile, KeyPair keyPair) {
+		try {
+			final var keyContent = convertToPem(keyPair);
+			Files.writeString(keyFile.toPath(), keyContent);
+		} catch (IOException e) {
+			throw new UncheckedIOException(e);
+		}
+	}
+
+	public static X509Certificate readCertificate(File certificateFile) {
+		try {
+			final var factory = CertificateFactory.getInstance("X.509");
+			return (X509Certificate) factory.generateCertificate(new FileInputStream(certificateFile));
+		} catch (IOException e) {
+			throw new UncheckedIOException(e);
+		} catch (CertificateException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static PrivateKey readPrivateKey(File keyFile) {
+		final var converter = new JcaPEMKeyConverter();
+		try (final var pemParser = new PEMParser(new FileReader(keyFile))) {
+			final var object = pemParser.readObject();
+			final var keyPair = (PEMKeyPair) object;
+			return converter.getPrivateKey(keyPair.getPrivateKeyInfo());
+		} catch (IOException e) {
+			throw new UncheckedIOException(e);
+		}
 	}
 }

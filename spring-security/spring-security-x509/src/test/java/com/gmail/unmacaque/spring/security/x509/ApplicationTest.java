@@ -27,7 +27,7 @@ class ApplicationTest {
 	@Test
 	void testGetWithX509IsAuthorized() throws Exception {
 		mvc.perform(get("/")
-						.with(x509("classpath:ssl/client.pem")))
+						.with(x509("classpath:ssl/client/client.pem")))
 				.andExpectAll(
 						status().isOk(),
 						authenticated().withUsername("client")

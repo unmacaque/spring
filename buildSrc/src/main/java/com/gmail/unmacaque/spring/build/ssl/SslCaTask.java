@@ -5,16 +5,18 @@ import org.gradle.api.DefaultTask;
 import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
-import org.gradle.api.tasks.*;
+import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.OutputDirectory;
+import org.gradle.api.tasks.OutputFile;
+import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
-import java.security.NoSuchProviderException;
 import java.security.cert.CertificateException;
 
-public abstract class SslTask extends DefaultTask {
+public abstract class SslCaTask extends DefaultTask {
 
 	@OutputDirectory
 	abstract DirectoryProperty getOutputDir();
@@ -24,12 +26,6 @@ public abstract class SslTask extends DefaultTask {
 
 	@OutputFile
 	abstract RegularFileProperty getKey();
-
-	@InputFile
-	abstract RegularFileProperty getSigningCert();
-
-	@InputFile
-	abstract RegularFileProperty getSigningKey();
 
 	@Input
 	abstract Property<String> getSubject();
@@ -46,22 +42,18 @@ public abstract class SslTask extends DefaultTask {
 			throw new UncheckedIOException(e);
 		}
 
-		final var caKey = Ssl.readPrivateKey(getSigningKey().get().getAsFile());
-		final var caCert = Ssl.readCertificate(getSigningCert().get().getAsFile());
-
-		final var keyFile = new File(outputDir, getKey().get().getAsFile().getName());
-		final var key = Ssl.generateKeyPair();
-		Ssl.writeKeyPair(keyFile, key);
+		final var caKeyFile = new File(outputDir, getKey().get().getAsFile().getName());
+		final var caKey = Ssl.generateKeyPair();
+		Ssl.writeKeyPair(caKeyFile, caKey);
 
 		final var certFile = new File(outputDir, getCert().get().getAsFile().getName());
-		final var subject = getSubject().get();
-		final var days = getDays().get();
+		final var caCertSubject = getSubject().get();
+		final var caCertDays = getDays().get();
 		try {
-			final var certificateRequest = Ssl.createCertificateRequest(key, subject);
-			final var certificate = Ssl.signCertificateRequest(certificateRequest, caKey, caCert, key, days);
+			final var certificate = Ssl.createCaCertificate(caKey, caCertSubject, caCertDays);
 			final var certContent = Ssl.convertToPem(certificate);
 			Files.writeString(certFile.toPath(), certContent);
-		} catch (CertificateException | IOException | OperatorCreationException | NoSuchProviderException e) {
+		} catch (CertificateException | IOException | OperatorCreationException e) {
 			throw new RuntimeException(e);
 		}
 	}

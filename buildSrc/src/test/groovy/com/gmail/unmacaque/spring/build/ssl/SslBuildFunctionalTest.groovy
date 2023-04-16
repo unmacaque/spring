@@ -46,6 +46,38 @@ class SslBuildFunctionalTest extends Specification {
 
         then:
         notThrown(UnexpectedBuildFailure)
+        result.tasks.collect { it.path }.contains(':generateSslCertificates')
+        result.task(':generateSslCertificates').outcome == TaskOutcome.SUCCESS
+    }
+
+    def "generateSslCertificates is attached to processResources task of a java project"() {
+        given:
+        settingsFile << "rootProject.name = 'ssl-test'"
+        buildFile << """
+            plugins {
+                id 'java'
+                id 'unmacaque.ssl'
+            }
+    
+            ssl {
+                outputDir = file('out')
+                ca {
+                    cert = file('ca.pem')
+                    key = file('ca.key')
+                    subject = 'CN=root CA'
+                }
+            }
+        """
+
+        when:
+        def result = GradleRunner.create()
+            .withProjectDir(testProjectDir)
+            .withArguments('check')
+            .withPluginClasspath()
+            .build()
+
+        then:
+        notThrown(UnexpectedBuildFailure)
         result.task(':generateSslCertificates').outcome == TaskOutcome.SUCCESS
     }
 }
