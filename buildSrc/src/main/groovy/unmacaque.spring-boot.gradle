@@ -16,12 +16,6 @@ repositories {
     maven { url = uri("https://repo.spring.io/release") }
 }
 
-springBoot {
-    buildInfo {
-        excludes = ['time']
-    }
-}
-
 sourceSets {
     integration {
         java {

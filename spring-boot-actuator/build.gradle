@@ -11,3 +11,9 @@ dependencies {
 }
 
 description = 'Spring Boot Actuator'
+
+springBoot {
+    buildInfo {
+        excludes = ['time']
+    }
+}
