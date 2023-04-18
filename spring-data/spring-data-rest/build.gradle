@@ -11,9 +11,9 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.testcontainers:mariadb'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.mariadb.jdbc:mariadb-java-client'
+    integrationImplementation 'org.testcontainers:mariadb'
+    integrationImplementation 'org.testcontainers:junit-jupiter'
+    integrationRuntime 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 description = 'Spring Data REST'
