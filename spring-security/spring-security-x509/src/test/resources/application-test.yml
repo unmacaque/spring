@@ -1,0 +1,10 @@
+spring:
+  ssl:
+    bundle:
+      pem:
+        test:
+          keystore:
+            certificate: "classpath:ssl/client/client.pem"
+            private-key: "classpath:ssl/client/client.key"
+          truststore:
+            certificate: "classpath:ssl/ca/trust.pem"
