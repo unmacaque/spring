@@ -1,6 +1,5 @@
 rootProject.name = 'spring'
 
-include(':spring-angular')
 include(':spring-boot')
 include(':spring-boot-actuator')
 include(':spring-boot-docker')
