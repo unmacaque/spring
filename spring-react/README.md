@@ -4,7 +4,8 @@ Before starting development run `npm install` in the `react` subfolder once.
 
 Alternatively, run the Gradle task `npmInstall`.
 
-Run the task `docker` to build a runnable Docker image including both static assets and the Spring Boot application.
+Run the task `bootBuildImage` to build a runnable Docker image including both static assets and the Spring Boot
+application.
 
 ## Resources
 

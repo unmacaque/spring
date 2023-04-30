@@ -21,3 +21,18 @@ idea {
 node {
     nodeProjectDir = file("${project.projectDir}/react")
 }
+
+tasks.register('npmRunBuild', NpmTask) {
+    args = ['run', 'build']
+}
+
+bootJar {
+    dependsOn npmRunBuild
+    from('react/build') {
+        into 'static'
+    }
+}
+
+bootBuildImage {
+    imageName = "unmacaque/${project.name}"
+}
