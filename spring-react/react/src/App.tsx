@@ -2,7 +2,7 @@ import React from 'react';
 import MyList from './components/MyList'
 import './App.css';
 
-export default function App() {
+function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -14,3 +14,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
