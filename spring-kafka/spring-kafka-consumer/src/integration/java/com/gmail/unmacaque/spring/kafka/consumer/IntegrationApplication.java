@@ -1,0 +1,25 @@
+package com.gmail.unmacaque.spring.kafka.consumer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Bean;
+import org.testcontainers.containers.KafkaContainer;
+import org.testcontainers.utility.DockerImageName;
+
+public class IntegrationApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.from(Application::main).with(IntegrationApplicationConfiguration.class).run(args);
+	}
+
+	@TestConfiguration(proxyBeanMethods = false)
+	static class IntegrationApplicationConfiguration {
+
+		@Bean
+		@ServiceConnection
+		public KafkaContainer kafkaContainer() {
+			return new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.3.3"));
+		}
+	}
+}

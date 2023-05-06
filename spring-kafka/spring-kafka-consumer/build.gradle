@@ -10,6 +10,9 @@ dependencies {
     testImplementation 'org.springframework.kafka:spring-kafka-test'
     testImplementation 'org.awaitility:awaitility'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    integrationImplementation 'org.testcontainers:kafka'
+    integrationImplementation 'org.testcontainers:junit-jupiter'
 }
 
 description = 'Spring Kafka Consumer'
