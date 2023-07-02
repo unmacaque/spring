@@ -6,6 +6,7 @@ mockserver = "5.15.0"
 protobuf = "3.22.0"
 resilience4j = "2.0.2"
 rome = "1.18.0"
+spotbugs = "4.7.3"
 springdocOpenapi = "2.1.0"
 togglz = "4.0.0"
 wiremock = "2.35.0"
@@ -28,6 +29,8 @@ protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", versio
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 
 rome = { module = "com.rometools:rome", version.ref = "rome" }
+
+spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
 
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
 
