@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
 
@@ -19,7 +21,7 @@ public class SecurityConfiguration {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
-								.requestMatchers("/togglz-console/*").hasRole("ADMIN")
+								.requestMatchers(antMatcher("/togglz-console/*")).hasRole("ADMIN")
 								.anyRequest().permitAll()
 				)
 				.httpBasic(Customizer.withDefaults())
