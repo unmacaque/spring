@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 import java.time.Instant;
 
 public class RouteHandler {
-	public Mono<ServerResponse> handleRoot(ServerRequest request) {
+	public Mono<ServerResponse> handleRoot(@SuppressWarnings("unused") ServerRequest request) {
 		final var greeting = new Greeting("Hello World", Instant.now());
 		return ServerResponse
 				.ok()

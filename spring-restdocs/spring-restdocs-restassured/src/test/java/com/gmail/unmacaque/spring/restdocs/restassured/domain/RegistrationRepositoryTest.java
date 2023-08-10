@@ -15,7 +15,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -35,9 +34,6 @@ import static org.springframework.restdocs.restassured.RestAssuredRestDocumentat
 @Transactional
 @ExtendWith(RestDocumentationExtension.class)
 class RegistrationRepositoryTest {
-
-	@Autowired
-	private WebApplicationContext webApplicationContext;
 
 	@Autowired
 	private ObjectFactory<ObjectMapper> objectMapperFactory;

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class GreetHandler {
 	@NonNull
-	public ServerResponse greetAnonymous(ServerRequest request) {
+	public ServerResponse greetAnonymous(@SuppressWarnings("unused") ServerRequest request) {
 		return ServerResponse
 				.ok()
 				.body(new Greeting("Hello World", LocalDateTime.now()));

@@ -5,7 +5,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 public class RouteHandler {
-	public Mono<ServerResponse> handleRoot(ServerRequest request) {
+	public Mono<ServerResponse> handleRoot(@SuppressWarnings("unused") ServerRequest request) {
 		return ServerResponse
 				.ok()
 				.body(Mono.just("Hello World"), String.class);

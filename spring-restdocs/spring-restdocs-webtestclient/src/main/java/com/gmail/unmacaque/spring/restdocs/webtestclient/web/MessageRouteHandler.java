@@ -15,7 +15,7 @@ public class MessageRouteHandler {
 		this.repository = repository;
 	}
 
-	public Mono<ServerResponse> getMessages(ServerRequest request) {
+	public Mono<ServerResponse> getMessages(@SuppressWarnings("unused") ServerRequest request) {
 		final Flux<Message> messages = repository.findAll();
 		return ServerResponse
 				.ok()
