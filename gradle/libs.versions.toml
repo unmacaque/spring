@@ -1,15 +1,15 @@
 [versions]
 aerogearOtpJava = "1.0.0"
-grpc = "1.53.0"
-initializr = "0.20.0"
+grpc = "1.58.0"
+initializr = "0.20.1"
 mockserver = "5.15.0"
 protobuf = "3.22.0"
-resilience4j = "2.0.2"
+resilience4j = "2.1.0"
 rome = "1.18.0"
 spotbugs = "4.7.3"
 springdocOpenapi = "2.2.0"
-togglz = "4.0.0"
-wiremock = "2.35.0"
+togglz = "4.4.0"
+wiremock = "3.2.0"
 zxing = "3.5.1"
 
 [libraries]
@@ -42,7 +42,7 @@ togglz-junit = { module = "org.togglz:togglz-junit", version.ref = "togglz" }
 webjars-webstompClient = { module = "org.webjars.npm:webstomp-client", version = "1.2.6" }
 webjars-jquery = { module = "org.webjars:jquery", version = "3.6.0" }
 
-wiremock = { module = "com.github.tomakehurst:wiremock-jre8-standalone", version.ref = "wiremock" }
+wiremock = { module = "org.wiremock:wiremock-standalone", version.ref = "wiremock" }
 
 zxing-javase = { module = "com.google.zxing:javase", version.ref = "zxing" }
 
