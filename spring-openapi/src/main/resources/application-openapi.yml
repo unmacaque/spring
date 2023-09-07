@@ -1,0 +1,11 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    port: 8081
+
+springdoc:
+  show-actuator: true
+  use-management-port: true

@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     runtimeOnly libs.springdoc.openapi.starter.webmvc.ui
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -14,3 +15,11 @@ dependencies {
 }
 
 description = 'Spring OpenAPI'
+
+openApi {
+    apiDocsUrl = 'http://localhost:8081/actuator/openapi/springdocDefault'
+
+    customBootRun {
+        args.set(['--spring.profiles.active=openapi'])
+    }
+}
