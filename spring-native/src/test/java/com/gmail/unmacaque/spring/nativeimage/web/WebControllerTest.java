@@ -6,15 +6,27 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.matchesPattern;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(WebController.class)
 class WebControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
+
+	@Test
+	void testGetCountryCodes() throws Exception {
+		mvc.perform(get("/"))
+				.andExpectAll(
+						status().isOk(),
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("$").exists(),
+						jsonPath("$").value(everyItem(matchesPattern("[A-Z]{2}")))
+				);
+	}
 
 	@Test
 	void testPositiveMatch() throws Exception {

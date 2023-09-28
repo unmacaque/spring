@@ -1,6 +1,6 @@
 # spring-native
 
-_Last verified with GraalVM 22.3_
+_Last verified with GraalVM 23.0.1_
 
 **Note**: The native tasks consume a lot of memory and CPU resources
 
