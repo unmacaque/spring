@@ -1,6 +1,6 @@
 # spring-boot-docker
 
-Run the task `docker` to build a layered Docker image of the app.
+Run the task `bootBuildImage` to build a layered Docker image of the app.
 
 Execute the following command to start the containerized app.
 

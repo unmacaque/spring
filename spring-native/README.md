@@ -9,3 +9,5 @@ _Last verified with GraalVM 23.0.1_
 3. Run the task `nativeTest` (optional)
 4. Run the task `nativeCompile`
 5. Run the executable `/build/native/nativeCompile/spring-native`
+
+Alternatively, run `bootBuildImage` to compile the native application and build a Docker image.
