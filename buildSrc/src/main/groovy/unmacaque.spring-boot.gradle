@@ -30,3 +30,7 @@ tasks.register('integrationTest', Test) {
     classpath = sourceSets.integration.runtimeClasspath
     useJUnitPlatform()
 }
+
+bootBuildImage {
+    imageName = "unmacaque/${project.name}"
+}

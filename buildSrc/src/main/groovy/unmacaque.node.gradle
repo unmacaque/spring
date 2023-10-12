@@ -1,3 +1,7 @@
 plugins {
     id 'com.github.node-gradle.node'
 }
+
+tasks.register('npmRunBuild', NpmTask) {
+    args = ['run', 'build']
+}

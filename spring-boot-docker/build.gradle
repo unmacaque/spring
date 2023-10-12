@@ -12,7 +12,3 @@ dependencies {
 }
 
 description = 'Spring Boot Docker'
-
-bootBuildImage {
-    imageName = "unmacaque/${project.name}"
-}
