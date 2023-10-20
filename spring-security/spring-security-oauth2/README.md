@@ -17,30 +17,12 @@ Finally, start the Spring Boot application and open <http://localhost:8080>.
 
 ## Integrations
 
-### Bitbucket
-
-Login to <https://bitbucket.org/> and go to _Bitbucket Settings_. From _Access Management_ choose _OAuth_. Click on the button _Add consumer_. In the next dialog, enter a value for _Callback URL_, which must correspond to the `redirect-uri` property in the Spring Boot configuration. The consumer must have at least a permission on _Email_ to allow login on behalf of the Bitbucket Account.
-
-```
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          bitbucket:
-            authorization-grant-type: authorization_code
-            client-name: Bitbucket
-            client-id: <key>
-            client-secret: <secret>
-            redirect-uri: "{baseUrl}/login/oauth2/code/"
-            scope: email
-```
-
 ### GitLab
 
 Login to <https://gitlab.com>. Go to the [Applications]( https://gitlab.com/profile/applications) section in the User Settings.
 
-Create a new application using the `redirect-uri` property as the value for _Redirect URI_. Make sure the scope _openid_ is checked. Press _Save application_ to create the application and show the client ID and secret.
+Create a new application using the `redirect-uri` property as the value for _Redirect URI_. Make sure the scope
+_openid_ is checked. Press _Save application_ to create the application and show the client ID and secret.
 
 ```
 spring:
