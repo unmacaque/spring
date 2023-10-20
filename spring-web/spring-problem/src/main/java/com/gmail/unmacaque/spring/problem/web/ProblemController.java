@@ -19,5 +19,5 @@ public class ProblemController {
 		return ResponseEntity.ok(formData.text());
 	}
 
-	record FormData(String text) {}
+	public record FormData(String text) {}
 }

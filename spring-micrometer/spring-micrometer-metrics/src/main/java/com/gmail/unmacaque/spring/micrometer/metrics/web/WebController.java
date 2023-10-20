@@ -71,5 +71,5 @@ public class WebController {
 		return new DistributionSummaryValues(summary.count(), summary.mean(), summary.max(), summary.totalAmount());
 	}
 
-	record DistributionSummaryValues(long count, double mean, double max, double totalAmount) {}
+	public record DistributionSummaryValues(long count, double mean, double max, double totalAmount) {}
 }
