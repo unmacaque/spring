@@ -32,7 +32,6 @@ include(':spring-security:spring-security-oauth2:spring-security-oauth2-authoriz
 include(':spring-security:spring-security-oauth2:spring-security-oauth2-client')
 include(':spring-security:spring-security-oauth2:spring-security-oauth2-login')
 include(':spring-security:spring-security-oauth2:spring-security-oauth2-resource-server')
-include(':spring-security:spring-security-oauth2:spring-security-oauth2-webflux')
 include(':spring-security:spring-security-web')
 include(':spring-security:spring-security-webflux')
 include(':spring-security:spring-security-x509')
