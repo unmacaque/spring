@@ -14,11 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import javax.sql.DataSource;
+
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
@@ -27,19 +26,14 @@ public class SecurityConfiguration {
 	private DataSource dataSource;
 
 	@Bean
-	MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
-		return new MvcRequestMatcher.Builder(introspector);
-	}
-
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
 								.dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
-								.requestMatchers(mvc.pattern("/hello")).hasRole("USER")
-								.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
-								.requestMatchers(mvc.pattern("/"), mvc.pattern("/login"), mvc.pattern("/register")).permitAll()
+								.requestMatchers("/hello").hasRole("USER")
+								.requestMatchers("/admin").hasRole("ADMIN")
+								.requestMatchers("/", "/login", "/register").permitAll()
 								.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				)
 				.formLogin(formLogin ->
@@ -50,7 +44,7 @@ public class SecurityConfiguration {
 				)
 				.logout(logout ->
 						logout
-								.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+								.logoutRequestMatcher(antMatcher("/logout"))
 								.logoutSuccessUrl("/?logout")
 				)
 				.userDetailsService(new JdbcUserDetailsManager(dataSource))
