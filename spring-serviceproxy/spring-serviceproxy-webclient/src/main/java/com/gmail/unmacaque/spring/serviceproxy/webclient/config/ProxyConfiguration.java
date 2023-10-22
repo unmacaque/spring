@@ -1,6 +1,6 @@
-package com.gmail.unmacaque.spring.serviceproxy.http.config;
+package com.gmail.unmacaque.spring.serviceproxy.webclient.config;
 
-import com.gmail.unmacaque.spring.serviceproxy.http.domain.ReservationService;
+import com.gmail.unmacaque.spring.serviceproxy.webclient.domain.ReservationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;

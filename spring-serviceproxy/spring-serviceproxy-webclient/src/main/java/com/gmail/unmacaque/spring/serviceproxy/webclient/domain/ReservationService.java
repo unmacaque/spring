@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.serviceproxy.http.domain;
+package com.gmail.unmacaque.spring.serviceproxy.webclient.domain;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;

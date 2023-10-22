@@ -1,8 +1,8 @@
-package com.gmail.unmacaque.spring.serviceproxy.http;
+package com.gmail.unmacaque.spring.serviceproxy.webclient;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import com.gmail.unmacaque.spring.serviceproxy.http.domain.Reservation;
-import com.gmail.unmacaque.spring.serviceproxy.http.domain.ReservationService;
+import com.gmail.unmacaque.spring.serviceproxy.webclient.domain.Reservation;
+import com.gmail.unmacaque.spring.serviceproxy.webclient.domain.ReservationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -10,4 +10,4 @@ dependencies {
     testImplementation libs.wiremock
 }
 
-description = 'Spring Service Proxy HTTP'
+description = 'Spring Service Proxy WebClient'
