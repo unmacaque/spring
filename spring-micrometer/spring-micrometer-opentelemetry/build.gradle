@@ -10,8 +10,10 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-exporter-logging'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.micrometer:micrometer-observation-test'
+    integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
 }
 
 description = 'Spring Boot Micrometer OpenTelemetry'
