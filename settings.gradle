@@ -35,6 +35,7 @@ include(':spring-security:spring-security-oauth2:spring-security-oauth2-resource
 include(':spring-security:spring-security-web')
 include(':spring-security:spring-security-webflux')
 include(':spring-security:spring-security-x509')
+include(':spring-serviceproxy:spring-serviceproxy-restclient')
 include(':spring-serviceproxy:spring-serviceproxy-rsocket')
 include(':spring-serviceproxy:spring-serviceproxy-webclient')
 include(':spring-testcontainers')
