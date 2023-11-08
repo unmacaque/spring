@@ -21,4 +21,8 @@ public class CounterService {
 		}
 		return returnValue;
 	}
+
+	public Integer retrieveIntegerAlwaysThrow() throws FailureException {
+		throw new FailureException("could not retrieve integer");
+	}
 }

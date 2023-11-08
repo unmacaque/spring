@@ -1,4 +1,8 @@
 resilience4j:
+  bulkhead:
+    instances:
+      myBulkhead:
+        maxConcurrentCalls: 2
   circuitbreaker:
     instances:
       myBreaker:
@@ -11,3 +15,9 @@ resilience4j:
         timeoutDuration: 1s
         limitRefreshPeriod: 10s
         limitForPeriod: 10
+  retry:
+    instances:
+      myRetry:
+        maxAttempts: 3
+        waitDuration: 50ms
+        failAfterMaxAttempts: true
