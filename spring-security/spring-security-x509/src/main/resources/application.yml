@@ -2,7 +2,16 @@ server:
   port: 8443
   ssl:
     enabled: true
-    certificate: classpath:ssl/server/server.pem
-    certificate-private-key: classpath:ssl/server/server.key
+    bundle: server
     client-auth: need
-    trust-certificate: classpath:ssl/ca/trust.pem
+
+spring:
+  ssl:
+    bundle:
+      pem:
+        server:
+          keystore:
+            certificate: "classpath:ssl/server/server.pem"
+            private-key: "classpath:ssl/server/server.key"
+          truststore:
+            certificate: "classpath:ssl/ca/trust.pem"
