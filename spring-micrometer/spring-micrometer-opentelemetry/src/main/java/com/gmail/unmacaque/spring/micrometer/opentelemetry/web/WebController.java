@@ -25,17 +25,19 @@ public class WebController {
 				.highCardinalityKeyValue("user.id", userId)
 				.lowCardinalityKeyValue("http.method", "GET")
 				.observe(() -> {
-					logger.atInfo().setMessage("Hello World from user {userId}").addKeyValue("userId", userId).log();
+					logger.atInfo().setMessage("Hello World from user {}").addArgument(userId).log();
 					return String.format("Hello user %s", userId);
 				});
 	}
 
-	@GetMapping("/error")
-	public String error() {
+	@GetMapping("/fail")
+	public String fail() {
 		return Observation
-				.createNotStarted("spring.observation.error", observationRegistry)
+				.createNotStarted("spring.observation.fail", observationRegistry)
 				.observe(() -> {
-					throw new IllegalStateException("Oh, no!");
+					final var ex = new IllegalStateException("Oh, no!");
+					logger.atError().setMessage("Exception occured: {}").addArgument(ex.getMessage()).setCause(ex).log();
+					throw ex;
 				});
 	}
 

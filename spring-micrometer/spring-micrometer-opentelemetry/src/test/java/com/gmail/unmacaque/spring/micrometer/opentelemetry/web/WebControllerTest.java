@@ -44,15 +44,15 @@ class WebControllerTest {
 	}
 
 	@Test
-	void testError() throws Exception {
-		mvc.perform(get("/error"))
+	void testFail() throws Exception {
+		mvc.perform(get("/fail"))
 				.andExpectAll(
 						status().isInternalServerError()
 				);
 
 		TestObservationRegistryAssert.assertThat(registry)
 				.doesNotHaveAnyRemainingCurrentObservation()
-				.hasObservationWithNameEqualTo("spring.observation.error")
+				.hasObservationWithNameEqualTo("spring.observation.fail")
 				.that()
 				.hasError()
 				.assertThatError()
