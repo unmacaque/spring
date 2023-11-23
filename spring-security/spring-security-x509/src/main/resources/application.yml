@@ -10,6 +10,7 @@ spring:
     bundle:
       pem:
         server:
+          reload-on-update: true
           keystore:
             certificate: "classpath:ssl/server/server.pem"
             private-key: "classpath:ssl/server/server.key"
