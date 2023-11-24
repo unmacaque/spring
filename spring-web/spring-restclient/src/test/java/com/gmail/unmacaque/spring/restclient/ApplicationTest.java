@@ -1,6 +1,6 @@
 package com.gmail.unmacaque.spring.restclient;
 
-import com.gmail.unmacaque.spring.restclient.config.RestClientConfig;
+import com.gmail.unmacaque.spring.restclient.config.RestClientConfiguration;
 import com.gmail.unmacaque.spring.restclient.web.RestClientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(RestClientService.class)
-@Import(RestClientConfig.class)
+@Import(RestClientConfiguration.class)
 class ApplicationTest {
 
 	@Autowired

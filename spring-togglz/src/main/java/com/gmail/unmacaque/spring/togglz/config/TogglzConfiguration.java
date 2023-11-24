@@ -9,7 +9,8 @@ import org.togglz.core.repository.jdbc.JDBCStateRepository;
 import javax.sql.DataSource;
 
 @Configuration(proxyBeanMethods = false)
-public class TogglzConfig {
+public class TogglzConfiguration {
+
 	@Bean
 	@Profile("jdbc")
 	public StateRepository jdbcStateRepository(DataSource dataSource) {
