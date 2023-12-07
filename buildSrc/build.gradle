@@ -7,14 +7,14 @@ dependencies {
     implementation buildLibs.kotlin.allopen
     implementation buildLibs.kotlin.noarg
     implementation buildLibs.springBoot
-    implementation 'io.spring.gradle:dependency-management-plugin:1.1.0'
-    implementation 'com.github.node-gradle:gradle-node-plugin:7.0.0'
-    implementation 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
-    implementation 'com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.1'
-    implementation 'org.asciidoctor:asciidoctor-gradle-jvm:3.3.2'
-    implementation 'org.springdoc:springdoc-openapi-gradle-plugin:1.7.0'
-    implementation 'com.github.psxpaul:gradle-execfork-plugin:0.2.2'
-    implementation 'org.graalvm.buildtools:native-gradle-plugin:0.9.27'
+    implementation buildLibs.dependencyManagement
+    implementation buildLibs.node
+    implementation buildLibs.protobuf
+    implementation buildLibs.gitProperties
+    implementation buildLibs.asciidoctor
+    implementation buildLibs.openapi
+    implementation buildLibs.execFork
+    implementation buildLibs.native
     testImplementation buildLibs.junit.jupiter
     testImplementation gradleTestKit()
     testImplementation buildLibs.spock
