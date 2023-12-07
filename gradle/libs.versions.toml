@@ -1,16 +1,16 @@
 [versions]
 aerogearOtpJava = "1.0.0"
-grpc = "1.58.0"
+grpc = "1.60.0"
 initializr = "0.20.1"
 mockserver = "5.15.0"
-protobuf = "3.22.0"
+protobuf = "3.25.1"
 resilience4j = "2.1.0"
-rome = "1.18.0"
-spotbugs = "4.7.3"
-springdocOpenapi = "2.2.0"
+rome = "2.1.0"
+spotbugs = "4.8.2"
+springdocOpenapi = "2.3.0"
 togglz = "4.4.0"
-wiremock = "3.2.0"
-zxing = "3.5.1"
+wiremock = "3.3.1"
+zxing = "3.5.2"
 
 [libraries]
 aerogear-otp-java = { module = "org.jboss.aerogear:aerogear-otp-java", version.ref = "aerogearOtpJava" }
