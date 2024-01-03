@@ -7,6 +7,7 @@ protobuf = "3.25.1"
 resilience4j = "2.1.0"
 rome = "2.1.0"
 spotbugs = "4.8.2"
+springModulith = "1.1.1"
 springdocOpenapi = "2.3.0"
 togglz = "4.4.0"
 wiremock = "3.3.1"
@@ -31,6 +32,8 @@ resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version
 rome = { module = "com.rometools:rome", version.ref = "rome" }
 
 spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
+
+spring-modulith-bom = { module = "org.springframework.modulith:spring-modulith-bom", version.ref = "springModulith" }
 
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
 
