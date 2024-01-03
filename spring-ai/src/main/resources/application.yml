@@ -1,0 +1,5 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: orca-mini

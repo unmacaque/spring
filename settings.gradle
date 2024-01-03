@@ -1,5 +1,6 @@
 rootProject.name = 'spring'
 
+include(':spring-ai')
 include(':spring-boot')
 include(':spring-boot-actuator')
 include(':spring-boot-docker')
