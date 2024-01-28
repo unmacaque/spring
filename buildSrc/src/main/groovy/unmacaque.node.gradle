@@ -5,3 +5,7 @@ plugins {
 tasks.register('npmRunBuild', NpmTask) {
     args = ['run', 'build']
 }
+
+tasks.register('pnpmRunBuild', PnpmTask) {
+    args = ['run', 'build']
+}

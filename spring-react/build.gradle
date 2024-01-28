@@ -23,7 +23,8 @@ node {
 }
 
 bootJar {
-    dependsOn npmRunBuild
+    dependsOn pnpmInstall
+    dependsOn pnpmRunBuild
     from('react/build') {
         into 'static'
     }
