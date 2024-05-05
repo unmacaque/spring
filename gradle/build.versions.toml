@@ -1,11 +1,11 @@
 [versions]
-asciidoctor = "3.3.2"
+asciidoctor = "4.0.2"
 bouncycastlePkix = "1.72"
 dependencyManagement = "1.1.4"
 execFork = "0.2.2"
 gitProperties = "2.4.1"
 junit = "5.10.1"
-kotlin = "1.9.20"
+kotlin = "1.9.23"
 native = "0.9.28"
 node = "7.0.1"
 openapi = "1.8.0"
