@@ -22,7 +22,7 @@ asciidoctor {
 
 bootJar {
     dependsOn asciidoctor
-    from ("${project.buildDir}/docs/asciidoc") {
+    from("${project.layout.buildDirectory}/docs/asciidoc") {
         into 'static/docs'
     }
 }

@@ -4,11 +4,6 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
-configurations {
-    integrationImplementation.extendsFrom testImplementation
-    integrationRuntime.extendsFrom testRuntime
-}
-
 group = 'com.gmail.unmacaque.spring'
 version = '1.0.0-SNAPSHOT'
 
@@ -23,6 +18,11 @@ sourceSets {
             runtimeClasspath += main.output + test.output
         }
     }
+}
+
+configurations {
+    integrationImplementation.extendsFrom testImplementation
+    integrationRuntime.extendsFrom testRuntime
 }
 
 tasks.register('integrationTest', Test) {
