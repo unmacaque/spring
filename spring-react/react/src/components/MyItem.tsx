@@ -1,11 +1,9 @@
-import React from 'react';
-
 interface IProps {
-    value: string
+  value: string
 }
 
 export default function MyItem(props: IProps) {
-    return (
-        <li>{props.value}</li>
-    )
+  return (
+    <li>{props.value}</li>
+  )
 }

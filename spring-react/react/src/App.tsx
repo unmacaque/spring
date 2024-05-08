@@ -1,18 +1,17 @@
-import React from 'react';
+import './App.css'
 import MyList from './components/MyList'
-import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>spring-react</h1>
+        <h1>Spring React</h1>
       </header>
       <section>
         <MyList />
       </section>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

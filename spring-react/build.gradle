@@ -25,7 +25,7 @@ node {
 bootJar {
     dependsOn pnpmInstall
     dependsOn pnpmRunBuild
-    from('react/build') {
+    from('react/dist') {
         into 'static'
     }
 }
