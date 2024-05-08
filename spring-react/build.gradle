@@ -1,31 +1,15 @@
 plugins {
     id 'unmacaque.spring-boot'
     id 'unmacaque.node'
-    id 'idea'
 }
 
 dependencies {
+    if (System.getenv('CI') != 'true') {
+        runtimeOnly(project(':spring-react:react'))
+    }
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-description = 'Spring ReactJS'
-
-idea {
-    module {
-        excludeDirs += file('react/node_modules')
-    }
-}
-
-node {
-    nodeProjectDir = file("${project.projectDir}/react")
-}
-
-bootJar {
-    dependsOn pnpmInstall
-    dependsOn pnpmRunBuild
-    from('react/dist') {
-        into 'static'
-    }
-}
+description = 'Spring React'

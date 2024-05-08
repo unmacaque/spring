@@ -1,0 +1,45 @@
+plugins {
+    id 'unmacaque.java'
+    id 'unmacaque.node'
+    id 'idea'
+}
+
+description = 'Spring React Assets'
+
+idea {
+    module {
+        excludeDirs += file('node_modules')
+    }
+}
+
+tasks.register("buildReact", PnpmTask) {
+    dependsOn(tasks.pnpmInstall)
+    args.set(['run', 'build'])
+    inputs.dir(project.fileTree("src").exclude("**/*.test.*"))
+    inputs.dir("node_modules")
+    inputs.files('.eslintrc.cjs', 'package.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts')
+    outputs.dir(project.layout.buildDirectory.dir('dist'))
+}
+
+tasks.register("testReact", PnpmTask) {
+    dependsOn(tasks.buildReact)
+    args.set(['run', 'test', '--run'])
+    inputs.dir('src')
+    inputs.dir('node_modules')
+    inputs.files('.eslintrc.cjs', 'package.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts')
+    outputs.upToDateWhen { true }
+}
+
+sourceSets {
+    java {
+        main {
+            resources {
+                srcDir(buildReact)
+            }
+        }
+    }
+}
+
+tasks.test {
+    dependsOn(tasks.testReact)
+}

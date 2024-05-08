@@ -20,6 +20,9 @@ include(':spring-native')
 include(':spring-openapi')
 include(':spring-protobuf')
 include(':spring-react')
+if (System.getenv('CI') != 'true') {
+    include(':spring-react:react')
+}
 include(':spring-resilience4j')
 include(':spring-restdocs:spring-restdocs-mockmvc')
 include(':spring-restdocs:spring-restdocs-restassured')

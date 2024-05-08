@@ -5,6 +5,9 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'build/dist/static',
+  },
   server: {
     proxy: {
       '/api': 'http://localhost:8080',
