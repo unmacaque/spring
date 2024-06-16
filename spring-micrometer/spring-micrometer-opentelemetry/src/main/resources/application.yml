@@ -1,16 +1,8 @@
 spring:
   application:
     name: spring-micrometer-opentelemetry
-  docker:
-    compose:
-      file: compose.yml
-      stop:
-        command: down
 
 management:
-  otlp:
-    tracing:
-      endpoint: http://localhost:4318/v1/traces
   tracing:
     sampling:
       probability: 1.0
