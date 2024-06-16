@@ -1,6 +1,7 @@
 [versions]
 asciidoctor = "4.0.2"
 bouncycastlePkix = "1.72"
+cyclonedxBom = "1.8.2"
 dependencyManagement = "1.1.4"
 execFork = "0.2.2"
 gitProperties = "2.4.1"
@@ -17,6 +18,8 @@ spock = '2.4-M1-groovy-3.0'
 asciidoctor = { module = "org.asciidoctor:asciidoctor-gradle-jvm", version.ref = "asciidoctor" }
 
 bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastlePkix" }
+
+cyclonedxBom = { module = "org.cyclonedx:cyclonedx-gradle-plugin", version.ref = "cyclonedxBom" }
 
 dependencyManagement = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "dependencyManagement" }
 

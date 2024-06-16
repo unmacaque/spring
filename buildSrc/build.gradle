@@ -15,6 +15,7 @@ dependencies {
     implementation buildLibs.openapi
     implementation buildLibs.execFork
     implementation buildLibs.native
+    implementation buildLibs.cyclonedxBom
     testImplementation buildLibs.junit.jupiter
     testImplementation gradleTestKit()
     testImplementation buildLibs.spock

@@ -1,5 +1,6 @@
 plugins {
     id 'unmacaque.spring-boot'
+    id 'org.cyclonedx.bom'
 }
 
 dependencies {
