@@ -22,7 +22,7 @@ sourceSets {
 
 configurations {
     integrationImplementation.extendsFrom testImplementation
-    integrationRuntime.extendsFrom testRuntime
+    integrationRuntimeOnly.extendsFrom runtimeOnly, testRuntimeOnly
 }
 
 tasks.register('integrationTest', Test) {
