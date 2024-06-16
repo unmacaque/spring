@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.security.web.web;
 
 import com.gmail.unmacaque.spring.security.web.domain.RegisterUser;
+import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -19,9 +20,13 @@ public class RegisterController {
 
 	private final PasswordEncoder encoder;
 
-	public RegisterController(UserDetailsManager userDetailsManager, PasswordEncoder encoder) {
+	private final CompromisedPasswordChecker checker;
+
+	public RegisterController(UserDetailsManager userDetailsManager, PasswordEncoder encoder,
+							  CompromisedPasswordChecker checker) {
 		this.userDetailsManager = userDetailsManager;
 		this.encoder = encoder;
+		this.checker = checker;
 	}
 
 	@ModelAttribute
@@ -40,6 +45,9 @@ public class RegisterController {
 		modelMap.addAttribute("registerUser", registerUser);
 		if (userDetailsManager.userExists(registerUser.getUsername())) {
 			result.reject("register.error.usernameexists");
+		}
+		if (checker.check(registerUser.getPassword()).isCompromised()) {
+			result.reject("register.error.passwordcompromised");
 		}
 		if (result.hasErrors()) {
 			return "register";

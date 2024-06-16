@@ -6,9 +6,21 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, RegisterUser> {
 
+	private PasswordMatches annotation;
+
+	@Override
+	public void initialize(PasswordMatches constraintAnnotation) {
+		this.annotation = constraintAnnotation;
+	}
+
 	@Override
 	public boolean isValid(RegisterUser value, ConstraintValidatorContext context) {
-		return value.getPassword().equals(value.getPasswordConfirm());
+		final boolean valid = value.getPassword().equals(value.getPasswordConfirm());
+		if (valid) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate(annotation.message()).addConstraintViolation();
+		}
+		return valid;
 	}
 
 }
