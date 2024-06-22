@@ -6,7 +6,7 @@ export default function MyList() {
   const [items, setItems] = useState<string[]>([])
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const response = await fetch('/api/')
       if (!response.ok) {
         throw new Error(response.statusText)
@@ -17,16 +17,8 @@ export default function MyList() {
   }, [])
 
   function renderItems() {
-    return (
-      items.map((item, key) =>
-        <MyItem key={key} value={item} />
-      )
-    )
+    return items.map((item, key) => <MyItem key={key} value={item} />)
   }
 
-  return (
-    <ul className="item-list">
-      {renderItems()}
-    </ul>
-  )
+  return <ul className="item-list">{renderItems()}</ul>
 }

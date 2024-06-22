@@ -3,7 +3,5 @@ interface IProps {
 }
 
 export default function MyItem(props: IProps) {
-  return (
-    <li>{props.value}</li>
-  )
+  return <li>{props.value}</li>
 }
