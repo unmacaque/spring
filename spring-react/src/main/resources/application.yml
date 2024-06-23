@@ -1,0 +1,23 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          react-client:
+            registration:
+              client-id: react-client
+              client-authentication-methods: none
+              authorization-grant-types: authorization_code
+              redirect-uris:
+                - http://localhost:5173
+                - http://localhost:8080
+              scopes: openid,profile
+              require-authorization-consent: true
+              require-proof-key: true
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080
+
+logging:
+  level:
+    org.springframework.security: debug
