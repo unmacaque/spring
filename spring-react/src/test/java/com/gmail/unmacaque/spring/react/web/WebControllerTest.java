@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,7 +19,8 @@ class WebControllerTest {
 
 	@Test
 	void test() throws Exception {
-		mvc.perform(get("/api/"))
+		mvc.perform(get("/api/")
+						.with(jwt()))
 				.andExpectAll(
 						status().isOk(),
 						content().contentType(MediaType.APPLICATION_JSON)
