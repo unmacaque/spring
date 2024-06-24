@@ -11,6 +11,10 @@ export default function AccountInfo() {
 
   const [accountInfo, setAccountInfo] = useState<AccountInfo | null>(null)
 
+  function formatCurrency(num: number) {
+    return num.toLocaleString(undefined, { minimumFractionDigits: 2 })
+  }
+
   useEffect(() => {
     ;(async () => {
       if (!token) {
@@ -38,25 +42,28 @@ export default function AccountInfo() {
             <Col
               className="p-2"
               md="auto"
-            >{`${item.amount.amount} ${item.amount.currency}`}</Col>
+            >{`${formatCurrency(item.amount.amount)} ${item.amount.currency}`}</Col>
           </Row>
         </Container>
       </ListGroup.Item>
     ))
   }
 
+  if (!accountInfo) {
+    return null
+  }
   return (
     <div
       className="modal show"
       style={{ display: 'block', position: 'initial' }}
     >
-      <h1>Hello {accountInfo?.fullName}</h1>
+      <h1>Hello {accountInfo.fullName}</h1>
       <Modal.Dialog>
         <Modal.Header style={{ fontSize: 'x-large' }}>
           <Container>
             <Row>
               <Col>Your current balance</Col>
-              <Col md="auto">{`${accountInfo?.currentBalance.amount} ${accountInfo?.currentBalance.currency}`}</Col>
+              <Col md="auto">{`${formatCurrency(accountInfo.currentBalance.amount)} ${accountInfo.currentBalance.currency}`}</Col>
             </Row>
           </Container>
         </Modal.Header>
