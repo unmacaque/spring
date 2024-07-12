@@ -1,0 +1,18 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'com.gorylenko.gradle-git-properties'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+description = 'Spring Boot Docker'
+
+tasks.named("bootBuildImage") {
+    imageName.set('docker.io/unmacaque/spring-boot')
+}
