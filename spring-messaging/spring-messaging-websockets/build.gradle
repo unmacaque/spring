@@ -11,4 +11,4 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-description = 'Spring WebSockets'
+description = 'Spring Messaging WebSockets'

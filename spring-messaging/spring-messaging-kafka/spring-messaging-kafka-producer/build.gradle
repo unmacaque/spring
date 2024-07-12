@@ -15,4 +15,4 @@ dependencies {
     integrationImplementation 'org.awaitility:awaitility'
 }
 
-description = 'Spring Kafka Producer'
+description = 'Spring Messaging Kafka Producer'

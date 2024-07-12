@@ -15,4 +15,4 @@ dependencies {
     integrationImplementation 'org.testcontainers:junit-jupiter'
 }
 
-description = 'Spring Kafka Consumer'
+description = 'Spring Messaging Kafka Consumer'
