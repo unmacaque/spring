@@ -18,6 +18,6 @@ protobuf {
         grpc { artifact = "io.grpc:protoc-gen-grpc-java:${libs.versions.grpc.get()}" }
     }
     generateProtoTasks {
-        all()*.plugins { grpc { option 'jakarta_omit' } }
+        all()*.plugins { grpc { option '@generated=omit' } }
     }
 }
