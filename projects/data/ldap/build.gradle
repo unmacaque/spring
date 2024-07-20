@@ -9,6 +9,8 @@ dependencies {
     compileOnly libs.spotbugs.annotations
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    integrationImplementation 'org.testcontainers:junit-jupiter'
 }
 
 description = 'Spring Data LDAP'

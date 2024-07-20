@@ -15,7 +15,7 @@ public final class Person {
 	@JsonIgnore
 	private Name dn;
 
-	@DnAttribute(value = "uid", index = 3)
+	@DnAttribute(value = "uid")
 	private String uid;
 
 	@Attribute(name = "cn")

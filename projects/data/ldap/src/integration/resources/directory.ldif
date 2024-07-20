@@ -1,0 +1,94 @@
+dn: ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+
+dn: ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: uid=jodoe,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: John Doe
+sn: Doe
+uid: jodoe
+
+dn: uid=jadoe,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jane Doe
+sn: Doe
+uid: jadoe
+
+dn: uid=fred,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Fred
+sn: Fred
+uid: fred
+
+dn: uid=george,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: George
+sn: George
+uid: george
+
+dn: uid=peter,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Peter
+sn: Peter
+uid: peter
+
+dn: uid=mary,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Mary
+sn: Mary
+uid: mary
+
+dn: uid=sally,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Sally
+sn: Sally
+uid: sally
+
+dn: cn=managers,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+ou: groups
+cn: Managers
+uniquemember: uid=jdoe,ou=people,dc=springframework,dc=org
+uniquemember: uid=jadoe,ou=people,dc=springframework,dc=org
+
+dn: cn=employees,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+ou: groups
+cn: Employees
+uniquemember: uid=jdoe,ou=people,dc=springframework,dc=org
+uniquemember: uid=jadoe,ou=people,dc=springframework,dc=org
+uniquemember: uid=fred,ou=people,dc=springframework,dc=org
+uniquemember: uid=george,ou=people,dc=springframework,dc=org
+uniquemember: uid=peter,ou=people,dc=springframework,dc=org
+uniquemember: uid=mary,ou=people,dc=springframework,dc=org
+uniquemember: uid=sally,ou=people,dc=springframework,dc=org

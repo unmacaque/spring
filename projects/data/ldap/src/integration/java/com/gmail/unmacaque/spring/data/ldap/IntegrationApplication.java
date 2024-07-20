@@ -1,13 +1,15 @@
-package com.gmail.unmacaque.spring.micrometer.opentelemetry;
+package com.gmail.unmacaque.spring.data.ldap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
 
 public class IntegrationApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.from(Application::main).with(IntegrationApplicationConfiguration.class).run(args);
 	}
@@ -17,15 +19,15 @@ public class IntegrationApplication {
 
 		@SuppressWarnings("resource")
 		@Bean
-		@ServiceConnection(name = "otel/opentelemetry-collector-contrib")
-		public GenericContainer<?> otelCollectorContainer() {
-			return new GenericContainer<>("otel/opentelemetry-collector-contrib")
-					.withExposedPorts(4318)
-					.withCopyFileToContainer(
-							MountableFile.forClasspathResource("otel-collector-config.yaml"),
-							"/etc/otelcol-contrib/config.yaml"
-					)
-					.withLabel("org.springframework.boot.readiness-check.tcp.disable", "true");
+		@ServiceConnection(name = "osixia/openldap")
+		public GenericContainer<?> openldapContainer() {
+			return new GenericContainer<>(DockerImageName.parse("osixia/openldap"))
+					.withEnv("LDAP_DOMAIN", "springframework.org")
+					.withEnv("LDAP_TLS", "false")
+					.withExposedPorts(389)
+					.withCommand("--loglevel debug")
+					.withCopyFileToContainer(MountableFile.forClasspathResource("directory.ldif"),
+							"/container/service/slapd/assets/config/bootstrap/ldif/custom/directory.ldif");
 		}
 	}
 }
