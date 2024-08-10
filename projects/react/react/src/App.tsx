@@ -11,7 +11,7 @@ import NavigationBar from './components/NavigationBar'
 function App() {
   const { token, logIn, logOut, error, idTokenData, loginInProgress } =
     useContext<IAuthContext>(AuthContext)
-  const [_showDialog, setShowDialog] = useState(error !== null)
+  const [showDialog, setShowDialog] = useState(error !== null)
   const [logout, setLogout] = useState(false)
 
   function formatError(text: string | null) {
@@ -20,7 +20,7 @@ function App() {
     }
     try {
       return JSON.parse(text).error
-    } catch (e) {
+    } catch {
       return text
     }
   }
@@ -37,7 +37,7 @@ function App() {
       <Popup
         variant="danger"
         title="Login failed"
-        show={error !== null}
+        show={showDialog}
         onClose={() => setShowDialog(false)}
       >
         {formatError(error)}
