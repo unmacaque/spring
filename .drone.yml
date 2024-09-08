@@ -4,8 +4,27 @@ type: docker
 name: default
 
 steps:
-  - name: check
-    image: unmacaque/gradle:8-jdk21
+  - name: setup gradle
+    image: plugins/setup-gradle
     pull: never
+    settings:
+      hostname:
+        from_secret: nexus_hostname
+      username:
+        from_secret: nexus_username
+      password:
+        from_secret: nexus_password
+    volumes:
+      - name: config
+        path: /root
+  - name: check
+    image: gradle:8-jdk21
+    volumes:
+      - name: config
+        path: /root
     commands:
       - gradle check
+
+volumes:
+  - name: config
+    temp: {}
