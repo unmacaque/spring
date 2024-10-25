@@ -7,11 +7,11 @@ execFork = "0.2.2"
 gitProperties = "2.4.1"
 junit = "5.10.1"
 kotlin = "1.9.24"
-native = "0.9.28"
+native = "0.10.3"
 node = "7.0.1"
 openapi = "1.8.0"
 protobuf = "0.9.4"
-springBoot = "3.3.4"
+springBoot = "3.3.5"
 spock = '2.4-M1-groovy-3.0'
 
 [libraries]
