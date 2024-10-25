@@ -2,6 +2,11 @@ plugins {
     id 'com.github.node-gradle.node'
 }
 
+node {
+    download = true
+    version = "22.10.0"
+}
+
 tasks.register('npmRunBuild', NpmTask) {
     args = ['run', 'build']
 }
