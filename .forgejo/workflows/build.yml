@@ -9,4 +9,4 @@ jobs:
           distribution: "temurin"
           java-version: "21"
           cache: "gradle"
-      - run: ./gradlew check --build-cache --configuration-cache
+      - run: ./gradlew check
