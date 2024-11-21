@@ -33,7 +33,7 @@ class ApplicationWithWebEnvironmentTest {
 		@Bean
 		public RestTemplateBuilder restTemplateBuilder(SslBundles sslBundles) {
 			final var bundle = sslBundles.getBundle("test");
-			return new RestTemplateBuilder().setSslBundle(bundle);
+			return new RestTemplateBuilder().sslBundle(bundle);
 		}
 
 	}

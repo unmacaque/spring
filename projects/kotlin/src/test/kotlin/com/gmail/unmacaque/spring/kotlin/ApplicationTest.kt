@@ -66,7 +66,7 @@ class ApplicationTest(
     @WithMockUser
     fun testPostMessage() {
         mvc.post("/messages/") {
-            content = json.write(Message("Homer", "Moe", "Hello Moe!")).json
+            content = json.write(Message("Homer", "Moe", "Hello Moe!", 1)).json
             contentType = MediaType.APPLICATION_JSON
             with(SecurityMockMvcRequestPostProcessors.csrf())
         }
@@ -74,7 +74,7 @@ class ApplicationTest(
                 status { isOk() }
                 content {
                     contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
-                    jsonPath("$.id") { value(4) }
+                    jsonPath("$.id") { value(1) }
                     jsonPath("$.sender") { value("Homer") }
                     jsonPath("$.recipient") { value("Moe") }
                     jsonPath("$.content") { value("Hello Moe!") }
