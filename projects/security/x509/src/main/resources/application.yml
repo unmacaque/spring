@@ -16,3 +16,19 @@ spring:
             private-key: "classpath:ssl/server/server.key"
           truststore:
             certificate: "classpath:ssl/ca/trust.pem"
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    ssl:
+      enabled: true
+  server:
+    port: 8080
+    ssl:
+      enabled: false
