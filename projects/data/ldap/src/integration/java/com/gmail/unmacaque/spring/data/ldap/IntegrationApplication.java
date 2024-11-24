@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.data.ldap;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.devtools.restart.RestartScope;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ public class IntegrationApplication {
 
 		@SuppressWarnings("resource")
 		@Bean
+		@RestartScope
 		@ServiceConnection(name = "osixia/openldap")
 		public GenericContainer<?> openldapContainer() {
 			return new GenericContainer<>(DockerImageName.parse("osixia/openldap"))

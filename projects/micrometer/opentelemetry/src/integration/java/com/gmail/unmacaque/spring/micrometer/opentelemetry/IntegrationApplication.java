@@ -1,11 +1,12 @@
 package com.gmail.unmacaque.spring.micrometer.opentelemetry;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.devtools.restart.RestartScope;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.utility.MountableFile;
+import org.testcontainers.grafana.LgtmStackContainer;
+import org.testcontainers.utility.DockerImageName;
 
 public class IntegrationApplication {
 	public static void main(String[] args) {
@@ -15,17 +16,11 @@ public class IntegrationApplication {
 	@TestConfiguration(proxyBeanMethods = false)
 	static class IntegrationApplicationConfiguration {
 
-		@SuppressWarnings("resource")
 		@Bean
-		@ServiceConnection(name = "otel/opentelemetry-collector-contrib")
-		public GenericContainer<?> otelCollectorContainer() {
-			return new GenericContainer<>("otel/opentelemetry-collector-contrib")
-					.withExposedPorts(4318)
-					.withCopyFileToContainer(
-							MountableFile.forClasspathResource("otel-collector-config.yaml"),
-							"/etc/otelcol-contrib/config.yaml"
-					)
-					.withLabel("org.springframework.boot.readiness-check.tcp.disable", "true");
+		@RestartScope
+		@ServiceConnection
+		public LgtmStackContainer lgtmStackContainer() {
+			return new LgtmStackContainer(DockerImageName.parse("grafana/otel-lgtm"));
 		}
 	}
 }

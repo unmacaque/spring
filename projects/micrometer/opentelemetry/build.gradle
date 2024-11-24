@@ -9,10 +9,11 @@ dependencies {
     runtimeOnly 'io.micrometer:micrometer-tracing-bridge-otel'
     implementation 'io.opentelemetry:opentelemetry-exporter-logging'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.micrometer:micrometer-observation-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    integrationImplementation 'org.testcontainers:grafana'
 }
 
 description = 'Spring Boot Micrometer OpenTelemetry'
