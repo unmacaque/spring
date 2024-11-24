@@ -1,8 +1,11 @@
 spring:
   application:
     name: spring-boot-docker
-  main:
-    banner-mode: off
+
+logging:
+  structured:
+    format:
+      console: logstash
 
 management:
   endpoint:
