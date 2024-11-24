@@ -12,20 +12,20 @@ idea {
     }
 }
 
-tasks.register("buildReact", PnpmTask) {
+tasks.register('buildReact', PnpmTask) {
     dependsOn(tasks.pnpmInstall)
     args.set(['run', 'build'])
     inputs.dir(project.fileTree("src").exclude("**/*.test.*"))
-    inputs.dir("node_modules")
+    inputs.dir(fileTree('node_modules').exclude('.vite'))
     inputs.files('.eslint.config.js', 'package.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts')
     outputs.dir(project.layout.buildDirectory.dir('dist'))
 }
 
-tasks.register("testReact", PnpmTask) {
+tasks.register('testReact', PnpmTask) {
     dependsOn(tasks.buildReact)
     args.set(['run', 'test', '--run'])
     inputs.dir('src')
-    inputs.dir('node_modules')
+    inputs.dir(fileTree('node_modules').exclude('.vite'))
     inputs.files('.eslint.config.js', 'package.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts')
     outputs.upToDateWhen { true }
 }
