@@ -3,7 +3,6 @@ rootProject.name = 'spring'
 include(':projects:actuator')
 include(':projects:boot')
 include(':projects:cache')
-include(':projects:cors')
 include(':projects:data:ldap')
 include(':projects:data:r2dbc')
 include(':projects:data:rest')
