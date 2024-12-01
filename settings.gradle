@@ -1,6 +1,7 @@
 rootProject.name = 'spring'
 
 include(':projects:actuator')
+include(':projects:ai')
 include(':projects:boot')
 include(':projects:cache')
 include(':projects:data:ldap')

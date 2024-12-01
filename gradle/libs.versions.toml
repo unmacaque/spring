@@ -7,6 +7,7 @@ protobuf = "4.27.2"
 resilience4j = "2.2.0"
 rome = "2.1.0"
 spotbugs = "4.8.6"
+springAi = "1.0.0-M4"
 springModulith = "1.2.1"
 springdocOpenapi = "2.6.0"
 togglz = "4.4.0"
@@ -32,6 +33,8 @@ resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version
 rome = { module = "com.rometools:rome", version.ref = "rome" }
 
 spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
+
+spring-ai-bom = { module = "org.springframework.ai:spring-ai-bom", version.ref = "springAi" }
 
 spring-modulith-bom = { module = "org.springframework.modulith:spring-modulith-bom", version.ref = "springModulith" }
 

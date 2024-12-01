@@ -1,0 +1,17 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: tinyllama
+      init:
+        pull-model-strategy: always
+        timeout: 60s
+        max-retries: 1
+        embedding:
+          include: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
