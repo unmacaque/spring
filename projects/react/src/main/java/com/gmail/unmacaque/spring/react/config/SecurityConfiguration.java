@@ -94,13 +94,11 @@ public class SecurityConfiguration {
 	public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
 			throws Exception {
 		http
-				.securityMatcher("/login")
 				.authorizeHttpRequests((authorize) -> authorize
 						.anyRequest().authenticated()
 				)
 				.headers(headers ->
-						headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable
-						)
+						headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
 				)
 				.formLogin(Customizer.withDefaults());
 
