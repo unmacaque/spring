@@ -90,6 +90,21 @@ class RegisterControllerTest {
 	}
 
 	@Test
+	void testPostRegisterWithWeakPassword() throws Exception {
+		mockMvc.perform(post("/register")
+						.param("username", "foo")
+						.param("mailAddress", "foo@bar.org")
+						.param("password", "password")
+						.param("passwordConfirm", "password")
+						.with(csrf()))
+				.andExpectAll(
+						status().isOk(),
+						model().attributeHasErrors("registerUser"),
+						view().name("register")
+				);
+	}
+
+	@Test
 	void testPostRegisterWithInternalError() throws Exception {
 		doThrow(RuntimeException.class).when(userDetailsManager).createUser(any());
 
