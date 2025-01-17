@@ -5,19 +5,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
 
-	@SuppressWarnings("deprecation")
 	@Bean
 	public UserDetailsService userDetailsService() {
-		final UserDetails userDetails = User.withUsername("user")
-				.password("{noop}pass")
+		@SuppressWarnings("deprecation") final UserDetails userDetails = User
+				.withDefaultPasswordEncoder()
+				.username("user")
+				.password("pass")
 				.roles("USER")
-				.passwordEncoder(NoOpPasswordEncoder.getInstance()::encode)
 				.build();
 
 		return new InMemoryUserDetailsManager(userDetails);

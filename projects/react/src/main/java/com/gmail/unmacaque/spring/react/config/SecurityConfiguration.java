@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -29,13 +28,13 @@ import static org.springframework.security.oauth2.core.authorization.OAuth2Autho
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
 
-	@SuppressWarnings("deprecation")
 	@Bean
 	public UserDetailsService userDetailsService() {
-		final UserDetails userDetails = User.withUsername("react")
-				.password("{noop}pass")
+		@SuppressWarnings("deprecation") final UserDetails userDetails = User
+				.withDefaultPasswordEncoder()
+				.username("react")
+				.password("pass")
 				.roles("USER")
-				.passwordEncoder(NoOpPasswordEncoder.getInstance()::encode)
 				.build();
 
 		return new InMemoryUserDetailsManager(userDetails);

@@ -10,8 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -27,7 +26,7 @@ public class SecurityConfiguration {
 	private DataSource dataSource;
 
 	@Bean
-	@Order(1)
+	@Order(0)
 	public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.securityMatcher("/api/**")
@@ -41,21 +40,22 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
+	@Order(1)
 	public SecurityFilterChain userSecurityFilterChain(HttpSecurity http) throws Exception {
+		@SuppressWarnings("deprecation") final UserDetails userDetails = User
+				.withDefaultPasswordEncoder()
+				.username("user")
+				.password("pass")
+				.roles("USER")
+				.build();
+
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
 								.anyRequest().authenticated()
 				)
 				.formLogin(withDefaults())
-				.userDetailsService(new InMemoryUserDetailsManager(
-						User
-								.builder()
-								.username("user")
-								.password("$2b$12$2iwDl4LHHddmGqhufhjfCOaD6K7gxzsCsPCjyxqozrAdDc8XsgpDG")
-								.roles("USER")
-								.build()
-				))
+				.userDetailsService(new InMemoryUserDetailsManager(userDetails))
 				.build();
 	}
 
@@ -67,10 +67,5 @@ public class SecurityConfiguration {
 				.csrf(CsrfConfigurer::disable)
 				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
 				.build();
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
 	}
 }

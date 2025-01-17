@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -28,7 +29,8 @@ class IndexControllerTest {
 				.andExpectAll(
 						status().isFound(),
 						authenticated().withUsername("user").withRoles("USER"),
-						redirectedUrl("/")
+						redirectedUrl("/"),
+						request().sessionAttributeDoesNotExist(WebAttributes.AUTHENTICATION_EXCEPTION)
 				);
 	}
 
