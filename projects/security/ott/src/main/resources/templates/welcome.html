@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+    <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css"/>
+</head>
+<body>
+<h1>Login successful</h1>
+
+<p>Welcome, <span th:text="${username}"></span>!</p>
+
+<p><a href="/logout" th:href="@{/logout}">Logout</a></p>
+
+</body>
+</html>

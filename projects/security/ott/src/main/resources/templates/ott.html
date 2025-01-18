@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>One-Time Token</title>
+    <link rel="stylesheet" th:href="@{/css/spring.css}" href="../../css/spring.css"/>
+</head>
+<body>
+<h1>One-Time Token Sent</h1>
+<p>A one-time token has been sent to you.</p>
+<p>Please check your mail inbox. If you did not receive a mail with a token, try again and check whether the username
+    you have entered was correct.</p>
+<p><a th:href="@{/login/ott}">Click here to login with the one-time token</a>.</p>
+</body>
+</html>
