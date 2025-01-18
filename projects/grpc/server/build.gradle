@@ -6,18 +6,10 @@ plugins {
 
 dependencies {
     implementation libs.bundles.grpc
+    implementation project(':projects:grpc:common')
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 description = 'Spring gRPC Server'
-
-protobuf {
-    plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${libs.versions.grpc.get()}" }
-    }
-    generateProtoTasks {
-        all()*.plugins { grpc { option '@generated=omit' } }
-    }
-}

@@ -1,0 +1,17 @@
+plugins {
+    id 'unmacaque.java'
+    id 'unmacaque.protobuf'
+}
+
+dependencies {
+    implementation libs.bundles.grpc
+}
+
+protobuf {
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${libs.versions.grpc.get()}" }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc { option '@generated=omit' } }
+    }
+}
