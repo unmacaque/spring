@@ -2,7 +2,7 @@ spring:
   ai:
     ollama:
       chat:
-        model: tinyllama
+        model: llama3.2:3b
       init:
         pull-model-strategy: always
         timeout: 60s
