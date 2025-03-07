@@ -16,3 +16,7 @@ description = 'Spring Boot Docker'
 tasks.named("bootBuildImage") {
     imageName.set('docker.io/unmacaque/spring-boot')
 }
+
+gitProperties {
+    dotGitDirectory = project.rootProject.layout.projectDirectory.dir('.git')
+}
