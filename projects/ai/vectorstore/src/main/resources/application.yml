@@ -1,0 +1,21 @@
+spring:
+  ai:
+    ollama:
+      embedding:
+        model: nomic-embed-text:v1.5
+      init:
+        pull-model-strategy: always
+        timeout: 60s
+        max-retries: 1
+        chat:
+          include: false
+    vectorstore:
+      pgvector:
+        collection-name: spring-ai
+        initialize-schema: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
