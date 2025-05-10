@@ -1,0 +1,23 @@
+plugins {
+    id 'unmacaque.spring-boot'
+}
+
+dependencies {
+    implementation platform(libs.spring.ai.bom)
+
+    implementation 'org.springframework.ai:spring-ai-advisors-vector-store'
+    implementation 'org.springframework.ai:spring-ai-rag'
+    implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
+    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    integrationImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
+    integrationImplementation 'org.testcontainers:postgresql'
+    integrationImplementation 'org.testcontainers:ollama'
+}
+
+description = 'Spring AI Retrieval Augmented Generation'

@@ -1,0 +1,23 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: llama3.2:3b
+        options:
+          temperature: 0.0
+      embedding:
+        model: nomic-embed-text:v1.5
+      init:
+        pull-model-strategy: always
+        timeout: 60s
+        max-retries: 1
+    vectorstore:
+      pgvector:
+        collection-name: spring-ai
+        initialize-schema: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
