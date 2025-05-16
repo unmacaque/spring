@@ -5,11 +5,13 @@ plugins {
 
 dependencies {
     implementation project(':projects:grpc:common')
-    implementation libs.bundles.grpc
-    implementation libs.protobuf.java.util
+    implementation 'com.google.protobuf:protobuf-java-util'
+    implementation 'org.springframework.grpc:spring-grpc-client-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.grpc:spring-grpc-test'
 }
 
 description = 'Spring gRPC Client'

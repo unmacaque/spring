@@ -29,7 +29,7 @@ public class ForecastController {
 
 	private static String protobufToJson(MessageOrBuilder messageOrBuilder) {
 		try {
-			return JsonFormat.printer().print(messageOrBuilder);
+			return JsonFormat.printer().alwaysPrintFieldsWithNoPresence().print(messageOrBuilder);
 		} catch (InvalidProtocolBufferException e) {
 			throw Exceptions.propagate(e);
 		}

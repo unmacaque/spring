@@ -8,7 +8,7 @@ package com.gmail.unmacaque.spring.grpc.domain;
 
 message WeatherForecast {
     Location location = 1;
-    int32 temperature = 2;
+    double temperature = 2;
     Condition condition = 3;
     int32 windSpeed = 4;
     int32 humidity = 5;

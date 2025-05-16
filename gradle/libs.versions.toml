@@ -1,9 +1,7 @@
 [versions]
 aerogearOtpJava = "1.0.0"
-grpc = "1.69.0"
 initializr = "0.21.0"
 mockserver = "5.15.0"
-protobuf = "4.29.3"
 resilience4j = "2.3.0"
 spotbugs = "4.9.0"
 springAi = "1.0.0-M8"
@@ -16,16 +14,13 @@ zxing = "3.5.3"
 [libraries]
 aerogear-otp-java = { module = "org.jboss.aerogear:aerogear-otp-java", version.ref = "aerogearOtpJava" }
 
-grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpc" }
-grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
-grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
+grpc-stub = { module = "io.grpc:grpc-stub" }
 
 initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref = "initializr" }
 
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
-
-protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
-protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
 
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 

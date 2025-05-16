@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation libs.protobuf.java
+    implementation 'com.google.protobuf:protobuf-java'
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.get()}"
+        artifact = 'com.google.protobuf:protoc'
     }
 }

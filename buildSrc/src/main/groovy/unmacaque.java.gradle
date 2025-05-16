@@ -1,10 +1,18 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/release") }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.grpc:spring-grpc-dependencies:0.8.0'
+    }
 }
 
 java {

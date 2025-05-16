@@ -5,7 +5,7 @@ option java_multiple_files = true;
 package com.gmail.unmacaque.spring.grpc.domain;
 
 message Location {
-    int32 latitude = 1;
-    int32 longitude = 2;
+    double latitude = 1;
+    double longitude = 2;
     string name = 3;
 }

@@ -1,15 +1,16 @@
 plugins {
     id 'unmacaque.spring-boot'
-    id 'unmacaque.protobuf'
     id 'idea'
 }
 
 dependencies {
-    implementation libs.bundles.grpc
     implementation project(':projects:grpc:common')
+    implementation 'io.grpc:grpc-services'
+    implementation 'org.springframework.grpc:spring-grpc-server-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.grpc:spring-grpc-test'
 }
 
 description = 'Spring gRPC Server'

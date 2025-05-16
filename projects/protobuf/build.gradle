@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    implementation libs.protobuf.java.util
+    implementation 'com.google.protobuf:protobuf-java-util'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
