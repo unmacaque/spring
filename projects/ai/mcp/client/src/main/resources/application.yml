@@ -1,0 +1,24 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: llama3.2:3b
+      init:
+        pull-model-strategy: always
+        timeout: 60s
+        max-retries: 1
+        embedding:
+          include: false
+    mcp:
+      client:
+        sse:
+          connections:
+            server:
+              url:
+                http://localhost:8180
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

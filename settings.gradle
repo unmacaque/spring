@@ -2,6 +2,8 @@ rootProject.name = 'spring'
 
 include(':projects:actuator')
 include(':projects:ai:chat')
+include(':projects:ai:mcp:client')
+include(':projects:ai:mcp:server')
 include(':projects:ai:rag')
 include(':projects:ai:vectorstore')
 include(':projects:boot')
