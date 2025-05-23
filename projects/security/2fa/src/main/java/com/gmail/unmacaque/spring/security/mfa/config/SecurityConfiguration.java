@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
@@ -36,7 +36,7 @@ public class SecurityConfiguration {
 				)
 				.logout(logout ->
 						logout
-								.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+								.logoutRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher("/logout"))
 								.logoutSuccessUrl("/?logout")
 				)
 				.build();

@@ -17,11 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
@@ -48,7 +47,7 @@ public class SecurityConfiguration {
 				)
 				.logout(logout ->
 						logout
-								.logoutRequestMatcher(antMatcher("/logout"))
+								.logoutRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher("/logout"))
 								.logoutSuccessUrl("/?logout")
 				)
 				.userDetailsService(new JdbcUserDetailsManager(dataSource))
