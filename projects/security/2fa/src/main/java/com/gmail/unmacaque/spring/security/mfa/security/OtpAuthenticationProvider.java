@@ -17,9 +17,9 @@ public class OtpAuthenticationProvider extends DaoAuthenticationProvider {
 	private final OtpSecretRegistry otpSecretRegistry;
 
 	public OtpAuthenticationProvider(UserDetailsService userDetailsService, OtpSecretRegistry otpSecretRegistry) {
+		super(userDetailsService);
 		this.userDetailsService = userDetailsService;
 		this.otpSecretRegistry = otpSecretRegistry;
-		setUserDetailsService(userDetailsService);
 	}
 
 	@Override
