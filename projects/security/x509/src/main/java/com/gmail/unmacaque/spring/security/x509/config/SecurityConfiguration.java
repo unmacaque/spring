@@ -14,7 +14,10 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(1)
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	public SecurityFilterChain securityFilterChain(
+			HttpSecurity http,
+			UserDetailsService userDetailsService
+	) throws Exception {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
@@ -23,7 +26,7 @@ public class SecurityConfiguration {
 				.x509(x509 ->
 						x509
 								.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
-								.userDetailsService(userDetailsService())
+								.userDetailsService(userDetailsService)
 				)
 				.build();
 	}
