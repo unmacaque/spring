@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 import org.springframework.transaction.annotation.Transactional
 
-@SpringBootTest
+@SpringBootTest(properties = ["spring.h2.console.enabled=true"])
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @Transactional

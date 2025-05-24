@@ -23,6 +23,7 @@ class RouteConfiguration {
     @Bean
     fun routerFunction(helloHandler: HelloHandler, messageHandler: MessageHandler) =
         router {
+            GET("/", helloHandler::sayHello)
             "/hello".nest {
                 GET("/", helloHandler::sayHello)
             }
