@@ -1,23 +1,22 @@
 package com.gmail.unmacaque.spring.react.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.security.oauth2.server.servlet.OAuth2AuthorizationServerAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
-import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
-import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -26,6 +25,7 @@ import org.springframework.web.filter.CorsFilter;
 import static org.springframework.security.oauth2.core.authorization.OAuth2AuthorizationManagers.hasScope;
 
 @Configuration(proxyBeanMethods = false)
+@Import(OAuth2AuthorizationServerAutoConfiguration.class)
 public class SecurityConfiguration {
 
 	@Bean
@@ -60,51 +60,6 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	@Order(1)
-	public SecurityFilterChain authorizationServerSecurityFilterChain(
-			HttpSecurity http,
-			@Qualifier("corsConfigurationSource") CorsConfigurationSource source
-	) throws Exception {
-		final var authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer.authorizationServer();
-
-		http
-				.securityMatcher(authorizationServerConfigurer.getEndpointsMatcher())
-				.with(authorizationServerConfigurer, authorizationServer ->
-						authorizationServer
-								.oidc(Customizer.withDefaults())
-				)
-				.exceptionHandling((exceptions) -> exceptions
-						.defaultAuthenticationEntryPointFor(
-								new LoginUrlAuthenticationEntryPoint("/login"),
-								new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
-						)
-				)
-				.headers(headers ->
-						headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable
-						)
-				)
-				.oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
-
-		return http.cors(Customizer.withDefaults()).build();
-	}
-
-	@Bean
-	@Order(2)
-	public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
-			throws Exception {
-		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.anyRequest().authenticated()
-				)
-				.headers(headers ->
-						headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
-				)
-				.formLogin(Customizer.withDefaults());
-
-		return http.cors(Customizer.withDefaults()).build();
-	}
-
-	@Bean
 	@Order(0)
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
@@ -117,5 +72,12 @@ public class SecurityConfiguration {
 				)
 				.cors(Customizer.withDefaults())
 				.build();
+	}
+
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		final var firewall = new StrictHttpFirewall();
+		firewall.setAllowSemicolon(true);
+		return web -> web.httpFirewall(firewall);
 	}
 }
