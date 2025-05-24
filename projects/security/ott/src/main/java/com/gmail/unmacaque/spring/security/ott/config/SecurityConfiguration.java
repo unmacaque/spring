@@ -14,7 +14,10 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	public SecurityFilterChain securityFilterChain(
+			HttpSecurity http,
+			UserDetailsService userDetailsService
+	) throws Exception {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
@@ -25,6 +28,7 @@ public class SecurityConfiguration {
 				)
 				.formLogin(Customizer.withDefaults())
 				.oneTimeTokenLogin(Customizer.withDefaults())
+				.userDetailsService(userDetailsService)
 				.build();
 	}
 
