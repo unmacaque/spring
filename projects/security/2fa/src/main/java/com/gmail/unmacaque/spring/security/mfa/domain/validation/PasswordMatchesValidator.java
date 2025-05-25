@@ -8,7 +8,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
 
 	@Override
 	public boolean isValid(RegisterUser value, ConstraintValidatorContext context) {
-		return value.getPassword().equals(value.getPasswordConfirm());
+		return value.password().equals(value.passwordConfirm());
 	}
 
 }

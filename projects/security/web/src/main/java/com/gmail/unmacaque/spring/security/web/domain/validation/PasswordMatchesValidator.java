@@ -15,7 +15,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
 
 	@Override
 	public boolean isValid(RegisterUser value, ConstraintValidatorContext context) {
-		final boolean valid = value.getPassword().equals(value.getPasswordConfirm());
+		final boolean valid = value.password().equals(value.passwordConfirm());
 		if (valid) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(annotation.message()).addConstraintViolation();

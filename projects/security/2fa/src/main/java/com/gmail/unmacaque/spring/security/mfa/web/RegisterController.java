@@ -31,13 +31,9 @@ public class RegisterController {
 		this.otpSecretRegistry = otpSecretRegistry;
 	}
 
-	@ModelAttribute
-	public RegisterUser registerUser() {
-		return new RegisterUser();
-	}
-
 	@GetMapping("/register")
-	public String register() {
+	public String register(ModelMap modelMap) {
+		modelMap.addAttribute("registerUser", new RegisterUser());
 		return "register";
 	}
 
@@ -46,8 +42,7 @@ public class RegisterController {
 			@Validated @ModelAttribute("registerUser") RegisterUser registerUser,
 			BindingResult result,
 			ModelMap modelMap) {
-		modelMap.addAttribute("registerUser", registerUser);
-		if (userDetailsManager.userExists(registerUser.getUsername())) {
+		if (userDetailsManager.userExists(registerUser.username())) {
 			result.reject("register.error.usernameexists");
 		}
 		if (result.hasErrors()) {
@@ -62,18 +57,18 @@ public class RegisterController {
 			result.reject("register.error.general", e.getMessage());
 			return "register";
 		}
-		modelMap.addAttribute("userCreated", registerUser.getUsername());
+		modelMap.addAttribute("userCreated", registerUser.username());
 		return "index";
 	}
 
 	private String createNewOtpUser(RegisterUser registerUser) {
 		final String secret = Base32.random();
 		final var otpUser = User
-				.withUsername(registerUser.getUsername())
-				.password("{noop}" + registerUser.getPassword())
+				.withUsername(registerUser.username())
+				.password("{noop}" + registerUser.password())
 				.authorities(AuthorityUtils.createAuthorityList("ROLE_USER"))
 				.build();
-		otpSecretRegistry.addUser(registerUser.getUsername(), secret);
+		otpSecretRegistry.addUser(registerUser.username(), secret);
 		userDetailsManager.createUser(otpUser);
 		return secret;
 	}

@@ -29,24 +29,21 @@ public class RegisterController {
 		this.checker = checker;
 	}
 
-	@ModelAttribute
-	public RegisterUser registerUser() {
-		return new RegisterUser();
-	}
-
 	@GetMapping("/register")
-	public String register() {
+	public String register(ModelMap modelMap) {
+		modelMap.addAttribute("registerUser", new RegisterUser());
 		return "register";
 	}
 
 	@PostMapping("/register")
-	public String registerPost(@Validated @ModelAttribute("registerUser") RegisterUser registerUser, BindingResult result,
-							   ModelMap modelMap) {
-		modelMap.addAttribute("registerUser", registerUser);
-		if (userDetailsManager.userExists(registerUser.getUsername())) {
+	public String registerPost(
+			@Validated @ModelAttribute RegisterUser registerUser,
+			BindingResult result,
+			ModelMap modelMap) {
+		if (userDetailsManager.userExists(registerUser.username())) {
 			result.reject("register.error.usernameexists");
 		}
-		if (checker.check(registerUser.getPassword()).isCompromised()) {
+		if (checker.check(registerUser.password()).isCompromised()) {
 			result.reject("register.error.passwordcompromised");
 		}
 		if (result.hasErrors()) {
@@ -55,15 +52,15 @@ public class RegisterController {
 		try {
 			userDetailsManager.createUser(User
 					.builder()
-					.username(registerUser.getUsername())
-					.password(encoder.encode(registerUser.getPassword()))
+					.username(registerUser.username())
+					.password(encoder.encode(registerUser.password()))
 					.roles("USER").build()
 			);
 		} catch (RuntimeException e) {
 			result.reject("register.error.general", e.getMessage());
 			return "register";
 		}
-		modelMap.addAttribute("userCreated", registerUser.getUsername());
+		modelMap.addAttribute("userCreated", registerUser.username());
 		return "index";
 	}
 }
