@@ -16,6 +16,7 @@ public class SecurityConfiguration {
 						requests
 								.anyRequest().permitAll()
 				)
+				.oauth2Login(Customizer.withDefaults())
 				.oauth2Client(Customizer.withDefaults())
 				.build();
 	}
