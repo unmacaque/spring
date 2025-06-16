@@ -1,6 +1,6 @@
 [versions]
 aerogearOtpJava = "1.0.0"
-initializr = "0.21.0"
+initializr = "0.22.0"
 mockserver = "5.15.0"
 resilience4j = "2.3.0"
 spotbugs = "4.9.0"
