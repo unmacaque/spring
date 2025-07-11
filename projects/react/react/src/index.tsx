@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { AuthProvider, TAuthConfig } from 'react-oauth2-code-pkce'
+import { AuthProvider, type TAuthConfig } from 'react-oauth2-code-pkce'
 import App from './App.tsx'
 
 const authConfig: TAuthConfig = {
@@ -12,7 +12,8 @@ const authConfig: TAuthConfig = {
   autoLogin: false,
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+root.render(
   <React.StrictMode>
     <AuthProvider authConfig={authConfig}>
       <App />

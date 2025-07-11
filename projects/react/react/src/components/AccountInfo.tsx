@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row'
-import { AuthContext, IAuthContext } from 'react-oauth2-code-pkce'
+import { AuthContext, type IAuthContext } from 'react-oauth2-code-pkce'
 
 export default function AccountInfo() {
   const { token } = useContext<IAuthContext>(AuthContext)
@@ -34,15 +34,12 @@ export default function AccountInfo() {
   }, [token])
 
   function renderItems() {
-    return accountInfo?.transactions.map((item, key) => (
-      <ListGroup.Item key={key}>
+    return accountInfo?.transactions.map((item) => (
+      <ListGroup.Item key={item.receiverFullName}>
         <Container>
           <Row>
             <Col className="p-2">{item.receiverFullName}</Col>
-            <Col
-              className="p-2"
-              md="auto"
-            >{`${formatCurrency(item.amount.amount)} ${item.amount.currency}`}</Col>
+            <Col className="p-2" md="auto">{`${formatCurrency(item.amount.amount)} ${item.amount.currency}`}</Col>
           </Row>
         </Container>
       </ListGroup.Item>
@@ -53,10 +50,7 @@ export default function AccountInfo() {
     return null
   }
   return (
-    <div
-      className="modal show"
-      style={{ display: 'block', position: 'initial' }}
-    >
+    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
       <h1>Hello {accountInfo.fullName}</h1>
       <Modal.Dialog>
         <Modal.Header style={{ fontSize: 'x-large' }}>

@@ -7,10 +7,7 @@ interface LoginDialogProps {
 
 export default function LoginDialog({ onLoginClick }: LoginDialogProps) {
   return (
-    <div
-      className="modal show"
-      style={{ display: 'block', position: 'initial' }}
-    >
+    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title>Login required</Modal.Title>
@@ -18,13 +15,11 @@ export default function LoginDialog({ onLoginClick }: LoginDialogProps) {
 
         <Modal.Body>
           <p>
-            You are currently not logged in. Please click the button &quot;Log
-            In&quot; to initiate the login process.
+            You are currently not logged in. Please click the button &quot;Log In&quot; to initiate the login process.
           </p>
           <p>
-            You will be redirected to your trusted login provider. Follow the
-            steps of the login provider to return to this application in an
-            authenticated state.
+            You will be redirected to your trusted login provider. Follow the steps of the login provider to return to
+            this application in an authenticated state.
           </p>
         </Modal.Body>
 
