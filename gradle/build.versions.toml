@@ -1,16 +1,16 @@
 [versions]
 asciidoctor = "4.0.4"
 bouncycastlePkix = "1.72"
-cyclonedxBom = "2.0.0"
+cyclonedxBom = "2.3.1"
 dependencyManagement = "1.1.7"
 execFork = "0.2.2"
-gitProperties = "2.5.0"
+gitProperties = "2.5.2"
 junit = "5.11.4"
 kotlin = "1.9.25"
-native = "0.10.4"
+native = "0.10.6"
 node = "7.1.0"
 openapi = "1.9.0"
-protobuf = "0.9.4"
+protobuf = "0.9.5"
 springBoot = "3.5.3"
 spock = '2.4-M5-groovy-3.0'
 
