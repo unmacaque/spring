@@ -1,5 +1,5 @@
 {
-    "$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
+    "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
     "formatter": {
         "indentStyle": "space",
         "lineWidth": 120
@@ -9,6 +9,14 @@
             "quoteStyle": "single",
             "semicolons": "asNeeded",
             "trailingCommas": "es5"
+        }
+    },
+    "assist": {
+        "enabled": true,
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
         }
     }
 }
