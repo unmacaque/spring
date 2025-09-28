@@ -12,9 +12,15 @@ public class WebFluxService {
 
 	private static final Logger log = LoggerFactory.getLogger(WebFluxService.class);
 
+	private final String baseUrl;
+
+	public WebFluxService(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
+
 	public Mono<String> doCall() {
 		return WebClient
-				.create("http://localhost:8888")
+				.create(baseUrl)
 				.get()
 				.retrieve()
 				.onStatus(HttpStatusCode::is4xxClientError, response -> Mono.error(new ClientErrorException(response)))
