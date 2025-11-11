@@ -1,42 +1,31 @@
 package com.gmail.unmacaque.spring.serviceproxy.webclient;
 
-import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import com.gmail.unmacaque.spring.serviceproxy.webclient.domain.Reservation;
 import com.gmail.unmacaque.spring.serviceproxy.webclient.domain.ReservationService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.wiremock.spring.EnableWireMock;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 
 @SpringBootTest
+@EnableWireMock
+@ActiveProfiles("test")
 class ApplicationTest {
-
-	@RegisterExtension
-	static WireMockExtension wireMock = WireMockExtension.newInstance()
-			.options(wireMockConfig().dynamicPort().dynamicHttpsPort())
-			.build();
-
-	@DynamicPropertySource
-	static void dynamicPropertiesSource(DynamicPropertyRegistry registry) {
-		registry.add("proxy.base-url", wireMock.getRuntimeInfo()::getHttpBaseUrl);
-	}
 
 	@Autowired
 	private ReservationService service;
 
 	@Test
 	void testGetReservation() {
-		wireMock.stubFor(get(urlEqualTo("/reservations/1"))
+		stubFor(get(urlEqualTo("/reservations/1"))
 				.willReturn(
 						ok()
 								.withBodyFile("reservation.json")
@@ -47,66 +36,66 @@ class ApplicationTest {
 				.expectNextMatches(registration -> registration.id() == 1L && registration.name().equals("John Doe"))
 				.verifyComplete();
 
-		wireMock.verify(getRequestedFor(urlEqualTo("/reservations/1")));
+		verify(getRequestedFor(urlEqualTo("/reservations/1")));
 	}
 
 	@Test
 	void testPostReservation() {
-		wireMock.stubFor(post(urlEqualTo("/reservations"))
+		stubFor(post(urlEqualTo("/reservations"))
 				.withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_JSON_VALUE))
 				.willReturn(noContent()));
 
 		StepVerifier.create(service.postReservation(Mono.just(new Reservation(1L, "John Doe"))))
 				.verifyComplete();
 
-		wireMock.verify(postRequestedFor(urlEqualTo("/reservations")));
+		verify(postRequestedFor(urlEqualTo("/reservations")));
 	}
 
 	@Test
 	void testPutReservation() {
-		wireMock.stubFor(put(urlEqualTo("/reservations/1"))
+		stubFor(put(urlEqualTo("/reservations/1"))
 				.withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_JSON_VALUE))
 				.willReturn(noContent()));
 
 		StepVerifier.create(service.putReservation(1L, Mono.just(new Reservation(1L, "Jane Doe"))))
 				.verifyComplete();
 
-		wireMock.verify(putRequestedFor(urlEqualTo("/reservations/1")));
+		verify(putRequestedFor(urlEqualTo("/reservations/1")));
 	}
 
 	@Test
 	void testDeleteReservation() {
-		wireMock.stubFor(delete(urlEqualTo("/reservations/1"))
+		stubFor(delete(urlEqualTo("/reservations/1"))
 				.willReturn(noContent()));
 
 		StepVerifier.create(service.deleteReservation(1L))
 				.verifyComplete();
 
-		wireMock.verify(deleteRequestedFor(urlEqualTo("/reservations/1")));
+		verify(deleteRequestedFor(urlEqualTo("/reservations/1")));
 	}
 
 	@Test
 	void testClientError() {
-		wireMock.stubFor(get(urlEqualTo("/reservations/1"))
+		stubFor(get(urlEqualTo("/reservations/1"))
 				.willReturn(badRequest()));
 
 		StepVerifier.create(service.getReservation(1L))
 				.expectError(WebClientResponseException.BadRequest.class)
 				.verify();
 
-		wireMock.verify(getRequestedFor(urlEqualTo("/reservations/1")));
+		verify(getRequestedFor(urlEqualTo("/reservations/1")));
 	}
 
 	@Test
 	void testServerError() {
-		wireMock.stubFor(get(urlEqualTo("/reservations/1"))
+		stubFor(get(urlEqualTo("/reservations/1"))
 				.willReturn(serverError()));
 
 		StepVerifier.create(service.getReservation(1L))
 				.expectError(WebClientResponseException.InternalServerError.class)
 				.verify();
 
-		wireMock.verify(getRequestedFor(urlEqualTo("/reservations/1")));
+		verify(getRequestedFor(urlEqualTo("/reservations/1")));
 	}
 
 }
