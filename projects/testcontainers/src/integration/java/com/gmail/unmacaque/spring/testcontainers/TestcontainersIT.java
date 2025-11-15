@@ -43,14 +43,14 @@ class TestcontainersIT {
 		mockServerClient = new MockServerClient(container.getHost(), container.getFirstMappedPort());
 	}
 
-	@AfterEach
-	void afterEach() {
-		mockServerClient.reset();
-	}
-
 	@AfterAll
 	static void afterAll() {
 		mockServerClient.close();
+	}
+
+	@AfterEach
+	void afterEach() {
+		mockServerClient.reset();
 	}
 
 	@Test

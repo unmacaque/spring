@@ -39,6 +39,10 @@ class ApplicationTest {
 	@MockitoBean
 	private VectorStore vectorStore;
 
+	private static ChatResponse buildChatResponse(String content) {
+		return ChatResponse.builder().generations(List.of(new Generation(new AssistantMessage(content)))).build();
+	}
+
 	@Test
 	void testRetrieveAndGenerate() throws Exception {
 		when(chatModel.call(any(Prompt.class))).thenReturn(buildChatResponse("It works!"));
@@ -55,9 +59,5 @@ class ApplicationTest {
 		final var captor = ArgumentCaptor.forClass(SearchRequest.class);
 		verify(vectorStore, times(1)).similaritySearch(captor.capture());
 		assertThat(captor.getValue().getQuery()).isEqualTo("Test");
-	}
-
-	private static ChatResponse buildChatResponse(String content) {
-		return ChatResponse.builder().generations(List.of(new Generation(new AssistantMessage(content)))).build();
 	}
 }

@@ -39,10 +39,10 @@ class SslBuildFunctionalTest extends Specification {
 
         when:
         def result = GradleRunner.create()
-            .withProjectDir(testProjectDir)
-            .withArguments('generateSslCertificates')
-            .withPluginClasspath()
-            .build()
+                .withProjectDir(testProjectDir)
+                .withArguments('generateSslCertificates')
+                .withPluginClasspath()
+                .build()
 
         then:
         notThrown(UnexpectedBuildFailure)
@@ -71,10 +71,10 @@ class SslBuildFunctionalTest extends Specification {
 
         when:
         def result = GradleRunner.create()
-            .withProjectDir(testProjectDir)
-            .withArguments('check')
-            .withPluginClasspath()
-            .build()
+                .withProjectDir(testProjectDir)
+                .withArguments('check')
+                .withPluginClasspath()
+                .build()
 
         then:
         notThrown(UnexpectedBuildFailure)

@@ -5,6 +5,10 @@ import org.gradle.api.provider.Property;
 
 public abstract class CertificateDescription {
 
+	public CertificateDescription() {
+		getDays().convention(365);
+	}
+
 	public abstract RegularFileProperty getCert();
 
 	public abstract RegularFileProperty getKey();
@@ -12,8 +16,4 @@ public abstract class CertificateDescription {
 	public abstract Property<String> getSubject();
 
 	public abstract Property<Integer> getDays();
-
-	public CertificateDescription() {
-		getDays().convention(365);
-	}
 }

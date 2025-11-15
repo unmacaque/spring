@@ -20,6 +20,11 @@ public class SslPlugin implements Plugin<Project> {
 
 	public static final String TASK_NAME = "generateSslCertificates";
 
+	@NotNull
+	private static Transformer<@Nullable RegularFile, Directory> transformToOutputFile(RegularFileProperty property) {
+		return directory -> directory.dir("ca").file(property.get().getAsFile().getName());
+	}
+
 	@Override
 	public void apply(Project project) {
 		final var extension = project.getExtensions().create(EXTENSION_NAME, SslPluginExtension.class);
@@ -69,10 +74,5 @@ public class SslPlugin implements Plugin<Project> {
 		if (processResources != null) {
 			processResources.dependsOn(TASK_NAME);
 		}
-	}
-
-	@NotNull
-	private static Transformer<@Nullable RegularFile, Directory> transformToOutputFile(RegularFileProperty property) {
-		return directory -> directory.dir("ca").file(property.get().getAsFile().getName());
 	}
 }

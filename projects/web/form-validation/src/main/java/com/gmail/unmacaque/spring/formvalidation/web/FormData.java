@@ -26,28 +26,28 @@ public class FormData {
 		return name;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getMail() {
+		return mail;
 	}
 
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+	public int getAge() {
+		return age;
+	}
+
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getComment() {
+		return comment;
 	}
 
 	public void setComment(String comment) {

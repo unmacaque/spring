@@ -26,6 +26,14 @@ class ApplicationTest {
 
 	private WebTestClient webTestClient;
 
+	private static Message createMessage(String title, String author, String content) {
+		final var message = new Message();
+		message.setTitle(title);
+		message.setAuthor(author);
+		message.setContent(content);
+		return message;
+	}
+
 	@BeforeEach
 	void beforeEach(RestDocumentationContextProvider restDocumentation) {
 		webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
@@ -57,13 +65,5 @@ class ApplicationTest {
 				.expectStatus().isOk()
 				.expectBody()
 				.consumeWith(document("{method-name}"));
-	}
-
-	private static Message createMessage(String title, String author, String content) {
-		final var message = new Message();
-		message.setTitle(title);
-		message.setAuthor(author);
-		message.setContent(content);
-		return message;
 	}
 }

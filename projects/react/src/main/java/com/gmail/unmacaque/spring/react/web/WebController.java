@@ -18,6 +18,10 @@ public class WebController {
 
 	public static final Random random = new Random();
 
+	private static BigDecimal createRandomAmount(double lower, double bound) {
+		return BigDecimal.valueOf(random.nextDouble(lower, bound)).setScale(2, RoundingMode.HALF_EVEN);
+	}
+
 	@GetMapping("/")
 	public AccountInfo accountInfo() {
 		final var currency = Currency.getInstance(Locale.GERMANY);
@@ -27,9 +31,5 @@ public class WebController {
 				.map(m -> new AccountInfo.Transaction(m, "Jane Doe")).toList();
 
 		return new AccountInfo("John Doe", amount, transfers);
-	}
-
-	private static BigDecimal createRandomAmount(double lower, double bound) {
-		return BigDecimal.valueOf(random.nextDouble(lower, bound)).setScale(2, RoundingMode.HALF_EVEN);
 	}
 }

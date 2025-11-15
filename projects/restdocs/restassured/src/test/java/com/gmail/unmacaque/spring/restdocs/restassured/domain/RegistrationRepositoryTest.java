@@ -45,6 +45,12 @@ class RegistrationRepositoryTest {
 
 	private RequestSpecification requestSpecification;
 
+	static Registration createRegistration() {
+		return Registration.create("John", "Doe",
+				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
+		);
+	}
+
 	@BeforeEach
 	void beforeEach(RestDocumentationContextProvider restDocumentation) {
 		JacksonTester.initFields(this, objectMapperFactory);
@@ -179,11 +185,5 @@ class RegistrationRepositoryTest {
 		.then()
 				.statusCode(is(equalTo(200)));
 		// @formatter:on
-	}
-
-	static Registration createRegistration() {
-		return Registration.create("John", "Doe",
-				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
-		);
 	}
 }

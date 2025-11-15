@@ -41,6 +41,12 @@ class RegistrationRepositoryTest {
 	@Autowired
 	private MockMvc mvc;
 
+	static Registration createRegistration() {
+		return Registration.create("John", "Doe",
+				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
+		);
+	}
+
 	@BeforeEach
 	void before() {
 		JacksonTester.initFields(this, objectMapperFactory);
@@ -127,11 +133,5 @@ class RegistrationRepositoryTest {
 								pathParameters(parameterWithName("id").description("Unique id of the registration"))
 						)
 				);
-	}
-
-	static Registration createRegistration() {
-		return Registration.create("John", "Doe",
-				LocalDateTime.of(2018, 3, 15, 16, 0).toInstant(ZoneOffset.UTC)
-		);
 	}
 }

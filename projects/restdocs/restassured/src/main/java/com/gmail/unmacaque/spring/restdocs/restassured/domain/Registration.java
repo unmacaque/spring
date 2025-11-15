@@ -26,6 +26,14 @@ public class Registration implements Serializable {
 	@NotNull
 	private Instant date;
 
+	public static Registration create(String firstName, String lastName, Instant date) {
+		final var registration = new Registration();
+		registration.firstName = firstName;
+		registration.lastName = lastName;
+		registration.date = date;
+		return registration;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -56,13 +64,5 @@ public class Registration implements Serializable {
 
 	public void setDate(Instant date) {
 		this.date = date;
-	}
-
-	public static Registration create(String firstName, String lastName, Instant date) {
-		final var registration = new Registration();
-		registration.firstName = firstName;
-		registration.lastName = lastName;
-		registration.date = date;
-		return registration;
 	}
 }

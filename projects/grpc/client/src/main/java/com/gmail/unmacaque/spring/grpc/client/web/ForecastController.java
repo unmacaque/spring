@@ -20,18 +20,18 @@ public class ForecastController {
 		this.forecastService = forecastService;
 	}
 
-	@GetMapping("/{name}")
-	public Mono<String> getForecast(@PathVariable String name) {
-		return Mono
-				.fromCallable(() -> forecastService.forecast(Location.newBuilder().setName(name).build()))
-				.map(ForecastController::protobufToJson);
-	}
-
 	private static String protobufToJson(MessageOrBuilder messageOrBuilder) {
 		try {
 			return JsonFormat.printer().alwaysPrintFieldsWithNoPresence().print(messageOrBuilder);
 		} catch (InvalidProtocolBufferException e) {
 			throw Exceptions.propagate(e);
 		}
+	}
+
+	@GetMapping("/{name}")
+	public Mono<String> getForecast(@PathVariable String name) {
+		return Mono
+				.fromCallable(() -> forecastService.forecast(Location.newBuilder().setName(name).build()))
+				.map(ForecastController::protobufToJson);
 	}
 }

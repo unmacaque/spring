@@ -21,12 +21,11 @@ import java.time.Instant;
 @SpringBootTest
 class ApplicationTest {
 
+	private static final Location LOCATION = new Location("Copenhagen", 55.68, 12.56);
+	private static final Forecast FORECAST = new Forecast(LOCATION, Instant.now(), new Forecast.Temperature(8.5, Forecast.TemperatureUnit.CELSIUS));
+
 	@Autowired
 	private ForecastService service;
-
-	private static final Location LOCATION = new Location("Copenhagen", 55.68, 12.56);
-
-	private static final Forecast FORECAST = new Forecast(LOCATION, Instant.now(), new Forecast.Temperature(8.5, Forecast.TemperatureUnit.CELSIUS));
 
 	@Test
 	void getCurrentForecast() {

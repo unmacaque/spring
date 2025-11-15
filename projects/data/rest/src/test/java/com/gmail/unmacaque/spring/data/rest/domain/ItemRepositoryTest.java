@@ -30,6 +30,15 @@ class ItemRepositoryTest {
 
 	private JacksonTester<Item> json;
 
+	static Item createItem() {
+		final var item = new Item();
+		item.setTitle("foo");
+		item.setDescription("A description for foo");
+		item.setPrice(BigDecimal.valueOf(1.99));
+		item.setStock(1);
+		return item;
+	}
+
 	@BeforeEach
 	void before() {
 		JacksonTester.initFields(this, objectMapperFactory);
@@ -71,14 +80,5 @@ class ItemRepositoryTest {
 	void testDeleteItem() throws Exception {
 		mvc.perform(delete("/items/1"))
 				.andExpect(status().isNoContent());
-	}
-
-	static Item createItem() {
-		final var item = new Item();
-		item.setTitle("foo");
-		item.setDescription("A description for foo");
-		item.setPrice(BigDecimal.valueOf(1.99));
-		item.setStock(1);
-		return item;
 	}
 }

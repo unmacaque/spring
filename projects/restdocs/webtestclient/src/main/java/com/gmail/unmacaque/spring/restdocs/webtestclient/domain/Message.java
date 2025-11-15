@@ -27,44 +27,44 @@ public class Message {
 		return content;
 	}
 
-	public Instant getCreatedDate() {
-		return createdDate;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Instant getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Instant getCreatedDate() {
+		return createdDate;
 	}
 
 	public void setCreatedDate(Instant createdDate) {
 		this.createdDate = createdDate;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Instant getLastModifiedDate() {
+		return lastModifiedDate;
 	}
 
 	public void setLastModifiedDate(Instant lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
+	public String getAuthor() {
+		return author;
+	}
+
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public void setTitle(String title) {

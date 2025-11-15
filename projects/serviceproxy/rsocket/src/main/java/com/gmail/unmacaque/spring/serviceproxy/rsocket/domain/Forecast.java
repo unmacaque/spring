@@ -10,15 +10,15 @@ public record Forecast(Location location, Instant instant, Temperature temperatu
 		Objects.requireNonNull(temperature);
 	}
 
-	public record Temperature(double value, TemperatureUnit unit) {
-		public Temperature {
-			Objects.requireNonNull(unit);
-		}
-	}
-
 	public enum TemperatureUnit {
 		CELSIUS,
 		FAHRENHEIT,
 		KELVIN
+	}
+
+	public record Temperature(double value, TemperatureUnit unit) {
+		public Temperature {
+			Objects.requireNonNull(unit);
+		}
 	}
 }

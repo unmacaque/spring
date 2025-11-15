@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
+	private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 	private final ApplicationEventPublisher eventPublisher;
 
 	public OrderService(ApplicationEventPublisher eventPublisher) {this.eventPublisher = eventPublisher;}
-
-	private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
 	public void createOrder(Order order) {
 		logger.info("A new order was created: {}", order);
