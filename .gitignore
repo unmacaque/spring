@@ -9,7 +9,6 @@ target
 .springBeans
 .tern-project
 .apt_generated
-.idea
 *.iml
 node_modules
 !buildSrc/src/*/*/**/build

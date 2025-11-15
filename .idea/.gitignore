@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# User ignored files
+/*.iml
+/artifacts
+/compiler.xml
+/gradle.xml
+/jarRepositories.xml
+/libraries
+/modules.xml
+/sonarlint
+/uiDesigner.xml
