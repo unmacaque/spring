@@ -6,7 +6,7 @@ import org.springframework.modulith.docs.Documenter;
 
 class ApplicationModulesTest {
 
-	ApplicationModules modules = ApplicationModules.of(Application.class);
+	final ApplicationModules modules = ApplicationModules.of(Application.class);
 
 	@Test
 	void verifyApplicationModules() {

@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional
 @AutoConfigureJsonTesters
 @Transactional
 class ApplicationTest(
-    @Autowired private val mvc: MockMvc,
-    @Autowired private val json: JacksonTester<Message>
+    @param:Autowired private val mvc: MockMvc,
+    @param:Autowired private val json: JacksonTester<Message>
 ) {
 
     @Test

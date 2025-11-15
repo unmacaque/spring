@@ -14,6 +14,6 @@ public enum TogglzFeature implements Feature {
 	FEATURE_B,
 
 	@Label("Feature C")
-	FEATURE_C;
+	FEATURE_C,
 
 }

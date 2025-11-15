@@ -11,7 +11,7 @@ import org.springframework.kafka.test.utils.KafkaTestUtils;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@EmbeddedKafka(topics = "testtopic", bootstrapServersProperty = "spring.kafka.bootstrap-servers")
+@EmbeddedKafka(topics = "testtopic")
 class ApplicationTest {
 
 	@Autowired
