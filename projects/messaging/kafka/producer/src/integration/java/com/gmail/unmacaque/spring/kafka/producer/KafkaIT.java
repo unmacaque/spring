@@ -23,7 +23,7 @@ class KafkaIT {
 
 	@Container
 	@ServiceConnection
-	private static final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.3.3"));
+	private static final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("apache/kafka"));
 
 	@Test
 	void testProduce(CapturedOutput capturedOutput) {

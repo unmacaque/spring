@@ -1,6 +1,10 @@
 # kafka
 
-Start a Kafka broker that listens on `localhost:9092`, e.g. by using the [confluentinc/cp-kafka](https://hub.docker.com/r/confluentinc/cp-kafka/) Docker image.
+Start a Kafka broker, for example by using the [apache/kafka](https://hub.docker.com/r/apache/kafka) Docker image.
+
+    docker run -d --name broker -p 9092 apache/kafka:latest
+
+Once the container is started, start the Spring Boot applications in this order.
 
 1. Start the `consumer` application
 2. Start the `producer` application
