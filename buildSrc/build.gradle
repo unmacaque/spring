@@ -16,9 +16,10 @@ dependencies {
     implementation buildLibs.execFork
     implementation buildLibs.native
     implementation buildLibs.cyclonedxBom
+
     testImplementation buildLibs.junit.jupiter
+    testImplementation buildLibs.assertj
     testImplementation gradleTestKit()
-    testImplementation buildLibs.spock
 }
 
 gradlePlugin {

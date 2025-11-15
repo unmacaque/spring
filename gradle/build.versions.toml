@@ -1,5 +1,6 @@
 [versions]
 asciidoctor = "4.0.4"
+assertj = "3.27.6"
 bouncycastlePkix = "1.72"
 cyclonedxBom = "2.3.1"
 dependencyManagement = "1.1.7"
@@ -12,10 +13,11 @@ node = "7.1.0"
 openapi = "1.9.0"
 protobuf = "0.9.5"
 springBoot = "3.5.7"
-spock = '2.4-M5-groovy-3.0'
 
 [libraries]
 asciidoctor = { module = "org.asciidoctor:asciidoctor-gradle-jvm", version.ref = "asciidoctor" }
+
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 
 bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastlePkix" }
 
@@ -42,5 +44,3 @@ openapi = { module = "org.springdoc:springdoc-openapi-gradle-plugin", version.re
 protobuf = { module = "com.google.protobuf:protobuf-gradle-plugin", version.ref = "protobuf" }
 
 springBoot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
-
-spock = { module = 'org.spockframework:spock-core', version.ref = "spock" }
