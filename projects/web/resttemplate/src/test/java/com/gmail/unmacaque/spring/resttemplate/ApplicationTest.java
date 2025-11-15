@@ -22,7 +22,7 @@ class ApplicationTest {
 	private MockRestServiceServer server;
 
 	@Test
-	void test() {
+	void testService() {
 		server.expect(once(), anything()).andRespond(
 				withSuccess()
 						.body("{\"content\":\"Hello World\"}")

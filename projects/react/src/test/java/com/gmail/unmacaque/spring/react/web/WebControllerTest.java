@@ -18,7 +18,7 @@ class WebControllerTest {
 	private MockMvc mvc;
 
 	@Test
-	void test() throws Exception {
+	void testApi() throws Exception {
 		mvc.perform(get("/api/")
 						.with(jwt()))
 				.andExpectAll(

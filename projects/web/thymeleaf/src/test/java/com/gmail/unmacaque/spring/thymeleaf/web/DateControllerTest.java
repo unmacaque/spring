@@ -16,7 +16,7 @@ class DateControllerTest {
 	private MockMvc mvc;
 
 	@Test
-	void test() throws Exception {
+	void testDate() throws Exception {
 		mvc.perform(get("/date"))
 				.andExpectAll(
 						status().isOk(),

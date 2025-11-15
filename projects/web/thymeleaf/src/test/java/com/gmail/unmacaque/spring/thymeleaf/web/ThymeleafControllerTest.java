@@ -16,7 +16,7 @@ class ThymeleafControllerTest {
 	private MockMvc mvc;
 
 	@Test
-	void test() throws Exception {
+	void testThymeleaf() throws Exception {
 		mvc.perform(get("/"))
 				.andExpectAll(
 						status().isOk(),
