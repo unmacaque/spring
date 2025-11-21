@@ -1,10 +1,8 @@
 package com.gmail.unmacaque.spring.data.rest.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
@@ -19,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@AutoConfigureJsonTesters
 @Transactional
 class ItemRepositoryTest {
 
@@ -26,8 +25,6 @@ class ItemRepositoryTest {
 	private MockMvc mvc;
 
 	@Autowired
-	private ObjectFactory<ObjectMapper> objectMapperFactory;
-
 	private JacksonTester<Item> json;
 
 	static Item createItem() {
@@ -37,11 +34,6 @@ class ItemRepositoryTest {
 		item.setPrice(BigDecimal.valueOf(1.99));
 		item.setStock(1);
 		return item;
-	}
-
-	@BeforeEach
-	void before() {
-		JacksonTester.initFields(this, objectMapperFactory);
 	}
 
 	@Test

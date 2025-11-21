@@ -1,13 +1,12 @@
 package com.gmail.unmacaque.spring.restdocs.restassured.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
@@ -31,16 +30,15 @@ import static org.springframework.restdocs.restassured.RestAssuredRestDocumentat
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureRestDocs
+@AutoConfigureJsonTesters
 @Transactional
 @ExtendWith(RestDocumentationExtension.class)
 class RegistrationRepositoryTest {
 
-	@Autowired
-	private ObjectFactory<ObjectMapper> objectMapperFactory;
-
 	@LocalServerPort
 	private int port;
 
+	@Autowired
 	private JacksonTester<Registration> json;
 
 	private RequestSpecification requestSpecification;
@@ -53,7 +51,6 @@ class RegistrationRepositoryTest {
 
 	@BeforeEach
 	void beforeEach(RestDocumentationContextProvider restDocumentation) {
-		JacksonTester.initFields(this, objectMapperFactory);
 		requestSpecification = new RequestSpecBuilder()
 				.addFilter(documentationConfiguration(restDocumentation))
 				.build();
