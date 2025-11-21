@@ -11,8 +11,8 @@ dependencies {
     testImplementation 'org.awaitility:awaitility'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    integrationImplementation 'org.testcontainers:kafka'
-    integrationImplementation 'org.testcontainers:junit-jupiter'
+    integrationImplementation 'org.testcontainers:testcontainers-kafka'
+    integrationImplementation 'org.testcontainers:testcontainers-junit-jupiter'
 }
 
 description = 'Spring Messaging Kafka Consumer'

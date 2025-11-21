@@ -16,8 +16,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
     integrationImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
-    integrationImplementation 'org.testcontainers:postgresql'
-    integrationImplementation 'org.testcontainers:ollama'
+    integrationImplementation 'org.testcontainers:testcontainers-postgresql'
+    integrationImplementation 'org.testcontainers:testcontainers-ollama'
 }
 
 description = 'Spring AI Retrieval Augmented Generation'

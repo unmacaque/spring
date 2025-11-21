@@ -13,7 +13,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.micrometer:micrometer-observation-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    integrationImplementation 'org.testcontainers:grafana'
+    integrationImplementation 'org.testcontainers:testcontainers-grafana'
 }
 
 description = 'Spring Boot Micrometer OpenTelemetry'

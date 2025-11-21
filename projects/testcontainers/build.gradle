@@ -7,8 +7,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    integrationImplementation 'org.testcontainers:mockserver'
-    integrationImplementation 'org.testcontainers:junit-jupiter'
+    integrationImplementation 'org.testcontainers:testcontainers-mockserver'
+    integrationImplementation 'org.testcontainers:testcontainers-junit-jupiter'
     integrationImplementation libs.mockserver.client.java
 }
 
