@@ -13,7 +13,7 @@ node = "7.1.0"
 openapi = "1.9.0"
 openrewrite = "7.21.0"
 protobuf = "0.9.5"
-springBoot = "3.5.7"
+springBoot = "4.0.0"
 
 [libraries]
 asciidoctor = { module = "org.asciidoctor:asciidoctor-gradle-jvm", version.ref = "asciidoctor" }
