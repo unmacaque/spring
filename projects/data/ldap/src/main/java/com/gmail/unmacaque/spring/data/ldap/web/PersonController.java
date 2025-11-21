@@ -28,6 +28,5 @@ public class PersonController {
 
 	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public void handleNoSuchElementException() {
-	}
+	public void handleNoSuchElementException() {}
 }

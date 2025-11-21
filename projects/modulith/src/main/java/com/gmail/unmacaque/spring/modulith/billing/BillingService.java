@@ -14,7 +14,9 @@ public class BillingService {
 
 	private final ApplicationEventPublisher eventPublisher;
 
-	public BillingService(ApplicationEventPublisher eventPublisher) {this.eventPublisher = eventPublisher;}
+	public BillingService(ApplicationEventPublisher eventPublisher) {
+		this.eventPublisher = eventPublisher;
+	}
 
 	@ApplicationModuleListener
 	public void on(OrderCreated event) {

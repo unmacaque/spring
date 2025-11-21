@@ -1,6 +1,5 @@
 package com.gmail.unmacaque.spring.data.rest;
 
-
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

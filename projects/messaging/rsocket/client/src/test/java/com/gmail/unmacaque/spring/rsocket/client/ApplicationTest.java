@@ -12,8 +12,6 @@ class ApplicationTest {
 	private ApplicationRunner applicationRunner;
 
 	@Test
-	void contextLoads() {
-	}
-
+	void contextLoads() {}
 
 }
