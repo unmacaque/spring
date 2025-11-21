@@ -4,7 +4,7 @@ plugins {
 
 node {
     download = true
-    version = "22.10.0"
+    version = "24.11.1"
 }
 
 tasks.register('npmRunBuild', NpmTask) {
