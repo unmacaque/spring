@@ -1,0 +1,17 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: togglz
+      roles: ADMIN,USER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,togglz
+
+togglz:
+  console:
+    feature-admin-authority: ROLE_ADMIN
+  feature-enums: com.gmail.unmacaque.spring.thirdparty.togglz.togglz.TogglzFeature
