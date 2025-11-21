@@ -47,9 +47,11 @@ public class CircuitBreakerHandler {
 				.transformDeferred(CircuitBreakerOperator.of(circuitBreakerRegistry.circuitBreaker("myBreaker")))
 				.flatMap(ServerResponse.ok()::bodyValue)
 				.onErrorResume(FailureException.class, e -> ServerResponse.status(INTERNAL_SERVER_ERROR)
-						.bodyValue("A failure has occured"))
+						.bodyValue("A failure has occured")
+				)
 				.onErrorResume(CallNotPermittedException.class, e -> ServerResponse.status(SERVICE_UNAVAILABLE)
-						.bodyValue("We are encountering technical difficulties. Please try again after some time."));
+						.bodyValue("We are encountering technical difficulties. Please try again after some time.")
+				);
 	}
 
 	public Mono<ServerResponse> bulkhead(ServerRequest ignored) {

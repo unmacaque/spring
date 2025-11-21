@@ -4,6 +4,7 @@
     <option name="DO_NOT_FORMAT">
       <list>
         <fileSet type="globPattern" pattern="*.{html,md}" />
+        <fileSet type="globPattern" pattern="projects/react/react/**" />
       </list>
     </option>
     <HTMLCodeStyleSettings>
@@ -12,6 +13,9 @@
     </HTMLCodeStyleSettings>
     <JavaCodeStyleSettings version="1">
       <option name="BLANK_LINES_AROUND_FIELD_WITH_ANNOTATIONS" value="1" />
+      <option name="ALIGN_MULTILINE_RECORDS" value="false" />
+      <option name="NEW_LINE_AFTER_LPAREN_IN_RECORD_HEADER" value="true" />
+      <option name="RPAREN_ON_NEW_LINE_IN_RECORD_HEADER" value="true" />
     </JavaCodeStyleSettings>
     <JetCodeStyleSettings>
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
@@ -20,6 +24,7 @@
       <option name="ENABLED" value="false" />
     </editorconfig>
     <codeStyleSettings language="JAVA">
+      <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
       <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
       <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
       <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />

@@ -62,11 +62,13 @@ class RegistrationRepositoryTest {
 				.andDo(document("{method-name}",
 								links(halLinks(),
 										linkWithRel("self").description("Link to same resource"),
-										linkWithRel("profile").description("Link to the profile of this resource")),
+										linkWithRel("profile").description("Link to the profile of this resource")
+								),
 								responseFields(
 										subsectionWithPath("_embedded.registrations").description("An array of registration objects"),
 										subsectionWithPath("_links").ignored(),
-										subsectionWithPath("page").ignored())
+										subsectionWithPath("page").ignored()
+								)
 						)
 				);
 	}
@@ -83,12 +85,14 @@ class RegistrationRepositoryTest {
 										parameterWithName("id").description("Unique id of the registration")),
 								links(
 										linkWithRel("self").description("Link to same resource"),
-										linkWithRel("registration").description("Link to this registration instance")),
+										linkWithRel("registration").description("Link to this registration instance")
+								),
 								responseFields(
 										fieldWithPath("firstName").description("First name of the registered person"),
 										fieldWithPath("lastName").description("Last name of the registered person"),
 										fieldWithPath("date").description("Date for the registration"),
-										subsectionWithPath("_links").ignored())
+										subsectionWithPath("_links").ignored()
+								)
 						)
 				);
 	}
@@ -103,7 +107,8 @@ class RegistrationRepositoryTest {
 										fieldWithPath("id").ignored(),
 										fieldWithPath("firstName").description("First name of the registered person"),
 										fieldWithPath("lastName").description("Last name of the registered person"),
-										fieldWithPath("date").description("Date for the registration"))
+										fieldWithPath("date").description("Date for the registration")
+								)
 						)
 				);
 	}
@@ -120,7 +125,8 @@ class RegistrationRepositoryTest {
 										fieldWithPath("id").ignored(),
 										fieldWithPath("firstName").description("First name of the registered person"),
 										fieldWithPath("lastName").description("Last name of the registered person"),
-										fieldWithPath("date").description("Date for the registration"))
+										fieldWithPath("date").description("Date for the registration")
+								)
 						)
 				);
 	}

@@ -29,7 +29,8 @@ public class IntegrationApplication {
 					.withExposedPorts(389)
 					.withCommand("--loglevel debug")
 					.withCopyFileToContainer(MountableFile.forClasspathResource("directory.ldif"),
-							"/container/service/slapd/assets/config/bootstrap/ldif/custom/directory.ldif");
+							"/container/service/slapd/assets/config/bootstrap/ldif/custom/directory.ldif"
+					);
 		}
 	}
 }
