@@ -31,7 +31,6 @@ if (System.getenv('CI') != 'true') {
     include(':projects:react:react')
 }
 include(':projects:restdocs:mockmvc')
-include(':projects:restdocs:restassured')
 include(':projects:restdocs:webtestclient')
 include(':projects:security:2fa')
 include(':projects:security:config')
