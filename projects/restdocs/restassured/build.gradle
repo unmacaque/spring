@@ -1,6 +1,6 @@
 plugins {
     id 'unmacaque.spring-boot'
-    id 'unmacaque.spring-restdocs'
+    id 'unmacaque.asciidoctor'
 }
 
 dependencies {
