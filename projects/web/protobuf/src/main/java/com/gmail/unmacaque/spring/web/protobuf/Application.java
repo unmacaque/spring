@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.protobuf;
+package com.gmail.unmacaque.spring.web.protobuf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

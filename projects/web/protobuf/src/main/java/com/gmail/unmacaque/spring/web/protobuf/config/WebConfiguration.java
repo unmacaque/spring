@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.protobuf.config;
+package com.gmail.unmacaque.spring.web.protobuf.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

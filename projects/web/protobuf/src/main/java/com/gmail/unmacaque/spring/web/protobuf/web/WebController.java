@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.protobuf.web;
+package com.gmail.unmacaque.spring.web.protobuf.web;
 
 import com.gmail.unmacaque.spring.protobuf.domain.hello.Greeting;
 import org.springframework.http.MediaType;
