@@ -5,6 +5,7 @@ plugins {
 node {
     download = true
     version = "24.11.1"
+
 }
 
 tasks.register('npmRunBuild', NpmTask) {
@@ -13,4 +14,8 @@ tasks.register('npmRunBuild', NpmTask) {
 
 tasks.register('pnpmRunBuild', PnpmTask) {
     args = ['run', 'build']
+}
+
+tasks.named('pnpmInstall') {
+    environment["CI"] = "true"
 }
