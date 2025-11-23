@@ -39,7 +39,7 @@ initializr:
     - name: War
       id: war
       default: false
-  javaVersions:
+  java-versions:
     - id: 17
       default: true
   languages:

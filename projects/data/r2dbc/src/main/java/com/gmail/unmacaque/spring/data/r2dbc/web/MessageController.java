@@ -40,7 +40,7 @@ public class MessageController {
 	}
 
 	@DeleteMapping("{messageId}")
-	public Mono<Void> delete(@RequestBody Message message) {
-		return repository.delete(message);
+	public Mono<Void> delete(@PathVariable long messageId) {
+		return repository.deleteById(messageId);
 	}
 }
