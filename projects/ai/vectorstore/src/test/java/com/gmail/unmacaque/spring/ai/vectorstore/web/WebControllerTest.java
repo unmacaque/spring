@@ -1,6 +1,5 @@
-package com.gmail.unmacaque.spring.ai.vectorstore;
+package com.gmail.unmacaque.spring.ai.vectorstore.web;
 
-import com.gmail.unmacaque.spring.ai.vectorstore.web.AiController;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(AiController.class)
-class ApplicationTest {
+class WebControllerTest {
 
 	@Autowired
 	private MockMvc mvc;

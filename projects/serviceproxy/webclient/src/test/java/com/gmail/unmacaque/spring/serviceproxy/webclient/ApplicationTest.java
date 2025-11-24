@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.wiremock.spring.EnableWireMock;
 import reactor.core.publisher.Mono;
@@ -17,7 +16,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @SpringBootTest
 @EnableWireMock
-@ActiveProfiles("test")
 class ApplicationTest {
 
 	@Autowired

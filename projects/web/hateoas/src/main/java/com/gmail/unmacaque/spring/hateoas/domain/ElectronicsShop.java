@@ -16,8 +16,8 @@ public class ElectronicsShop implements Shop {
 	}
 
 	@Override
-	public boolean addItem(Item item) {
-		return items.add(item);
+	public void addItem(Item item) {
+		items.add(item);
 	}
 
 	@Override

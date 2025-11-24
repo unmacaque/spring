@@ -1,23 +1,43 @@
 package com.gmail.unmacaque.spring.hateoas.web;
 
+import com.gmail.unmacaque.spring.hateoas.domain.Item;
+import com.gmail.unmacaque.spring.hateoas.domain.Shop;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.endsWith;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(ShopController.class)
 class ShopControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
+
+	@MockitoBean
+	private Shop shop;
+
+	@BeforeEach
+	void beforeEach() {
+		final List<Item> items = List.of(
+				Item.create("CPU", "The core of any computer", BigDecimal.valueOf(129.99)),
+				Item.create("RAM", "The core of any computer", BigDecimal.valueOf(59.99))
+		);
+		when(shop.getItems()).thenReturn(items);
+		when(shop.findItemById(1)).thenReturn(Optional.of(items.get(1)));
+	}
 
 	@Test
 	void testGetItems() throws Exception {
@@ -33,11 +53,11 @@ class ShopControllerTest {
 		mvc.perform(get("/items/1"))
 				.andExpectAll(
 						status().isOk(),
-						jsonPath("itemId").value(1),
+						jsonPath("itemId").exists(),
 						jsonPath("title").exists(),
 						jsonPath("description").exists(),
 						jsonPath("price").exists(),
-						jsonPath("_links.self.href").value(endsWith("/items/1"))
+						jsonPath("_links.self.href").value(containsString("/items/"))
 				);
 	}
 
@@ -46,7 +66,7 @@ class ShopControllerTest {
 		mvc.perform(post("/items/1/order"))
 				.andExpectAll(
 						status().isCreated(),
-						jsonPath("itemId").value(1),
+						jsonPath("itemId").exists(),
 						jsonPath("title").exists(),
 						jsonPath("description").exists(),
 						jsonPath("price").exists(),

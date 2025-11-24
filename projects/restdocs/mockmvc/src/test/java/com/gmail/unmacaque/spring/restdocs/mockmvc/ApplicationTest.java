@@ -1,5 +1,6 @@
-package com.gmail.unmacaque.spring.restdocs.mockmvc.domain;
+package com.gmail.unmacaque.spring.restdocs.mockmvc;
 
+import com.gmail.unmacaque.spring.restdocs.mockmvc.domain.Registration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureRestDocs
 @Transactional
 @ExtendWith(RestDocumentationExtension.class)
-class RegistrationRepositoryTest {
+class ApplicationTest {
 
 	@Autowired
 	private JacksonTester<Registration> json;

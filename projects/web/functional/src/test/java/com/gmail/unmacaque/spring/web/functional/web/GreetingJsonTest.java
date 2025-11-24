@@ -28,7 +28,8 @@ class GreetingJsonTest {
 
 	@Test
 	void testDeserialize() throws IOException {
-		final String json = "{\"date\":\"2017-04-17T00:00:00\",\"message\":\"Spring Boot\"}";
+		final String json = """
+				{"date":"2017-04-17T00:00:00","message":"Spring Boot"}""";
 
 		final var greeting = tester.parseObject(json);
 

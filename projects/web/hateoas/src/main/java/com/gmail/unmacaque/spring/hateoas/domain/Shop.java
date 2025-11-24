@@ -8,5 +8,5 @@ public interface Shop {
 
 	Optional<Item> findItemById(int itemId);
 
-	boolean addItem(Item item);
+	void addItem(Item item);
 }

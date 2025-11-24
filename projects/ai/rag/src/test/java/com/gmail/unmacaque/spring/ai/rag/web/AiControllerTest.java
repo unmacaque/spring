@@ -1,6 +1,5 @@
-package com.gmail.unmacaque.spring.ai.rag;
+package com.gmail.unmacaque.spring.ai.rag.web;
 
-import com.gmail.unmacaque.spring.ai.rag.web.AiController;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.ai.chat.messages.AssistantMessage;
@@ -28,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(AiController.class)
 @ImportAutoConfiguration(ChatClientAutoConfiguration.class)
-class ApplicationTest {
+class AiControllerTest {
 
 	@Autowired
 	private MockMvc mvc;

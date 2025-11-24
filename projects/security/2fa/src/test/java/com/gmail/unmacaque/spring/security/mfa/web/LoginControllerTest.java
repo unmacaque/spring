@@ -10,16 +10,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(QrCodeController.class)
+@WebMvcTest(LoginController.class)
 @Import(SecurityConfiguration.class)
-class QrCodeControllerTest {
+class LoginControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@Test
-	void testQrcode() throws Exception {
-		mockMvc.perform(get("/qrcode"))
+	void testHelloWithoutAuthentication() throws Exception {
+		mockMvc.perform(get("/login"))
 				.andExpect(status().isOk());
 	}
 

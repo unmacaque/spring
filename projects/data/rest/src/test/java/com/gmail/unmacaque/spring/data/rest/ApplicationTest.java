@@ -1,5 +1,6 @@
-package com.gmail.unmacaque.spring.data.rest.domain;
+package com.gmail.unmacaque.spring.data.rest;
 
+import com.gmail.unmacaque.spring.data.rest.domain.Item;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @Transactional
-class ItemRepositoryTest {
+class ApplicationTest {
 
 	@Autowired
 	private MockMvc mvc;

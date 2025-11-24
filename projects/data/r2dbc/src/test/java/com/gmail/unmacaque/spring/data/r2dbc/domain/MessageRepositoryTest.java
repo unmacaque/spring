@@ -1,7 +1,6 @@
-package com.gmail.unmacaque.spring.data.r2dbc;
+package com.gmail.unmacaque.spring.data.r2dbc.domain;
 
 import com.gmail.unmacaque.spring.data.r2dbc.config.DataConfiguration;
-import com.gmail.unmacaque.spring.data.r2dbc.domain.MessageRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;

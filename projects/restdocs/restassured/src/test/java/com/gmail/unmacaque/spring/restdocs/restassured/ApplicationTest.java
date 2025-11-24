@@ -1,5 +1,6 @@
-package com.gmail.unmacaque.spring.restdocs.restassured.domain;
+package com.gmail.unmacaque.spring.restdocs.restassured;
 
+import com.gmail.unmacaque.spring.restdocs.restassured.domain.Registration;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +34,7 @@ import static org.springframework.restdocs.restassured.RestAssuredRestDocumentat
 @AutoConfigureJsonTesters
 @Transactional
 @ExtendWith(RestDocumentationExtension.class)
-class RegistrationRepositoryTest {
+class ApplicationTest {
 
 	@LocalServerPort
 	private int port;

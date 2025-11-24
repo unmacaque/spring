@@ -1,4 +1,7 @@
 spring:
+  h2:
+    console:
+      enabled: true
   security:
     user:
       name: admin

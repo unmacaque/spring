@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.observability.opentelemetry.web;
+package com.gmail.unmacaque.spring.observability.opentelemetry;
 
 import io.micrometer.observation.tck.TestObservationRegistry;
 import io.micrometer.observation.tck.TestObservationRegistryAssert;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureObservability(metrics = false)
-class WebControllerTest {
+class ApplicationTest {
 
 	@Autowired
 	private MockMvc mvc;

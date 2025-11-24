@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.observability.metrics.web;
+package com.gmail.unmacaque.spring.observability.metrics;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import org.assertj.core.data.Offset;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureObservability
-class WebControllerTest {
+class ApplicationTest {
 
 	@Autowired
 	private MockMvc mvc;
