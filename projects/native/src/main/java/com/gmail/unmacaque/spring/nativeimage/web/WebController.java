@@ -16,32 +16,33 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RestController
 public class WebController {
 
-	private final Map<String, String> countryMap;
+	private final Map<String, Country> countryMap;
 
 	public WebController(ResourceLoader resourceLoader, ObjectMapper objectMapper) throws IOException {
 		final var resource = resourceLoader.getResource("classpath:iso-3166-1.json");
 		final var countries = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Country>>() {});
 		countryMap = countries
 				.stream()
-				.collect(Collectors.toUnmodifiableMap(Country::code, Country::name));
+				.collect(Collectors.toUnmodifiableMap(Country::code, Function.identity()));
 	}
 
 	@GetMapping("/")
-	public ResponseEntity<Collection<String>> getCountryCodes() {
-		return ResponseEntity.ok(countryMap.keySet());
+	public Collection<String> getCountryCodes() {
+		return countryMap.keySet();
 	}
 
-	@GetMapping("/{countryCode:[A-Z]{2}}")
-	public ResponseEntity<String> getCountryName(@PathVariable String countryCode) {
+	@GetMapping("/{countryCode:[A-Z][A-Z]}")
+	public Country getCountryName(@PathVariable String countryCode) {
 		if (!countryMap.containsKey(countryCode)) {
 			throw new NoSuchElementException();
 		}
-		return ResponseEntity.ok(countryMap.get(countryCode));
+		return countryMap.get(countryCode);
 	}
 
 	@ExceptionHandler(NoSuchElementException.class)

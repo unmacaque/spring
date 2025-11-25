@@ -33,8 +33,9 @@ class WebControllerTest {
 		mvc.perform(get("/LI"))
 				.andExpectAll(
 						status().isOk(),
-						content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN),
-						content().string("Liechtenstein")
+						content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON),
+						jsonPath("Code").value("LI"),
+						jsonPath("Name").value("Liechtenstein")
 				);
 	}
 
