@@ -11,7 +11,6 @@ spring:
           include: false
     vectorstore:
       pgvector:
-        collection-name: spring-ai
         initialize-schema: true
 
 management:
