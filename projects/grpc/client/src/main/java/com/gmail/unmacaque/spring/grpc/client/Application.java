@@ -8,7 +8,7 @@ import org.springframework.grpc.client.ImportGrpcClients;
 @SpringBootApplication
 @ImportGrpcClients(basePackageClasses = ForecastServiceGrpc.ForecastServiceStub.class)
 public class Application {
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 }

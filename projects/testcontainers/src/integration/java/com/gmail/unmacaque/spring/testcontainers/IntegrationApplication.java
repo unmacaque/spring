@@ -13,7 +13,7 @@ import static org.mockserver.model.HttpResponse.response;
 
 public class IntegrationApplication {
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.from(Application::main).with(IntegrationApplicationConfiguration.class).run(args);
 	}
 

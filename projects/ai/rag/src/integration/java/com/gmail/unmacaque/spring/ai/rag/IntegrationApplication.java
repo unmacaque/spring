@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class IntegrationApplication {
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.from(Application::main).with(TestApplicationConfiguration.class).run(args);
 	}
 

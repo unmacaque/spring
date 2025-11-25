@@ -11,7 +11,7 @@ import org.testcontainers.utility.MountableFile;
 
 public class IntegrationApplication {
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.from(Application::main).with(IntegrationApplicationConfiguration.class).run(args);
 	}
 

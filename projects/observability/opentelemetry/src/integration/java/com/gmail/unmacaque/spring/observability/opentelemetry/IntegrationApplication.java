@@ -9,7 +9,7 @@ import org.testcontainers.grafana.LgtmStackContainer;
 import org.testcontainers.utility.DockerImageName;
 
 public class IntegrationApplication {
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.from(Application::main).with(IntegrationApplicationConfiguration.class).run(args);
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ImportRuntimeHints;
 @ImportRuntimeHints(NativeHints.class)
 public class Application {
 
+	@SuppressWarnings("UnnecessaryModifier")
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
