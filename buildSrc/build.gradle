@@ -9,6 +9,7 @@ dependencies {
     implementation buildLibs.springBoot
     implementation buildLibs.dependencyManagement
     implementation buildLibs.node
+    implementation buildLibs.openrewrite
     implementation buildLibs.protobuf
     implementation buildLibs.gitProperties
     implementation buildLibs.asciidoctor

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.spring.dependency-management'
+    id 'org.openrewrite.rewrite'
 }
 
 repositories {
@@ -9,10 +10,20 @@ repositories {
     maven { url = uri("https://repo.spring.io/release") }
 }
 
+rewrite {
+    activeRecipe('com.gmail.unmacaque.Rewrite')
+
+    configFile("${project.rootDir}/rewrite.yml")
+}
+
 dependencyManagement {
     imports {
         mavenBom 'org.springframework.grpc:spring-grpc-dependencies:0.8.0'
     }
+}
+
+dependencies {
+    rewrite('org.openrewrite.recipe:rewrite-spring:6.19.0')
 }
 
 java {
