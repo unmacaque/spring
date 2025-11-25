@@ -55,7 +55,7 @@ class ApplicationTest {
 	@TestConfiguration
 	static class ServiceProxyRSocketTestConfiguration {
 		@Bean
-		public ServiceProxyRSocketTestServer serviceProxyRSocketTestServer() {
+		ServiceProxyRSocketTestServer serviceProxyRSocketTestServer() {
 			return new ServiceProxyRSocketTestServer();
 		}
 	}

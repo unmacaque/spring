@@ -22,7 +22,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection(name = "osixia/openldap")
-		public GenericContainer<?> openldapContainer() {
+		GenericContainer<?> openldapContainer() {
 			return new GenericContainer<>(DockerImageName.parse("osixia/openldap"))
 					.withEnv("LDAP_DOMAIN", "springframework.org")
 					.withEnv("LDAP_TLS", "false")

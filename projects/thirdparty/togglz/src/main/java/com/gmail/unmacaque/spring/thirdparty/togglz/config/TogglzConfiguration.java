@@ -13,7 +13,7 @@ public class TogglzConfiguration {
 
 	@Bean
 	@Profile("jdbc")
-	public StateRepository jdbcStateRepository(DataSource dataSource) {
+	StateRepository jdbcStateRepository(DataSource dataSource) {
 		return new JDBCStateRepository(dataSource);
 	}
 }

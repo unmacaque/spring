@@ -13,12 +13,12 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouteConfiguration {
 
 	@Bean
-	public RouteHandler routeHandler() {
+	RouteHandler routeHandler() {
 		return new RouteHandler();
 	}
 
 	@Bean
-	public RouterFunction<ServerResponse> routerFunction(RouteHandler handler) {
+	RouterFunction<ServerResponse> routerFunction(RouteHandler handler) {
 		return route(GET("/"), handler::handleRoot)
 				.and(route(GET("/hello/{name}"), handler::handleHelloName));
 	}

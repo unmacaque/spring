@@ -86,7 +86,7 @@ class TestcontainersIT {
 	@TestConfiguration
 	static class TestcontainersITTestConfiguration {
 		@Bean
-		public RestTemplateBuilder restTemplateBuilder() {
+		RestTemplateBuilder restTemplateBuilder() {
 			return new RestTemplateBuilder().rootUri(container.getEndpoint());
 		}
 	}

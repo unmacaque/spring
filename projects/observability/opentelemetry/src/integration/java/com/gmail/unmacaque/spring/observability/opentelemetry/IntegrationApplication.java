@@ -19,7 +19,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		public LgtmStackContainer lgtmStackContainer() {
+		LgtmStackContainer lgtmStackContainer() {
 			return new LgtmStackContainer(DockerImageName.parse("grafana/otel-lgtm"));
 		}
 	}

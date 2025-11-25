@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(
+	SecurityFilterChain securityFilterChain(
 			HttpSecurity http,
 			UserDetailsService userDetailsService
 	) throws Exception {
@@ -33,7 +33,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	UserDetailsService userDetailsService() {
 		return username -> {
 			@SuppressWarnings("deprecation") final var user = User
 					.withDefaultPasswordEncoder()

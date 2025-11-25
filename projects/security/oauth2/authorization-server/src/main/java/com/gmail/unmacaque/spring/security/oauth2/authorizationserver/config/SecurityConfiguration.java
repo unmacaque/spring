@@ -11,7 +11,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class SecurityConfiguration {
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	UserDetailsService userDetailsService() {
 		@SuppressWarnings("deprecation") final UserDetails userDetails = User
 				.withDefaultPasswordEncoder()
 				.username("user")

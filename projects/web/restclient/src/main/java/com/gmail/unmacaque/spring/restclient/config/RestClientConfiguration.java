@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class RestClientConfiguration {
 
 	@Bean
-	public RestClientCustomizer restClientCustomizer() {
+	RestClientCustomizer restClientCustomizer() {
 		return builder -> builder.defaultHeader("X-Custom-Header", "Hello World");
 	}
 }

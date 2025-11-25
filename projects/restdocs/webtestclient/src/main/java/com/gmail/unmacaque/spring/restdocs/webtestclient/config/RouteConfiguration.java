@@ -13,12 +13,12 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouteConfiguration {
 
 	@Bean
-	public MessageRouteHandler routeHandler(MessageRepository messageRepository) {
+	MessageRouteHandler routeHandler(MessageRepository messageRepository) {
 		return new MessageRouteHandler(messageRepository);
 	}
 
 	@Bean
-	public RouterFunction<ServerResponse> routerFunction(MessageRouteHandler handler) {
+	RouterFunction<ServerResponse> routerFunction(MessageRouteHandler handler) {
 		return route()
 				.GET("/messages", handler::getMessages)
 				.POST("/messages", handler::postMessage)

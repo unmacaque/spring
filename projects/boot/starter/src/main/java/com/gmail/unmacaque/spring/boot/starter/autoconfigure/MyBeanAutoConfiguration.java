@@ -21,7 +21,7 @@ public class MyBeanAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public MyBean myBean() {
+	MyBean myBean() {
 		return new MyBeanImpl(
 				List.of(
 						properties.myProperty(),

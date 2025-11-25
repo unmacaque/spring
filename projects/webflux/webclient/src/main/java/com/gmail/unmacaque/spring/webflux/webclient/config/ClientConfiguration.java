@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class ClientConfiguration {
 
 	@Bean
-	public WebFluxService webFluxService(ClientProperties clientProperties) {
+	WebFluxService webFluxService(ClientProperties clientProperties) {
 		return new WebFluxService(clientProperties.baseUrl());
 	}
 }

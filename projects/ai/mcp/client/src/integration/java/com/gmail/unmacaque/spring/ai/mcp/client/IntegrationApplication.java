@@ -25,7 +25,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		public OllamaContainer ollamaContainer(DynamicPropertyRegistry properties) {
+		OllamaContainer ollamaContainer(DynamicPropertyRegistry properties) {
 			return new OllamaContainer(DockerImageName.parse("ollama/ollama"))
 					.withCreateContainerCmdModifier(cmd -> Objects.requireNonNull(cmd.getHostConfig())
 							.withBinds(Bind.parse("ollama:/root/.ollama")));

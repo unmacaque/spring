@@ -10,7 +10,7 @@ import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFacto
 public class DataConfiguration {
 
 	@Bean
-	public Jackson2RepositoryPopulatorFactoryBean repositoryPopulator() {
+	Jackson2RepositoryPopulatorFactoryBean repositoryPopulator() {
 		final var factory = new Jackson2RepositoryPopulatorFactoryBean();
 		factory.setResources(new Resource[]{new ClassPathResource("data.json")});
 		return factory;

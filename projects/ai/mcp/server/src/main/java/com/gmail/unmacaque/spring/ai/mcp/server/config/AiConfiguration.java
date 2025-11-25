@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class AiConfiguration {
 
 	@Bean
-	public ToolCallbackProvider toolCallbackProvider(DateTimeTools dateTimeTools) {
+	ToolCallbackProvider toolCallbackProvider(DateTimeTools dateTimeTools) {
 		return MethodToolCallbackProvider.builder().toolObjects(dateTimeTools).build();
 	}
 }

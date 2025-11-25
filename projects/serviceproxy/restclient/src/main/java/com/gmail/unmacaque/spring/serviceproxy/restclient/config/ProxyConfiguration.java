@@ -11,13 +11,13 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 public class ProxyConfiguration {
 
 	@Bean
-	public RestClientAdapter httpClientAdapter(RestClient.Builder builder) {
+	RestClientAdapter httpClientAdapter(RestClient.Builder builder) {
 		final var client = builder.build();
 		return RestClientAdapter.create(client);
 	}
 
 	@Bean
-	public ReservationService reservationService(RestClientAdapter adapter) {
+	ReservationService reservationService(RestClientAdapter adapter) {
 		final var factory = HttpServiceProxyFactory.builderFor(adapter).build();
 		return factory.createClient(ReservationService.class);
 	}

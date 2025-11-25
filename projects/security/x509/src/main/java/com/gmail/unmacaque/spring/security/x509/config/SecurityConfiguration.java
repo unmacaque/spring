@@ -14,7 +14,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(1)
-	public SecurityFilterChain securityFilterChain(
+	SecurityFilterChain securityFilterChain(
 			HttpSecurity http,
 			UserDetailsService userDetailsService
 	) throws Exception {
@@ -33,7 +33,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(0)
-	public SecurityFilterChain managementSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain managementSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.securityMatcher(EndpointRequest.toAnyEndpoint())
 				.authorizeHttpRequests(requests ->
@@ -44,7 +44,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	UserDetailsService userDetailsService() {
 		return username -> User.withUsername(username).password("").roles("USER").build();
 	}
 }

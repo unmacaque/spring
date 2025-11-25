@@ -14,7 +14,7 @@ public class RSocketConfiguration {
 	private RSocketProperties rSocketProperties;
 
 	@Bean
-	public RSocketRequester rSocketRequester(RSocketRequester.Builder builder) {
+	RSocketRequester rSocketRequester(RSocketRequester.Builder builder) {
 		return builder
 				.tcp(rSocketProperties.client().host(), rSocketProperties.client().port());
 	}

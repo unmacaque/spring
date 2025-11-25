@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClient;
 public class RestClientConfiguration {
 
 	@Bean
-	public RestClient.Builder restClientBuilder(OAuth2AuthorizedClientManager authorizedClientManager) {
+	RestClient.Builder restClientBuilder(OAuth2AuthorizedClientManager authorizedClientManager) {
 		final var requestInterceptor = new OAuth2ClientHttpRequestInterceptor(authorizedClientManager);
 
 		return RestClient.builder()

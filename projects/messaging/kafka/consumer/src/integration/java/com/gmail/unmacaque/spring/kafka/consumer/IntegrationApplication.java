@@ -20,7 +20,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		public KafkaContainer kafkaContainer() {
+		KafkaContainer kafkaContainer() {
 			return new KafkaContainer(DockerImageName.parse("apache/kafka"));
 		}
 	}

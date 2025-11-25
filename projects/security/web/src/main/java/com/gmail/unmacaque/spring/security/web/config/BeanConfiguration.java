@@ -10,12 +10,12 @@ import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 public class BeanConfiguration {
 
 	@Bean
-	public SpringSecurityDialect springSecurityDialect() {
+	SpringSecurityDialect springSecurityDialect() {
 		return new SpringSecurityDialect();
 	}
 
 	@Bean
-	public LocalValidatorFactoryBean getValidator(MessageSource messageSource) {
+	LocalValidatorFactoryBean getValidator(MessageSource messageSource) {
 		final var bean = new LocalValidatorFactoryBean();
 		bean.setValidationMessageSource(messageSource);
 		return bean;

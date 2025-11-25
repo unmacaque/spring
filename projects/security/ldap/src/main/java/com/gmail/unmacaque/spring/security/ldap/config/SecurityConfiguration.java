@@ -10,7 +10,7 @@ import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFac
 public class SecurityConfiguration {
 
 	@Bean
-	public AuthenticationManager ldapAuthenticationManager(BaseLdapPathContextSource contextSource) {
+	AuthenticationManager ldapAuthenticationManager(BaseLdapPathContextSource contextSource) {
 		final var factory = new LdapBindAuthenticationManagerFactory(contextSource);
 		factory.setUserDnPatterns("uid={0},ou=people,dc=springframework,dc=org");
 		return factory.createAuthenticationManager();

@@ -18,7 +18,7 @@ import org.springframework.security.web.servlet.util.matcher.PathPatternRequestM
 public class SecurityConfiguration {
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(
+	SecurityFilterChain securityFilterChain(
 			HttpSecurity http,
 			UserDetailsService userDetailsService,
 			OtpSecretRegistry otpSecretRegistry
@@ -49,12 +49,12 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public UserDetailsManager userDetailsManager() {
+	UserDetailsManager userDetailsManager() {
 		return new InMemoryUserDetailsManager();
 	}
 
 	@Bean
-	public OtpSecretRegistry otpSecretRegistry() {
+	OtpSecretRegistry otpSecretRegistry() {
 		return new InMemoryOtpSecretRegistry();
 	}
 }

@@ -29,7 +29,7 @@ public class SecurityConfiguration {
 	private DataSource dataSource;
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
@@ -56,7 +56,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
-	public SecurityFilterChain h2ConsoleSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain h2ConsoleSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.securityMatcher(PathRequest.toH2Console())
 				.csrf(CsrfConfigurer::disable)
@@ -65,12 +65,12 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public CompromisedPasswordChecker compromisedPasswordChecker(ResourceLoader resourceLoader) throws IOException {
+	CompromisedPasswordChecker compromisedPasswordChecker(ResourceLoader resourceLoader) throws IOException {
 		final var resource = resourceLoader.getResource("classpath:10-million-password-list-top-100.txt");
 		return new SimpleCompromisedPasswordChecker(resource.getFile().toPath());
 	}

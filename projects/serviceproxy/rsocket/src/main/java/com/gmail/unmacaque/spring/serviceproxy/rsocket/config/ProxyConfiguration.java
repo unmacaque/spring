@@ -10,12 +10,12 @@ import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
 public class ProxyConfiguration {
 
 	@Bean
-	public RSocketRequester rSocketRequester(RSocketRequester.Builder builder) {
+	RSocketRequester rSocketRequester(RSocketRequester.Builder builder) {
 		return builder.tcp("localhost", 7000);
 	}
 
 	@Bean
-	public ForecastService forecastService(RSocketRequester rSocketRequester) {
+	ForecastService forecastService(RSocketRequester rSocketRequester) {
 		final var factory = RSocketServiceProxyFactory.builder(rSocketRequester).build();
 		return factory.createClient(ForecastService.class);
 	}

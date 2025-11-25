@@ -8,7 +8,7 @@ import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 public class WebConfiguration {
 
 	@Bean
-	public ProtobufHttpMessageConverter protobufHttpMessageConverter() {
+	ProtobufHttpMessageConverter protobufHttpMessageConverter() {
 		return new ProtobufHttpMessageConverter();
 	}
 }

@@ -14,12 +14,12 @@ import java.util.List;
 public class InitializrConfiguration {
 
 	@Bean
-	public ProjectContributor helloProjectContributor() {
+	ProjectContributor helloProjectContributor() {
 		return path -> Files.writeString(path.resolve("hello.txt"), "Hello World");
 	}
 
 	@Bean
-	public InitializrMetadataUpdateStrategy initializrMetadataUpdateStrategy() {
+	InitializrMetadataUpdateStrategy initializrMetadataUpdateStrategy() {
 		return metadata -> {
 			final var version = DefaultMetadataElement.create(SpringBootVersion.getVersion(), true);
 			metadata.updateSpringBootVersions(List.of(version));

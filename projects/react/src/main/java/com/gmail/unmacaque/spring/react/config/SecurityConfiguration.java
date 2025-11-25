@@ -29,7 +29,7 @@ import static org.springframework.security.oauth2.core.authorization.OAuth2Autho
 public class SecurityConfiguration {
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	UserDetailsService userDetailsService() {
 		@SuppressWarnings("deprecation") final UserDetails userDetails = User
 				.withDefaultPasswordEncoder()
 				.username("react")
@@ -41,7 +41,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
+	CorsConfigurationSource corsConfigurationSource() {
 		final var source = new UrlBasedCorsConfigurationSource();
 		final var config = new CorsConfiguration();
 		config.addAllowedHeader("*");
@@ -53,7 +53,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(
+	FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(
 			@Qualifier("corsConfigurationSource") CorsConfigurationSource configurationSource
 	) {
 		return new FilterRegistrationBean<>(new CorsFilter(configurationSource));
@@ -61,7 +61,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(0)
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.securityMatcher("/api/**")
 				.authorizeHttpRequests(requests ->
@@ -75,7 +75,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public WebSecurityCustomizer webSecurityCustomizer() {
+	WebSecurityCustomizer webSecurityCustomizer() {
 		final var firewall = new StrictHttpFirewall();
 		firewall.setAllowSemicolon(true);
 		return web -> web.httpFirewall(firewall);

@@ -21,12 +21,12 @@ public class IntegrationApplication {
 	static class IntegrationApplicationConfiguration {
 
 		@Bean
-		public MockServerContainer mockServerContainer() {
+		MockServerContainer mockServerContainer() {
 			return new MockServerContainer(DockerImageName.parse("mockserver/mockserver"));
 		}
 
 		@Bean
-		public MockServerClient mockServerClient(MockServerContainer container) {
+		MockServerClient mockServerClient(MockServerContainer container) {
 			final var mockServerClient = new MockServerClient(container.getHost(), container.getFirstMappedPort());
 			mockServerClient
 					.when(request().withPath("/"))
@@ -35,7 +35,7 @@ public class IntegrationApplication {
 		}
 
 		@Bean
-		public RestTemplateBuilder restTemplateBuilder(MockServerContainer container) {
+		RestTemplateBuilder restTemplateBuilder(MockServerContainer container) {
 			return new RestTemplateBuilder().rootUri(container.getEndpoint());
 		}
 	}

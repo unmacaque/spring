@@ -63,7 +63,7 @@ class ApplicationTest {
 	@TestConfiguration
 	static class WebControllerTestConfiguration {
 		@Bean
-		public TestObservationRegistry testObservationRegistry() {
+		TestObservationRegistry testObservationRegistry() {
 			return TestObservationRegistry.create();
 		}
 	}

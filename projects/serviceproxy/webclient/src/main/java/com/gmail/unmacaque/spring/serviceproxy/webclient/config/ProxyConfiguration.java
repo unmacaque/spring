@@ -18,13 +18,13 @@ public class ProxyConfiguration {
 	private ProxyProperties proxyProperties;
 
 	@Bean
-	public ReactorHttpExchangeAdapter httpClientAdapter(WebClient.Builder builder) {
+	ReactorHttpExchangeAdapter httpClientAdapter(WebClient.Builder builder) {
 		final var client = builder.baseUrl(proxyProperties.baseUrl()).build();
 		return WebClientAdapter.create(client);
 	}
 
 	@Bean
-	public ReservationService reservationService(ReactorHttpExchangeAdapter adapter) {
+	ReservationService reservationService(ReactorHttpExchangeAdapter adapter) {
 		final var factory = HttpServiceProxyFactory.builderFor(adapter).build();
 		return factory.createClient(ReservationService.class);
 	}

@@ -12,7 +12,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouteConfiguration {
 
 	@Bean
-	public RouterFunction<ServerResponse> routerFunction(CircuitBreakerHandler handler) {
+	RouterFunction<ServerResponse> routerFunction(CircuitBreakerHandler handler) {
 		return route()
 				.GET("/", handler::breaker)
 				.GET("/breaker", handler::breaker)

@@ -12,12 +12,12 @@ import static org.springframework.web.servlet.function.RouterFunctions.route;
 public class RouteConfiguration {
 
 	@Bean
-	public GreetHandler routeHandler() {
+	GreetHandler routeHandler() {
 		return new GreetHandler();
 	}
 
 	@Bean
-	public RouterFunction<ServerResponse> routerFunction(GreetHandler handler) {
+	RouterFunction<ServerResponse> routerFunction(GreetHandler handler) {
 		return route()
 				.GET("/", handler::greetAnonymous)
 				.POST("/{name}", handler::greetWithName)

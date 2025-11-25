@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 public class ObservationConfiguration {
 
 	@Bean
-	public LoggingMetricExporter loggingMetricExporter() {
+	LoggingMetricExporter loggingMetricExporter() {
 		return LoggingMetricExporter.create();
 	}
 
 	@Bean
-	public LoggingSpanExporter loggingSpanExporter() {
+	LoggingSpanExporter loggingSpanExporter() {
 		return LoggingSpanExporter.create();
 	}
 

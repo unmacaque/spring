@@ -27,17 +27,17 @@ public class MetricsConfiguration {
 	private static final Random random = new Random();
 
 	@Bean
-	public MeterRegistryCustomizer<MeterRegistry> meterRegistryCustomizer() {
+	MeterRegistryCustomizer<MeterRegistry> meterRegistryCustomizer() {
 		return registry -> registry.config().commonTags(Tags.of("app", "spring-micrometer-metrics"));
 	}
 
 	@Bean
-	public MeterBinder meterBinder() {
+	MeterBinder meterBinder() {
 		return registry -> Gauge.builder("example.random", () -> random.nextInt(1024)).register(registry);
 	}
 
 	@Bean
-	public TimedAspect timedAspect(MeterRegistry registry) {
+	TimedAspect timedAspect(MeterRegistry registry) {
 		return new TimedAspect(registry);
 	}
 

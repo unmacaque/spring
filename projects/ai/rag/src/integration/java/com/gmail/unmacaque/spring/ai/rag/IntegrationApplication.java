@@ -34,7 +34,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		public OllamaContainer ollamaContainer(DynamicPropertyRegistry properties) {
+		OllamaContainer ollamaContainer(DynamicPropertyRegistry properties) {
 			return new OllamaContainer(DockerImageName.parse("ollama/ollama"))
 					.withCreateContainerCmdModifier(cmd -> Objects.requireNonNull(cmd.getHostConfig())
 							.withBinds(Bind.parse("ollama:/root/.ollama")));
@@ -44,12 +44,12 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		public PostgreSQLContainer chromaDBContainer() {
+		PostgreSQLContainer chromaDBContainer() {
 			return new PostgreSQLContainer(DockerImageName.parse("pgvector/pgvector:pg17"));
 		}
 
 		@Bean
-		public ApplicationRunner applicationRunner(VectorStore vectorStore) {
+		ApplicationRunner applicationRunner(VectorStore vectorStore) {
 			return args -> {
 				record PromptSuggestions(String act, String prompt, @JsonProperty("for_devs") boolean forDevs) {}
 
