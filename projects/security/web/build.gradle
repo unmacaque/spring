@@ -11,6 +11,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-h2console'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
 }

@@ -8,6 +8,8 @@ dependencies {
     implementation 'org.springframework.modulith:spring-modulith-starter-core'
     implementation 'org.springframework.modulith:spring-modulith-starter-jpa'
     implementation 'org.springframework.modulith:spring-modulith-events-api'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-h2console'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.springframework.modulith:spring-modulith-starter-insight'
     runtimeOnly 'io.micrometer:micrometer-tracing-bridge-otel'
