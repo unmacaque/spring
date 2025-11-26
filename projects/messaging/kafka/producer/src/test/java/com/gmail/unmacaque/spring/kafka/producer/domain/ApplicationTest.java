@@ -19,7 +19,7 @@ class ApplicationTest {
 
 	@Test
 	void testProduce() {
-		final var consumerProps = KafkaTestUtils.consumerProps("testtopic", "true", broker);
+		final var consumerProps = KafkaTestUtils.consumerProps(broker, "testtopic", true);
 		final var consumerFactory = new DefaultKafkaConsumerFactory<String, String>(consumerProps);
 		final var consumer = consumerFactory.createConsumer();
 		broker.consumeFromAnEmbeddedTopic(consumer, "testtopic");

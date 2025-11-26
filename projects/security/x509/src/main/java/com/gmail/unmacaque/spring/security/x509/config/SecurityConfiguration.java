@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.preauth.x509.SubjectX500PrincipalExtractor;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
@@ -25,7 +26,7 @@ public class SecurityConfiguration {
 				)
 				.x509(x509 ->
 						x509
-								.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
+								.x509PrincipalExtractor(new SubjectX500PrincipalExtractor())
 								.userDetailsService(userDetailsService)
 				)
 				.build();
