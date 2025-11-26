@@ -1,6 +1,5 @@
 [versions]
 aerogearOtpJava = "1.0.0"
-initializr = "0.22.0"
 mockserver = "5.15.0"
 resilience4j = "2.3.0"
 springAi = "1.1.0"
@@ -17,8 +16,6 @@ aerogear-otp-java = { module = "org.jboss.aerogear:aerogear-otp-java", version.r
 grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
 grpc-stub = { module = "io.grpc:grpc-stub" }
-
-initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref = "initializr" }
 
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
 
