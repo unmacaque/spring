@@ -8,7 +8,7 @@ dependencies {
     runtimeOnly 'org.springframework.data:spring-data-rest-hal-explorer'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
     integrationImplementation 'org.testcontainers:testcontainers-mariadb'
     integrationImplementation 'org.testcontainers:testcontainers-junit-jupiter'

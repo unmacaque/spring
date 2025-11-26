@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.web.functional.web;
 
 import com.gmail.unmacaque.spring.web.functional.domain.Greeting;
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 

@@ -11,8 +11,8 @@ dependencies {
     implementation libs.aerogear.otp.java
     implementation libs.zxing.javase
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
 }
 
 description = 'Spring Security Two-Factor Authentication'

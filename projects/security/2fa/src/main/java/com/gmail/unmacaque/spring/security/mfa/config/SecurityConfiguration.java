@@ -4,7 +4,7 @@ import com.gmail.unmacaque.spring.security.mfa.security.InMemoryOtpSecretRegistr
 import com.gmail.unmacaque.spring.security.mfa.security.OtpAuthenticationDetailsSource;
 import com.gmail.unmacaque.spring.security.mfa.security.OtpAuthenticationProvider;
 import com.gmail.unmacaque.spring.security.mfa.security.OtpSecretRegistry;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -2,8 +2,8 @@ package com.gmail.unmacaque.spring.testcontainers;
 
 import org.mockserver.client.MockServerClient;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.MockServerContainer;
 import org.testcontainers.utility.DockerImageName;

@@ -6,9 +6,10 @@ import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Tags;
 import io.micrometer.core.instrument.binder.MeterBinder;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
+import org.springframework.boot.micrometer.metrics.autoconfigure.MeterRegistryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -27,7 +28,7 @@ public class MetricsConfiguration {
 	private static final Random random = new Random();
 
 	@Bean
-	MeterRegistryCustomizer<MeterRegistry> meterRegistryCustomizer() {
+	MeterRegistryCustomizer<@NonNull MeterRegistry> meterRegistryCustomizer() {
 		return registry -> registry.config().commonTags(Tags.of("app", "spring-micrometer-metrics"));
 	}
 

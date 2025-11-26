@@ -4,7 +4,7 @@ import com.gmail.unmacaque.spring.serviceproxy.restclient.domain.Reservation;
 import com.gmail.unmacaque.spring.serviceproxy.restclient.domain.ReservationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureMockRestServiceServer;
+import org.springframework.boot.restclient.test.autoconfigure.AutoConfigureMockRestServiceServer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;

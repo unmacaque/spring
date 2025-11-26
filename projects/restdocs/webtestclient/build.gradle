@@ -10,6 +10,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'io.r2dbc:r2dbc-h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-restdocs'
     testImplementation 'org.springframework.restdocs:spring-restdocs-webtestclient'
 }
 

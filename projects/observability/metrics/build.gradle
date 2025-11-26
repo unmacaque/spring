@@ -8,7 +8,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aspectj'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-micrometer-metrics-test'
 }
 
 description = 'Spring Boot Micrometer Metrics'

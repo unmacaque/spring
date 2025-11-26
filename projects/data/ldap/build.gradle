@@ -7,7 +7,7 @@ dependencies {
     implementation 'org.springframework.data:spring-data-ldap'
     runtimeOnly 'com.unboundid:unboundid-ldapsdk'
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
     integrationImplementation 'org.testcontainers:testcontainers-junit-jupiter'
 }

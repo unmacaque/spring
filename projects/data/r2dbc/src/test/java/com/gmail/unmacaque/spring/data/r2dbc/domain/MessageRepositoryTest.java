@@ -3,7 +3,7 @@ package com.gmail.unmacaque.spring.data.r2dbc.domain;
 import com.gmail.unmacaque.spring.data.r2dbc.config.DataConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
+import org.springframework.boot.data.r2dbc.test.autoconfigure.DataR2dbcTest;
 import org.springframework.context.annotation.Import;
 import reactor.test.StepVerifier;
 
