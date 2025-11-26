@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation platform(libs.spring.grpc.dependencies)
+
     implementation libs.bundles.grpc
 }
 

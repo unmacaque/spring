@@ -3,6 +3,7 @@ aerogearOtpJava = "1.0.0"
 mockserver = "5.15.0"
 resilience4j = "2.3.0"
 springAi = "1.1.0"
+springGrpc = "1.0.0-RC1"
 springModulith = "2.0.0"
 springdocOpenapi = "3.0.0"
 wiremock = "3.13.1"
@@ -21,6 +22,8 @@ mockserver-client-java = { module = "org.mock-server:mockserver-client-java", ve
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 
 spring-ai-bom = { module = "org.springframework.ai:spring-ai-bom", version.ref = "springAi" }
+
+spring-grpc-dependencies = { module = "org.springframework.grpc:spring-grpc-dependencies", version.ref = "springGrpc" }
 
 spring-modulith-bom = { module = "org.springframework.modulith:spring-modulith-bom", version.ref = "springModulith" }
 

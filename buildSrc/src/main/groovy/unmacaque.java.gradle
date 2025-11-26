@@ -16,12 +16,6 @@ rewrite {
     configFile("${project.rootDir}/rewrite.yml")
 }
 
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.grpc:spring-grpc-dependencies:0.8.0'
-    }
-}
-
 dependencies {
     rewrite('org.openrewrite.recipe:rewrite-spring:6.19.0')
 }

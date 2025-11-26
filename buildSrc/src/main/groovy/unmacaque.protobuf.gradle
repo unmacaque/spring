@@ -2,6 +2,12 @@ plugins {
     id 'com.google.protobuf'
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.grpc:spring-grpc-dependencies:${libs.versions.springGrpc.get()}"
+    }
+}
+
 dependencies {
     implementation 'com.google.protobuf:protobuf-java'
 }

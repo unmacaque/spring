@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation platform(libs.spring.grpc.dependencies)
+
     implementation project(':projects:grpc:common')
     implementation 'com.google.protobuf:protobuf-java-util'
     implementation 'org.springframework.grpc:spring-grpc-client-spring-boot-starter'
