@@ -29,7 +29,7 @@ class HelloControllerTest {
 		mockMvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isFound(),
-						redirectedUrlPattern("**/login")
+						redirectedUrl("/login")
 				);
 	}
 

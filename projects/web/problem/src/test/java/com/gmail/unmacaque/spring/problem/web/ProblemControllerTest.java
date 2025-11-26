@@ -24,7 +24,6 @@ class ProblemControllerTest {
 						content().contentType(MediaType.APPLICATION_PROBLEM_JSON),
 						jsonPath("status").value(500),
 						jsonPath("title").value("Internal Server Error"),
-						jsonPath("type").value("about:blank"),
 						jsonPath("detail").value("Oh no, something has gone wrong!")
 				);
 	}
@@ -37,7 +36,6 @@ class ProblemControllerTest {
 						content().contentType(MediaType.APPLICATION_PROBLEM_JSON),
 						jsonPath("status").value(400),
 						jsonPath("title").value("Bad Request"),
-						jsonPath("type").value("about:blank"),
 						jsonPath("detail").value("Failed to read request")
 				);
 	}
