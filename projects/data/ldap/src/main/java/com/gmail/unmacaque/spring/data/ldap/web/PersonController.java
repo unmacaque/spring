@@ -2,9 +2,9 @@ package com.gmail.unmacaque.spring.data.ldap.web;
 
 import com.gmail.unmacaque.spring.data.ldap.domain.Person;
 import com.gmail.unmacaque.spring.data.ldap.domain.PersonRepository;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;

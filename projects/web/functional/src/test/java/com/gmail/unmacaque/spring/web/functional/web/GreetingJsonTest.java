@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.web.functional.web;
 
 import com.gmail.unmacaque.spring.web.functional.domain.Greeting;
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GreetingJsonTest {
 
 	@Autowired
-	private JacksonTester<Greeting> tester;
+	private JacksonTester<@NonNull Greeting> tester;
 
 	@Test
 	void testSerialize() throws IOException {

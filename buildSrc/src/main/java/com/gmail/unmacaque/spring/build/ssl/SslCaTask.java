@@ -9,6 +9,7 @@ import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
+import org.jspecify.annotations.NonNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,10 +29,10 @@ public abstract class SslCaTask extends DefaultTask {
 	abstract RegularFileProperty getKey();
 
 	@Input
-	abstract Property<String> getSubject();
+	abstract Property<@NonNull String> getSubject();
 
 	@Input
-	abstract Property<Integer> getDays();
+	abstract Property<@NonNull Integer> getDays();
 
 	@TaskAction
 	void run() {

@@ -1,6 +1,8 @@
 package com.gmail.unmacaque.spring.webflux.annotated.web;
 
 import com.gmail.unmacaque.spring.webflux.annotated.domain.Greeting;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,7 @@ class WebFluxControllerTest {
 				.verifyComplete();
 	}
 
+	@NullMarked
 	@Test
 	void testEvents() {
 		final Supplier<? extends Publisher<? extends ServerSentEvent<Greeting>>> scenarioSupplier = () -> webTestClient
@@ -70,7 +73,8 @@ class WebFluxControllerTest {
 				.verify();
 	}
 
-	private void assertGreeting(Greeting greeting) {
+	private void assertGreeting(@Nullable Greeting greeting) {
+		assertThat(greeting).isNotNull();
 		assertThat(greeting.name()).isEqualTo("Hello World");
 		assertThat(greeting.time()).isNotNull();
 	}

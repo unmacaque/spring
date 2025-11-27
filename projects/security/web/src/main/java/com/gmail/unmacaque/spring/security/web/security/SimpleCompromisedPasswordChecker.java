@@ -1,6 +1,6 @@
 package com.gmail.unmacaque.spring.security.web.security;
 
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.authentication.password.CompromisedPasswordDecision;
 
@@ -20,7 +20,7 @@ public class SimpleCompromisedPasswordChecker implements CompromisedPasswordChec
 
 	@Override
 	@NonNull
-	public CompromisedPasswordDecision check(@NonNull String password) {
+	public CompromisedPasswordDecision check(String password) {
 		return new CompromisedPasswordDecision(knownCompromisedPasswords.contains(password));
 	}
 }

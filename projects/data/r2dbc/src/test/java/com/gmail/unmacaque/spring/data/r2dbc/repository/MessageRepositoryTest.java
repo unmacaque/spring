@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.data.r2dbc.domain;
+package com.gmail.unmacaque.spring.data.r2dbc.repository;
 
 import com.gmail.unmacaque.spring.data.r2dbc.config.DataConfiguration;
 import org.junit.jupiter.api.Test;

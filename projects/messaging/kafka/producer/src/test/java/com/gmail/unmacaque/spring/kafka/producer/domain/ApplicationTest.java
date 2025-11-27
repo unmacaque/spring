@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.kafka.producer.domain;
 
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +21,7 @@ class ApplicationTest {
 	@Test
 	void testProduce() {
 		final var consumerProps = KafkaTestUtils.consumerProps(broker, "testtopic", true);
-		final var consumerFactory = new DefaultKafkaConsumerFactory<String, String>(consumerProps);
+		final var consumerFactory = new DefaultKafkaConsumerFactory<@NonNull String, @NonNull String>(consumerProps);
 		final var consumer = consumerFactory.createConsumer();
 		broker.consumeFromAnEmbeddedTopic(consumer, "testtopic");
 		final var records = KafkaTestUtils.getRecords(consumer);

@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.kafka.consumer.domain;
 
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +29,7 @@ class ApplicationTest {
 	@Test
 	void testConsume() {
 		final var producerProps = KafkaTestUtils.producerProps(broker);
-		final var producerFactory = new DefaultKafkaProducerFactory<String, String>(producerProps);
+		final var producerFactory = new DefaultKafkaProducerFactory<@NonNull String, @NonNull String>(producerProps);
 		final var template = new KafkaTemplate<>(producerFactory);
 		template.setDefaultTopic("testtopic");
 		await().untilAsserted(() -> {

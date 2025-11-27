@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.data.rest;
 
 import com.gmail.unmacaque.spring.data.rest.domain.Item;
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
@@ -26,7 +27,7 @@ class ApplicationTest {
 	private MockMvc mvc;
 
 	@Autowired
-	private JacksonTester<Item> json;
+	private JacksonTester<@NonNull Item> json;
 
 	static Item createItem() {
 		final var item = new Item();

@@ -1,7 +1,8 @@
 package com.gmail.unmacaque.spring.restdocs.webtestclient.config;
 
-import com.gmail.unmacaque.spring.restdocs.webtestclient.domain.MessageRepository;
+import com.gmail.unmacaque.spring.restdocs.webtestclient.repository.MessageRepository;
 import com.gmail.unmacaque.spring.restdocs.webtestclient.web.MessageRouteHandler;
+import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -18,7 +19,7 @@ public class RouteConfiguration {
 	}
 
 	@Bean
-	RouterFunction<ServerResponse> routerFunction(MessageRouteHandler handler) {
+	RouterFunction<@NonNull ServerResponse> routerFunction(MessageRouteHandler handler) {
 		return route()
 				.GET("/messages", handler::getMessages)
 				.POST("/messages", handler::postMessage)

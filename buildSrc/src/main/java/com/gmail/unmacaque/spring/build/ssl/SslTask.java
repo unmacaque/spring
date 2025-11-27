@@ -6,6 +6,7 @@ import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.*;
+import org.jspecify.annotations.NonNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,10 +33,10 @@ public abstract class SslTask extends DefaultTask {
 	abstract RegularFileProperty getSigningKey();
 
 	@Input
-	abstract Property<String> getSubject();
+	abstract Property<@NonNull String> getSubject();
 
 	@Input
-	abstract Property<Integer> getDays();
+	abstract Property<@NonNull Integer> getDays();
 
 	@TaskAction
 	void run() {

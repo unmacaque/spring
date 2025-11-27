@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.security.ott.security;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.ott.OneTimeToken;
@@ -20,7 +21,7 @@ public class SimpleOneTimeTokenGenerationSuccessHandler implements OneTimeTokenG
 	private final OneTimeTokenGenerationSuccessHandler redirectHandler = new RedirectOneTimeTokenGenerationSuccessHandler("/ott/sent");
 
 	@Override
-	public void handle(HttpServletRequest request, HttpServletResponse response, OneTimeToken oneTimeToken) throws ServletException, IOException {
+	public void handle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, OneTimeToken oneTimeToken) throws ServletException, IOException {
 		logger.info("One-Time Token for username {}: {}", oneTimeToken.getUsername(), oneTimeToken.getTokenValue());
 		redirectHandler.handle(request, response, oneTimeToken);
 	}

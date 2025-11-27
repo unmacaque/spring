@@ -3,6 +3,7 @@ package com.gmail.unmacaque.spring.build.ssl;
 import org.gradle.testkit.runner.BuildTask;
 import org.gradle.testkit.runner.GradleRunner;
 import org.gradle.testkit.runner.TaskOutcome;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,8 @@ class SslBuildFunctionalTest {
 
 	private File buildFile;
 
-	private static void assertTaskOutcomeSuccess(BuildTask buildTask) {
+	private static void assertTaskOutcomeSuccess(@Nullable BuildTask buildTask) {
+		assertThat(buildTask).isNotNull();
 		assertThat(buildTask.getOutcome()).isEqualTo(TaskOutcome.SUCCESS);
 	}
 
@@ -46,7 +48,8 @@ class SslBuildFunctionalTest {
 				        subject = 'CN=root CA'
 				    }
 				}
-				""".stripIndent());
+				""".stripIndent()
+		);
 
 		final var result = GradleRunner.create()
 				.withProjectDir(testProjectDir)
@@ -77,7 +80,8 @@ class SslBuildFunctionalTest {
 				        subject = 'CN=root CA'
 				    }
 				}
-				""".stripIndent());
+				""".stripIndent()
+		);
 
 		final var result = GradleRunner.create()
 				.withProjectDir(testProjectDir)

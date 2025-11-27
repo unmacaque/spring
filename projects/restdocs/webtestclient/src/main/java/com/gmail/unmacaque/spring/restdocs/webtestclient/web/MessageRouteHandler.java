@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.restdocs.webtestclient.web;
 
 import com.gmail.unmacaque.spring.restdocs.webtestclient.domain.Message;
-import com.gmail.unmacaque.spring.restdocs.webtestclient.domain.MessageRepository;
+import com.gmail.unmacaque.spring.restdocs.webtestclient.repository.MessageRepository;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;

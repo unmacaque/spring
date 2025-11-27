@@ -2,6 +2,7 @@ package com.gmail.unmacaque.spring.build.ssl;
 
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
+import org.jspecify.annotations.NonNull;
 
 public abstract class CertificateDescription {
 
@@ -13,7 +14,7 @@ public abstract class CertificateDescription {
 
 	public abstract RegularFileProperty getKey();
 
-	public abstract Property<String> getSubject();
+	public abstract Property<@NonNull String> getSubject();
 
-	public abstract Property<Integer> getDays();
+	public abstract Property<@NonNull Integer> getDays();
 }

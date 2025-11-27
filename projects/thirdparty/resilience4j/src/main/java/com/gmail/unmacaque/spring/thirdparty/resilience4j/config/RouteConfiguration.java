@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.thirdparty.resilience4j.config;
 
 import com.gmail.unmacaque.spring.thirdparty.resilience4j.web.CircuitBreakerHandler;
+import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -12,7 +13,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouteConfiguration {
 
 	@Bean
-	RouterFunction<ServerResponse> routerFunction(CircuitBreakerHandler handler) {
+	RouterFunction<@NonNull ServerResponse> routerFunction(CircuitBreakerHandler handler) {
 		return route()
 				.GET("/", handler::breaker)
 				.GET("/breaker", handler::breaker)

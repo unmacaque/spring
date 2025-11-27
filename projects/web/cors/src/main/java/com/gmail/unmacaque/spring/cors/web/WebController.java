@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.cors.web;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +9,7 @@ public class WebController {
 
 	@GetMapping("/")
 	@CrossOrigin
-	public String retrieve(@RequestHeader(value = "Origin", required = false) String origin) {
+	public String retrieve(@RequestHeader(value = "Origin") @Nullable String origin) {
 		return StringUtils.hasText(origin) ? "Hello cross-origin request" : "Hello";
 	}
 

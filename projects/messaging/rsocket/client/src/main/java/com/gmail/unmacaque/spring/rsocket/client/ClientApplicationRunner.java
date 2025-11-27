@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.rsocket.client;
 
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
@@ -22,7 +23,7 @@ public class ClientApplicationRunner implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) {
+	public void run(@NonNull ApplicationArguments args) {
 		rSocketRequester
 				.route("fire-and-forget")
 				.data("Hello, client here!")

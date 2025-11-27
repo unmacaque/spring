@@ -5,6 +5,7 @@ import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.Nested;
+import org.jspecify.annotations.NonNull;
 
 public interface SslPluginExtension {
 
@@ -14,13 +15,13 @@ public interface SslPluginExtension {
 	CertificateDescription getCa();
 
 	@Input
-	NamedDomainObjectContainer<NamedCertificateDescription> getCerts();
+	NamedDomainObjectContainer<@NonNull NamedCertificateDescription> getCerts();
 
 	default void ca(Action<? super CertificateDescription> action) {
 		action.execute(getCa());
 	}
 
-	default void certs(Action<? super NamedDomainObjectContainer<NamedCertificateDescription>> action) {
+	default void certs(Action<? super NamedDomainObjectContainer<@NonNull NamedCertificateDescription>> action) {
 		action.execute(getCerts());
 	}
 }

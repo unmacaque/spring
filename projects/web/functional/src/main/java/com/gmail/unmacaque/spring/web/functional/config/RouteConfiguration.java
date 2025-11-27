@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.web.functional.config;
 
 import com.gmail.unmacaque.spring.web.functional.web.GreetHandler;
+import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
@@ -17,7 +18,7 @@ public class RouteConfiguration {
 	}
 
 	@Bean
-	RouterFunction<ServerResponse> routerFunction(GreetHandler handler) {
+	RouterFunction<@NonNull ServerResponse> routerFunction(GreetHandler handler) {
 		return route()
 				.GET("/", handler::greetAnonymous)
 				.POST("/{name}", handler::greetWithName)

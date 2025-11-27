@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.webflux.functional.config;
 
 import com.gmail.unmacaque.spring.webflux.functional.web.RouteHandler;
+import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -17,7 +18,7 @@ public class RouteConfiguration {
 	}
 
 	@Bean
-	RouterFunction<ServerResponse> routerFunction(RouteHandler handler) {
+	RouterFunction<@NonNull ServerResponse> routerFunction(RouteHandler handler) {
 		return route()
 				.GET("/", handler::handleRoot)
 				.GET("/hello/{name}", handler::handleHelloName)

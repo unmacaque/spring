@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.kafka.consumer;
 
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +28,7 @@ class KafkaIT {
 	private static final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.3.3"));
 
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<@NonNull String, @NonNull String> kafkaTemplate;
 
 	@Test
 	void testConsume(CapturedOutput capturedOutput) {

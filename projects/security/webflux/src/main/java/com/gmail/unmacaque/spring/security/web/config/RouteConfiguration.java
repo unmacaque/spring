@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.security.web.config;
 
 import com.gmail.unmacaque.spring.security.web.web.RouteHandler;
+import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -18,7 +19,7 @@ public class RouteConfiguration {
 	}
 
 	@Bean
-	RouterFunction<ServerResponse> routerFunction(RouteHandler handler) {
+	RouterFunction<@NonNull ServerResponse> routerFunction(RouteHandler handler) {
 		return route(GET("/"), handler::handleRoot)
 				.and(route(GET("/hello/{name}"), handler::handleHelloName));
 	}

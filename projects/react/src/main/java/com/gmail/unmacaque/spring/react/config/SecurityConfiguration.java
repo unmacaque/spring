@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.react.config;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.security.oauth2.server.authorization.autoconfigure.servlet.OAuth2AuthorizationServerAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -53,7 +54,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(
+	FilterRegistrationBean<@NonNull CorsFilter> corsFilterFilterRegistrationBean(
 			@Qualifier("corsConfigurationSource") CorsConfigurationSource configurationSource
 	) {
 		return new FilterRegistrationBean<>(new CorsFilter(configurationSource));

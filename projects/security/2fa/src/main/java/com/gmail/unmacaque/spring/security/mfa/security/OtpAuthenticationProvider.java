@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.Objects;
+
 public class OtpAuthenticationProvider extends DaoAuthenticationProvider {
 
 	private final UserDetailsService userDetailsService;
@@ -24,7 +26,7 @@ public class OtpAuthenticationProvider extends DaoAuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
-		final String verificationCode = ((OtpWebAuthenticationDetails) auth.getDetails()).getVerificationCode();
+		final String verificationCode = ((OtpWebAuthenticationDetails) Objects.requireNonNull(auth.getDetails())).getVerificationCode();
 		final UserDetails user = userDetailsService.loadUserByUsername(auth.getName());
 		final String secret = otpSecretRegistry.getSecret(user.getUsername());
 		if (secret == null) {

@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.webflux.webclient.domain;
 
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatusCode;
@@ -18,7 +19,7 @@ public class WebFluxService {
 		this.baseUrl = baseUrl;
 	}
 
-	public Mono<String> doCall() {
+	public Mono<@NonNull String> doCall() {
 		return WebClient
 				.create(baseUrl)
 				.get()

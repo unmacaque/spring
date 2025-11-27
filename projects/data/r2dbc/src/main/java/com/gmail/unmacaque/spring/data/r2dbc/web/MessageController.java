@@ -1,7 +1,7 @@
 package com.gmail.unmacaque.spring.data.r2dbc.web;
 
 import com.gmail.unmacaque.spring.data.r2dbc.domain.Message;
-import com.gmail.unmacaque.spring.data.r2dbc.domain.MessageRepository;
+import com.gmail.unmacaque.spring.data.r2dbc.repository.MessageRepository;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

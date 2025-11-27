@@ -1,11 +1,11 @@
 package com.gmail.unmacaque.spring.nativeimage.config;
 
 import com.gmail.unmacaque.spring.nativeimage.web.WebController;
+import org.jspecify.annotations.NonNull;
 import org.springframework.aot.hint.MemberCategory;
 import org.springframework.aot.hint.RuntimeHints;
 import org.springframework.aot.hint.RuntimeHintsRegistrar;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.lang.NonNull;
 
 public class NativeHints implements RuntimeHintsRegistrar {
 
