@@ -9,7 +9,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-rag'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
