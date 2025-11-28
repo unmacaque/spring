@@ -6,6 +6,7 @@
 /*.iml
 /artifacts
 /compiler.xml
+/explyt-*.xml
 /gradle.xml
 /jarRepositories.xml
 /libraries
