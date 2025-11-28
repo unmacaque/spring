@@ -1,6 +1,7 @@
 [versions]
 aerogearOtpJava = "1.0.0"
 mockserver = "5.15.0"
+openrewrite = "6.19.0"
 resilience4j = "2.3.0"
 springAi = "1.1.0"
 springGrpc = "1.0.0-RC1"
@@ -18,6 +19,8 @@ grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
 grpc-stub = { module = "io.grpc:grpc-stub" }
 
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
+
+openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version.ref = "openrewrite" }
 
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 

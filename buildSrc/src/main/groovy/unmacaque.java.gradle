@@ -17,7 +17,7 @@ rewrite {
 }
 
 dependencies {
-    rewrite('org.openrewrite.recipe:rewrite-spring:6.19.0')
+    rewrite libs.openrewrite.spring
 }
 
 java {
