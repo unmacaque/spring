@@ -40,7 +40,7 @@ class WebControllerTest {
 	@Test
 	void testUnauthenticated() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isUnauthorized());
+				.andExpectAll(status().isUnauthorized());
 	}
 
 }

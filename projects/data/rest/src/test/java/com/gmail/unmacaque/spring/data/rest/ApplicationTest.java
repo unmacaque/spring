@@ -60,19 +60,19 @@ class ApplicationTest {
 	void testPostItem() throws Exception {
 		mvc.perform(post("/items")
 						.content(json.write(createItem()).getJson()))
-				.andExpect(status().isCreated());
+				.andExpectAll(status().isCreated());
 	}
 
 	@Test
 	void testPutItem() throws Exception {
 		mvc.perform(put("/items/2")
 						.content(json.write(createItem()).getJson()))
-				.andExpect(status().isNoContent());
+				.andExpectAll(status().isNoContent());
 	}
 
 	@Test
 	void testDeleteItem() throws Exception {
 		mvc.perform(delete("/items/1"))
-				.andExpect(status().isNoContent());
+				.andExpectAll(status().isNoContent());
 	}
 }

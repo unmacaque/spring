@@ -21,14 +21,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class RegisterControllerTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mvc;
 
 	@MockitoBean
 	private UserDetailsManager userDetailsManager;
 
 	@Test
 	void testGetRegister() throws Exception {
-		mockMvc.perform(get("/register"))
+		mvc.perform(get("/register"))
 				.andExpectAll(
 						status().isOk(),
 						model().attributeExists("registerUser")
@@ -37,7 +37,7 @@ class RegisterControllerTest {
 
 	@Test
 	void testPostRegister() throws Exception {
-		mockMvc.perform(post("/register")
+		mvc.perform(post("/register")
 						.param("username", "foo")
 						.param("mailAddress", "foo@bar.org")
 						.param("password", "springsecurity")
@@ -56,7 +56,7 @@ class RegisterControllerTest {
 
 	@Test
 	void testPostRegisterWithIncompleteUserDetails() throws Exception {
-		mockMvc.perform(post("/register")
+		mvc.perform(post("/register")
 						.param("username", "")
 						.param("mailAddress", "")
 						.param("password", "")
@@ -74,7 +74,7 @@ class RegisterControllerTest {
 	void testPostRegisterWithUsernameAlreadyExists() throws Exception {
 		doReturn(true).when(userDetailsManager).userExists("foo");
 
-		mockMvc.perform(post("/register")
+		mvc.perform(post("/register")
 						.param("username", "foo")
 						.param("mailAddress", "foo@bar.org")
 						.param("password", "springsecurity")
@@ -89,7 +89,7 @@ class RegisterControllerTest {
 
 	@Test
 	void testPostRegisterWithWeakPassword() throws Exception {
-		mockMvc.perform(post("/register")
+		mvc.perform(post("/register")
 						.param("username", "foo")
 						.param("mailAddress", "foo@bar.org")
 						.param("password", "password")
@@ -106,7 +106,7 @@ class RegisterControllerTest {
 	void testPostRegisterWithInternalError() throws Exception {
 		doThrow(RuntimeException.class).when(userDetailsManager).createUser(any());
 
-		mockMvc.perform(post("/register")
+		mvc.perform(post("/register")
 						.param("username", "foo")
 						.param("mailAddress", "foo@bar.org")
 						.param("password", "springsecurity")

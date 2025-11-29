@@ -21,7 +21,7 @@ class ApplicationTest {
 	@Test
 	void testSwaggerUi() throws Exception {
 		mvc.perform(get("/swagger-ui.html"))
-				.andExpect(status().isFound());
+				.andExpectAll(status().isFound());
 	}
 
 	@Test

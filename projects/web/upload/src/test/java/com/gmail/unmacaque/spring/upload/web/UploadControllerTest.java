@@ -23,7 +23,7 @@ class UploadControllerTest {
 	@Test
 	void testGet() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isOk());
+				.andExpectAll(status().isOk());
 	}
 
 	@Test

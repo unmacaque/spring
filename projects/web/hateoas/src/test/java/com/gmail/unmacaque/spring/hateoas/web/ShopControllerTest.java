@@ -77,6 +77,6 @@ class ShopControllerTest {
 	@Test
 	void testOrderItemDoesNotExistNotFound() throws Exception {
 		mvc.perform(post("/99/order"))
-				.andExpect(status().isNotFound());
+				.andExpectAll(status().isNotFound());
 	}
 }

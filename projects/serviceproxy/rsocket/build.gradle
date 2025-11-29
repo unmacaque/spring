@@ -5,8 +5,7 @@ plugins {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-rsocket'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-rsocket-test'
 }
 
 description = 'Spring Service Proxy RSocket'

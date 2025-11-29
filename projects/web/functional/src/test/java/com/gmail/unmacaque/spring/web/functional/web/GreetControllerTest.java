@@ -21,12 +21,12 @@ class GreetControllerTest {
 	@Test
 	void testGreet() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(jsonPath("$.message").value("Hello World"));
+				.andExpectAll(jsonPath("$.message").value("Hello World"));
 	}
 
 	@Test
 	void testGreetWithName() throws Exception {
 		mvc.perform(post("/Spring"))
-				.andExpect(jsonPath("$.message").value("Spring"));
+				.andExpectAll(jsonPath("$.message").value("Spring"));
 	}
 }

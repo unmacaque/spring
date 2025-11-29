@@ -32,6 +32,6 @@ class ApplicationTest {
 	void testLoginWithInvalidCredentialsIsUnauthorized() throws Exception {
 		mvc.perform(get("/")
 						.with(httpBasic("foo", "bar")))
-				.andExpect(status().isUnauthorized());
+				.andExpectAll(status().isUnauthorized());
 	}
 }

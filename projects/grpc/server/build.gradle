@@ -10,7 +10,6 @@ dependencies {
     implementation 'org.springframework.grpc:spring-grpc-server-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.grpc:spring-grpc-test'
 }
 

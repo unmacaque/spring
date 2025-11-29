@@ -21,7 +21,7 @@ class ApplicationTest {
 	@Test
 	void testGetIsUnauthorized() throws Exception {
 		mvc.perform(get("/"))
-				.andExpect(status().isForbidden());
+				.andExpectAll(status().isForbidden());
 	}
 
 	@Test

@@ -16,17 +16,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class HelloControllerTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mvc;
 
 	@Test
 	void testIndex() throws Exception {
-		mockMvc.perform(get("/"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/"))
+				.andExpectAll(status().isOk());
 	}
 
 	@Test
 	void testHelloWithNoAuthenticationRedirectToLogin() throws Exception {
-		mockMvc.perform(get("/hello"))
+		mvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isFound(),
 						redirectedUrl("/login")
@@ -35,7 +35,7 @@ class HelloControllerTest {
 
 	@Test
 	void testHelloWithRoleUser() throws Exception {
-		mockMvc.perform(get("/hello")
+		mvc.perform(get("/hello")
 						.with(user("user").roles("USER")))
 				.andExpectAll(
 						status().isOk(),

@@ -20,11 +20,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ApplicationTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mvc;
 
 	@Test
 	void testApi() throws Exception {
-		mockMvc.perform(get("/api")
+		mvc.perform(get("/api")
 						.with(httpBasic("admin", "admin")))
 				.andExpectAll(
 						status().isOk(),
@@ -34,15 +34,15 @@ class ApplicationTest {
 
 	@Test
 	void testApiWithUserIsForbidden() throws Exception {
-		mockMvc.perform(get("/api")
+		mvc.perform(get("/api")
 						.with(httpBasic("user", "user")))
-				.andExpect(status().isForbidden());
+				.andExpectAll(status().isForbidden());
 	}
 
 	@Test
 	@WithMockUser(username = "admin", roles = "ADMIN")
 	void testApiWithRoleAdmin() throws Exception {
-		mockMvc.perform(get("/api"))
+		mvc.perform(get("/api"))
 				.andExpectAll(
 						status().isOk(),
 						content().string("admin")
@@ -52,13 +52,13 @@ class ApplicationTest {
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testApiWithRoleUserIsForbidden() throws Exception {
-		mockMvc.perform(get("/api"))
-				.andExpect(status().isForbidden());
+		mvc.perform(get("/api"))
+				.andExpectAll(status().isForbidden());
 	}
 
 	@Test
 	void testIndex() throws Exception {
-		mockMvc.perform(formLogin().user("user").password("pass"))
+		mvc.perform(formLogin().user("user").password("pass"))
 				.andExpectAll(
 						status().isFound(),
 						authenticated().withUsername("user").withRoles("USER"),
@@ -70,7 +70,7 @@ class ApplicationTest {
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testIndexWithRoleUser() throws Exception {
-		mockMvc.perform(get("/"))
+		mvc.perform(get("/"))
 				.andExpectAll(
 						status().isOk(),
 						model().attribute("username", "user")
@@ -80,8 +80,8 @@ class ApplicationTest {
 	@Test
 	@WithAnonymousUser
 	void testLoginWithoutAuthentication() throws Exception {
-		mockMvc.perform(get("/login"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/login"))
+				.andExpectAll(status().isOk());
 	}
 
 }

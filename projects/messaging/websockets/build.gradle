@@ -8,7 +8,7 @@ dependencies {
     runtimeOnly libs.webjars.webstompClient
     runtimeOnly libs.webjars.jquery
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-websocket-test'
 }
 
 description = 'Spring Messaging WebSockets'

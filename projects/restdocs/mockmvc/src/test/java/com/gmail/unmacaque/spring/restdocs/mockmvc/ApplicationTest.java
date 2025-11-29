@@ -95,7 +95,7 @@ class ApplicationTest {
 	void postRegistration() throws Exception {
 		mvc.perform(post("/registrations")
 						.content(json.write(createRegistration()).getJson()))
-				.andExpect(status().isCreated())
+				.andExpectAll(status().isCreated())
 				.andDo(document("{method-name}",
 								requestFields(
 										fieldWithPath("id").ignored(),
@@ -111,7 +111,7 @@ class ApplicationTest {
 	void putRegistration() throws Exception {
 		mvc.perform(put("/registrations/{id}", 2)
 						.content(json.write(createRegistration()).getJson()))
-				.andExpect(status().isNoContent())
+				.andExpectAll(status().isNoContent())
 				.andDo(document("{method-name}",
 								pathParameters(
 										parameterWithName("id").description("Unique id of the registration")),
@@ -128,7 +128,7 @@ class ApplicationTest {
 	@Test
 	void deleteRegistration() throws Exception {
 		mvc.perform(delete("/registrations/{id}", 1))
-				.andExpect(status().isNoContent())
+				.andExpectAll(status().isNoContent())
 				.andDo(document("{method-name}",
 								pathParameters(parameterWithName("id").description("Unique id of the registration"))
 						)

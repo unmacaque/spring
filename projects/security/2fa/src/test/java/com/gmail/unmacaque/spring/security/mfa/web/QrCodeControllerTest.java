@@ -15,12 +15,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class QrCodeControllerTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mvc;
 
 	@Test
 	void testQrcode() throws Exception {
-		mockMvc.perform(get("/qrcode"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/qrcode"))
+				.andExpectAll(status().isOk());
 	}
 
 }

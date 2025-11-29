@@ -20,19 +20,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class HelloControllerTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mvc;
 
 	@Test
 	@WithAnonymousUser
 	void testIndex() throws Exception {
-		mockMvc.perform(get("/"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/"))
+				.andExpectAll(status().isOk());
 	}
 
 	@Test
 	@WithAnonymousUser
 	void testHelloWithoutAuthenticationRedirectToLogin() throws Exception {
-		mockMvc.perform(get("/hello"))
+		mvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isFound(),
 						redirectedUrl("/login")
@@ -42,7 +42,7 @@ class HelloControllerTest {
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testHelloWithRoleUser() throws Exception {
-		mockMvc.perform(get("/hello"))
+		mvc.perform(get("/hello"))
 				.andExpectAll(
 						status().isOk(),
 						model().attribute("username", "user")
@@ -52,13 +52,13 @@ class HelloControllerTest {
 	@Test
 	@WithAnonymousUser
 	void testLoginWithoutAuthentication() throws Exception {
-		mockMvc.perform(get("/login"))
-				.andExpect(status().isOk());
+		mvc.perform(get("/login"))
+				.andExpectAll(status().isOk());
 	}
 
 	@Test
 	void testLoginWithRoleUser() throws Exception {
-		mockMvc.perform(formLogin().user("user").password("user"))
+		mvc.perform(formLogin().user("user").password("user"))
 				.andExpectAll(
 						status().isFound(),
 						authenticated().withUsername("user").withRoles("USER"),
@@ -69,7 +69,7 @@ class HelloControllerTest {
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testLoginWithLoggedInUserRedirectToHello() throws Exception {
-		mockMvc.perform(get("/login"))
+		mvc.perform(get("/login"))
 				.andExpectAll(
 						status().isOk(),
 						forwardedUrl("/hello")
@@ -79,7 +79,7 @@ class HelloControllerTest {
 	@Test
 	@WithMockUser(username = "admin", roles = "ADMIN")
 	void testAdminWithRoleAdmin() throws Exception {
-		mockMvc.perform(get("/admin"))
+		mvc.perform(get("/admin"))
 				.andExpectAll(
 						status().isOk(),
 						model().attribute("username", "admin")
@@ -89,7 +89,7 @@ class HelloControllerTest {
 	@Test
 	@WithMockUser(username = "user", roles = "USER")
 	void testAdminWithRoleUserIsForbidden() throws Exception {
-		mockMvc.perform(get("/admin"))
-				.andExpect(status().isForbidden());
+		mvc.perform(get("/admin"))
+				.andExpectAll(status().isForbidden());
 	}
 }
