@@ -13,7 +13,7 @@ import static org.springframework.security.oauth2.core.authorization.OAuth2Autho
 public class SecurityConfiguration {
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests

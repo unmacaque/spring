@@ -18,7 +18,7 @@ public class SecurityConfiguration {
 	SecurityFilterChain securityFilterChain(
 			HttpSecurity http,
 			UserDetailsService userDetailsService
-	) throws Exception {
+	) {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(0)
-	SecurityFilterChain managementSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain managementSecurityFilterChain(HttpSecurity http) {
 		return http
 				.securityMatcher(EndpointRequest.toAnyEndpoint())
 				.authorizeHttpRequests(requests ->

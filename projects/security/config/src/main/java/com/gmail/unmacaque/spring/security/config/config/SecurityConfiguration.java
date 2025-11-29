@@ -27,7 +27,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(0)
-	SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) {
 		return http
 				.securityMatcher("/api/**")
 				.authorizeHttpRequests(requests ->
@@ -41,7 +41,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(1)
-	SecurityFilterChain userSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain userSecurityFilterChain(HttpSecurity http) {
 		@SuppressWarnings("deprecation") final UserDetails userDetails = User
 				.withDefaultPasswordEncoder()
 				.username("user")
@@ -61,7 +61,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
-	SecurityFilterChain h2ConsoleSecurityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain h2ConsoleSecurityFilterChain(HttpSecurity http) {
 		return http
 				.securityMatcher(PathRequest.toH2Console())
 				.csrf(CsrfConfigurer::disable)

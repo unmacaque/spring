@@ -62,7 +62,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	@Order(0)
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		return http
 				.securityMatcher("/api/**")
 				.authorizeHttpRequests(requests ->

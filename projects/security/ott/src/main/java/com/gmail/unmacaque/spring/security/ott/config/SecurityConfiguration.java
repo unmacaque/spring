@@ -17,7 +17,7 @@ public class SecurityConfiguration {
 	SecurityFilterChain securityFilterChain(
 			HttpSecurity http,
 			UserDetailsService userDetailsService
-	) throws Exception {
+	) {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests

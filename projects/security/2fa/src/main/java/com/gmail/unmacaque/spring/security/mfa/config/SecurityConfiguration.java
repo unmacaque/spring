@@ -22,7 +22,7 @@ public class SecurityConfiguration {
 			HttpSecurity http,
 			UserDetailsService userDetailsService,
 			OtpSecretRegistry otpSecretRegistry
-	) throws Exception {
+	) {
 		return http
 				.authorizeHttpRequests(requests ->
 						requests
