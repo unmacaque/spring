@@ -14,8 +14,8 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.DynamicPropertyRegistry;
-import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.ollama.OllamaContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.Map;
@@ -40,17 +40,16 @@ public class IntegrationApplication {
 							.withBinds(Bind.parse("ollama:/root/.ollama")));
 		}
 
-		@SuppressWarnings("rawtypes")
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		PostgreSQLContainer chromaDBContainer() {
+		PostgreSQLContainer pgvectorContainer() {
 			return new PostgreSQLContainer(DockerImageName.parse("pgvector/pgvector:pg17"));
 		}
 
 		@Bean
 		ApplicationRunner applicationRunner(VectorStore vectorStore) {
-			return args -> {
+			return _ -> {
 				record PromptSuggestions(String act, String prompt, @JsonProperty("for_devs") boolean forDevs) {}
 
 				final var mapper = new CsvMapper();

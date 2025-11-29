@@ -8,9 +8,9 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.MariaDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.mariadb.MariaDBContainer;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -25,7 +25,7 @@ class MariadbIT {
 
 	@Container
 	@ServiceConnection
-	static final MariaDBContainer<?> mariadbContrainer = new MariaDBContainer<>("mariadb:10");
+	static final MariaDBContainer mariadbContrainer = new MariaDBContainer("mariadb:10");
 
 	@Autowired
 	private MockMvc mvc;
