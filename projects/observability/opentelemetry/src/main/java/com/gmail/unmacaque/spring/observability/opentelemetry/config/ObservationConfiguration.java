@@ -1,6 +1,7 @@
 package com.gmail.unmacaque.spring.observability.opentelemetry.config;
 
-import io.opentelemetry.exporter.logging.LoggingMetricExporter;
+import io.micrometer.core.instrument.logging.LoggingMeterRegistry;
+import io.micrometer.core.instrument.logging.LoggingRegistryConfig;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class ObservationConfiguration {
 
 	@Bean
-	LoggingMetricExporter loggingMetricExporter() {
-		return LoggingMetricExporter.create();
+	LoggingMeterRegistry loggingMeterRegistry() {
+		return LoggingMeterRegistry.builder(LoggingRegistryConfig.DEFAULT).build();
 	}
 
 	@Bean

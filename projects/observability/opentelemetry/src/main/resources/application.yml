@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-micrometer-opentelemetry
+    name: spring-observability-opentelemetry
 
 management:
   tracing:
