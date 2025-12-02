@@ -13,7 +13,7 @@ repositories {
 rewrite {
     activeRecipe('com.gmail.unmacaque.Rewrite')
 
-    configFile("${project.rootDir}/rewrite.yml")
+    configFile = "${project.rootDir}/rewrite.yml"
 }
 
 dependencies {
