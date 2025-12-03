@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.wiremock.spring.EnableWireMock;
 import reactor.core.publisher.Mono;
@@ -16,6 +17,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @SpringBootTest
 @EnableWireMock
+@TestPropertySource(properties = "spring.http.serviceclient.default.base-url=${wiremock.server.baseUrl}")
 class ApplicationTest {
 
 	@Autowired
