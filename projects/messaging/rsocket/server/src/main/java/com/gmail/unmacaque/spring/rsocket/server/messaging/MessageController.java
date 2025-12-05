@@ -2,31 +2,30 @@ package com.gmail.unmacaque.spring.rsocket.server.messaging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.Duration;
+import java.time.LocalDateTime;
 
 @Controller
-public class MessageController {
+public class MessageController implements MessageService {
 
 	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
-	@MessageMapping("fire-and-forget")
+	@Override
 	public Mono<Void> fireAndForget(String text) {
 		logger.info(text);
 		return Mono.empty();
 	}
 
-	@MessageMapping("request-response")
+	@Override
 	public Mono<String> requestResponse() {
 		return Mono.just("Hello World");
 	}
 
-	@MessageMapping("request-stream")
-	public Flux<Duration> requestStream() {
-		return Flux.generate(sink -> ProcessHandle.current().info().totalCpuDuration().ifPresent(sink::next));
+	@Override
+	public Flux<LocalDateTime> requestStream() {
+		return Flux.generate(sink -> sink.next(LocalDateTime.now()));
 	}
 }
