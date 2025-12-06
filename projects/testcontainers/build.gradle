@@ -7,6 +7,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-restclient'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-restclient-test'
     integrationImplementation 'org.springframework.boot:spring-boot-testcontainers'
     integrationImplementation 'org.testcontainers:testcontainers-mockserver'
     integrationImplementation 'org.testcontainers:testcontainers-junit-jupiter'

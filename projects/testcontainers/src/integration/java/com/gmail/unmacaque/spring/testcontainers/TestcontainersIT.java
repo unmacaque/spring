@@ -3,7 +3,7 @@ package com.gmail.unmacaque.spring.testcontainers;
 import org.junit.jupiter.api.*;
 import org.mockserver.client.MockServerClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.restclient.RestTemplateBuilder;
+import org.springframework.boot.restclient.RestClientCustomizer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
@@ -77,7 +77,7 @@ class TestcontainersIT {
 		mvc.perform(get("/"))
 				.andExpectAll(
 						status().isInternalServerError(),
-						content().string("Bad Request")
+						content().string("Oh no!")
 				);
 
 		mockServerClient.verify(request().withPath("/"));
@@ -86,8 +86,8 @@ class TestcontainersIT {
 	@TestConfiguration
 	static class TestcontainersITTestConfiguration {
 		@Bean
-		RestTemplateBuilder restTemplateBuilder() {
-			return new RestTemplateBuilder().rootUri(container.getEndpoint());
+		RestClientCustomizer restClientCustomizer() {
+			return builder -> builder.baseUrl(container.getEndpoint());
 		}
 	}
 

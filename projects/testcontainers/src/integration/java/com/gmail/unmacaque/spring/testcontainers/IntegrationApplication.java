@@ -2,7 +2,7 @@ package com.gmail.unmacaque.spring.testcontainers;
 
 import org.mockserver.client.MockServerClient;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.restclient.RestTemplateBuilder;
+import org.springframework.boot.restclient.RestClientCustomizer;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.mockserver.MockServerContainer;
@@ -35,8 +35,8 @@ public class IntegrationApplication {
 		}
 
 		@Bean
-		RestTemplateBuilder restTemplateBuilder(MockServerContainer container) {
-			return new RestTemplateBuilder().rootUri(container.getEndpoint());
+		RestClientCustomizer restClientCustomizer(MockServerContainer container) {
+			return builder -> builder.baseUrl(container.getEndpoint());
 		}
 	}
 }
