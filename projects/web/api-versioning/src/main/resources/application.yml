@@ -1,0 +1,6 @@
+spring:
+  mvc:
+    apiversion:
+      default: 1
+      use:
+        path-segment: 1
