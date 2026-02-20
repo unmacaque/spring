@@ -1,0 +1,15 @@
+plugins {
+    id 'unmacaque.spring-boot'
+    id 'org.cyclonedx.bom'
+}
+
+dependencies {
+    implementation libs.springBootAdmin.starter.server
+    implementation libs.springBootAdmin.starter.client
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+}
+
+description = 'Spring Boot Admin'

@@ -4,6 +4,7 @@ mockserver = "5.15.0"
 openrewrite = "6.19.0"
 resilience4j = "2.3.0"
 springAi = "1.1.0"
+springBootAdmin = "4.0.1"
 springGrpc = "1.0.0"
 springModulith = "2.0.0"
 springdocOpenapi = "3.0.0"
@@ -25,6 +26,9 @@ openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 
 spring-ai-bom = { module = "org.springframework.ai:spring-ai-bom", version.ref = "springAi" }
+
+springBootAdmin-starter-client = { module = "de.codecentric:spring-boot-admin-starter-client", version.ref = "springBootAdmin" }
+springBootAdmin-starter-server = { module = "de.codecentric:spring-boot-admin-starter-server", version.ref = "springBootAdmin" }
 
 spring-grpc-dependencies = { module = "org.springframework.grpc:spring-grpc-dependencies", version.ref = "springGrpc" }
 
