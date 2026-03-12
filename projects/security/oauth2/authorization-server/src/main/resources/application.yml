@@ -12,11 +12,18 @@ spring:
               client-id: spring-security-oauth2-client
               client-secret: "{noop}secret"
               client-authentication-methods: client_secret_basic
-              authorization-grant-types: authorization_code,refresh_token,client_credentials
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+                - client_credentials
               redirect-uris:
                 - http://localhost:8080/login/oauth2/code/
-              scopes: openid,profile
-              require-authorization-consent: true
+                - http://localhost:9876/callback
+              scopes:
+                - openid
+                - profile
+            require-authorization-consent: true
+            require-proof-key: false
 
 logging:
   level:
