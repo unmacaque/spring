@@ -2,7 +2,7 @@
 aerogearOtpJava = "1.0.0"
 mockserver = "5.15.0"
 openrewrite = "6.19.0"
-resilience4j = "2.3.0"
+resilience4j = "2.4.0"
 springAi = "1.1.0"
 springBootAdmin = "4.0.1"
 springGrpc = "1.0.0"
