@@ -7,19 +7,19 @@ import "com/gmail/unmacaque/spring/grpc/domain/location.proto";
 package com.gmail.unmacaque.spring.grpc.domain;
 
 message WeatherForecast {
-    Location location = 1;
-    double temperature = 2;
-    Condition condition = 3;
-    int32 windSpeed = 4;
-    int32 humidity = 5;
+  Location location = 1;
+  double temperature = 2;
+  Condition condition = 3;
+  int32 windSpeed = 4;
+  int32 humidity = 5;
 
-    enum Condition {
-        SUNNY = 0;
-        PARTLY_CLOUDY = 1;
-        MOSTLY_CLOUDY = 2;
-        CLOUDY = 3;
-        RAIN = 4;
-        THUNDERSTORM = 5;
-        SNOW = 6;
-    }
+  enum Condition {
+    SUNNY = 0;
+    PARTLY_CLOUDY = 1;
+    MOSTLY_CLOUDY = 2;
+    CLOUDY = 3;
+    RAIN = 4;
+    THUNDERSTORM = 5;
+    SNOW = 6;
+  }
 }
