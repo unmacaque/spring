@@ -8,6 +8,7 @@ dependencies {
 
     implementation project(':projects:grpc:common')
     implementation 'org.springframework.grpc:spring-grpc-server-spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.grpc:spring-grpc-test'

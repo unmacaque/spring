@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-kafka'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-kafka-test'
     testImplementation 'org.awaitility:awaitility'

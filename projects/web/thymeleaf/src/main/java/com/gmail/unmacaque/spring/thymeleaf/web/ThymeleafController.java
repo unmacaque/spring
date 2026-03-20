@@ -1,5 +1,6 @@
 package com.gmail.unmacaque.spring.thymeleaf.web;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +17,7 @@ public class ThymeleafController {
 
 	private final RequestMappingHandlerMapping handlerMapping;
 
-	public ThymeleafController(RequestMappingHandlerMapping handlerMapping) {
+	public ThymeleafController(@Qualifier("requestMappingHandlerMapping") RequestMappingHandlerMapping handlerMapping) {
 		this.handlerMapping = handlerMapping;
 	}
 
