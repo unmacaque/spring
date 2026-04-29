@@ -12,13 +12,12 @@ dependencies {
 protobuf {
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java'
+            artifact = "io.grpc:protoc-gen-grpc-java:${libs.versions.protobufJava.get()}"
         }
     }
     generateProtoTasks {
         all()*.plugins {
             grpc {
-                option 'jakarta_omit'
                 option '@generated=omit'
             }
         }

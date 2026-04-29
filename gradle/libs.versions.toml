@@ -3,6 +3,8 @@ aerogearOtpJava = "1.0.0"
 initializr = "0.24.0"
 mockserver = "5.15.0"
 openrewrite = "6.19.0"
+protobufJava = "1.80.0"
+protoc = "4.33.1"
 resilience4j = "2.4.0"
 springAi = "1.1.0"
 springBootAdmin = "4.0.1"
@@ -26,6 +28,8 @@ initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref =
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
 
 openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version.ref = "openrewrite" }
+
+protobuf-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "protobufJava" }
 
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 
