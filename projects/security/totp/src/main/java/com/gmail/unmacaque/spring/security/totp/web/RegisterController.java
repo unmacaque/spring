@@ -1,8 +1,8 @@
 package com.gmail.unmacaque.spring.security.totp.web;
 
+import com.bastiaanjansen.otp.SecretGenerator;
 import com.gmail.unmacaque.spring.security.totp.domain.RegisterUser;
 import com.gmail.unmacaque.spring.security.totp.security.OtpSecretRegistry;
-import org.jboss.aerogear.security.otp.api.Base32;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -62,7 +62,7 @@ public class RegisterController {
 	}
 
 	private String createNewOtpUser(RegisterUser registerUser) {
-		final String secret = Base32.random();
+		final String secret = new String(SecretGenerator.generate());
 		final var otpUser = User
 				.withUsername(registerUser.username())
 				.password("{noop}" + registerUser.password())

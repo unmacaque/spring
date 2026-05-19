@@ -1,6 +1,6 @@
 package com.gmail.unmacaque.spring.security.totp.security;
 
-import org.jboss.aerogear.security.otp.Totp;
+import com.bastiaanjansen.otp.TOTPGenerator;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,7 +32,7 @@ public class OtpAuthenticationProvider extends DaoAuthenticationProvider {
 		if (secret == null) {
 			throw new UsernameNotFoundException("User not eligible for two-factor authentication");
 		}
-		final Totp totp = new Totp(secret);
+		final TOTPGenerator totp = new TOTPGenerator.Builder(secret).build();
 		if (!isValidLong(verificationCode) || !totp.verify(verificationCode)) {
 			throw new BadCredentialsException("Invalid verificationCode");
 		}

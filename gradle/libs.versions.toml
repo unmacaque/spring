@@ -1,8 +1,8 @@
 [versions]
-aerogearOtpJava = "1.0.0"
 initializr = "0.24.0"
 mockserver = "5.15.0"
 openrewrite = "6.19.0"
+otpJava = "2.1.0"
 protobufJava = "1.80.0"
 protoc = "4.33.1"
 resilience4j = "2.4.0"
@@ -17,8 +17,6 @@ wiremockIntegrations = "4.0.6"
 zxing = "3.5.3"
 
 [libraries]
-aerogear-otp-java = { module = "org.jboss.aerogear:aerogear-otp-java", version.ref = "aerogearOtpJava" }
-
 grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
 grpc-stub = { module = "io.grpc:grpc-stub" }
@@ -28,6 +26,8 @@ initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref =
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
 
 openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version.ref = "openrewrite" }
+
+otpJava = { module = "com.github.bastiaanjansen:otp-java", version.ref = "otpJava" }
 
 protobuf-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "protobufJava" }
 
