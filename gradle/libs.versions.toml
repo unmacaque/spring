@@ -1,6 +1,6 @@
 [versions]
 initializr = "0.24.0"
-mockserver = "5.15.0"
+mockserver = "6.1.0"
 openrewrite = "6.19.0"
 otpJava = "2.1.0"
 protobufJava = "1.80.0"

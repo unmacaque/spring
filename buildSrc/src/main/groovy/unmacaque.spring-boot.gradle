@@ -6,26 +6,6 @@ plugins {
 group = 'com.gmail.unmacaque.spring'
 version = '1.0.0-SNAPSHOT'
 
-sourceSets {
-    integration {
-        java {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-        }
-    }
-}
-
-configurations {
-    integrationImplementation.extendsFrom testImplementation
-    integrationRuntimeOnly.extendsFrom runtimeOnly, testRuntimeOnly
-}
-
-tasks.register('integrationTest', Test) {
-    testClassesDirs = sourceSets.integration.output.classesDirs
-    classpath = sourceSets.integration.runtimeClasspath
-    useJUnitPlatform()
-}
-
 bootBuildImage {
     imageName = "unmacaque/${project.name}"
 }

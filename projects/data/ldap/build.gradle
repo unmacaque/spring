@@ -1,5 +1,6 @@
 plugins {
     id 'unmacaque.spring-boot'
+    id 'unmacaque.integration-test'
 }
 
 dependencies {
