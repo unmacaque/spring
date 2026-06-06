@@ -32,7 +32,7 @@ class AiControllerTest {
 	void testGenerate() throws Exception {
 		when(chatClientBuilder.build()
 				.prompt()
-				.toolCallbacks(eq(toolCallbackProvider))
+				.tools(eq(toolCallbackProvider))
 				.user(anyString())
 				.call()
 				.content()

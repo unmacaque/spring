@@ -9,7 +9,6 @@ import org.springframework.boot.devtools.restart.RestartScope;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.DynamicPropertyRegistry;
 import org.testcontainers.ollama.OllamaContainer;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
@@ -31,7 +30,7 @@ public class IntegrationApplication {
 		@Bean
 		@RestartScope
 		@ServiceConnection
-		OllamaContainer ollamaContainer(DynamicPropertyRegistry properties) {
+		OllamaContainer ollamaContainer() {
 			return new OllamaContainer(DockerImageName.parse("ollama/ollama"))
 					.withCreateContainerCmdModifier(cmd -> Objects.requireNonNull(cmd.getHostConfig())
 							.withBinds(Bind.parse("ollama:/root/.ollama")));

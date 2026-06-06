@@ -22,7 +22,7 @@ public class AiController {
 	public String generate(@RequestParam(value = "message", defaultValue = "What is the current time?") String message) {
 		return chatClient
 				.prompt()
-				.toolCallbacks(tools)
+				.tools(tools)
 				.user(message)
 				.call()
 				.content();

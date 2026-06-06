@@ -1,6 +1,12 @@
 server:
   port: 8180
 
+spring:
+  ai:
+    mcp:
+      server:
+        protocol: stateless
+
 management:
   endpoints:
     web:

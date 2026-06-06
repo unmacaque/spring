@@ -6,7 +6,7 @@ plugins {
 dependencies {
     implementation platform(libs.spring.ai.bom)
 
-    implementation 'org.springframework.ai:spring-ai-advisors-vector-store'
+    implementation 'org.springframework.ai:spring-ai-vector-store-advisor'
     implementation 'org.springframework.ai:spring-ai-rag'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'

@@ -6,6 +6,7 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.model.Generation;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.model.chat.client.autoconfigure.ChatClientAutoConfiguration;
@@ -44,6 +45,7 @@ class AiControllerTest {
 
 	@Test
 	void testRetrieveAndGenerate() throws Exception {
+		when(chatModel.getOptions()).thenReturn(ChatOptions.builder().build());
 		when(chatModel.call(any(Prompt.class))).thenReturn(buildChatResponse("It works!"));
 		when(vectorStore.similaritySearch(any(SearchRequest.class))).thenReturn(List.of(new Document("Test")));
 
