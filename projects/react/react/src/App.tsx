@@ -9,7 +9,7 @@ import Popup from './components/MyToast'
 import NavigationBar from './components/NavigationBar'
 
 function App() {
-  const { token, logIn, logOut, error, idTokenData, loginInProgress } = useContext<IAuthContext>(AuthContext)
+  const { logIn, logOut, error, idTokenData, loginInProgress } = useContext<IAuthContext>(AuthContext)
   const [showDialog, setShowDialog] = useState(error !== null)
   const [logout, setLogout] = useState(false)
 
@@ -39,7 +39,7 @@ function App() {
       <Popup variant="success" title="Logout successful" show={logout} onClose={() => setLogout(false)}>
         You have been logged out successfully.
       </Popup>
-      {!token && !loginInProgress && <LoginDialog onLoginClick={() => logIn()} />}
+      {!idTokenData && !loginInProgress && <LoginDialog onLoginClick={() => logIn()} />}
       {idTokenData && (
         <>
           <NavigationBar

@@ -11,7 +11,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:8080',
-    }
+    },
   },
   test: {
     globals: true,
@@ -23,6 +23,6 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       include: ['src/**/*'],
       exclude: [],
-    }
+    },
   },
 })
