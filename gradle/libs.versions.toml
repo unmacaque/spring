@@ -1,14 +1,13 @@
 [versions]
+grpc = "1.18.0"
 initializr = "0.24.0"
 mockserver = "6.1.0"
 openrewrite = "6.19.0"
 otpJava = "2.1.0"
-protobufJava = "1.80.0"
-protoc = "4.33.1"
+protoc = "4.34.2"
 resilience4j = "2.4.0"
 springAi = "2.0.0"
 springBootAdmin = "4.0.1"
-springGrpc = "1.0.0"
 springModulith = "2.0.0"
 springdocOpenapi = "3.0.0"
 togglz = "4.6.1"
@@ -29,16 +28,12 @@ openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version
 
 otpJava = { module = "com.github.bastiaanjansen:otp-java", version.ref = "otpJava" }
 
-protobuf-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "protobufJava" }
-
 resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
 
 spring-ai-bom = { module = "org.springframework.ai:spring-ai-bom", version.ref = "springAi" }
 
 springBootAdmin-starter-client = { module = "de.codecentric:spring-boot-admin-starter-client", version.ref = "springBootAdmin" }
 springBootAdmin-starter-server = { module = "de.codecentric:spring-boot-admin-starter-server", version.ref = "springBootAdmin" }
-
-spring-grpc-dependencies = { module = "org.springframework.grpc:spring-grpc-dependencies", version.ref = "springGrpc" }
 
 spring-modulith-bom = { module = "org.springframework.modulith:spring-modulith-bom", version.ref = "springModulith" }
 
