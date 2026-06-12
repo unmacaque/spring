@@ -1,5 +1,0 @@
----
-type: specs.openrewrite.org/v1beta/recipe
-name: com.gmail.unmacaque.Rewrite
-recipeList:
-  - org.openrewrite.java.spring.framework.BeanMethodsNotPublic

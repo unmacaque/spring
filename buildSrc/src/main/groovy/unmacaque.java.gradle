@@ -1,23 +1,12 @@
 plugins {
     id 'java'
     id 'io.spring.dependency-management'
-    id 'org.openrewrite.rewrite'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
     maven { url = uri("https://repo.spring.io/release") }
-}
-
-rewrite {
-    activeRecipe('com.gmail.unmacaque.Rewrite')
-
-    configFile = "${project.rootDir}/rewrite.yml"
-}
-
-dependencies {
-    rewrite libs.openrewrite.spring
 }
 
 java {

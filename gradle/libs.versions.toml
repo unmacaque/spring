@@ -2,7 +2,6 @@
 grpc = "1.18.0"
 initializr = "0.24.0"
 mockserver = "6.1.0"
-openrewrite = "6.19.0"
 otpJava = "2.1.0"
 protoc = "4.34.2"
 resilience4j = "2.4.0"
@@ -23,8 +22,6 @@ grpc-stub = { module = "io.grpc:grpc-stub" }
 initializr-bom = { module = "io.spring.initializr:initializr-bom", version.ref = "initializr" }
 
 mockserver-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mockserver" }
-
-openrewrite-spring = { module = "org.openrewrite.recipe:rewrite-spring", version.ref = "openrewrite" }
 
 otpJava = { module = "com.github.bastiaanjansen:otp-java", version.ref = "otpJava" }
 
