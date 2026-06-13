@@ -2,9 +2,8 @@ spring:
   ai:
     ollama:
       chat:
-        model: llama3.2:3b
-        options:
-          temperature: 0.0
+        model: granite4.1:3b
+        temperature: 0.0
       embedding:
         model: nomic-embed-text:v1.5
       init:
