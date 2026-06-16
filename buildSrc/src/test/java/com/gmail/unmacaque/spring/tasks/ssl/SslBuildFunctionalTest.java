@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.build.ssl;
+package com.gmail.unmacaque.spring.tasks.ssl;
 
 import org.gradle.testkit.runner.BuildTask;
 import org.gradle.testkit.runner.GradleRunner;

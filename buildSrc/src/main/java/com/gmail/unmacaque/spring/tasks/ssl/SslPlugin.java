@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.build.ssl;
+package com.gmail.unmacaque.spring.tasks.ssl;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;

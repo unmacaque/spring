@@ -26,7 +26,7 @@ gradlePlugin {
     plugins {
         sslPlugin {
             id = 'unmacaque.ssl'
-            implementationClass = 'com.gmail.unmacaque.spring.build.ssl.SslPlugin'
+            implementationClass = 'com.gmail.unmacaque.spring.tasks.ssl.SslPlugin'
 
             dependencies {
                 implementation buildLibs.bouncycastle.bcpkix

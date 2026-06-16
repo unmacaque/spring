@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.build.ssl;
+package com.gmail.unmacaque.spring.tasks.ssl;
 
 public abstract class NamedCertificateDescription extends CertificateDescription {
 

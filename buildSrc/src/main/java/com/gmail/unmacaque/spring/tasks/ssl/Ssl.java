@@ -1,4 +1,4 @@
-package com.gmail.unmacaque.spring.build.ssl;
+package com.gmail.unmacaque.spring.tasks.ssl;
 
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.BasicConstraints;
