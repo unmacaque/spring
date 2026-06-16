@@ -9,19 +9,17 @@ import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.tasks.SourceSetContainer;
-import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class SslPlugin implements Plugin<@NonNull Project> {
+public class SslPlugin implements Plugin<Project> {
 
 	public static final String EXTENSION_NAME = "ssl";
 
 	public static final String TASK_NAME = "generateSslCertificates";
 
-	@NonNull
-	private static Transformer<@Nullable RegularFile, @NonNull Directory> transformToOutputFile(RegularFileProperty property) {
+	private static Transformer<@Nullable RegularFile, Directory> transformToOutputFile(RegularFileProperty property) {
 		return directory -> directory.dir("ca").file(property.get().getAsFile().getName());
 	}
 
@@ -29,7 +27,7 @@ public class SslPlugin implements Plugin<@NonNull Project> {
 	public void apply(Project project) {
 		final var extension = project.getExtensions().create(EXTENSION_NAME, SslPluginExtension.class);
 
-		project.getPlugins().withType(JavaPlugin.class, java -> {
+		project.getPlugins().withType(JavaPlugin.class, _ -> {
 					final var sourceSetContainer = project.getExtensions().getByType(SourceSetContainer.class);
 					final var mainSourceSet = sourceSetContainer.getByName(SourceSet.MAIN_SOURCE_SET_NAME).getName();
 
