@@ -11,11 +11,10 @@ spring:
           include: false
     mcp:
       client:
-        sse:
+        streamable-http:
           connections:
             server:
-              url:
-                http://localhost:8180
+              url: http://localhost:8180/mcp
 
 management:
   endpoints:
