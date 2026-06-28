@@ -12,7 +12,7 @@ public class WebController {
 
 	@GetMapping("/")
 	public String hello() {
-		logger.info("Hello World");
+		logger.atInfo().setMessage("Hello World").log();
 		return "Hello World";
 	}
 }

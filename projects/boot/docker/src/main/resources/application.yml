@@ -5,7 +5,7 @@ spring:
 logging:
   structured:
     format:
-      console: logstash
+      console: com.gmail.unmacaque.spring.boot.docker.config.LogfmtLogFormatter
 
 management:
   endpoint:
