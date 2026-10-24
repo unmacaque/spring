@@ -5,10 +5,7 @@ import org.gradle.api.DefaultTask;
 import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
-import org.gradle.api.tasks.Input;
-import org.gradle.api.tasks.OutputDirectory;
-import org.gradle.api.tasks.OutputFile;
-import org.gradle.api.tasks.TaskAction;
+import org.gradle.api.tasks.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +28,21 @@ public abstract class SslCaTask extends DefaultTask {
 	abstract Property<String> getSubject();
 
 	@Input
+	@Optional
 	abstract Property<Integer> getDays();
+
+	@Input
+	@Optional
+	abstract Property<String> getKeyAlgorithm();
+
+	@Input
+	@Optional
+	abstract Property<String> getSignatureAlgorithm();
+
+	public SslCaTask() {
+		getKeyAlgorithm().convention("EC");
+		getSignatureAlgorithm().convention("SHA256withECDSA");
+	}
 
 	@TaskAction
 	void run() {
@@ -43,14 +54,15 @@ public abstract class SslCaTask extends DefaultTask {
 		}
 
 		final var caKeyFile = new File(outputDir, getKey().get().getAsFile().getName());
-		final var caKey = Ssl.generateKeyPair();
-		Ssl.writeKeyPair(caKeyFile, caKey);
+		final var caKey = Ssl.generateKeyPair(getKeyAlgorithm().get());
+		Ssl.writePrivateKey(caKeyFile, caKey.getPrivate());
 
 		final var certFile = new File(outputDir, getCert().get().getAsFile().getName());
 		final var caCertSubject = getSubject().get();
 		final var caCertDays = getDays().get();
+		final var caSignatureAlgorithm = getSignatureAlgorithm().get();
 		try {
-			final var certificate = Ssl.createCaCertificate(caKey, caCertSubject, caCertDays);
+			final var certificate = Ssl.createCaCertificate(caKey, caCertSubject, caCertDays, caSignatureAlgorithm);
 			final var certContent = Ssl.convertToPem(certificate);
 			Files.writeString(certFile.toPath(), certContent);
 		} catch (CertificateException | IOException | OperatorCreationException e) {

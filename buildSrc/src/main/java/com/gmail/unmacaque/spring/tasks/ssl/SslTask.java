@@ -35,7 +35,21 @@ public abstract class SslTask extends DefaultTask {
 	abstract Property<String> getSubject();
 
 	@Input
+	@Optional
 	abstract Property<Integer> getDays();
+
+	@Input
+	@Optional
+	abstract Property<String> getKeyAlgorithm();
+
+	@Input
+	@Optional
+	abstract Property<String> getSignatureAlgorithm();
+
+	public SslTask() {
+		getKeyAlgorithm().convention("EC");
+		getSignatureAlgorithm().convention("SHA256withECDSA");
+	}
 
 	@TaskAction
 	void run() {
@@ -50,15 +64,17 @@ public abstract class SslTask extends DefaultTask {
 		final var caCert = Ssl.readCertificate(getSigningCert().get().getAsFile());
 
 		final var keyFile = new File(outputDir, getKey().get().getAsFile().getName());
-		final var key = Ssl.generateKeyPair();
-		Ssl.writeKeyPair(keyFile, key);
+		final var key = Ssl.generateKeyPair(getKeyAlgorithm().get());
+		Ssl.writePrivateKey(keyFile, key.getPrivate());
 
 		final var certFile = new File(outputDir, getCert().get().getAsFile().getName());
 		final var subject = getSubject().get();
 		final var days = getDays().get();
+		final var keyAlgorithm = getKeyAlgorithm().get();
+		final var signatureAlgorithm = getSignatureAlgorithm().get();
 		try {
-			final var certificateRequest = Ssl.createCertificateRequest(key, subject);
-			final var certificate = Ssl.signCertificateRequest(certificateRequest, caKey, caCert, key, days);
+			final var certificateRequest = Ssl.createCertificateRequest(key, subject, signatureAlgorithm);
+			final var certificate = Ssl.signCertificateRequest(certificateRequest, caKey, caCert, key, days, keyAlgorithm, signatureAlgorithm);
 			final var certContent = Ssl.convertToPem(certificate);
 			Files.writeString(certFile.toPath(), certContent);
 		} catch (CertificateException | IOException | OperatorCreationException | NoSuchProviderException e) {

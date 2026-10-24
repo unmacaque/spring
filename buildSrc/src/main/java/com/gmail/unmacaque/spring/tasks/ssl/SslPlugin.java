@@ -42,6 +42,8 @@ public class SslPlugin implements Plugin<Project> {
 					task.getKey().set(extension.getCa().getKey());
 					task.getSubject().set(extension.getCa().getSubject());
 					task.getDays().set(extension.getCa().getDays());
+					task.getKeyAlgorithm().set(extension.getCa().getKeyAlgorithm());
+					task.getSignatureAlgorithm().set(extension.getCa().getSignatureAlgorithm());
 				}
 		);
 
@@ -58,6 +60,8 @@ public class SslPlugin implements Plugin<Project> {
 						task.getSigningKey().set(extension.getOutputDir().map(transformToOutputFile(extension.getCa().getKey())));
 						task.getSubject().set(certificate.getSubject());
 						task.getDays().set(certificate.getDays());
+						task.getKeyAlgorithm().set(certificate.getKeyAlgorithm());
+						task.getSignatureAlgorithm().set(certificate.getSignatureAlgorithm());
 					}
 			).get();
 			sslTasks.add(sslTask);
