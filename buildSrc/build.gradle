@@ -30,6 +30,7 @@ gradlePlugin {
 
             dependencies {
                 implementation buildLibs.bouncycastle.bcpkix
+                testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
             }
         }
     }
