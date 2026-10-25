@@ -9,4 +9,4 @@ jobs:
           distribution: "temurin"
           java-version: "25"
           cache: "gradle"
-      - run: ./gradlew check
+      - run: ./gradlew check --max-workers=6
