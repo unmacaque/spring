@@ -37,7 +37,6 @@ class ApplicationTest {
 						status().isOk()
 				);
 
-		//noinspection DataFlowIssue
 		assertThat(registry.find("example.counter").counter())
 				.isNotNull()
 				.satisfies(counter -> assertThat(counter.count()).isCloseTo(1.0, Offset.offset(1e-16)));
@@ -60,7 +59,6 @@ class ApplicationTest {
 						status().isOk()
 				);
 
-		//noinspection DataFlowIssue
 		assertThat(registry.find("example.timer").timer())
 				.isNotNull()
 				.satisfies(timer -> assertThat(timer.count()).isEqualTo(1));
@@ -73,7 +71,6 @@ class ApplicationTest {
 						status().isOk()
 				);
 
-		//noinspection DataFlowIssue
 		assertThat(registry.find("example.timed").timer())
 				.isNotNull()
 				.satisfies(timer -> assertThat(timer.count()).isEqualTo(1));
@@ -86,7 +83,6 @@ class ApplicationTest {
 						status().isOk()
 				);
 
-		//noinspection DataFlowIssue
 		assertThat(registry.find("example.summary").summary())
 				.isNotNull()
 				.satisfies(summary -> assertThat(summary.count()).isEqualTo(10));
